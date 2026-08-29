@@ -209,13 +209,43 @@
 
   function initAccordions() {
     document.querySelectorAll(".accordion-trigger").forEach(function (trigger) {
+      var panel = document.getElementById(
+        trigger.getAttribute("aria-controls")
+      );
+      var card = trigger.closest(".faq-card, .accordion-item, .faq-list__item");
+
+      // Initial state sync
+      if (trigger.getAttribute("aria-expanded") === "true") {
+        if (card) card.classList.add("is-open");
+        if (panel) {
+          panel.hidden = false;
+          panel.classList.add("is-open");
+        }
+      }
+
       trigger.addEventListener("click", function () {
-        var expanded = trigger.getAttribute("aria-expanded") === "true";
-        var panel = document.getElementById(
-          trigger.getAttribute("aria-controls")
-        );
-        trigger.setAttribute("aria-expanded", expanded ? "false" : "true");
-        if (panel) panel.hidden = expanded;
+        var isExpanded = trigger.getAttribute("aria-expanded") === "true";
+        if (isExpanded) {
+          trigger.setAttribute("aria-expanded", "false");
+          if (card) card.classList.remove("is-open");
+          if (panel) {
+            panel.classList.remove("is-open");
+            setTimeout(function () {
+              if (trigger.getAttribute("aria-expanded") === "false") {
+                panel.hidden = true;
+              }
+            }, 280);
+          }
+        } else {
+          if (panel) {
+            panel.hidden = false;
+            // Force reflow so browser registers 0fr starting state before applying expanded state
+            panel.offsetHeight;
+            panel.classList.add("is-open");
+          }
+          trigger.setAttribute("aria-expanded", "true");
+          if (card) card.classList.add("is-open");
+        }
       });
     });
   }
@@ -314,6 +344,19 @@
 
     initBusinessTypeValidation(form);
 
+    var selects = form.querySelectorAll(".form-select");
+    selects.forEach(function (select) {
+      function updatePlaceholderState() {
+        if (!select.value) {
+          select.classList.add("is-placeholder");
+        } else {
+          select.classList.remove("is-placeholder");
+        }
+      }
+      updatePlaceholderState();
+      select.addEventListener("change", updatePlaceholderState);
+    });
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       if (!form.reportValidity()) return;
@@ -321,6 +364,9 @@
       if (submitBtn) submitBtn.disabled = true;
       if (success) success.hidden = false;
       form.reset();
+      selects.forEach(function (select) {
+        select.classList.add("is-placeholder");
+      });
       if (submitBtn) submitBtn.disabled = false;
       if (success && typeof success.focus === "function") success.focus();
     });

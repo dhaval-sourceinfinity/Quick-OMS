@@ -1,8 +1,12 @@
-<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="17.4997" height="12.8201" viewBox="0 0 17.4997 12.8201" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-<defs><linearGradient id="arrow-gradient" x1="0" y1="0" x2="17.5" y2="12.8" gradientUnits="userSpaceOnUse"><stop stop-color="#0057D2"/><stop offset="0.5" stop-color="#5D9EFF"/><stop offset="1" stop-color="#0058D4"/></linearGradient></defs>
-<g id="Group">
-<path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M17.4997 7.16005H0V5.66005H17.4997V7.16005Z" fill="url(#arrow-gradient)"/>
-<path id="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M16.7498 5.66006C13.2223 5.66006 10.3398 8.76216 10.3398 12.0701V12.8201H11.8398V12.0701C11.8398 9.55856 14.0824 7.16006 16.7498 7.16006H17.4994V5.66006H16.7498Z" fill="url(#arrow-gradient)"/>
-<path id="Vector_3" fill-rule="evenodd" clip-rule="evenodd" d="M16.7498 7.16005C13.2223 7.16005 10.3398 4.05791 10.3398 0.75V0H11.8398V0.75C11.8398 3.26158 14.0824 5.66005 16.7498 5.66005H17.4994V7.16005H16.7498Z" fill="url(#arrow-gradient)"/>
-</g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="arrow-gradient" x1="3.25" y1="5.58" x2="20.75" y2="18.41" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0057D2"/>
+      <stop offset="0.5" stop-color="#5D9EFF"/>
+      <stop offset="1" stop-color="#0058D4"/>
+    </linearGradient>
+  </defs>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="url(#arrow-gradient)"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="url(#arrow-gradient)"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="url(#arrow-gradient)"/>
 </svg>
