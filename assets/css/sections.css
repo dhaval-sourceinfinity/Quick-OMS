@@ -2213,43 +2213,44 @@
   font-weight: 600;
 }
 
-/* Figma Smart Animate keyframes matching inspect data */
-@keyframes kf_core_opacity_fade {
+/* Figma Smart Animate keyframes — 400ms ease-out per Figma Inspect */
+
+/* Fade-in + slide-up for incoming panel content (Figma: translate 0,-29px → 0,0) */
+@keyframes kf_core_slide_up {
   0% {
-    animation-timing-function: ease-out;
+    opacity: 0;
+    transform: translateY(29px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Simple opacity fade for elements that only fade in */
+@keyframes kf_core_fade_in {
+  0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
 }
 
-@keyframes kf_core_spring_reveal {
-  0% {
-    animation-timing-function: linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998);
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Animated sliding active indicator (800ms Figma Gentle easing) */
+/* Animated sliding active indicator (Figma Line 41: 400ms ease-out) */
 .core-tabs-indicator {
   position: absolute;
   bottom: -2px;
   left: 0;
   height: 2px;
   background: #000000;
-  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1),
-    width 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 400ms ease-out,
+    width 400ms ease-out;
   pointer-events: none;
   z-index: 2;
 }
 
-/* Tab Panels with smooth coordinated transitions matching Figma Smart Animate (800ms Gentle) */
+/* Tab Panels — Figma Smart Animate: 400ms ease-out coordinated transitions */
 .core-features-panels {
   display: grid;
   grid-template-columns: 1fr;
@@ -2265,7 +2266,7 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), visibility 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 400ms ease-out, visibility 400ms ease-out;
   width: 100%;
 }
 
@@ -2303,9 +2304,10 @@
   overflow: hidden;
   margin: 0 auto;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* Figma Rectangle 34628682: background-color 400ms ease-out */
+  transition: transform 400ms ease-out,
+    box-shadow 400ms ease-out,
+    background-color 400ms ease-out;
 }
 
 .core-feature-visual:hover {
@@ -2337,8 +2339,9 @@
   border-radius: 16px;
   transform: scale(0.98);
   opacity: 0.85;
-  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* Figma ChatGPT Image: opacity 400ms ease-out */
+  transition: transform 400ms ease-out,
+    opacity 400ms ease-out;
 }
 
 .core-tabpanel.is-active .core-feature-visual__img {
@@ -2355,13 +2358,48 @@
   flex-direction: column;
   width: 100%;
   max-width: 578px;
-  transform: translateY(6px);
-  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* Figma Container: starts offset, slides into position */
+  transform: translateY(29px);
+  opacity: 0;
+  transition: opacity 400ms ease-out,
+    transform 400ms ease-out;
 }
 
 .core-tabpanel.is-active .core-feature-content {
   transform: translateY(0);
+  opacity: 1;
+}
+
+/* One-shot entry animation triggered by JS on tab switch */
+.core-tabpanel.is-animating .core-feature-content {
+  animation: kf_core_slide_up 400ms ease-out both;
+}
+
+.core-tabpanel.is-animating .core-feature-visual__img {
+  animation: kf_core_fade_in 400ms ease-out both;
+}
+
+/* Figma: title fades in (kf_1_749_opacity_0) */
+.core-tabpanel.is-animating .core-feature-head h3 {
+  animation: kf_core_fade_in 400ms ease-out both;
+}
+
+/* Figma: description fades in (kf_1_750_opacity_0) */
+.core-tabpanel.is-animating .core-feature-head p {
+  animation: kf_core_fade_in 400ms ease-out 50ms both;
+}
+
+/* Figma: checklist items fade in with stagger (kf_1_755/763/759_opacity_0) */
+.core-tabpanel.is-animating .core-feature-checklist li:nth-child(1) {
+  animation: kf_core_fade_in 400ms ease-out 100ms both;
+}
+
+.core-tabpanel.is-animating .core-feature-checklist li:nth-child(2) {
+  animation: kf_core_fade_in 400ms ease-out 160ms both;
+}
+
+.core-tabpanel.is-animating .core-feature-checklist li:nth-child(3) {
+  animation: kf_core_fade_in 400ms ease-out 220ms both;
 }
 
 .core-feature-head {
@@ -2549,9 +2587,26 @@
   .core-tabs-indicator,
   .core-tabpanel,
   .core-feature-visual,
-  .core-feature-visual__img {
+  .core-feature-visual__img,
+  .core-feature-content,
+  .core-feature-checklist li,
+  .core-feature-check {
     transition: none !important;
-    transform: none !important;
+    animation: none !important;
+  }
+
+  .core-tabpanel.is-active .core-feature-content {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  .core-tabpanel.is-animating .core-feature-content,
+  .core-tabpanel.is-animating .core-feature-visual__img,
+  .core-tabpanel.is-animating .core-feature-head h3,
+  .core-tabpanel.is-animating .core-feature-head p,
+  .core-tabpanel.is-animating .core-feature-checklist li {
+    animation: none !important;
+    opacity: 1 !important;
   }
 }
 

@@ -109,18 +109,35 @@
       indicator.style.transform = "translateX(" + leftOffset + "px)";
     }
 
+    // Per-tab accent colors (Figma Vector fill values)
+    var tabAccentColors = {
+      "core-tab-orders": "#9A6EE2",
+      "core-tab-inventory": "#29966C",
+      "core-tab-customers": "#4478EF",
+      "core-tab-invoices": "#F47863"
+    };
+
     function selectTab(tab, moveFocus) {
       if (!tab) return;
+      var activePanel = null;
       tabs.forEach(function (t) {
         var selected = t === tab;
         t.setAttribute("aria-selected", selected ? "true" : "false");
         t.tabIndex = selected ? 0 : -1;
         var panel = document.getElementById(t.getAttribute("aria-controls"));
         if (panel) {
+          // Remove any lingering animation class from previous switches
+          panel.classList.remove("is-animating");
           if (selected) {
+            activePanel = panel;
             panel.hidden = false;
             requestAnimationFrame(function () {
               panel.classList.add("is-active");
+              // Trigger one-shot entry animation (Figma Smart Animate 400ms)
+              panel.classList.add("is-animating");
+              setTimeout(function () {
+                panel.classList.remove("is-animating");
+              }, 450); // slightly longer than 400ms to ensure animation completes
             });
           } else {
             panel.classList.remove("is-active");
@@ -128,6 +145,18 @@
           }
         }
       });
+
+      // Animate SVG checkmark fill colors to match the new tab's accent
+      // (Figma: kf_1_758/754/762_background-color_0 — 400ms ease-out)
+      if (activePanel) {
+        var accentColor = tabAccentColors[tab.id] || "#9A6EE2";
+        var checks = activePanel.querySelectorAll(".core-feature-check path");
+        checks.forEach(function (path) {
+          path.style.transition = "fill 400ms ease-out";
+          path.style.fill = accentColor;
+        });
+      }
+
       updateIndicator(tab);
       if (moveFocus) tab.focus();
     }
