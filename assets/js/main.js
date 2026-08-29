@@ -15,6 +15,7 @@
     if (!toggle || !panel) return;
 
     var lastFocused = null;
+    var scrollPosition = 0;
 
     function focusableElements() {
       return Array.prototype.slice.call(
@@ -26,9 +27,16 @@
 
     function openNav() {
       lastFocused = document.activeElement;
+      scrollPosition = window.pageYOffset || document.documentElement.scrollTop || 0;
       panel.dataset.open = "true";
       toggle.setAttribute("aria-expanded", "true");
+      document.documentElement.dataset.navOpen = "true";
       document.body.dataset.navOpen = "true";
+      document.body.style.position = "fixed";
+      document.body.style.top = "-" + scrollPosition + "px";
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
       var items = focusableElements();
       if (items.length) items[0].focus();
       document.addEventListener("keydown", onKeydown);
@@ -37,7 +45,14 @@
     function closeNav() {
       panel.dataset.open = "false";
       toggle.setAttribute("aria-expanded", "false");
+      document.documentElement.dataset.navOpen = "false";
       document.body.dataset.navOpen = "false";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollPosition);
       document.removeEventListener("keydown", onKeydown);
       if (lastFocused) lastFocused.focus();
     }
@@ -75,10 +90,6 @@
       closeBtn.addEventListener("click", closeNav);
     }
 
-    panel.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", closeNav);
-    });
-
     // Close automatically if the viewport grows past the mobile threshold.
     var mql = window.matchMedia("(min-width: 1180px)");
     mql.addEventListener("change", function (e) {
@@ -86,6 +97,147 @@
         closeNav();
       }
     });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Smart Tab Reveal (Reusable Project-Wide Horizontal Scroll Utility) */
+  /* ------------------------------------------------------------------ */
+
+  /**
+   * Smoothly scrolls a horizontally overflowing tab strip just enough to
+   * reveal the active tab with comfortable breathing room, and when space
+   * permits, preserves a small peek (~24-36px) of the next tab to indicate
+   * additional content.
+   *
+   * Priorities:
+   * 1. Active tab must be 100% visible (never sacrificed for next tab peek).
+   * 2. Maintain comfortable spacing around active tab.
+   * 3. Preserve next-tab peek (~24-36px) when viewport space permits.
+   * 4. Minimum scroll required — no unnecessary scrolling or force-centering.
+   *
+   * @param {HTMLElement} tab - The tab element to reveal
+   * @param {Object} [options] - Options
+   * @param {HTMLElement} [options.container] - Explicit scroll container
+   * @param {number} [options.margin=16] - Breathing room in px from container edges
+   * @param {number} [options.peek=28] - Desired peek in px of next tab
+   * @param {boolean} [options.smooth=true] - Smooth native scrolling
+   */
+  function smartRevealTab(tab, options) {
+    if (!tab || typeof tab.getBoundingClientRect !== "function") return;
+
+    options = options || {};
+    var margin = typeof options.margin === "number" ? options.margin : 16;
+    var peek = typeof options.peek === "number" ? options.peek : 28;
+    var smooth = options.smooth !== false;
+
+    // Find the scrollable container (either explicit or ancestor)
+    var container = options.container || findScrollableTabContainer(tab);
+    if (!container) return;
+
+    // If container doesn't overflow horizontally, all tabs fit -> no scroll needed
+    if (container.scrollWidth <= container.clientWidth) return;
+
+    var containerRect = container.getBoundingClientRect();
+    var tabRect = tab.getBoundingClientRect();
+
+    var containerWidth = container.clientWidth;
+    var tabWidth = tabRect.width;
+
+    var tabLeftRelative = tabRect.left - containerRect.left;
+    var tabRightRelative = tabRect.right - containerRect.left;
+
+    var currentScroll = container.scrollLeft;
+    var maxScroll = container.scrollWidth - containerWidth;
+    var targetScroll = currentScroll;
+
+    // Find next sibling tab (if any) to calculate peek boundary
+    var nextTab = getNextTabElement(tab, container);
+    var desiredRightBoundary = tabRightRelative + margin;
+
+    if (nextTab && typeof nextTab.getBoundingClientRect === "function") {
+      var nextTabRect = nextTab.getBoundingClientRect();
+      var nextTabLeftRelative = nextTabRect.left - containerRect.left;
+      // Right boundary includes the gap to next tab + desired peek amount
+      desiredRightBoundary = nextTabLeftRelative + peek;
+    }
+
+    // 1. Check if tab is clipped on the LEFT (or scrolled past)
+    if (tabLeftRelative < margin) {
+      // Scroll right (decrease scrollLeft) just enough to put active tab at left margin
+      targetScroll = currentScroll + tabLeftRelative - margin;
+    }
+    // 2. Check if active tab or desired next-tab peek extends past RIGHT edge
+    else if (desiredRightBoundary > containerWidth) {
+      // Required scroll amount to bring desiredRightBoundary to right edge of viewport
+      var scrollDelta = desiredRightBoundary - containerWidth;
+
+      // PRIORITY 1 SAFEGUARD: Ensure scrolling does not push active tab's left edge past margin
+      var maxAllowedDelta = tabLeftRelative - margin;
+      if (scrollDelta > maxAllowedDelta) {
+        scrollDelta = Math.max(0, maxAllowedDelta);
+      }
+
+      // Only scroll if delta is meaningful (> 2px)
+      if (scrollDelta > 2) {
+        targetScroll = currentScroll + scrollDelta;
+      }
+    }
+    // 3. Tab is already comfortably visible
+    else {
+      return;
+    }
+
+    // Clamp target to valid range [0, maxScroll] (handles first & last tabs cleanly)
+    targetScroll = Math.max(0, Math.min(maxScroll, Math.round(targetScroll)));
+
+    // Avoid redundant micro-scroll operations
+    if (Math.abs(targetScroll - currentScroll) < 1) return;
+
+    if (smooth && typeof container.scrollTo === "function") {
+      container.scrollTo({
+        left: targetScroll,
+        behavior: "smooth"
+      });
+    } else {
+      container.scrollLeft = targetScroll;
+    }
+  }
+
+  function getNextTabElement(tab, container) {
+    var tabs = Array.prototype.slice.call(
+      container.querySelectorAll('[role="tab"]')
+    );
+    if (!tabs.length) {
+      var parent = tab.parentElement;
+      if (parent) {
+        tabs = Array.prototype.slice.call(parent.querySelectorAll('button, [role="tab"], a'));
+      }
+    }
+    var idx = tabs.indexOf(tab);
+    if (idx !== -1 && idx < tabs.length - 1) {
+      return tabs[idx + 1];
+    }
+    return null;
+  }
+
+  function findScrollableTabContainer(el) {
+    var parent = el.parentElement;
+    while (parent && parent !== document.body && parent !== document.documentElement) {
+      var style = window.getComputedStyle(parent);
+      var overflowX = style.overflowX;
+      if (
+        overflowX === "auto" ||
+        overflowX === "scroll" ||
+        parent.hasAttribute("data-tab-group") ||
+        parent.getAttribute("role") === "tablist"
+      ) {
+        if (parent.scrollWidth > parent.clientWidth || overflowX === "auto" || overflowX === "scroll") {
+          return parent;
+        }
+      }
+      parent = parent.parentElement;
+    }
+    return el.closest('[data-tab-group], [role="tablist"]') || el.parentElement;
   }
 
   /* ------------------------------------------------------------------ */
@@ -158,6 +310,10 @@
       }
 
       updateIndicator(tab);
+
+      // Smart Reveal: smoothly scroll tab container just enough to make active tab fully visible + next tab peek
+      smartRevealTab(tab, { container: group, margin: 16, peek: 28 });
+
       if (moveFocus) tab.focus();
     }
 
@@ -165,7 +321,9 @@
     var initialTab = group.querySelector('[role="tab"][aria-selected="true"]') || tabs[0];
     function refreshCurrent() {
       var current = group.querySelector('[role="tab"][aria-selected="true"]');
-      if (current) updateIndicator(current);
+      if (current) {
+        updateIndicator(current);
+      }
     }
     setTimeout(refreshCurrent, 50);
     window.addEventListener("load", refreshCurrent, { passive: true });
@@ -174,6 +332,13 @@
     }
 
     window.addEventListener("resize", refreshCurrent, { passive: true });
+
+    // Initial check (non-smooth so page load is instantaneous)
+    if (initialTab) {
+      setTimeout(function () {
+        smartRevealTab(initialTab, { container: group, margin: 16, peek: 28, smooth: false });
+      }, 60);
+    }
 
     tabs.forEach(function (tab, index) {
       tab.addEventListener("click", function () {
@@ -200,8 +365,12 @@
   }
 
   function initTabs() {
-    document.querySelectorAll("[data-tab-group]").forEach(initTabGroup);
+    document.querySelectorAll("[data-tab-group], [role=\"tablist\"]").forEach(initTabGroup);
   }
+
+  // Expose global smart tab reveal helper for project-wide programmatic usage
+  window.QuickOMS = window.QuickOMS || {};
+  window.QuickOMS.smartRevealTab = smartRevealTab;
 
   /* ------------------------------------------------------------------ */
   /* Accordion (native disclosure semantics)                             */
@@ -440,6 +609,74 @@
     });
   }
 
+  /* ------------------------------------------------------------------ */
+  /* Fallback / 404 behavior & missing route interceptor                 */
+  /* ------------------------------------------------------------------ */
+
+  function initNotFoundActions() {
+    var goBackBtns = document.querySelectorAll('[data-action="go-back"]');
+    goBackBtns.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        var hasHistory = window.history.length > 1;
+        var isSameOrigin = false;
+        try {
+          if (document.referrer) {
+            var refUrl = new URL(document.referrer);
+            isSameOrigin = refUrl.origin === window.location.origin;
+          }
+        } catch (err) {
+          isSameOrigin = false;
+        }
+
+        if (hasHistory && isSameOrigin) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      });
+    });
+  }
+
+  function initMissingRouteInterceptor() {
+    var missingRoutes = [
+      "lite.html",
+      "features.html",
+      "industries.html",
+      "integrations.html",
+      "about.html"
+    ];
+
+    document.addEventListener("click", function (e) {
+      var link = e.target.closest("a");
+      if (!link) return;
+      var href = link.getAttribute("href");
+      if (!href) return;
+
+      // Ignore external, tel, mailto, in-page hash links
+      if (
+        href.startsWith("http://") ||
+        href.startsWith("https://") ||
+        href.startsWith("//") ||
+        href.startsWith("mailto:") ||
+        href.startsWith("tel:") ||
+        href.startsWith("#")
+      ) {
+        return;
+      }
+
+      var cleanPath = href.split("?")[0].split("#")[0];
+      var isMissing = missingRoutes.some(function (route) {
+        return cleanPath === route || cleanPath.endsWith("/" + route);
+      });
+
+      if (isMissing) {
+        e.preventDefault();
+        window.location.href = "404.html?from=" + encodeURIComponent(cleanPath);
+      }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initMobileNav();
     initTabs();
@@ -447,5 +684,8 @@
     initHeaderScroll();
     initContactForm();
     initHorizontalCarousels();
+    initNotFoundActions();
+    initMissingRouteInterceptor();
   });
 })();
+

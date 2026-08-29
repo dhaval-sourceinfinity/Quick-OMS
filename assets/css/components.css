@@ -82,10 +82,12 @@
 .btn--primary {
   background: var(--color-action-primary-bg);
   color: var(--color-action-primary-text);
+  border: none;
 }
 
 .btn--primary:hover:not(:disabled) {
   background: var(--color-action-primary-hover-bg);
+  border: none;
 }
 
 /* Outline — transparent surface, border + text in currentColor so it
@@ -416,4 +418,24 @@
   position: relative;
   max-width: 720px;
   margin-inline: auto;
+}
+
+/* ------------------------------------------------------------------ */
+/* Tabs & Horizontal Navigation (Smart Tab Reveal Support)            */
+/* ------------------------------------------------------------------ */
+
+[data-tab-group],
+[role="tablist"] {
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+[data-tab-group]::-webkit-scrollbar,
+[role="tablist"]::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }

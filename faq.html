@@ -53,7 +53,10 @@
 
   <div id="mobile-nav" class="mobile-nav" data-nav-panel data-open="false">
     <div class="mobile-nav__header">
-      <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img class="site-header__logo" src="assets/img/logos/quickoms-mark.svg" alt="" width="44" height="44" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
       <button type="button" class="mobile-nav__close" data-nav-close aria-label="Close menu">&times;</button>
     </div>
     <nav class="mobile-nav__links" aria-label="Primary">
@@ -95,6 +98,7 @@
           <button type="button" class="core-tab-btn" role="tab" id="faq-tab-plans" aria-controls="faq-panel-plans" aria-selected="false" tabindex="-1">Plans &amp; Pricing</button>
           <button type="button" class="core-tab-btn" role="tab" id="faq-tab-integrations" aria-controls="faq-panel-integrations" aria-selected="false" tabindex="-1">Integrations &amp; Data</button>
           <button type="button" class="core-tab-btn" role="tab" id="faq-tab-support" aria-controls="faq-panel-support" aria-selected="false" tabindex="-1">Support</button>
+          <span class="core-tabs-indicator" aria-hidden="true"></span>
         </div>
 
         <!-- Panel 1: Product (Figma questions; answers composed from copy already approved elsewhere on the site — provisional, see DESIGN.md §24) -->
