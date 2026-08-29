@@ -1,0 +1,241 @@
+/* Base layer — resets, typography roles, accessibility defaults.
+   Foundations layer per .ai/AGENTS.md §4.1. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* No page-level horizontal scroll (AGENTS §6.3 / §22). */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Visible focus for every interactive element (AGENTS §18 / DESIGN §11.2).
+   Only shown for keyboard interaction via :focus-visible. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+}
+
+/* Screen-reader-only utility for accessible names that shouldn't render
+   visually (e.g. icon-only controls). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: var(--space-page-inline);
+  z-index: 100;
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  transition: top var(--motion-fast) var(--easing-standard);
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Typography roles (DESIGN.md §5)                                     */
+/* ------------------------------------------------------------------ */
+
+.text-display {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(1.75rem, 1.25rem + 3.2vw, 6.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--color-text-inverse);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.text-section-title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(1.375rem, 1.15rem + 1.2vw, 4rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Suppress forced desktop line breaks on mobile viewports for natural wrapping (.ai/AGENTS.md §7) */
+@media (max-width: 767px) {
+  h1 br,
+  h2 br,
+  h3 br,
+  p br,
+  .text-display br,
+  .text-section-title br,
+  .section-heading br,
+  .hero__title br,
+  .cta-band__title br,
+  .cta-band__desc br,
+  .why-choose__title br,
+  .core-features-heading__title br,
+  .plans-heading__title br,
+  .plan-panel__title br,
+  .integrations-heading__title br,
+  .pricing-heading__title br {
+    display: inline;
+    content: " ";
+  }
+}
+
+.text-card-title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+.text-body {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.text-body-small {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.text-label {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.text-eyebrow {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-accent);
+}
+
+.text-nav {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: 1rem;
+}
+
+.text-button {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: 1rem;
+}
+
+.text-meta {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.text-brand-numeral {
+  font-family: var(--font-family-brand);
+  font-weight: var(--font-weight-bold);
+}

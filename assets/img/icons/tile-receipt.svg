@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="19.5" height="18.75" viewBox="0 0 19.5 18.75" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+<g id="Receipt">
+<path id="Rectangle 2" d="M2.75 0.75H16.75V16.7156C16.75 17.5459 15.7966 18.0145 15.1392 17.5074L13.8084 16.4807C13.4736 16.2225 13.0125 16.2027 12.6568 16.4313L10.8315 17.6047C10.1727 18.0283 9.3273 18.0283 8.66848 17.6047L6.8432 16.4313C6.48751 16.2027 6.02644 16.2225 5.69164 16.4807L4.3608 17.5074C3.70338 18.0145 2.75 17.5459 2.75 16.7156V0.75Z" stroke="#146EF5" stroke-width="1.5"/>
+<path id="Line" d="M6.75 6.75H9.75" stroke="#146EF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Line_2" d="M0.75 0.75H18.75" stroke="#146EF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Line_3" d="M6.75 10.75H9.75" stroke="#146EF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Line_4" d="M12.75 6.75H13.25" stroke="#146EF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Line_5" d="M12.75 10.75H13.25" stroke="#146EF5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

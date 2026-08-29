@@ -1,0 +1,7 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+
+# Local review artifacts (screenshots taken during QA passes)
+.tmp_shots/

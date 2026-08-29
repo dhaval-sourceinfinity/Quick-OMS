@@ -1,0 +1,1732 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quick OMS — Simplify Orders, Inventory &amp; Invoicing</title>
+  <meta name="description"
+    content="Quick OMS helps small and growing businesses manage orders, customers, products, stock, invoices and dispatch from one easy-to-use platform." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/logos/quickoms-mark.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/primitives.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/sections.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img src="assets/img/logos/quickoms-mark.svg" alt="" width="56" height="56" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="lite.html">Lite</a>
+        <a href="features.html">Features</a>
+        <a href="industries.html">Industries</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="compare.html">Compare</a>
+      </nav>
+
+      <a class="btn btn--primary site-header__cta" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav"
+        aria-label="Open menu">
+        <span class="nav-toggle__icon"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-nav" class="mobile-nav" data-nav-panel data-open="false">
+    <div class="mobile-nav__header">
+      <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      <button type="button" class="mobile-nav__close" data-nav-close aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="mobile-nav__links" aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="lite.html">Lite</a>
+      <a href="features.html">Features</a>
+      <a href="industries.html">Industries</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="compare.html">Compare</a>
+    </nav>
+    <div class="mobile-nav__cta">
+      <a class="btn btn--primary" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ============================== 1. HERO ============================== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__inner">
+          <div class="hero__copy">
+            <span class="badge badge--glass">Order Management Simplified</span>
+            <h1 class="text-display hero__title">Simplify Orders, <br />Inventory &amp; Invoicing</h1>
+            <p class="hero__subtitle">Quick OMS helps small and growing businesses manage orders, customers, products,
+              stock, invoices and dispatch from one easy-to-use platform.</p>
+          </div>
+          <div class="hero__actions">
+            <a class="btn btn--inverse-brand" href="features.html">
+              Explore Solutions
+              <img class="icon" src="assets/img/icons/arrow-right-gradient.svg" alt="" />
+            </a>
+            <a class="btn btn--outline" href="pricing.html">
+              View Pricing
+              <span class="icon icon-arrow" aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div class="hero__preview" aria-hidden="true">
+            <div class="preview-window">
+              <div class="preview-window__bar">
+                <span class="preview-window__dot preview-window__dot--red"></span>
+                <span class="preview-window__dot preview-window__dot--amber"></span>
+                <span class="preview-window__dot preview-window__dot--green"></span>
+                <span class="preview-window__url">app.quickoms.com/dashboard</span>
+                <span class="preview-window__menu-icon"><span></span><span></span><span></span></span>
+              </div>
+              <div class="preview-window__body">
+                <div class="preview-window__sidebar">
+                  <span class="preview-window__sidebar-label">Workspace</span>
+                  <span class="preview-window__nav-item preview-window__nav-item--active">Dashboard</span>
+                  <span class="preview-window__nav-item">Orders</span>
+                  <span class="preview-window__nav-item">Products</span>
+                  <span class="preview-window__nav-item">Customers</span>
+                  <span class="preview-window__nav-item">Inventory</span>
+                  <span class="preview-window__nav-item">Invoices</span>
+                  <span class="preview-window__nav-item">Reports</span>
+                </div>
+                <div class="preview-window__main">
+                  <div class="preview-stats">
+                    <div class="preview-stat">
+                      <div class="preview-stat__head">
+                        <span class="preview-stat__label">Orders Today</span>
+                        <img class="icon" src="assets/img/icons/dash-orders.svg" alt="" />
+                      </div>
+                      <div class="preview-stat__value">48</div>
+                      <div class="preview-stat__delta preview-stat__delta--up"><img class="icon"
+                          src="assets/img/icons/dash-trend-up.svg" alt="" />+12%</div>
+                    </div>
+                    <div class="preview-stat">
+                      <div class="preview-stat__head">
+                        <span class="preview-stat__label">Pending Orders</span>
+                        <img class="icon" src="assets/img/icons/dash-pending.svg" alt="" />
+                      </div>
+                      <div class="preview-stat__value">13</div>
+                      <div class="preview-stat__delta preview-stat__delta--down"><img class="icon"
+                          src="assets/img/icons/dash-trend-down.svg" alt="" />-4%</div>
+                    </div>
+                    <div class="preview-stat">
+                      <div class="preview-stat__head">
+                        <span class="preview-stat__label">Monthly Revenue</span>
+                        <img class="icon" src="assets/img/icons/dash-revenue.svg" alt="" />
+                      </div>
+                      <div class="preview-stat__value">$186,420</div>
+                      <div class="preview-stat__delta preview-stat__delta--up"><img class="icon"
+                          src="assets/img/icons/dash-trend-up-2.svg" alt="" />+8.4%</div>
+                    </div>
+                    <div class="preview-stat">
+                      <div class="preview-stat__head">
+                        <span class="preview-stat__label">Low Stock Alerts</span>
+                        <img class="icon" src="assets/img/icons/dash-alert.svg" alt="" />
+                      </div>
+                      <div class="preview-stat__value">7</div>
+                      <div class="preview-stat__delta"><img class="icon" src="assets/img/icons/dash-action.svg"
+                          alt="" />Action</div>
+                    </div>
+                  </div>
+                  <div class="preview-columns">
+                    <div class="preview-panel">
+                      <div class="preview-panel__head">
+                        <strong>Recent Orders</strong>
+                        <span class="text-meta">Last 24 hours</span>
+                      </div>
+                      <div class="preview-order-row">
+                        <div>
+                          <div class="preview-order-row__name">Harbour Foods Ltd</div>
+                          <div class="preview-order-row__meta">QO-10428</div>
+                        </div>
+                        <div class="preview-order-row__right">
+                          <strong>$4,320</strong>
+                          <span class="badge badge--dispatched">Dispatched</span>
+                        </div>
+                      </div>
+                      <div class="preview-order-row">
+                        <div>
+                          <div class="preview-order-row__name">Northside Distributors</div>
+                          <div class="preview-order-row__meta">QO-10427</div>
+                        </div>
+                        <div class="preview-order-row__right">
+                          <strong>$1,890</strong>
+                          <span class="badge badge--warning">Packed</span>
+                        </div>
+                      </div>
+                      <div class="preview-order-row">
+                        <div>
+                          <div class="preview-order-row__name">Kea Trade Supplies</div>
+                          <div class="preview-order-row__meta">QO-10426</div>
+                        </div>
+                        <div class="preview-order-row__right">
+                          <strong>$920</strong>
+                          <span class="badge badge--info">Confirmed</span>
+                        </div>
+                      </div>
+                      <div class="preview-order-row">
+                        <div>
+                          <div class="preview-order-row__name">Metro FMCG Wholesale</div>
+                          <div class="preview-order-row__meta">QO-10425</div>
+                        </div>
+                        <div class="preview-order-row__right">
+                          <strong>$7,145</strong>
+                          <span class="badge badge--success">Completed</span>
+                        </div>
+                      </div>
+                      <div class="preview-order-row">
+                        <div>
+                          <div class="preview-order-row__name">Riverside Retail Co</div>
+                          <div class="preview-order-row__meta">QO-10424</div>
+                        </div>
+                        <div class="preview-order-row__right">
+                          <strong>$610</strong>
+                          <span class="badge badge--draft">Draft</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="preview-right-stack">
+                      <div class="preview-panel">
+                        <div class="preview-panel__head">
+                          <strong>Top Selling Products</strong>
+                        </div>
+                        <div class="preview-products-list">
+                          <div class="preview-product-item">
+                            <div class="preview-product-item__head">
+                              <span class="preview-product-item__name">Organic Oats 1kg</span>
+                              <span class="preview-product-item__sku">SKU-8841</span>
+                            </div>
+                            <div class="preview-progress">
+                              <div class="preview-progress__bar" style="width: 86%;"></div>
+                            </div>
+                          </div>
+                          <div class="preview-product-item">
+                            <div class="preview-product-item__head">
+                              <span class="preview-product-item__name">Sparkling Water 24pk</span>
+                              <span class="preview-product-item__sku">SKU-2290</span>
+                            </div>
+                            <div class="preview-progress">
+                              <div class="preview-progress__bar" style="width: 68%;"></div>
+                            </div>
+                          </div>
+                          <div class="preview-product-item">
+                            <div class="preview-product-item__head">
+                              <span class="preview-product-item__name">Olive Oil 5L</span>
+                              <span class="preview-product-item__sku">SKU-5510</span>
+                            </div>
+                            <div class="preview-progress">
+                              <div class="preview-progress__bar" style="width: 52%;"></div>
+                            </div>
+                          </div>
+                          <div class="preview-product-item">
+                            <div class="preview-product-item__head">
+                              <span class="preview-product-item__name">Rice Bulk 20kg</span>
+                              <span class="preview-product-item__sku">SKU-1092</span>
+                            </div>
+                            <div class="preview-progress">
+                              <div class="preview-progress__bar" style="width: 37%;"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="preview-panel preview-panel--dispatch">
+                        <div class="preview-panel__head"><strong>Dispatch Status</strong></div>
+                        <div class="preview-dispatch-grid">
+                          <div class="preview-dispatch-card">
+                            <div class="preview-dispatch-card__value">9</div>
+                            <div class="preview-dispatch-card__label">Packing</div>
+                          </div>
+                          <div class="preview-dispatch-card">
+                            <div class="preview-dispatch-card__value">16</div>
+                            <div class="preview-dispatch-card__label">In Transit</div>
+                          </div>
+                          <div class="preview-dispatch-card">
+                            <div class="preview-dispatch-card__value">132</div>
+                            <div class="preview-dispatch-card__label">Delivered</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 2. ORDER WORKFLOW ============================== -->
+    <section class="section workflow-section surface-canvas">
+      <div class="container">
+        <div class="workflow-heading">
+          <span class="workflow-heading__eyebrow">ORDER WORKFLOW</span>
+          <h2 class="workflow-heading__title">A Simple Workflow Your Team Will Love</h2>
+        </div>
+
+        <div class="workflow-steps-container">
+          <div class="workflow-steps">
+            <div class="workflow-step-card">
+              <div class="workflow-step-card__badge">1</div>
+              <div class="workflow-step-card__body">
+                <h3 class="workflow-step-card__title">Draft Order</h3>
+                <p class="workflow-step-card__desc">Create order details, add products and assign to a customer.</p>
+              </div>
+            </div>
+            <div class="workflow-connector" aria-hidden="true"></div>
+            <div class="workflow-step-card">
+              <div class="workflow-step-card__badge">2</div>
+              <div class="workflow-step-card__body">
+                <h3 class="workflow-step-card__title">Confirmed</h3>
+                <p class="workflow-step-card__desc">Customer &amp; stock levels confirmed before packing begins.</p>
+              </div>
+            </div>
+            <div class="workflow-connector" aria-hidden="true"></div>
+            <div class="workflow-step-card">
+              <div class="workflow-step-card__badge">3</div>
+              <div class="workflow-step-card__body">
+                <h3 class="workflow-step-card__title">Packed</h3>
+                <p class="workflow-step-card__desc">Warehouse team packs and prepares the order for dispatch.</p>
+              </div>
+            </div>
+            <div class="workflow-connector" aria-hidden="true"></div>
+            <div class="workflow-step-card">
+              <div class="workflow-step-card__badge">4</div>
+              <div class="workflow-step-card__body">
+                <h3 class="workflow-step-card__title">Dispatched</h3>
+                <p class="workflow-step-card__desc">Order sent to customer via courier or own delivery fleet.</p>
+              </div>
+            </div>
+            <div class="workflow-connector" aria-hidden="true"></div>
+            <div class="workflow-step-card">
+              <div class="workflow-step-card__badge">5</div>
+              <div class="workflow-step-card__body">
+                <h3 class="workflow-step-card__title">Completed</h3>
+                <p class="workflow-step-card__desc">Delivered, invoiced and order marked complete in the system.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 3. DESIGNED FOR BUSINESSES (INDUSTRY) ============================== -->
+    <section class="section industry-section surface-canvas">
+      <div class="container">
+        <div class="industry-heading">
+          <span class="industry-heading__eyebrow">OFFICIAL PARTNERS</span>
+          <h2 class="industry-heading__title">Designed for businesses managing daily orders, stock and customer
+            fulfilment</h2>
+          <p class="industry-heading__desc">We partner with industry-leading payment and financing companies to ensure
+            every restaurant can scale with confidence and security.</p>
+        </div>
+      </div>
+
+      <div class="industry-carousel-container">
+        <div class="industry-scroll-fade industry-scroll-fade--left" data-scroll-fade="left" aria-hidden="true"></div>
+        <div class="industry-track-wrapper" data-carousel="industry">
+          <div class="industry-grid">
+            <!-- Card 1: Wholesalers -->
+            <article class="industry-card" tabindex="0">
+              <div class="industry-card__body">
+                <h3 class="industry-card__title">Wholesalers</h3>
+                <div class="industry-card__divider"></div>
+                <p class="industry-card__desc">Manage bulk orders and multiple customer accounts from one dashboard.</p>
+              </div>
+              <div class="industry-card__media">
+                <img src="assets/img/photos/industry-wholesalers.jpg"
+                  alt="Wholesalers warehouse aisle stacked with pallets and boxes" loading="lazy" width="573"
+                  height="391" />
+              </div>
+            </article>
+
+            <!-- Card 2: Distributors -->
+            <article class="industry-card" tabindex="0">
+              <div class="industry-card__body">
+                <h3 class="industry-card__title">Distributors</h3>
+                <div class="industry-card__divider"></div>
+                <p class="industry-card__desc">Track orders from dispatch to delivery across your network.</p>
+              </div>
+              <div class="industry-card__media">
+                <img src="assets/img/photos/industry-distributors.jpg"
+                  alt="Distributors logistics and transport fleet facility" loading="lazy" width="573" height="391" />
+              </div>
+            </article>
+
+            <!-- Card 3: FMCG Suppliers -->
+            <article class="industry-card" tabindex="0">
+              <div class="industry-card__body">
+                <h3 class="industry-card__title">FMCG Suppliers</h3>
+                <div class="industry-card__divider"></div>
+                <p class="industry-card__desc">Handle high-frequency orders with automated invoicing and alerts.</p>
+              </div>
+              <div class="industry-card__media">
+                <img src="assets/img/photos/industry-fmcg-suppliers.jpg"
+                  alt="Fast-moving consumer goods warehouse storage" loading="lazy" width="573" height="391" />
+              </div>
+            </article>
+
+            <!-- Card 4: Importers -->
+            <article class="industry-card" tabindex="0">
+              <div class="industry-card__body">
+                <h3 class="industry-card__title">Importers</h3>
+                <div class="industry-card__divider"></div>
+                <p class="industry-card__desc">Visibility over inbound stock, customer orders and fulfilment.</p>
+              </div>
+              <div class="industry-card__media">
+                <img src="assets/img/photos/industry-importers.jpg"
+                  alt="Shipping containers and logistics cranes at a port" loading="lazy" width="573" height="391" />
+              </div>
+            </article>
+
+            <!-- Card 5: Retailers -->
+            <article class="industry-card" tabindex="0">
+              <div class="industry-card__body">
+                <h3 class="industry-card__title">Retailers</h3>
+                <div class="industry-card__divider"></div>
+                <p class="industry-card__desc">Manage customer orders, reorder points and supplier fulfilment.</p>
+              </div>
+              <div class="industry-card__media">
+                <img src="assets/img/photos/industry-retailers.jpg"
+                  alt="Retail inventory shelves and merchandise management" loading="lazy" width="573" height="391" />
+              </div>
+            </article>
+
+            <!-- Card 6: Food Suppliers -->
+            <article class="industry-card" tabindex="0">
+              <div class="industry-card__body">
+                <h3 class="industry-card__title">Food Suppliers</h3>
+                <div class="industry-card__divider"></div>
+                <p class="industry-card__desc">Keep perishable products and weekly order cycles under control.</p>
+              </div>
+              <div class="industry-card__media">
+                <img src="assets/img/photos/industry-food-suppliers.jpg"
+                  alt="Fresh food and produce storage warehouse facility" loading="lazy" width="573" height="391" />
+              </div>
+            </article>
+
+            <!-- Card 7: Trade Suppliers -->
+            <article class="industry-card" tabindex="0">
+              <div class="industry-card__body">
+                <h3 class="industry-card__title">Trade Suppliers</h3>
+                <div class="industry-card__divider"></div>
+                <p class="industry-card__desc">Organise trade accounts, pricing and order histories with ease.</p>
+              </div>
+              <div class="industry-card__media">
+                <img src="assets/img/photos/industry-trade-suppliers.jpg"
+                  alt="Trade supply hardware, pipes, fittings and tools inventory" loading="lazy" width="573"
+                  height="391" />
+              </div>
+            </article>
+
+            <!-- Card 8: Small Product Businesses -->
+            <article class="industry-card" tabindex="0">
+              <div class="industry-card__body">
+                <h3 class="industry-card__title">Small Product Businesses</h3>
+                <div class="industry-card__divider"></div>
+                <p class="industry-card__desc">Replace spreadsheets and WhatsApp with a real OMS from day one.</p>
+              </div>
+              <div class="industry-card__media">
+                <img src="assets/img/photos/industry-small-product-businesses.jpg"
+                  alt="Small product business order packaging and dispatch area" loading="lazy" width="573"
+                  height="391" />
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="industry-scroll-fade industry-scroll-fade--right" data-scroll-fade="right" aria-hidden="true"></div>
+      </div>
+
+      <div class="container">
+        <div class="industry-section__cta">
+          <a class="btn btn--brand-gradient" href="industries.html">
+            Explore All Industries
+            <span class="icon icon-arrow" aria-hidden="true"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 4. PROBLEM / SOLUTION ============================== -->
+    <section class="section difference-section surface-canvas">
+      <div class="container">
+        <div class="difference-heading">
+          <span class="difference-heading__eyebrow">THE DIFFERENCE</span>
+          <h2 class="difference-heading__title">Still Running Orders the Hard Way?</h2>
+          <p class="difference-heading__desc">Most small businesses are still juggling WhatsApp, Excel and manual
+            invoices. Quick OMS replaces all of that with one simple platform.</p>
+        </div>
+
+        <div class="compare-panels">
+          <!-- Left Card: Without Quick OMS -->
+          <div class="compare-panel compare-panel--negative">
+            <div class="compare-panel__badge compare-panel__badge--negative">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <circle cx="10" cy="10" r="9" stroke="#EF4444" stroke-width="1.8" />
+                <path d="M7 7L13 13M13 7L7 13" stroke="#EF4444" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+              <span>WITHOUT QUICK OMS</span>
+            </div>
+            <div class="compare-panel__card">
+              <ul class="compare-panel__list">
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="9" stroke="#EF4444" stroke-width="1.6" />
+                    <path d="M7 7L13 13M13 7L7 13" stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                  <span>Orders coming from WhatsApp, email, phone calls and sales reps</span>
+                </li>
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="9" stroke="#EF4444" stroke-width="1.6" />
+                    <path d="M7 7L13 13M13 7L7 13" stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                  <span>Stock tracked in Excel without real-time visibility</span>
+                </li>
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="9" stroke="#EF4444" stroke-width="1.6" />
+                    <path d="M7 7L13 13M13 7L7 13" stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                  <span>Customer information scattered across different places</span>
+                </li>
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="9" stroke="#EF4444" stroke-width="1.6" />
+                    <path d="M7 7L13 13M13 7L7 13" stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                  <span>Invoices created manually after the order</span>
+                </li>
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="9" stroke="#EF4444" stroke-width="1.6" />
+                    <path d="M7 7L13 13M13 7L7 13" stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                  <span>Warehouse team receiving unclear or incomplete information</span>
+                </li>
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="9" stroke="#EF4444" stroke-width="1.6" />
+                    <path d="M7 7L13 13M13 7L7 13" stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                  <span>No clear view of pending orders, sales activity or low-stock products</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Center Connector with Arrow -->
+          <div class="compare-panels__connector" aria-hidden="true">
+            <div class="compare-panels__arrow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#146EF5" stroke-width="2.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Right Card: With Quick OMS -->
+          <div class="compare-panel compare-panel--positive">
+            <div class="compare-panel__badge compare-panel__badge--positive">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <circle cx="10" cy="10" r="9" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.8" />
+                <path d="M6.5 10.2L8.8 12.5L13.5 7.5" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span>WITH QUICK OMS</span>
+            </div>
+            <div class="compare-panel__card">
+              <ul class="compare-panel__list">
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="10" fill="#3B82F6" />
+                    <path d="M6 10.5L8.5 13L14 7.5" stroke="white" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                  <span>Create and manage orders in one dashboard</span>
+                </li>
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="10" fill="#3B82F6" />
+                    <path d="M6 10.5L8.5 13L14 7.5" stroke="white" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                  <span>Track stock and low-stock alerts</span>
+                </li>
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="10" fill="#3B82F6" />
+                    <path d="M6 10.5L8.5 13L14 7.5" stroke="white" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                  <span>Store customer profiles and order history</span>
+                </li>
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="10" fill="#3B82F6" />
+                    <path d="M6 10.5L8.5 13L14 7.5" stroke="white" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                  <span>Generate order and invoice PDFs</span>
+                </li>
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="10" fill="#3B82F6" />
+                    <path d="M6 10.5L8.5 13L14 7.5" stroke="white" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                  <span>Give sales, admin and warehouse users the right access</span>
+                </li>
+                <li class="compare-panel__item">
+                  <svg class="compare-panel__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <circle cx="10" cy="10" r="10" fill="#3B82F6" />
+                    <path d="M6 10.5L8.5 13L14 7.5" stroke="white" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                  <span>View reports and operational insights</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 5. CORE FEATURES (TABBED PER FIGMA 1:3311) ============================== -->
+    <section class="section core-features-section surface-canvas" id="core-features">
+      <div class="container">
+        <div class="core-features-heading">
+          <span class="core-features-heading__eyebrow">CORE FEATURES</span>
+          <h2 class="core-features-heading__title">Everything You Need to Run Daily Orders</h2>
+          <p class="core-features-heading__desc">We partner with industry-leading payment and financing companies to
+            ensure every restaurant can scale with confidence and security.</p>
+        </div>
+
+        <!-- 4-Tab Bar -->
+        <div class="core-tabs-nav" role="tablist" aria-label="Core Features Navigation" data-tab-group>
+          <button type="button" class="core-tab-btn" role="tab" id="core-tab-orders" aria-controls="core-panel-orders"
+            aria-selected="true" tabindex="0">Order Management</button>
+          <button type="button" class="core-tab-btn" role="tab" id="core-tab-inventory"
+            aria-controls="core-panel-inventory" aria-selected="false" tabindex="-1">Inventory Tracking</button>
+          <button type="button" class="core-tab-btn" role="tab" id="core-tab-customers"
+            aria-controls="core-panel-customers" aria-selected="false" tabindex="-1">Customer Management</button>
+          <button type="button" class="core-tab-btn" role="tab" id="core-tab-invoices"
+            aria-controls="core-panel-invoices" aria-selected="false" tabindex="-1">Invoices &amp; Reports</button>
+          <span class="core-tabs-indicator" aria-hidden="true"></span>
+        </div>
+
+        <!-- Tab Panels Container (Grid-stacked for seamless Figma Smart Animate transitions) -->
+        <div class="core-features-panels">
+          <!-- Panel 1: Order Management -->
+          <div id="core-panel-orders" class="core-tabpanel is-active" role="tabpanel" aria-labelledby="core-tab-orders">
+            <div class="core-feature-card">
+              <div class="core-feature-visual core-feature-visual--orders">
+                <img src="assets/img/figma/core-visual-orders.png" alt="Order Management Dashboard"
+                  class="core-feature-visual__img" width="659" height="560" loading="eager">
+              </div>
+              <div class="core-feature-content">
+                <div class="core-feature-head">
+                  <h3>Order Management</h3>
+                  <p>Create, track and manage customer orders from one central dashboard. Know the status of every order
+                    in real time.</p>
+                </div>
+                <ul class="core-feature-checklist">
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#9A6EE2" />
+                    </svg>
+                    <span>Draft, confirm and dispatch orders</span>
+                  </li>
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#9A6EE2" />
+                    </svg>
+                    <span>Real-time order status tracking</span>
+                  </li>
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#9A6EE2" />
+                    </svg>
+                    <span>Filter by customer, status or date</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 2: Inventory Tracking -->
+          <div id="core-panel-inventory" class="core-tabpanel" role="tabpanel" aria-labelledby="core-tab-inventory"
+            hidden>
+            <div class="core-feature-card">
+              <div class="core-feature-visual core-feature-visual--inventory">
+                <img src="assets/img/figma/core-visual-inventory.png" alt="Inventory Tracking Dashboard"
+                  class="core-feature-visual__img" width="659" height="560" loading="eager">
+              </div>
+              <div class="core-feature-content">
+                <div class="core-feature-head">
+                  <h3>Inventory Tracking</h3>
+                  <p>Monitor stock levels, availability and low-stock alerts across all products. Never oversell again.
+                  </p>
+                </div>
+                <ul class="core-feature-checklist">
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#29966C" />
+                    </svg>
+                    <span>Live stock level visibility</span>
+                  </li>
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#29966C" />
+                    </svg>
+                    <span>Low stock alerts and reorder flags</span>
+                  </li>
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#29966C" />
+                    </svg>
+                    <span>Product catalogue management</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Customer Management -->
+          <div id="core-panel-customers" class="core-tabpanel" role="tabpanel" aria-labelledby="core-tab-customers"
+            hidden>
+            <div class="core-feature-card">
+              <div class="core-feature-visual core-feature-visual--customers">
+                <img src="assets/img/figma/core-visual-customers.png" alt="Customer Management Dashboard"
+                  class="core-feature-visual__img" width="659" height="560" loading="eager">
+              </div>
+              <div class="core-feature-content">
+                <div class="core-feature-head">
+                  <h3>Customer Management</h3>
+                  <p>Keep customer details, order history and notes organised in one place. Build better business
+                    relationships.</p>
+                </div>
+                <ul class="core-feature-checklist">
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#4478EF" />
+                    </svg>
+                    <span>Full customer order history</span>
+                  </li>
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#4478EF" />
+                    </svg>
+                    <span>Notes and contact details</span>
+                  </li>
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#4478EF" />
+                    </svg>
+                    <span>Custom pricing per customer</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 4: Invoices & Reports -->
+          <div id="core-panel-invoices" class="core-tabpanel" role="tabpanel" aria-labelledby="core-tab-invoices"
+            hidden>
+            <div class="core-feature-card">
+              <div class="core-feature-visual core-feature-visual--invoices">
+                <img src="assets/img/figma/core-visual-invoices.png" alt="Invoices and Reports Dashboard"
+                  class="core-feature-visual__img" width="659" height="560" loading="eager">
+              </div>
+              <div class="core-feature-content">
+                <div class="core-feature-head">
+                  <h3>Invoices &amp; Reports</h3>
+                  <p>Generate professional invoices and view operational reports to understand how your business is
+                    performing.</p>
+                </div>
+                <ul class="core-feature-checklist">
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#F47863" />
+                    </svg>
+                    <span>Auto-generate PDF invoices</span>
+                  </li>
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#F47863" />
+                    </svg>
+                    <span>Revenue and order reports</span>
+                  </li>
+                  <li>
+                    <svg class="core-feature-check" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M66.8379 21.4463L67.8746 22.483C68.4236 23.0322 68.7321 23.777 68.7321 24.5535C68.7321 25.3301 68.4236 26.0748 67.8746 26.624L34.2839 60.2147C33.7347 60.7638 32.99 61.0722 32.2134 61.0722C31.4369 61.0722 30.6921 60.7638 30.1429 60.2147L15.5879 45.6597C15.0389 45.1106 14.7305 44.3658 14.7305 43.5892C14.7305 42.8127 15.0389 42.0679 15.5879 41.5187L16.6246 40.482C17.1738 39.933 17.9186 39.6246 18.6951 39.6246C19.4717 39.6246 20.2164 39.933 20.7656 40.482L30.1429 49.8593C30.6921 50.4083 31.4369 50.7168 32.2134 50.7168C32.99 50.7168 33.7347 50.4083 34.2839 49.8593L62.6969 21.4463C63.2461 20.8973 63.9909 20.5889 64.7674 20.5889C65.544 20.5889 66.2887 20.8973 66.8379 21.4463Z"
+                        fill="#F47863" />
+                    </svg>
+                    <span>Export to CSV or Xero</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============================== 6. FLEXIBLE PLANS (PLAN HIGHLIGHT PER FIGMA 1:3290) ============================== -->
+    <section class="section flexible-plans-section surface-canvas" id="plans">
+      <div class="container">
+        <div class="plans-header-split">
+          <div class="plans-heading">
+            <span class="plans-heading__eyebrow">FLEXIBLE PLANS FOR EVERY STAGE</span>
+            <h2 class="plans-heading__title">Plans for Your Business</h2>
+            <p class="plans-heading__desc">Start simple with Quick Lite and scale seamlessly to premium as your team and
+              operations grow.</p>
+          </div>
+
+          <div class="plans-tab-switcher" role="tablist" aria-label="Plan preview" data-tab-group>
+            <button type="button" class="plans-tab-btn" role="tab" id="tab-lite-plan" aria-controls="panel-lite-plan"
+              aria-selected="true" tabindex="0">1. Lite Plan</button>
+            <button type="button" class="plans-tab-btn" role="tab" id="tab-upgrade-plan"
+              aria-controls="panel-upgrade-plan" aria-selected="false" tabindex="-1">2. Upgrade Plan</button>
+          </div>
+        </div>
+
+        <div class="plans-panels-stack">
+          <!-- Tab Panel 1: Lite Plan -->
+          <div id="panel-lite-plan" class="tabpanel is-active" role="tabpanel" aria-labelledby="tab-lite-plan">
+            <div class="plan-panel">
+              <div class="plan-panel__left">
+                <div class="plan-panel__pill">
+                  <span class="plan-panel__dot"></span>
+                  <span>Lite</span>
+                </div>
+                <h3 class="plan-panel__title">Start Small with <br />Quick OMS Lite</h3>
+                <p class="plan-panel__desc">Manual order tracking slows your team down, creates mistakes and makes it
+                  hard
+                  to see what is really happening in the business.</p>
+                <div class="plan-panel__actions">
+                  <a class="plan-btn plan-btn--primary" href="lite.html">
+                    <span>Start Lite Plan</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                  <a class="plan-btn plan-btn--secondary" href="compare.html">
+                    <span>Compare Plan</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="plan-features-grid">
+                <div class="plan-feature-tile">
+                  <div class="plan-feature-tile__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="#146EF5" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <circle cx="9" cy="7" r="4" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="plan-feature-tile__body">
+                    <h4 class="plan-feature-tile__title">Up to 3 Users</h4>
+                    <p class="plan-feature-tile__desc">Invite and manage up to three team member.</p>
+                  </div>
+                </div>
+
+                <div class="plan-feature-tile">
+                  <div class="plan-feature-tile__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#146EF5"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      <polyline points="14 2 14 8 20 8" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <line x1="16" y1="13" x2="8" y2="13" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <line x1="16" y1="17" x2="8" y2="17" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <line x1="10" y1="9" x2="8" y2="9" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="plan-feature-tile__body">
+                    <h4 class="plan-feature-tile__title">Easy Order Management</h4>
+                    <p class="plan-feature-tile__desc">Create, track, and manage order effortlessly.</p>
+                  </div>
+                </div>
+
+                <div class="plan-feature-tile">
+                  <div class="plan-feature-tile__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                        stroke="#146EF5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="#146EF5" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <line x1="12" y1="22.08" x2="12" y2="12" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="plan-feature-tile__body">
+                    <h4 class="plan-feature-tile__title">Product Catalogue</h4>
+                    <p class="plan-feature-tile__desc">Organize and manage your products in one place.</p>
+                  </div>
+                </div>
+
+                <div class="plan-feature-tile">
+                  <div class="plan-feature-tile__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z" stroke="#146EF5"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      <line x1="8" y1="6" x2="16" y2="6" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <line x1="8" y1="10" x2="16" y2="10" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <line x1="8" y1="14" x2="12" y2="14" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="plan-feature-tile__body">
+                    <h4 class="plan-feature-tile__title">Inventory Tracking</h4>
+                    <p class="plan-feature-tile__desc">Track product quantity, low-stock alerts and availability.</p>
+                  </div>
+                </div>
+
+                <div class="plan-feature-tile plan-feature-tile--wide">
+                  <div class="plan-feature-tile__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#146EF5" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <circle cx="12" cy="7" r="4" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="plan-feature-tile__body">
+                    <h4 class="plan-feature-tile__title">Customer management &amp; Invoice/Order PDF</h4>
+                    <p class="plan-feature-tile__desc">Manage customer and generate professional invoices/ order PDF’s
+                      with ease.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Panel 2: Upgrade Plan (Dark Premium — Figma node 161:1304) -->
+          <div id="panel-upgrade-plan" class="tabpanel" role="tabpanel" aria-labelledby="tab-upgrade-plan" hidden>
+            <div class="plan-panel plan-panel--premium">
+              <div class="plan-panel__left">
+                <div class="plan-panel__pill">
+                  <span class="plan-panel__dot"></span>
+                  <span>Premium</span>
+                </div>
+                <h3 class="plan-panel__title">Upgrade to Premium <br /><span class="plan-panel__title-highlight">as Your Team Grows</span></h3>
+                <p class="plan-panel__desc">Quick OMS Premium is built for growing businesses that need more users, more invoice volume and stronger operational control.</p>
+                <div class="plan-panel__actions">
+                  <a class="plan-btn plan-btn--primary" href="pricing.html">
+                    <span>Choose Premium Plan</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="plan-features-grid">
+                <div class="plan-feature-tile">
+                  <div class="plan-feature-tile__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="#146EF5" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <circle cx="9" cy="7" r="4" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="plan-feature-tile__body">
+                    <h4 class="plan-feature-tile__title">Multi-user access</h4>
+                    <p class="plan-feature-tile__desc">Add unlimited team member and collaborate seamlessly.</p>
+                  </div>
+                </div>
+
+                <div class="plan-feature-tile">
+                  <div class="plan-feature-tile__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#146EF5"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      <polyline points="14 2 14 8 20 8" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <line x1="16" y1="13" x2="8" y2="13" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <line x1="16" y1="17" x2="8" y2="17" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="plan-feature-tile__body">
+                    <h4 class="plan-feature-tile__title">Low Stock Alerts</h4>
+                    <p class="plan-feature-tile__desc">Track inventory in real time and get notified before you run out.</p>
+                  </div>
+                </div>
+
+                <div class="plan-feature-tile">
+                  <div class="plan-feature-tile__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#146EF5" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <circle cx="12" cy="7" r="4" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="plan-feature-tile__body">
+                    <h4 class="plan-feature-tile__title">Customer profiles</h4>
+                    <p class="plan-feature-tile__desc">Organize and manage your products in one place.</p>
+                  </div>
+                </div>
+
+                <div class="plan-feature-tile">
+                  <div class="plan-feature-tile__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z" stroke="#146EF5"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      <line x1="8" y1="6" x2="16" y2="6" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <line x1="8" y1="10" x2="16" y2="10" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <line x1="8" y1="14" x2="12" y2="14" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="plan-feature-tile__body">
+                    <h4 class="plan-feature-tile__title">Reports &amp; insights</h4>
+                    <p class="plan-feature-tile__desc">Access advanced reports and actionable business insights.</p>
+                  </div>
+                </div>
+
+                <div class="plan-feature-tile plan-feature-tile--wide">
+                  <div class="plan-feature-tile__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                        stroke="#146EF5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="#146EF5" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <line x1="12" y1="22.08" x2="12" y2="12" stroke="#146EF5" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="plan-feature-tile__body">
+                    <h4 class="plan-feature-tile__title">Invoices, roles &amp; permissions</h4>
+                    <p class="plan-feature-tile__desc">Manage invoices, assign roles, and control access with ease.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 7. INTEGRATIONS ============================== -->
+    <section class="section integrations-section" id="integrations">
+      <div class="integrations-wrapper">
+        <div class="integrations-heading">
+          <span class="integrations-heading__eyebrow">INTEGRATIONS</span>
+          <h2 class="integrations-heading__title">Connect Quick OMS With The Tools <br />You Already Use</h2>
+          <p class="integrations-heading__desc">Start with CSV import/export or connect Quick OMS with accounting,
+            ecommerce, courier, payment and other business systems through optional API integrations.</p>
+        </div>
+
+        <div class="integrations-stage">
+          <!-- Left Column Nodes -->
+          <div class="integrations-col integrations-col--left">
+            <!-- Node 1: Xero -->
+            <div class="integration-node" data-node="xero">
+              <span class="connection-anchor connection-anchor--right" aria-hidden="true"></span>
+              <div class="integration-node__icon integration-node__icon--xero">
+                <img src="assets/img/icons/logo-xero.svg" alt="Xero" width="50" height="50" />
+              </div>
+              <div class="integration-node__body">
+                <h3 class="integration-node__title">Xero</h3>
+                <p class="integration-node__desc">Accounting sync</p>
+              </div>
+            </div>
+
+            <!-- Node 2: Shopify -->
+            <div class="integration-node" data-node="shopify">
+              <span class="connection-anchor connection-anchor--right" aria-hidden="true"></span>
+              <div class="integration-node__icon integration-node__icon--shopify">
+                <img src="assets/img/icons/logo-shopify.svg" alt="Shopify" width="50" height="50" />
+              </div>
+              <div class="integration-node__body">
+                <h3 class="integration-node__title">Shopify</h3>
+                <p class="integration-node__desc">Ecommerce orders</p>
+              </div>
+            </div>
+
+            <!-- Node 3: WooCommerce -->
+            <div class="integration-node" data-node="woocommerce">
+              <span class="connection-anchor connection-anchor--right" aria-hidden="true"></span>
+              <div class="integration-node__icon integration-node__icon--woocommerce">
+                <img src="assets/img/icons/logo-woocommerce.svg" alt="WooCommerce" width="50" height="35" />
+              </div>
+              <div class="integration-node__body">
+                <h3 class="integration-node__title">WooCommerce</h3>
+                <p class="integration-node__desc">Store orders</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Left Responsive Connector Lane (HTML + CSS) -->
+          <div class="integrations-connector-lane integrations-connector-lane--left" aria-hidden="true">
+            <div class="connector-branch connector-branch--top-corner"></div>
+            <div class="connector-branch connector-branch--top-turn"></div>
+            <div class="connector-branch connector-branch--mid"></div>
+            <div class="connector-branch connector-branch--bot-corner"></div>
+            <div class="connector-branch connector-branch--bot-turn"></div>
+          </div>
+
+          <!-- Central Column (Rings + Dashboard Hub + Vertical Connector + Custom Card) -->
+          <div class="integrations-center-col">
+            <div class="integrations-rings-wrap" aria-hidden="true">
+              <div class="integrations-ring integrations-ring--outer"></div>
+              <div class="integrations-ring integrations-ring--middle"></div>
+              <div class="integrations-ring integrations-ring--inner"></div>
+            </div>
+
+            <div class="integrations-hub">
+              <span class="connection-anchor connection-anchor--left" aria-hidden="true"></span>
+              <span class="connection-anchor connection-anchor--right" aria-hidden="true"></span>
+              <span class="connection-anchor connection-anchor--bottom" aria-hidden="true"></span>
+              <div class="integrations-hub__card">
+                <img class="integrations-hub__img" src="assets/img/figma/integrations-hub.png"
+                  alt="Quick OMS Central Hub Dashboard" loading="lazy" width="536" height="426" />
+              </div>
+            </div>
+
+            <!-- Vertical Connector Lane (Dashboard to Cards on Tablet/Mobile, Dashboard to Custom on Desktop) -->
+            <div class="integrations-connector-lane integrations-connector-lane--vertical integrations-connector-lane--hub-to-cards" aria-hidden="true">
+              <div class="connector-branch connector-branch--vertical-line"></div>
+            </div>
+
+            <!-- Second Vertical Connector Lane (Cards to Custom Card on Tablet/Mobile) -->
+            <div class="integrations-connector-lane integrations-connector-lane--vertical integrations-connector-lane--cards-to-custom" aria-hidden="true">
+              <div class="connector-branch connector-branch--vertical-line"></div>
+            </div>
+
+            <!-- Node 7: Bottom Centered Custom Software -->
+            <div class="integration-node integration-node--custom">
+              <span class="connection-anchor connection-anchor--top" aria-hidden="true"></span>
+              <div class="integration-node__icon integration-node__icon--custom">
+                <img src="assets/img/icons/int-code.svg" alt="Custom API" width="50" height="50" />
+              </div>
+              <div class="integration-node__body">
+                <h3 class="integration-node__title">Custom Business Software</h3>
+                <p class="integration-node__desc">use our API connect any system built for your business.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Responsive Connector Lane (HTML + CSS) -->
+          <div class="integrations-connector-lane integrations-connector-lane--right" aria-hidden="true">
+            <div class="connector-branch connector-branch--top-corner"></div>
+            <div class="connector-branch connector-branch--top-turn"></div>
+            <div class="connector-branch connector-branch--mid"></div>
+            <div class="connector-branch connector-branch--bot-corner"></div>
+            <div class="connector-branch connector-branch--bot-turn"></div>
+          </div>
+
+          <!-- Right Column Nodes -->
+          <div class="integrations-col integrations-col--right">
+            <!-- Node 4: Courier Platforms -->
+            <div class="integration-node" data-node="courier">
+              <span class="connection-anchor connection-anchor--left" aria-hidden="true"></span>
+              <div class="integration-node__icon integration-node__icon--courier">
+                <img src="assets/img/icons/int-truck.svg" alt="Courier Platforms" width="50" height="50" />
+              </div>
+              <div class="integration-node__body">
+                <h3 class="integration-node__title">Courier Platforms</h3>
+                <p class="integration-node__desc">Labels &amp; tracking</p>
+              </div>
+            </div>
+
+            <!-- Node 5: Payment Gateways -->
+            <div class="integration-node" data-node="payments">
+              <span class="connection-anchor connection-anchor--left" aria-hidden="true"></span>
+              <div class="integration-node__icon integration-node__icon--payments">
+                <img src="assets/img/icons/int-payment.svg" alt="Payment Gateways" width="50" height="50" />
+              </div>
+              <div class="integration-node__body">
+                <h3 class="integration-node__title">Payment Gateways</h3>
+                <p class="integration-node__desc">Payment status</p>
+              </div>
+            </div>
+
+            <!-- Node 6: Google Sheets / CSV -->
+            <div class="integration-node" data-node="sheets">
+              <span class="connection-anchor connection-anchor--left" aria-hidden="true"></span>
+              <div class="integration-node__icon integration-node__icon--sheets">
+                <img src="assets/img/icons/logo-google-sheets.svg" alt="Google Sheets / CSV" width="50" height="50" />
+              </div>
+              <div class="integration-node__body">
+                <h3 class="integration-node__title">Google Sheets / CSV</h3>
+                <p class="integration-node__desc">Import &amp; export</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 8. WHY QUICK OMS ============================== -->
+    <section class="section why-choose-section surface-canvas" id="why-quick-oms">
+      <div class="why-choose-wrapper">
+        <div class="why-choose">
+          <div class="why-choose__copy">
+            <span class="why-choose__eyebrow">WHY QUICK OMS</span>
+            <h2 class="why-choose__title">More Structure Than Excel. <br />Less Complexity Than a Full ERP.</h2>
+            <p class="why-choose__desc">Quick OMS is designed for businesses that need a focused order management system
+              without heavy ERP complexity or ecommerce-only limitations.</p>
+            <a class="btn why-choose__btn" href="compare.html">
+              <span>See Full Comparison</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="why-choose__panel">
+            <!-- Circuit Diagram (Figma 1:3598, 1:3599, 1:3600, 1:3601, 1:3602, 1:3603, 1:3604) -->
+            <svg class="why-choose__circuit" viewBox="0 0 731 628" fill="none" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <line x1="52" y1="134" x2="52" y2="491" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3.5 3.5" />
+              <line x1="52" y1="129" x2="95" y2="129" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3.5 3.5" />
+              <line x1="52" y1="315" x2="95" y2="315" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3.5 3.5" />
+              <line x1="52" y1="491" x2="95" y2="491" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3.5 3.5" />
+              <circle cx="52" cy="129" r="8" fill="#FFFFFF" stroke="#146EF5" stroke-width="3" />
+              <circle cx="52" cy="315" r="8" fill="#FFFFFF" stroke="#146EF5" stroke-width="3" />
+              <circle cx="52" cy="491" r="8" fill="#FFFFFF" stroke="#146EF5" stroke-width="3" />
+            </svg>
+
+            <!-- Card 1: ERP Complexity (Figma 1:3569) -->
+            <div class="why-choose__card">
+              <div class="why-choose__icon">
+                <img src="assets/img/figma/why-erp.svg" alt="" width="87" height="87" />
+              </div>
+              <div class="why-choose__card-body">
+                <h3 class="why-choose__item-title">Against ERP complexity</h3>
+                <p class="why-choose__item-desc">Automate daily tasks and streamline workflows to save valuable time.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 2: Ecommerce-only (Figma 1:3577) -->
+            <div class="why-choose__card">
+              <div class="why-choose__icon">
+                <img src="assets/img/figma/why-ecommerce.svg" alt="" width="87" height="87" />
+              </div>
+              <div class="why-choose__card-body">
+                <h3 class="why-choose__item-title">Against ecommerce-only systems</h3>
+                <p class="why-choose__item-desc">Optimize processes and manage operations faster with fewer efforts.</p>
+              </div>
+            </div>
+
+            <!-- Card 3: Advanced inventory tools (Figma 1:3588) -->
+            <div class="why-choose__card">
+              <div class="why-choose__icon">
+                <img src="assets/img/figma/why-inventory.svg" alt="" width="87" height="87" />
+              </div>
+              <div class="why-choose__card-body">
+                <h3 class="why-choose__item-title">Against advanced inventory tools</h3>
+                <p class="why-choose__item-desc">Start with simple order-first workflows and add integrations or
+                  advanced features as you grow.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 9. PRICING ============================== -->
+    <section class="section pricing-section surface-canvas" id="pricing">
+      <div class="pricing-wrapper">
+        <div class="pricing-heading">
+          <span class="pricing-heading__eyebrow">Pricing</span>
+          <h2 class="pricing-heading__title">Simple Pricing for growing businesses</h2>
+          <p class="pricing-heading__desc">Start with Lite, grow into Premium or request Enterprise for custom
+            workflows.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Card 1: Quick OMS Lite (Figma 1:2993) -->
+          <article class="plan-card">
+            <div class="plan-card__head">
+              <div class="plan-card__info">
+                <h3 class="plan-card__name">Quick OMS Lite</h3>
+                <p class="plan-card__summary">Small businesses starting with digital order management</p>
+              </div>
+              <div class="plan-card__action-block">
+                <div class="plan-card__price-row">
+                  <span class="plan-card__price">$99</span>
+                  <span class="plan-card__period">/month</span>
+                </div>
+                <a class="btn plan-card__btn" href="lite.html">
+                  <span>Start Lite Plan</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#111827" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="plan-card__body">
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Up to 3 users</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Simple order management</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Product catalogue</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Basic inventory tracking</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Customer management</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Invoice / order PDF</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Quick OMS Premium (Figma 1:3028 - Emphasized) -->
+          <article class="plan-card plan-card--emphasis">
+            <div class="plan-card__head">
+              <div class="plan-card__info">
+                <h3 class="plan-card__name">Quick OMS Premium</h3>
+                <p class="plan-card__summary">Small businesses starting with digital order management</p>
+              </div>
+              <div class="plan-card__action-block">
+                <div class="plan-card__price-row">
+                  <span class="plan-card__price">$399</span>
+                  <span class="plan-card__period">/month</span>
+                </div>
+                <a class="btn plan-card__btn" href="pricing.html">
+                  <span>Choose Premium Plan</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#111827" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="plan-card__body">
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Up to 10 users</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Up to 3,000 invoices/month</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Full order management</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Inventory tracking</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Customer management</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Sales user access</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Quick OMS Enterprise (Figma 1:3063) -->
+          <article class="plan-card">
+            <div class="plan-card__head">
+              <div class="plan-card__info">
+                <h3 class="plan-card__name">Quick OMS Enterprise</h3>
+                <p class="plan-card__summary">Companies requiring custom workflow, integrations and higher usage</p>
+              </div>
+              <div class="plan-card__action-block">
+                <div class="plan-card__price-row">
+                  <span class="plan-card__price">Custom</span>
+                </div>
+                <a class="btn plan-card__btn" href="contact.html">
+                  <span>Contact Sales</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#111827" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="plan-card__body">
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Custom users</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Custom invoice volume</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Custom workflows</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Multi-branch operations</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>API integrations (quoted separately)</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Tailored onboarding</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 10. FAQ ============================== -->
+    <section class="section faq-section surface-canvas">
+      <div class="container">
+        <div class="faq-teaser">
+          <div class="faq-teaser__intro">
+            <span class="text-eyebrow">FAQ</span>
+            <h2 class="text-section-title">Questions Business Owners Ask Us</h2>
+            <p class="text-body">Everything about plans, users, integrations and moving off spreadsheets.</p>
+            <a class="btn btn--primary" href="faq.html">Read all FAQs <span class="icon icon-arrow"
+                aria-hidden="true"></span></a>
+          </div>
+          <ul class="faq-teaser__list">
+            <li class="faq-card">
+              <button type="button" class="faq-card__trigger accordion-trigger" aria-expanded="false"
+                aria-controls="faq-ans-1">
+                <span class="faq-card__question">What is Quick OMS?</span>
+                <span class="faq-card__icon" aria-hidden="true"><img src="assets/img/figma/faq-expand-icon.svg"
+                    alt="" /></span>
+              </button>
+              <div id="faq-ans-1" class="faq-card__answer accordion-panel" hidden>
+                <p>Quick OMS is an order management system designed for wholesalers, distributors, importers, and
+                  growing product businesses to replace manual spreadsheets with an all-in-one central system.</p>
+              </div>
+            </li>
+            <li class="faq-card">
+              <button type="button" class="faq-card__trigger accordion-trigger" aria-expanded="false"
+                aria-controls="faq-ans-2">
+                <span class="faq-card__question">Who is Quick OMS for?</span>
+                <span class="faq-card__icon" aria-hidden="true"><img src="assets/img/figma/faq-expand-icon.svg"
+                    alt="" /></span>
+              </button>
+              <div id="faq-ans-2" class="faq-card__answer accordion-panel" hidden>
+                <p>It is built for businesses managing daily B2B and wholesale orders, inventory, invoicing, and
+                  fulfillment who need more structure than Excel but without the cost and complexity of a legacy ERP.
+                </p>
+              </div>
+            </li>
+            <li class="faq-card">
+              <button type="button" class="faq-card__trigger accordion-trigger" aria-expanded="false"
+                aria-controls="faq-ans-3">
+                <span class="faq-card__question">What is Quick OMS Lite?</span>
+                <span class="faq-card__icon" aria-hidden="true"><img src="assets/img/figma/faq-expand-icon.svg"
+                    alt="" /></span>
+              </button>
+              <div id="faq-ans-3" class="faq-card__answer accordion-panel" hidden>
+                <p>Quick OMS Lite is our starter plan for up to 3 users, offering complete core order management, basic
+                  inventory tracking, customer accounts, and professional PDF invoicing for $99/month.</p>
+              </div>
+            </li>
+            <li class="faq-card">
+              <button type="button" class="faq-card__trigger accordion-trigger" aria-expanded="false"
+                aria-controls="faq-ans-4">
+                <span class="faq-card__question">What is Quick OMS Premium?</span>
+                <span class="faq-card__icon" aria-hidden="true"><img src="assets/img/figma/faq-expand-icon.svg"
+                    alt="" /></span>
+              </button>
+              <div id="faq-ans-4" class="faq-card__answer accordion-panel" hidden>
+                <p>Quick OMS Premium expands capacity up to 10 users and 3,000 invoices/month with advanced inventory
+                  tracking, courier integrations, Xero accounting sync, and sales user access for $399/month.</p>
+              </div>
+            </li>
+            <li class="faq-card">
+              <button type="button" class="faq-card__trigger accordion-trigger" aria-expanded="false"
+                aria-controls="faq-ans-5">
+                <span class="faq-card__question">What is Enterprise?</span>
+                <span class="faq-card__icon" aria-hidden="true"><img src="assets/img/figma/faq-expand-icon.svg"
+                    alt="" /></span>
+              </button>
+              <div id="faq-ans-5" class="faq-card__answer accordion-panel" hidden>
+                <p>Enterprise is tailored for companies requiring custom workflows, multi-branch operations, higher
+                  invoice volumes, bespoke API integrations, and dedicated onboarding support.</p>
+              </div>
+            </li>
+            <li class="faq-card">
+              <button type="button" class="faq-card__trigger accordion-trigger" aria-expanded="false"
+                aria-controls="faq-ans-6">
+                <span class="faq-card__question">How much is an extra user?</span>
+                <span class="faq-card__icon" aria-hidden="true"><img src="assets/img/figma/faq-expand-icon.svg"
+                    alt="" /></span>
+              </button>
+              <div id="faq-ans-6" class="faq-card__answer accordion-panel" hidden>
+                <p>Additional users can be added to any plan for a flat rate of $25/user/month with customized
+                  permission settings per user.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 11. CTA BAND (Figma 1:3247) ============================== -->
+    <section class="cta-band-section" id="cta-band">
+      <div class="cta-band-wrapper">
+        <div class="cta-band">
+          <div class="cta-band__glow cta-band__glow--top" aria-hidden="true"></div>
+          <div class="cta-band__glow cta-band__glow--bottom" aria-hidden="true"></div>
+
+          <div class="cta-band__content">
+            <h2 class="cta-band__title">Ready to Replace Manual <br />Order Management?</h2>
+            <p class="cta-band__desc">Book a free Quick OMS demo and see how your business can manage orders, stock,
+              customers and <br />invoices from one central system.</p>
+            <div class="cta-band__actions">
+              <a class="btn cta-band__btn cta-band__btn--solid" href="contact.html">
+                <span>Book a Demo</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#111827" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </a>
+              <a class="btn cta-band__btn cta-band__btn--outline" href="faq.html">
+                <span>Read all FAQs</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== 12. FOOTER (Figma 1:3148 / 1:3149) ============================== -->
+  <footer class="site-footer">
+    <div class="site-footer__glow site-footer__glow--left" aria-hidden="true"></div>
+    <div class="site-footer__glow site-footer__glow--right" aria-hidden="true"></div>
+
+    <div class="site-footer__wrapper">
+      <div class="site-footer__grid">
+        <!-- Column 1: Brand & Contact Info -->
+        <div class="site-footer__brand-col">
+          <a href="index.html" class="site-footer__logo" aria-label="Quick OMS Home">
+            <img src="assets/img/figma/footer-logo-icon.svg" alt="" width="55" height="55" />
+            <span class="site-footer__logo-text">QuickOMS</span>
+          </a>
+          <div class="site-footer__contact-list">
+            <a href="mailto:info@sourceinfinity.co.nz" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-email.svg" alt="" width="24" height="24" />
+              <span>info@sourceinfinity.co.nz</span>
+            </a>
+            <a href="https://sourceinfinity.co.nz" target="_blank" rel="noopener" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-globe.svg" alt="" width="24" height="24" />
+              <span>sourceinfinity.co.nz</span>
+            </a>
+            <div class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-location.svg" alt="" width="24" height="24" />
+              <span>Auckland, New Zealand</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Product -->
+        <nav class="footer-nav-group" aria-label="Product">
+          <h3 class="footer-nav-group__title">Product</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="lite.html">Quick OMS Lite</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="contact.html">Book Demo</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 3: Solutions -->
+        <nav class="footer-nav-group" aria-label="Solutions">
+          <h3 class="footer-nav-group__title">Solutions</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="industries.html#wholesalers">Wholesalers</a></li>
+            <li><a href="industries.html#distributors">Distributors</a></li>
+            <li><a href="industries.html#fmcg-suppliers">FMCG Suppliers</a></li>
+            <li><a href="industries.html#importers">Importers</a></li>
+            <li><a href="industries.html#retailers">Retailers</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 4: Compare -->
+        <nav class="footer-nav-group" aria-label="Compare">
+          <h3 class="footer-nav-group__title">Compare</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="compare.html#odoo">Odoo Alternative</a></li>
+            <li><a href="compare.html#shopify">Shopify Order Management</a></li>
+            <li><a href="compare.html#unleashed">Unleashed Comparison</a></li>
+            <li><a href="compare.html#excel">Excel Alternative</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 5: Company -->
+        <nav class="footer-nav-group" aria-label="Company">
+          <h3 class="footer-nav-group__title">Company</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="about.html">About Source Infinity</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Oversized Decorative Brand Wordmark (Figma 1:3246) -->
+      <div class="site-footer__watermark" aria-hidden="true">QUICKOMS</div>
+
+      <div class="site-footer__divider"></div>
+
+      <div class="site-footer__legal">
+        <span class="site-footer__copyright">© 2026 Quick OMS by Source Infinity. All rights reserved.</span>
+        <span class="site-footer__tagline">Order Management Simplified.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

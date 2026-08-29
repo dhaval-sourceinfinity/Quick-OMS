@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Quick OMS</title>
+  <meta name="description" content="Tell us about your business and book a demo to see how Quick OMS can help manage your orders, stock, customers and invoices." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/logos/quickoms-mark.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/primitives.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/sections.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img src="assets/img/logos/quickoms-mark.svg" alt="" width="56" height="56" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="lite.html">Lite</a>
+        <a href="features.html">Features</a>
+        <a href="industries.html">Industries</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="compare.html">Compare</a>
+      </nav>
+
+      <a class="btn btn--primary site-header__cta" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="nav-toggle__icon"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-nav" class="mobile-nav" data-nav-panel data-open="false">
+    <div class="mobile-nav__header">
+      <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      <button type="button" class="mobile-nav__close" data-nav-close aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="mobile-nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="lite.html">Lite</a>
+      <a href="features.html">Features</a>
+      <a href="industries.html">Industries</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="compare.html">Compare</a>
+    </nav>
+    <div class="mobile-nav__cta">
+      <a class="btn btn--primary" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ============================== 1. PAGE HERO (Figma 1:6272/6307) ============================== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="hero__copy">
+          <span class="badge badge--glass">Book Demo</span>
+          <h1 class="hero__title">See Quick OMS in Action</h1>
+          <p class="hero__subtitle">Tell us about your business and we will show how Quick OMS can help manage your orders, stock, customers and invoices.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 2. CONTACT LAYOUT (Figma 1:6317) ============================== -->
+    <section class="section contact-section surface-canvas">
+      <div class="container">
+        <div class="contact-layout">
+
+          <!-- Left: enquiry form (Figma 1:6318) -->
+          <form class="contact-form-card" data-contact-form novalidate>
+            <h2 class="contact-form-card__title">About Your Business</h2>
+
+            <div class="form-success" id="contact-form-success" role="status" tabindex="-1" hidden>
+              Thanks — your enquiry has been received. Our team will be in touch shortly.
+            </div>
+
+            <div class="contact-form-card__row">
+              <div class="form-field">
+                <label class="form-field__label" for="cf-name">Full Name</label>
+                <input class="form-input" type="text" id="cf-name" name="name" autocomplete="name" placeholder="Jane Smith" required />
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="cf-company">Company Name</label>
+                <input class="form-input" type="text" id="cf-company" name="company" autocomplete="organization" placeholder="Harbour Foods Ltd" required />
+              </div>
+            </div>
+
+            <div class="contact-form-card__row">
+              <div class="form-field">
+                <label class="form-field__label" for="cf-email">Email Address</label>
+                <input class="form-input" type="email" id="cf-email" name="email" autocomplete="email" placeholder="jane@company.co.nz" required />
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="cf-phone">Phone Number</label>
+                <input class="form-input" type="tel" id="cf-phone" name="phone" autocomplete="tel" placeholder="+64 21 000 000" />
+              </div>
+            </div>
+
+            <div class="contact-form-card__row">
+              <div class="form-field">
+                <label class="form-field__label" for="cf-business-type">Business Type</label>
+                <div class="form-field__control-wrap">
+                  <select class="form-select" id="cf-business-type" name="business_type" required aria-describedby="cf-business-type-error">
+                    <option value="" disabled selected>Select business type</option>
+                    <option value="Wholesaler">Wholesaler</option>
+                    <option value="Distributor">Distributor</option>
+                    <option value="FMCG Supplier">FMCG Supplier</option>
+                    <option value="Importer">Importer</option>
+                    <option value="Retailer">Retailer</option>
+                    <option value="Food Supplier">Food Supplier</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <img class="form-field__chevron" src="assets/img/figma/input-chevron.svg" alt="" aria-hidden="true" />
+                </div>
+                <p class="form-field__error" id="cf-business-type-error" role="alert" hidden>Please select a business type.</p>
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="cf-current-process">Current Process</label>
+                <div class="form-field__control-wrap">
+                  <select class="form-select" id="cf-current-process" name="current_process">
+                    <option value="" disabled selected>Select current process</option>
+                    <option value="Excel">Excel</option>
+                    <option value="Odoo">Odoo</option>
+                    <option value="Shopify">Shopify</option>
+                    <option value="Unleashed">Unleashed</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <img class="form-field__chevron" src="assets/img/figma/input-chevron.svg" alt="" aria-hidden="true" />
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-form-card__row">
+              <div class="form-field">
+                <label class="form-field__label" for="cf-users">Number of Users Needed</label>
+                <input class="form-input" type="number" id="cf-users" name="users_needed" min="1" step="1" inputmode="numeric" placeholder="3" />
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="cf-volume">Invoices/Orders Per Month</label>
+                <input class="form-input" type="number" id="cf-volume" name="invoices_per_month" min="0" step="1" inputmode="numeric" placeholder="500" />
+              </div>
+            </div>
+
+            <div class="contact-form-card__row">
+              <div class="form-field">
+                <label class="form-field__label" for="cf-plan">Interested Plan</label>
+                <div class="form-field__control-wrap">
+                  <select class="form-select" id="cf-plan" name="interested_plan">
+                    <option value="" disabled selected>Select a plan</option>
+                    <option value="Lite">Lite</option>
+                    <option value="Premium">Premium</option>
+                    <option value="Enterprise">Enterprise</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                  <img class="form-field__chevron" src="assets/img/figma/input-chevron.svg" alt="" aria-hidden="true" />
+                </div>
+              </div>
+              <div class="form-field">
+                <label class="form-field__label" for="cf-api">Need API Integration?</label>
+                <div class="form-field__control-wrap">
+                  <select class="form-select" id="cf-api" name="api_integration">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="Not sure">Not sure</option>
+                  </select>
+                  <img class="form-field__chevron" src="assets/img/figma/input-chevron.svg" alt="" aria-hidden="true" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-field__label" for="cf-message">Message</label>
+              <textarea class="form-textarea" id="cf-message" name="message" placeholder="Write a message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary contact-form-card__submit">
+              <span>Submit Enquiry</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </form>
+
+          <!-- Right: process + contact details (Figma 1:6433) -->
+          <div class="contact-side">
+            <section class="process-panel" aria-labelledby="process-panel-title">
+              <h2 class="process-panel__title" id="process-panel-title">What Happens Next?</h2>
+              <ol class="process-steps">
+                <li class="process-step">
+                  <span class="process-step__badge" aria-hidden="true">1</span>
+                  <p class="process-step__text">We review your business requirements.</p>
+                </li>
+                <li class="process-step">
+                  <span class="process-step__badge" aria-hidden="true">2</span>
+                  <p class="process-step__text">We recommend Lite, Premium or Enterprise.</p>
+                </li>
+                <li class="process-step">
+                  <span class="process-step__badge" aria-hidden="true">3</span>
+                  <p class="process-step__text">We show you a demo of the platform.</p>
+                </li>
+                <li class="process-step">
+                  <span class="process-step__badge" aria-hidden="true">4</span>
+                  <p class="process-step__text">We discuss setup, data import and optional integrations.</p>
+                </li>
+              </ol>
+            </section>
+
+            <section class="contact-details-panel" aria-labelledby="contact-details-title">
+              <h2 class="contact-details-panel__title" id="contact-details-title">Contact Details</h2>
+              <div class="contact-details-list">
+                <a class="contact-details-item" href="mailto:info@sourceinfinity.co.nz">
+                  <span class="contact-details-item__icon"><img src="assets/img/figma/contact-mail.svg" alt="" width="24" height="24" /></span>
+                  <span class="contact-details-item__body">
+                    <span class="contact-details-item__label">Email</span>
+                    <span class="contact-details-item__value">info@sourceinfinity.co.nz</span>
+                  </span>
+                </a>
+                <a class="contact-details-item" href="https://sourceinfinity.co.nz" target="_blank" rel="noopener">
+                  <span class="contact-details-item__icon"><img src="assets/img/figma/contact-globe.svg" alt="" width="20" height="20" /></span>
+                  <span class="contact-details-item__body">
+                    <span class="contact-details-item__label">Website URL</span>
+                    <span class="contact-details-item__value">sourceinfinity.co.nz</span>
+                  </span>
+                </a>
+                <div class="contact-details-item">
+                  <span class="contact-details-item__icon"><img src="assets/img/figma/contact-location.svg" alt="" width="24" height="24" /></span>
+                  <span class="contact-details-item__body">
+                    <span class="contact-details-item__label">Location</span>
+                    <span class="contact-details-item__value">Auckland, New Zealand</span>
+                  </span>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 3. CTA BAND (Figma 1:6228) ============================== -->
+    <section class="cta-band-section" id="cta-band">
+      <div class="cta-band-wrapper">
+        <div class="cta-band">
+          <div class="cta-band__glow cta-band__glow--top" aria-hidden="true"></div>
+          <div class="cta-band__glow cta-band__glow--bottom" aria-hidden="true"></div>
+
+          <div class="cta-band__content">
+            <h2 class="cta-band__title">Not Sure Which Tool Fits <br />Your Business</h2>
+            <p class="cta-band__desc">Book a quick demo and we will show how Quick OMS compares with your current process.</p>
+            <div class="cta-band__actions">
+              <a class="btn cta-band__btn cta-band__btn--solid" href="contact.html">
+                <span>Book a Demo</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a class="btn cta-band__btn cta-band__btn--outline" href="pricing.html">
+                <span>View Plan &amp; Pricing</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="site-footer__glow site-footer__glow--left" aria-hidden="true"></div>
+    <div class="site-footer__glow site-footer__glow--right" aria-hidden="true"></div>
+
+    <div class="site-footer__wrapper">
+      <div class="site-footer__grid">
+        <!-- Column 1: Brand & Contact Info -->
+        <div class="site-footer__brand-col">
+          <a href="index.html" class="site-footer__logo" aria-label="Quick OMS Home">
+            <img src="assets/img/figma/footer-logo-icon.svg" alt="" width="55" height="55" />
+            <span class="site-footer__logo-text">QuickOMS</span>
+          </a>
+          <div class="site-footer__contact-list">
+            <a href="mailto:info@sourceinfinity.co.nz" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-email.svg" alt="" width="24" height="24" />
+              <span>info@sourceinfinity.co.nz</span>
+            </a>
+            <a href="https://sourceinfinity.co.nz" target="_blank" rel="noopener" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-globe.svg" alt="" width="24" height="24" />
+              <span>sourceinfinity.co.nz</span>
+            </a>
+            <div class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-location.svg" alt="" width="24" height="24" />
+              <span>Auckland, New Zealand</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Product -->
+        <nav class="footer-nav-group" aria-label="Product">
+          <h3 class="footer-nav-group__title">Product</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="lite.html">Quick OMS Lite</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="contact.html">Book Demo</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 3: Solutions -->
+        <nav class="footer-nav-group" aria-label="Solutions">
+          <h3 class="footer-nav-group__title">Solutions</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="industries.html#wholesalers">Wholesalers</a></li>
+            <li><a href="industries.html#distributors">Distributors</a></li>
+            <li><a href="industries.html#fmcg-suppliers">FMCG Suppliers</a></li>
+            <li><a href="industries.html#importers">Importers</a></li>
+            <li><a href="industries.html#retailers">Retailers</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 4: Compare -->
+        <nav class="footer-nav-group" aria-label="Compare">
+          <h3 class="footer-nav-group__title">Compare</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="compare.html#odoo">Odoo Alternative</a></li>
+            <li><a href="compare.html#shopify">Shopify Order Management</a></li>
+            <li><a href="compare.html#unleashed">Unleashed Comparison</a></li>
+            <li><a href="compare.html#excel">Excel Alternative</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 5: Company -->
+        <nav class="footer-nav-group" aria-label="Company">
+          <h3 class="footer-nav-group__title">Company</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="about.html">About Source Infinity</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Oversized Decorative Brand Wordmark -->
+      <div class="site-footer__watermark" aria-hidden="true">QUICKOMS</div>
+
+      <div class="site-footer__divider"></div>
+
+      <div class="site-footer__legal">
+        <span class="site-footer__copyright">© 2026 Quick OMS by Source Infinity. All rights reserved.</span>
+        <span class="site-footer__tagline">Order Management Simplified.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

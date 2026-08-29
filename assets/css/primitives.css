@@ -1,0 +1,123 @@
+/* Primitives layer (.ai/AGENTS.md §4.1): container, stack, cluster, grid,
+   section, surface. Every page section is composed from these — no
+   section defines its own left/right margins. */
+
+.container {
+  width: 100%;
+  max-width: var(--size-container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-page-inline);
+}
+
+/* Narrower measure for centered hero/section copy (DESIGN §6.4). */
+.container--narrow {
+  max-width: 900px;
+}
+
+.section {
+  padding-block: var(--space-section-block-compact);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-section-block);
+  }
+}
+
+.section--compact {
+  padding-block: var(--space-section-block-compact);
+}
+
+.surface-canvas {
+  background: var(--color-bg-canvas);
+}
+
+.surface-muted {
+  background: var(--color-bg-surface-muted);
+}
+
+.surface-inverse {
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}
+
+.surface-brand-gradient {
+  background: var(--ref-gradient-hero);
+  color: var(--color-text-inverse);
+  position: relative;
+}
+
+/* Shared "brand gradient" decoration (AGENTS §9 / DESIGN §4.2): a subtle
+   grid texture over any brand-gradient surface. One treatment, reused
+   verbatim on the hero and the CTA band — opacity/blend never varies. */
+.has-grid-overlay {
+  position: relative;
+  isolation: isolate;
+}
+
+.has-grid-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("../img/photos/hero-grid-overlay.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.has-grid-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Stack — one-dimensional vertical rhythm. */
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.stack > * + * {
+  margin-top: var(--stack-gap, var(--space-content-gap));
+}
+
+/* Cluster — inline group that wraps predictably (buttons, tags, nav). */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cluster-gap, var(--space-inline-gap));
+}
+
+/* Grid — repeated-card layouts with a minimum useful item width and a
+   documented gap/collapse behavior per component (AGENTS §6.5). */
+.grid {
+  display: grid;
+  gap: var(--grid-gap, var(--space-card-gap));
+}
+
+.eyebrow-heading {
+  text-align: var(--eyebrow-align, left);
+}
+
+.eyebrow-heading > .text-eyebrow {
+  display: block;
+  margin-bottom: var(--ref-space-3);
+}
+
+.eyebrow-heading > .text-section-title + .text-body,
+.eyebrow-heading > .text-section-title + p {
+  margin-top: var(--ref-space-4);
+  max-width: 640px;
+}
+
+.eyebrow-heading--center {
+  --eyebrow-align: center;
+  margin-inline: auto;
+}
+
+.eyebrow-heading--center > .text-section-title,
+.eyebrow-heading--center > .text-body {
+  margin-inline: auto;
+}

@@ -1,0 +1,381 @@
+/* UI components layer (.ai/AGENTS.md §4.1 / §11-§13): button, badge,
+   card, check-item, tabs, accordion, cta-band. Finite, named variants
+   only — no page-specific one-offs. */
+
+/* ------------------------------------------------------------------ */
+/* Button                                                              */
+/* ------------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--size-control-min-height);
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  border: var(--border-width-default) solid transparent;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--easing-standard),
+    border-color var(--motion-fast) var(--easing-standard),
+    color var(--motion-fast) var(--easing-standard),
+    opacity var(--motion-fast) var(--easing-standard),
+    transform var(--motion-fast) var(--easing-standard);
+}
+
+.icon {
+  display: inline-block;
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+  flex-shrink: 0;
+}
+
+/* The trailing button arrow is the one icon reused across many different
+   text colors (white / navy / blue / gradient buttons), so it is rendered
+   as a CSS mask instead of a baked-color asset. CSS masks are computed from
+   source luminance/alpha, not from `currentColor` (the source SVG has no
+   access to the masked element's color) — the source fill must stay a
+   fully-opaque, high-luminance color (white) for the shape to register as
+   visible; only `background-color: currentColor` below controls what's
+   actually painted. */
+.icon-arrow {
+  background-color: currentColor;
+  -webkit-mask: url("../img/icons/arrow-right.svg") center / contain no-repeat;
+  mask: url("../img/icons/arrow-right.svg") center / contain no-repeat;
+}
+
+.btn .icon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+  flex-shrink: 0;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Primary — brand gradient, white text. Works on light, dark, or gradient
+   backgrounds; the site's single dominant call to action. */
+.btn--primary {
+  background: var(--color-action-primary-bg);
+  color: var(--color-action-primary-text);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--color-action-primary-hover-bg);
+}
+
+/* Outline — transparent surface, border + text in currentColor so it
+   adapts to light or dark section context via the `color` it inherits. */
+.btn--outline {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+
+.btn--outline:hover:not(:disabled) {
+  background: rgba(20, 110, 245, 0.08);
+}
+
+.surface-inverse .btn--outline:hover:not(:disabled),
+.surface-brand-gradient .btn--outline:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Inverse — solid white surface with dark/blue text. Used on dark or
+   brand-colored card surfaces (pricing plan cards, hero primary CTA). */
+.btn--inverse {
+  background: var(--color-action-inverse-bg);
+  color: var(--color-action-inverse-text);
+  border-color: var(--color-action-inverse-bg);
+}
+
+.btn--inverse:hover:not(:disabled) {
+  background: var(--color-bg-surface-muted);
+}
+
+.btn--inverse-brand {
+  background: var(--color-action-inverse-bg);
+  border-color: var(--ref-color-blue-500);
+  color: var(--ref-color-blue-500);
+}
+
+.btn--inverse-brand .icon {
+  color: var(--ref-color-blue-500);
+}
+
+.btn--inverse-brand:hover:not(:disabled) {
+  background: var(--color-bg-surface-muted);
+}
+
+/* ------------------------------------------------------------------ */
+/* Badge                                                               */
+/* ------------------------------------------------------------------ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-semibold);
+}
+
+.badge--glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(11px);
+  color: var(--color-text-inverse);
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  padding: 14px 24px;
+  border-radius: var(--radius-sm);
+}
+
+.badge--outline {
+  border: 1px solid var(--color-border-default);
+  color: var(--color-text-muted);
+}
+
+.badge--info {
+  background: var(--color-status-info-bg);
+  color: var(--color-status-info-text);
+}
+
+.badge--warning {
+  background: var(--color-status-warning-bg);
+  color: var(--color-status-warning-text);
+}
+
+.badge--success {
+  background: rgba(28, 162, 104, 0.15);
+  color: var(--color-status-success-strong);
+}
+
+.badge--muted {
+  background: var(--color-bg-surface-muted);
+  color: var(--color-text-muted);
+}
+
+/* ------------------------------------------------------------------ */
+/* Card                                                                 */
+/* ------------------------------------------------------------------ */
+
+.card {
+  background: var(--color-bg-surface);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-card-padding);
+}
+
+.card--muted {
+  background: var(--color-bg-surface-muted);
+}
+
+.card--inverse {
+  background: var(--color-bg-inverse);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-inverse);
+}
+
+.card--emphasis {
+  background: var(--ref-gradient-brand);
+  border-color: transparent;
+  color: var(--color-text-inverse);
+}
+
+.card--elevated {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-floating);
+}
+
+.card--lg {
+  border-radius: var(--radius-lg);
+}
+
+/* ------------------------------------------------------------------ */
+/* Check / status item                                                 */
+/* ------------------------------------------------------------------ */
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.check-item .icon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.check-item--positive .icon {
+  color: var(--ref-color-blue-500);
+}
+
+.check-item--negative .icon {
+  color: var(--ref-color-red-600);
+}
+
+/* ------------------------------------------------------------------ */
+/* Tabs                                                                 */
+/* ------------------------------------------------------------------ */
+
+.tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ref-space-2);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.tab {
+  padding: 14px 20px;
+  font-weight: var(--font-weight-medium);
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+}
+
+.tab[aria-selected="true"] {
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.tab:hover {
+  color: var(--color-text-primary);
+}
+
+.tabpanel[hidden] {
+  display: none;
+}
+
+/* Pill-style tabs (used by the Plan Highlight tabbed panel). */
+.tablist--pill {
+  border-bottom: none;
+  background: var(--color-bg-surface-muted);
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+}
+
+.tablist--pill .tab {
+  border-bottom: none;
+  margin-bottom: 0;
+  border-radius: calc(var(--radius-sm) - 4px);
+  padding: 10px 18px;
+}
+
+.tablist--pill .tab[aria-selected="true"] {
+  background: var(--ref-gradient-brand);
+  color: var(--color-text-inverse);
+}
+
+/* ------------------------------------------------------------------ */
+/* Accordion                                                           */
+/* ------------------------------------------------------------------ */
+
+.accordion-item {
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.accordion-item + .accordion-item {
+  margin-top: var(--ref-space-3);
+}
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ref-space-4);
+  padding: 20px 24px;
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  font-size: 1.0625rem;
+  color: var(--color-text-primary);
+}
+
+.accordion-trigger .icon-toggle {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform var(--motion-normal) var(--easing-standard);
+}
+
+.accordion-trigger .icon-toggle::before,
+.accordion-trigger .icon-toggle::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.accordion-trigger .icon-toggle::before {
+  width: 12px;
+  height: 2px;
+}
+
+.accordion-trigger .icon-toggle::after {
+  width: 2px;
+  height: 12px;
+  transition: transform var(--motion-normal) var(--easing-standard);
+}
+
+.accordion-trigger[aria-expanded="true"] .icon-toggle::after {
+  transform: scaleY(0);
+}
+
+.accordion-panel {
+  padding: 0 24px 20px;
+  color: var(--color-text-secondary);
+}
+
+.accordion-panel[hidden] {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* CTA band                                                             */
+/* ------------------------------------------------------------------ */
+
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--ref-gradient-brand);
+  color: var(--color-text-inverse);
+  text-align: center;
+  padding: 56px var(--space-page-inline);
+}
+
+.cta-band__content {
+  position: relative;
+  max-width: 720px;
+  margin-inline: auto;
+}

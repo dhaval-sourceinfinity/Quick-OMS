@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node navtest.js \"/g/CODE/Dhaval/SI/Quick-OMS/pricing.html\")",
+      "Bash(node -e ' *)",
+      "Bash(rm -rf \"/c/Users/dhava/AppData/Local/Temp/claude/g--CODE-Dhaval-SI-Quick-OMS/9e02aef3-3af8-4284-9f7a-e08eb1f13ebd/scratchpad/pw-check/node_modules\" 2>&1 | tail -1 *)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\dhava\\AppData\\Local\\Temp\\claude\\g--CODE-Dhaval-SI-Quick-OMS\\9e02aef3-3af8-4284-9f7a-e08eb1f13ebd\\scratchpad\\pw-check\\node_modules"
+    ]
+  }
+}
