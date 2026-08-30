@@ -452,8 +452,10 @@
 
 .preview-window__body {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 240px minmax(0, 1fr);
   min-height: 540px;
+  min-width: 0;
+  width: 100%;
 }
 
 .preview-window__sidebar {
@@ -463,6 +465,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .preview-window__sidebar-label {
@@ -472,6 +476,7 @@
   color: #6d7a8c;
   padding: 0 14px 10px;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .preview-window__nav-item {
@@ -481,6 +486,7 @@
   font-weight: 500;
   color: #344054;
   cursor: pointer;
+  white-space: nowrap;
   transition: all var(--motion-fast) var(--easing-standard);
 }
 
@@ -490,72 +496,23 @@
   font-weight: 600;
 }
 
-/* Tablet icon rail (768-1023px): collapse the 240px text sidebar into a
-   72px dot rail rather than hiding it outright. 1023, not the sitewide
-   1024 token, so a 1024px-wide viewport (iPad landscape) keeps the full
-   desktop sidebar per spec ("1024px and above"). No new icon assets — the
-   existing dash-*.svg set is hardcoded stroke color, not currentColor, so
-   it can't recolor for the active/inactive rail state; the dot reuses the
-   same currentColor-bar technique as the real header's .nav-toggle__icon.
-   NOTE: this block must stay positioned AFTER the base .preview-window__
-   sidebar-label/__nav-item/__nav-item--active rules above — at equal
-   specificity, a later same-specificity rule wins regardless of whether
-   it's inside a media query, so placing this earlier silently loses to
-   those base rules and the rail text never actually collapses. */
-@media (max-width: 1023px) {
-  .preview-window__body {
-    grid-template-columns: 72px 1fr;
-  }
-
-  .preview-window__sidebar {
-    padding: 20px 8px;
-    align-items: center;
-  }
-
-  .preview-window__sidebar-label {
-    display: none;
-  }
-
-  .preview-window__nav-item {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0;
-    /* collapses the text node; color stays intact for ::before */
-  }
-
-  .preview-window__nav-item::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: currentColor;
-    flex-shrink: 0;
-  }
-}
-
 .preview-window__main {
   padding: 28px;
   background: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .preview-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-}
-
-@media (max-width: 1100px) {
-  .preview-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
+  min-width: 0;
+  width: 100%;
 }
 
 .preview-stat {
@@ -566,6 +523,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .preview-stat__head {
@@ -621,26 +580,16 @@
   display: grid;
   grid-template-columns: 1.45fr 1fr;
   gap: 24px;
-}
-
-@media (max-width: 1024px) {
-  .preview-columns {
-    grid-template-columns: 1.2fr 1fr;
-    gap: 16px;
-  }
-}
-
-@media (max-width: 768px) {
-  .preview-columns {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+  min-width: 0;
+  width: 100%;
 }
 
 .preview-right-stack {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0;
+  width: 100%;
 }
 
 .preview-panel {
@@ -682,6 +631,8 @@
   border-radius: 22px;
   margin-bottom: 12px;
   gap: 12px;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .preview-order-row:last-child {
@@ -766,12 +717,16 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .preview-product-item {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .preview-product-item__head {
@@ -779,6 +734,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+  min-width: 0;
 }
 
 .preview-product-item__name {
@@ -789,6 +745,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
 }
 
 .preview-product-item__sku {
@@ -815,8 +773,10 @@
 
 .preview-dispatch-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .preview-dispatch-card {
@@ -825,6 +785,8 @@
   padding: 14px 10px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .preview-dispatch-card__value {
@@ -842,9 +804,160 @@
 }
 
 /* --------------------------------------------------------------------------
-   Preview Window Responsive Adjustments (< 768px and < 480px)
+   Preview Window Responsive Adjustments (Tablet Landscape, Tablet Portrait, Mobile)
    -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
+
+/* Tablet Landscape & Intermediate (1024px - 1199px): keep full text sidebar
+   with balanced responsive width (210px); reflow KPI grid to 2x2 and lower
+   stack to [ Recent Orders ] full width + [ Top Selling ][ Dispatch ] side-by-side. */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .preview-window__body {
+    grid-template-columns: 210px minmax(0, 1fr);
+  }
+
+  .preview-window__sidebar {
+    padding: 20px 14px;
+    gap: 6px;
+  }
+
+  .preview-window__sidebar-label {
+    padding: 0 12px 8px;
+    font-size: 0.8125rem;
+  }
+
+  .preview-window__nav-item {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    border-radius: 14px;
+  }
+
+  .preview-window__main {
+    padding: 24px 20px;
+    gap: 20px;
+  }
+
+  .preview-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .preview-stat {
+    padding: 18px 20px;
+    border-radius: 22px;
+  }
+
+  .preview-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .preview-right-stack {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .preview-panel {
+    padding: 22px 20px;
+    border-radius: 24px;
+  }
+
+  .preview-dispatch-grid {
+    gap: 10px;
+  }
+
+  .preview-dispatch-card {
+    padding: 12px 8px;
+  }
+}
+
+/* Tablet Portrait & Intermediate (768px - 1023px): collapse sidebar to 72px dot rail;
+   reflow KPI cards to 2x2; lower section has [ Recent Orders ] + [ Top Selling ][ Dispatch ] side-by-side. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .preview-window__body {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .preview-window__sidebar {
+    padding: 20px 8px;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .preview-window__sidebar-label {
+    display: none;
+  }
+
+  .preview-window__nav-item {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+  }
+
+  .preview-window__nav-item::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+
+  .preview-window__main {
+    padding: 20px 16px;
+    gap: 18px;
+  }
+
+  .preview-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .preview-stat {
+    padding: 16px 18px;
+    border-radius: 20px;
+  }
+
+  .preview-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .preview-right-stack {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .preview-panel {
+    padding: 18px 16px;
+    border-radius: 20px;
+  }
+
+  .preview-dispatch-grid {
+    gap: 8px;
+  }
+
+  .preview-dispatch-card {
+    padding: 10px 4px;
+    border-radius: 16px;
+  }
+
+  .preview-dispatch-card__label {
+    font-size: 0.75rem;
+  }
+}
+
+/* Phone (<= 767px): sidebar/rail hidden; hamburger in bar; stacked layout. */
+@media (max-width: 767px) {
   .hero__preview {
     margin-top: 20px;
     border-radius: 20px;
@@ -852,6 +965,15 @@
 
   .preview-window {
     border-radius: 20px;
+  }
+
+  .preview-window__sidebar {
+    display: none;
+  }
+
+  .preview-window__body {
+    grid-template-columns: 1fr;
+    min-height: auto;
   }
 
   .preview-window__bar {
@@ -865,13 +987,46 @@
   }
 
   .preview-window__url {
+    flex: 1;
+    min-width: 0;
     margin-left: 10px;
     font-size: 0.8125rem;
     padding: 4px 14px;
-    max-width: calc(100% - 60px);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .preview-window__menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 16px;
+    height: 12px;
+    flex-shrink: 0;
+    color: #344054;
+  }
+
+  .preview-window__menu-icon span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+  }
+
+  .preview-window__menu-icon span:nth-child(1) {
+    top: 0;
+  }
+
+  .preview-window__menu-icon span:nth-child(2) {
+    top: 5px;
+  }
+
+  .preview-window__menu-icon span:nth-child(3) {
+    top: 10px;
   }
 
   .preview-window__main {
@@ -880,6 +1035,7 @@
   }
 
   .preview-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 
@@ -887,6 +1043,11 @@
     padding: 12px 14px;
     border-radius: 16px;
     min-height: 96px;
+  }
+
+  .preview-stat__head {
+    margin-bottom: 6px;
+    gap: 6px;
   }
 
   .preview-stat__label {
@@ -912,7 +1073,15 @@
     height: 14px;
   }
 
+  .preview-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
   .preview-right-stack {
+    display: flex;
+    flex-direction: column;
     gap: 14px;
   }
 
@@ -975,6 +1144,8 @@
   }
 
   .preview-dispatch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
   }
 
@@ -989,62 +1160,6 @@
 
   .preview-dispatch-card__label {
     font-size: 0.75rem;
-  }
-}
-
-/* Phone (<=767px): sidebar/rail both fully hidden; a static decorative
-   hamburger takes their place in the top bar (not clickable — the whole
-   mockup is aria-hidden and the real, working site nav already exists in
-   the real page header). 767, not the sitewide 768 token, so a 768px-wide
-   viewport (iPad portrait) still gets the tablet rail above, matching the
-   spec's explicit "tablet: 768 to 1023" range. */
-@media (max-width: 767px) {
-  .preview-window__sidebar {
-    display: none;
-  }
-
-  .preview-window__body {
-    grid-template-columns: 1fr;
-  }
-
-  .preview-window__url {
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .preview-window__menu-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 16px;
-    height: 12px;
-    flex-shrink: 0;
-    color: #344054;
-  }
-
-  .preview-window__menu-icon span {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: currentColor;
-    border-radius: 1px;
-  }
-
-  .preview-window__menu-icon span:nth-child(1) {
-    top: 0;
-  }
-
-  .preview-window__menu-icon span:nth-child(2) {
-    top: 5px;
-  }
-
-  .preview-window__menu-icon span:nth-child(3) {
-    top: 10px;
   }
 }
 

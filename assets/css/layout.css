@@ -347,11 +347,12 @@
   background: #0d1527;
   display: flex;
   flex-direction: column;
-  padding: 0 var(--space-page-inline) 24px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
-  touch-action: pan-y;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  padding: 0 var(--space-page-inline);
+  overflow: hidden;
+  overscroll-behavior: none;
   transform: translateX(100%);
   visibility: hidden;
   pointer-events: none;
@@ -375,9 +376,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 80px;
+  min-height: 72px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 16px 0;
+  padding: 12px 0;
   flex-shrink: 0;
 }
 
@@ -413,7 +414,13 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-top: 8px;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+  padding: 8px 0 16px;
 }
 
 .mobile-nav__links a {
@@ -425,6 +432,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   text-decoration: none;
   transition: color var(--motion-fast);
+  flex-shrink: 0;
 }
 
 .mobile-nav__links a:not([aria-current="page"]):hover {
@@ -440,10 +448,11 @@
 }
 
 .mobile-nav__cta {
-  margin-top: auto;
-  padding-top: 24px;
-  padding-bottom: 8px;
   flex-shrink: 0;
+  padding-top: 16px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom, 16px));
+  background: #0d1527;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .mobile-nav__cta .btn {
