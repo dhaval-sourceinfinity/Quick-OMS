@@ -3869,13 +3869,33 @@
   flex-shrink: 0;
 }
 
-.integration-node__icon--xero { background: rgba(20, 110, 245, 0.1); }
-.integration-node__icon--shopify { background: rgba(149, 191, 71, 0.15); }
-.integration-node__icon--woocommerce { background: rgba(150, 88, 138, 0.15); }
-.integration-node__icon--courier { background: rgba(20, 110, 245, 0.1); }
-.integration-node__icon--payments { background: rgba(99, 100, 252, 0.15); }
-.integration-node__icon--sheets { background: rgba(16, 185, 129, 0.15); }
-.integration-node__icon--custom { background: rgba(20, 110, 245, 0.1); }
+.integration-node__icon--xero {
+  background: rgba(20, 110, 245, 0.1);
+}
+
+.integration-node__icon--shopify {
+  background: rgba(149, 191, 71, 0.15);
+}
+
+.integration-node__icon--woocommerce {
+  background: rgba(150, 88, 138, 0.15);
+}
+
+.integration-node__icon--courier {
+  background: rgba(20, 110, 245, 0.1);
+}
+
+.integration-node__icon--payments {
+  background: rgba(99, 100, 252, 0.15);
+}
+
+.integration-node__icon--sheets {
+  background: rgba(16, 185, 129, 0.15);
+}
+
+.integration-node__icon--custom {
+  background: rgba(20, 110, 245, 0.1);
+}
 
 .integration-node__icon img {
   max-width: 44px;
@@ -5793,7 +5813,7 @@
   width: 100%;
   max-width: 100%;
   font-family: var(--ref-font-manrope, "Manrope", sans-serif);
-  font-size: clamp(48px, 18.8cqi, 286px);
+  font-size: clamp(40px, 18.8cqi, 286px);
   /* expands across full container width matching divider edges */
   font-weight: 800;
   text-transform: uppercase;
@@ -6090,7 +6110,6 @@
   }
 
   .site-footer__divider {
-    margin-top: 10px;
     margin-bottom: 20px;
   }
 
@@ -6288,8 +6307,8 @@
   }
 
   .site-footer__watermark {
-    font-size: clamp(20px, 12vw, 42px);
     margin-top: 14px;
+    margin-bottom: 0;
   }
 
   .site-footer__legal {
