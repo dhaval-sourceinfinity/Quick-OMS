@@ -171,9 +171,14 @@
     font-weight: 500;
   }
 
-  .site-nav a:hover {
-    color: #ffffff;
-    opacity: 0.85;
+  .site-nav a:not([aria-current="page"]):hover {
+    color: #93c5fd;
+    opacity: 1;
+  }
+
+  .site-nav a[aria-current="page"]:hover {
+    color: #f53614;
+    opacity: 1;
   }
 
   /* Scrolled nav item colors per Figma 1:3605 */
@@ -186,8 +191,13 @@
     color: #f53614;
   }
 
-  .site-header[data-scrolled="true"] .site-nav a:hover {
+  .site-header[data-scrolled="true"] .site-nav a:not([aria-current="page"]):hover {
     color: #0057d2;
+    opacity: 1;
+  }
+
+  .site-header[data-scrolled="true"] .site-nav a[aria-current="page"]:hover {
+    color: #f53614;
     opacity: 1;
   }
 }
@@ -417,12 +427,16 @@
   transition: color var(--motion-fast);
 }
 
-.mobile-nav__links a:hover {
+.mobile-nav__links a:not([aria-current="page"]):hover {
   color: #93c5fd;
 }
 
 .mobile-nav__links a[aria-current="page"] {
-  color: #f97316;
+  color: #f53614;
+}
+
+.mobile-nav__links a[aria-current="page"]:hover {
+  color: #f53614;
 }
 
 .mobile-nav__cta {
