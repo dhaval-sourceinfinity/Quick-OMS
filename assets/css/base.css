@@ -1,5 +1,4 @@
-/* Base layer — resets, typography roles, accessibility defaults.
-   Foundations layer per .ai/AGENTS.md §4.1. */
+/* Foundations layer: CSS reset and core element rules. */
 
 *,
 *::before,
@@ -71,8 +70,7 @@ select {
   font: inherit;
 }
 
-/* Visible focus for every interactive element (AGENTS §18 / DESIGN §11.2).
-   Only shown for keyboard interaction via :focus-visible. */
+/* Visible focus for keyboard interaction via :focus-visible */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -84,8 +82,7 @@ select:focus-visible,
   border-radius: var(--radius-sm);
 }
 
-/* Screen-reader-only utility for accessible names that shouldn't render
-   visually (e.g. icon-only controls). */
+/* Screen-reader-only utility */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -126,7 +123,7 @@ select:focus-visible,
 }
 
 /* ------------------------------------------------------------------ */
-/* Typography roles (DESIGN.md §5)                                     */
+/* Typography roles                                                   */
 /* ------------------------------------------------------------------ */
 
 .text-display {
@@ -151,7 +148,7 @@ select:focus-visible,
   word-break: break-word;
 }
 
-/* Suppress forced desktop line breaks on mobile viewports for natural wrapping (.ai/AGENTS.md §7) */
+/* Suppress forced desktop line breaks on mobile viewports for natural wrapping */
 @media (max-width: 767px) {
   h1 br,
   h2 br,

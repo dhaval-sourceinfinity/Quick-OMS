@@ -261,7 +261,7 @@
       indicator.style.transform = "translateX(" + leftOffset + "px)";
     }
 
-    // Per-tab accent colors (Figma Vector fill values)
+    // Per-tab accent colors
     var tabAccentColors = {
       "core-tab-orders": "#9A6EE2",
       "core-tab-inventory": "#29966C",
@@ -285,7 +285,7 @@
             panel.hidden = false;
             requestAnimationFrame(function () {
               panel.classList.add("is-active");
-              // Trigger one-shot entry animation (Figma Smart Animate 400ms)
+              // Trigger one-shot entry animation (400ms)
               panel.classList.add("is-animating");
               setTimeout(function () {
                 panel.classList.remove("is-animating");
@@ -298,8 +298,7 @@
         }
       });
 
-      // Animate SVG checkmark fill colors to match the new tab's accent
-      // (Figma: kf_1_758/754/762_background-color_0 — 400ms ease-out)
+      // Animate SVG checkmark fill colors to match the new tab's accent (400ms ease-out)
       if (activePanel) {
         var accentColor = tabAccentColors[tab.id] || "#9A6EE2";
         var checks = activePanel.querySelectorAll(".core-feature-check path");

@@ -1,8 +1,3 @@
-/* ==========================================================================
-   Sections layer — Quick OMS Website
-   Defines page-specific section compositions matching Figma Home 2 (node 1:2700)
-   ========================================================================== */
-
 /* --------------------------------------------------------------------------
    SHARED SECTION HEADINGS & LAYOUT
    -------------------------------------------------------------------------- */
@@ -71,7 +66,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   1. HERO SECTION (Figma 1:3606, 1:3607, 1:3641)
+   1. HERO SECTION
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
@@ -117,7 +112,7 @@
   flex-direction: column;
   align-items: center;
   gap: 48px;
-  /* Figma 1:3641: 48px between copy block and CTA row */
+
 }
 
 .hero__copy {
@@ -125,7 +120,7 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  /* Figma 1:3642: 20px between badge and heading block */
+
   max-width: 1235px;
   margin-inline: auto;
 }
@@ -134,8 +129,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 30px;
-  /* Figma 1:3643: 431×79px badge, computed padding */
+  padding: 12px 24px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 10px;
@@ -143,28 +137,23 @@
   -webkit-backdrop-filter: blur(23px);
   color: #ffffff;
   font-family: var(--font-family-primary);
-  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.625rem);
-  /* up to 26px in Figma */
+  font-size: clamp(0.9375rem, 0.875rem + 0.25vw, 1.125rem);
   font-weight: 500;
   letter-spacing: normal;
 }
 
 .hero__title {
   font-family: var(--font-family-primary);
-  font-size: clamp(2.5rem, 1.8rem + 3.8vw, 6.25rem);
-  /* up to 100px in Figma */
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 4.25rem);
   font-weight: 800;
-  line-height: 1.21;
-  /* Figma 1:3646: 121px / 100px */
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--ref-color-white);
 }
 
 .hero__subtitle {
-  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
-  /* 20px-24px */
-  line-height: 1.21;
-  /* Figma 1:3647: 29px / 24px ≈ 1.21 */
+  font-size: clamp(1rem, 0.925rem + 0.35vw, 1.375rem);
+  line-height: 1.35;
   color: rgba(255, 255, 255, 0.95);
   max-width: 1093px;
 }
@@ -174,18 +163,17 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
 .hero__actions .btn {
-  min-height: 65px;
-  min-width: 290px;
-  /* Figma 1:3649/1:3650: 334px buttons; 290px min comfortable */
-  padding: 19px 48px;
-  font-size: 1.375rem;
-  /* 22px in Figma */
+  min-height: 52px;
+  min-width: 200px;
+  padding: 14px 32px;
+  font-size: 1.125rem;
   font-weight: 600;
   border-radius: 10px;
+  white-space: nowrap;
 }
 
 .hero__actions .btn--outline {
@@ -279,10 +267,7 @@
   z-index: 0;
 }
 
-/* Gradient border — Figma 1:3649 shows a gradient border matching the brand
-   gradient (#0057D2 → #5D9EFF → #0058D4 at 90deg). border-image can't produce
-   rounded corners, so we paint the gradient behind the button and overlay the
-   white background using an inset pseudo-element. */
+/* Gradient border */
 .hero .btn--inverse-brand::after {
   content: "";
   position: absolute;
@@ -367,14 +352,13 @@
   margin-top: 28px;
   width: 100%;
   max-width: 1600px;
-  /* Figma 1:3651: 1600px container */
+
   border-radius: 20px;
-  /* Figma 1:3653: 20px outer radius */
+
   box-shadow: 0 25px 60px rgba(0, 30, 80, 0.25);
 }
 
-/* Subtle blue glow behind the preview window — Figma 1:3652 "Overlay+Blur":
-   rgba(28,115,246,0.1) with 100px blur, 62px radius. */
+/* Subtle blue glow behind the preview window */
 .hero__preview::before {
   content: "";
   position: absolute;
@@ -392,16 +376,17 @@
   }
 }
 
-/* macOS Dashboard Window (Figma 1:3653) */
+/* Dashboard Preview Window */
 .preview-window {
   background: #ffffff;
   border: 1.56px solid #e3e7ec;
   border-radius: 20px;
-  /* Figma 1:3653: 20px */
   overflow: hidden;
   color: #111827;
   text-align: left;
   box-shadow: 0px 38px 75px -38px rgba(17, 24, 40, 0.22), 0px 3px 9px 0px rgba(17, 24, 40, 0.05);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .preview-window__bar {
@@ -411,6 +396,8 @@
   padding: 18px 28px;
   background: rgba(244, 248, 253, 0.6);
   border-bottom: 1.56px solid #e3e7ec;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .preview-window__dot {
@@ -439,8 +426,9 @@
   background: #ffffff;
   padding: 6px 22px;
   border-radius: 19px;
-  border: 1px solid #e3e7ec;
   font-family: var(--ref-font-inter);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Static/decorative only (the whole .hero__preview is aria-hidden) — shown
@@ -467,6 +455,8 @@
   gap: 8px;
   min-width: 0;
   box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .preview-window__sidebar-label {
@@ -477,23 +467,62 @@
   padding: 0 14px 10px;
   letter-spacing: 0.05em;
   white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .preview-window__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding: 12px 18px;
   border-radius: 18px;
   font-size: 1.05rem;
   font-weight: 500;
   color: #344054;
-  cursor: pointer;
+  cursor: default;
   white-space: nowrap;
+  text-decoration: none;
   transition: all var(--motion-fast) var(--easing-standard);
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.preview-window__nav-item--active {
-  background: rgba(28, 115, 246, 0.1);
+.preview-window__nav-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.preview-window__nav-text {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+.preview-window__nav-item:hover:not(.preview-window__nav-item--active):not([aria-current="page"]) {
+  background: rgba(17, 24, 39, 0.05);
+  color: #111827;
+}
+
+.preview-window__nav-item--active,
+.preview-window__nav-item[aria-current="page"] {
+  background: rgba(28, 115, 246, 0.12);
   color: #1c73f6;
   font-weight: 600;
+}
+
+.preview-window__nav-item--active:hover,
+.preview-window__nav-item[aria-current="page"]:hover {
+  background: rgba(28, 115, 246, 0.16);
+  color: #1c73f6;
 }
 
 .preview-window__main {
@@ -807,28 +836,97 @@
    Preview Window Responsive Adjustments (Tablet Landscape, Tablet Portrait, Mobile)
    -------------------------------------------------------------------------- */
 
-/* Tablet Landscape & Intermediate (1024px - 1199px): keep full text sidebar
-   with balanced responsive width (210px); reflow KPI grid to 2x2 and lower
-   stack to [ Recent Orders ] full width + [ Top Selling ][ Dispatch ] side-by-side. */
-@media (min-width: 1024px) and (max-width: 1199px) {
+/* Tablet (768px - 1199px): compact icon-only rail sidebar with tooltips,
+   2x2 KPI grid, and responsive lower section */
+@media (min-width: 768px) and (max-width: 1199px) {
   .preview-window__body {
-    grid-template-columns: 210px minmax(0, 1fr);
+    grid-template-columns: 76px minmax(0, 1fr);
   }
 
   .preview-window__sidebar {
-    padding: 20px 14px;
-    gap: 6px;
+    padding: 24px 8px;
+    align-items: center;
+    gap: 10px;
   }
 
   .preview-window__sidebar-label {
-    padding: 0 12px 8px;
-    font-size: 0.8125rem;
+    display: none;
   }
 
   .preview-window__nav-item {
-    padding: 10px 14px;
-    font-size: 0.95rem;
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    min-height: 46px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 14px;
+    position: relative;
+  }
+
+  .preview-window__nav-text {
+    display: none;
+  }
+
+  .preview-window__nav-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .preview-window__nav-item--active,
+  .preview-window__nav-item[aria-current="page"] {
+    background: rgba(28, 115, 246, 0.12);
+    color: #1c73f6;
+  }
+
+  .preview-window__nav-item--active:hover,
+  .preview-window__nav-item[aria-current="page"]:hover {
+    background: rgba(28, 115, 246, 0.16);
+    color: #1c73f6;
+  }
+
+  .preview-window__nav-item:hover:not(.preview-window__nav-item--active):not([aria-current="page"]) {
+    background: rgba(17, 24, 39, 0.06);
+    color: #111827;
+  }
+
+  /* Accessible tooltip on hover & focus-visible */
+  .preview-window__nav-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) scale(0.92);
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1;
+    padding: 7px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 150ms ease, transform 150ms ease, visibility 150ms;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  }
+
+  .preview-window__nav-item:hover::after,
+  .preview-window__nav-item:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
+  }
+
+  .preview-window__nav-item:focus-visible {
+    outline: 2px solid #1c73f6;
+    outline-offset: 2px;
   }
 
   .preview-window__main {
@@ -870,84 +968,6 @@
 
   .preview-dispatch-card {
     padding: 12px 8px;
-  }
-}
-
-/* Tablet Portrait & Intermediate (768px - 1023px): collapse sidebar to 72px dot rail;
-   reflow KPI cards to 2x2; lower section has [ Recent Orders ] + [ Top Selling ][ Dispatch ] side-by-side. */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .preview-window__body {
-    grid-template-columns: 72px minmax(0, 1fr);
-  }
-
-  .preview-window__sidebar {
-    padding: 20px 8px;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .preview-window__sidebar-label {
-    display: none;
-  }
-
-  .preview-window__nav-item {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0;
-  }
-
-  .preview-window__nav-item::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: currentColor;
-    flex-shrink: 0;
-  }
-
-  .preview-window__main {
-    padding: 20px 16px;
-    gap: 18px;
-  }
-
-  .preview-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .preview-stat {
-    padding: 16px 18px;
-    border-radius: 20px;
-  }
-
-  .preview-columns {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .preview-right-stack {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    align-items: stretch;
-  }
-
-  .preview-panel {
-    padding: 18px 16px;
-    border-radius: 20px;
-  }
-
-  .preview-dispatch-grid {
-    gap: 8px;
-  }
-
-  .preview-dispatch-card {
-    padding: 10px 4px;
     border-radius: 16px;
   }
 
@@ -1436,7 +1456,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. ORDER WORKFLOW SECTION (Figma 1:3291)
+   2. ORDER WORKFLOW SECTION
    -------------------------------------------------------------------------- */
 .workflow-section {
   background: #ffffff;
@@ -1456,7 +1476,7 @@
   color: #f53614;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.4vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -1467,7 +1487,7 @@
   color: #000000;
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.5rem + 2.8vw, 4.375rem);
-  /* up to 70px in Figma */
+
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -1503,13 +1523,13 @@
   gap: clamp(20px, 2vw, 32px);
   min-height: 280px;
   box-sizing: border-box;
-  /* Figma Inspect: 0.3s cubic-bezier(0.45, 1.45, 0.8, 1) spring overshoot easing */
+  /* Spring overshoot easing */
   transition: transform 300ms cubic-bezier(0.45, 1.45, 0.8, 1),
     box-shadow 300ms cubic-bezier(0.45, 1.45, 0.8, 1),
     border-color 300ms cubic-bezier(0.45, 1.45, 0.8, 1);
 }
 
-/* Blue top accent line on card hover — Figma play mode behavior */
+/* Blue top accent line on card hover */
 .workflow-step-card::before {
   content: "";
   position: absolute;
@@ -1553,7 +1573,7 @@
   color: #146ef5;
   font-family: var(--ref-font-inter);
   font-size: 1.875rem;
-  /* 30px in Figma */
+
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -1603,7 +1623,7 @@
   color: #111827;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.25rem, 1.1rem + 0.5vw, 2rem);
-  /* up to 32px in Figma */
+
   font-weight: 700;
   line-height: 1.25;
   margin: 0;
@@ -1613,7 +1633,7 @@
   color: #667085;
   font-family: var(--ref-font-inter);
   font-size: clamp(0.9375rem, 0.85rem + 0.25vw, 1.25rem);
-  /* up to 20px in Figma */
+
   font-weight: 500;
   line-height: 1.4;
   margin: 0;
@@ -1679,7 +1699,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. INDUSTRY SECTION (Figma 1:2969, 1:2980)
+   3. INDUSTRY SECTION
    -------------------------------------------------------------------------- */
 .industry-section {
   background: #ffffff;
@@ -1700,7 +1720,7 @@
   color: #f53614;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.4vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -1711,7 +1731,7 @@
   color: #000000;
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.5rem + 2.8vw, 4.25rem);
-  /* up to 68px in Figma */
+
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -1723,7 +1743,7 @@
   color: #6d7a8c;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.35vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 400;
   line-height: 1.35;
   max-width: 1200px;
@@ -1817,13 +1837,11 @@
   box-sizing: border-box;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   cursor: default;
-  /* Figma Gentle Spring Easing: 1.250123s */
   transition: transform 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
     border-color 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998);
   outline: none;
 }
 
-/* Figma Frame 2147230728: gradient background layer with 1.25s opacity transition */
 .industry-card::before {
   content: "";
   position: absolute;
@@ -1864,7 +1882,7 @@
 .industry-card__title {
   font-family: var(--ref-font-inter);
   font-size: 2rem;
-  /* 32px in Figma */
+
   font-weight: 700;
   color: #111827;
   line-height: 1.22;
@@ -1896,7 +1914,7 @@
 .industry-card__desc {
   font-family: "Manrope", var(--ref-font-inter);
   font-size: 1.125rem;
-  /* 18px in Figma */
+
   font-weight: 400;
   color: #667085;
   line-height: 1.4;
@@ -1950,7 +1968,7 @@
   padding: 19px 28px 19px 29px;
   font-family: var(--ref-font-inter);
   font-size: 1.375rem;
-  /* 22px in Figma */
+
   font-weight: 600;
   line-height: 27px;
   border-radius: 10px;
@@ -2146,7 +2164,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. PROBLEM / SOLUTION SECTION (THE DIFFERENCE) (Figma 1:3318)
+   4. PROBLEM / SOLUTION SECTION
    -------------------------------------------------------------------------- */
 .difference-section {
   background: #ffffff;
@@ -2166,7 +2184,7 @@
   color: #f53614;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.4vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -2177,7 +2195,7 @@
   color: #000000;
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.5rem + 2.8vw, 4.25rem);
-  /* up to 68px in Figma */
+
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -2189,7 +2207,7 @@
   color: #6d7a8c;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.35vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 400;
   line-height: 1.35;
   max-width: 1200px;
@@ -2245,7 +2263,7 @@
   border-radius: 9999px;
   font-family: var(--ref-font-inter);
   font-size: 1.125rem;
-  /* 18px in Figma */
+
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -2298,7 +2316,7 @@
   border-bottom: 1px solid #f3f4f6;
   font-family: var(--ref-font-inter);
   font-size: 1.125rem;
-  /* 18px in Figma */
+
   font-weight: 500;
   line-height: 1.4;
   color: #374151;
@@ -2439,7 +2457,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   5. CORE FEATURES TABBED SECTION (Figma 1:3311)
+   5. CORE FEATURES TABBED SECTION
    -------------------------------------------------------------------------- */
 .core-features-section {
   background: #ffffff;
@@ -2459,7 +2477,7 @@
   color: #f53614;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.4vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 600;
   line-height: 29px;
   letter-spacing: 0.04em;
@@ -2470,7 +2488,7 @@
   color: #000000;
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.5rem + 2.8vw, 4.0625rem);
-  /* 65px in Figma */
+
   font-weight: 700;
   line-height: 1.22;
   letter-spacing: -0.02em;
@@ -2482,7 +2500,7 @@
   color: #6d7a8c;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.35vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 400;
   line-height: 1.35;
   max-width: 1200px;
@@ -2503,7 +2521,7 @@
 .core-tab-btn {
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 0.95rem + 0.5vw, 1.625rem);
-  /* 26px in Figma */
+
   font-weight: 500;
   color: #667085;
   background: transparent;
@@ -2513,6 +2531,9 @@
   padding: 36px 16px 36px;
   cursor: pointer;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   white-space: nowrap;
   transition: color 300ms ease-out, transform 300ms ease-out;
   outline: none;
@@ -2535,9 +2556,6 @@
   font-weight: 600;
 }
 
-/* Figma Smart Animate keyframes — 400ms ease-out per Figma Inspect */
-
-/* Fade-in + slide-up for incoming panel content (Figma: translate 0,-29px → 0,0) */
 @keyframes kf_core_slide_up {
   0% {
     opacity: 0;
@@ -2561,7 +2579,7 @@
   }
 }
 
-/* Animated sliding active indicator (Figma Line 41: 400ms ease-out) */
+/* Animated sliding active indicator */
 .core-tabs-indicator {
   position: absolute;
   bottom: -2px;
@@ -2574,7 +2592,7 @@
   z-index: 2;
 }
 
-/* Tab Panels — Figma Smart Animate: 400ms ease-out coordinated transitions */
+/* Tab Panels — 400ms coordinated transitions */
 .core-features-panels {
   display: grid;
   grid-template-columns: 1fr;
@@ -2629,7 +2647,7 @@
   overflow: hidden;
   margin: 0 auto;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-  /* Figma Rectangle 34628682: background-color 400ms ease-out */
+  /* Background color transition */
   transition: transform 400ms ease-out,
     box-shadow 400ms ease-out,
     background-color 400ms ease-out;
@@ -2664,7 +2682,7 @@
   border-radius: 16px;
   transform: scale(0.98);
   opacity: 0.85;
-  /* Figma ChatGPT Image: opacity 400ms ease-out */
+  /* Image opacity transition */
   transition: transform 400ms ease-out,
     opacity 400ms ease-out;
 }
@@ -2683,7 +2701,7 @@
   flex-direction: column;
   width: 100%;
   max-width: 578px;
-  /* Figma Container: starts offset, slides into position */
+  /* Container slide-in transition */
   transform: translateY(29px);
   opacity: 0;
   transition: opacity 400ms ease-out,
@@ -2704,17 +2722,17 @@
   animation: kf_core_fade_in 400ms ease-out both;
 }
 
-/* Figma: title fades in (kf_1_749_opacity_0) */
+/* Title fade-in */
 .core-tabpanel.is-animating .core-feature-head h3 {
   animation: kf_core_fade_in 400ms ease-out both;
 }
 
-/* Figma: description fades in (kf_1_750_opacity_0) */
+/* Description fade-in */
 .core-tabpanel.is-animating .core-feature-head p {
   animation: kf_core_fade_in 400ms ease-out 50ms both;
 }
 
-/* Figma: checklist items fade in with stagger (kf_1_755/763/759_opacity_0) */
+/* Checklist items fade-in stagger */
 .core-tabpanel.is-animating .core-feature-checklist li:nth-child(1) {
   animation: kf_core_fade_in 400ms ease-out 100ms both;
 }
@@ -2736,7 +2754,7 @@
 .core-feature-head h3 {
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.6rem + 1.8vw, 3.5rem);
-  /* 56px in Figma */
+
   font-weight: 600;
   color: #000000;
   line-height: 1.22;
@@ -2746,7 +2764,7 @@
 .core-feature-head p {
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.35vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 400;
   color: #666666;
   line-height: 1.35;
@@ -2768,7 +2786,7 @@
   gap: 14px;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.35vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 500;
   color: #111827;
   line-height: 1.3;
@@ -2958,7 +2976,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   6. FLEXIBLE PLANS / PLAN HIGHLIGHT SECTION (Figma 1:3290)
+   6. FLEXIBLE PLANS / PLAN HIGHLIGHT SECTION
    -------------------------------------------------------------------------- */
 .flexible-plans-section {
   background: #ffffff;
@@ -2987,7 +3005,7 @@
   color: #146ef5;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 0.95rem + 0.5vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0;
@@ -2998,7 +3016,7 @@
   color: #000000;
   font-family: var(--ref-font-inter);
   font-size: clamp(2.25rem, 1.5rem + 2.8vw, 4.0625rem);
-  /* 65px in Figma */
+
   font-weight: 700;
   line-height: 1.22;
   letter-spacing: -0.02em;
@@ -3009,7 +3027,7 @@
   color: #6d7a8c;
   font-family: var(--ref-font-inter);
   font-size: 1.125rem;
-  /* 18px in Figma */
+
   font-weight: 400;
   line-height: 1.35;
   max-width: 1093px;
@@ -3031,7 +3049,7 @@
 .plans-tab-btn {
   font-family: var(--ref-font-inter);
   font-size: 1.375rem;
-  /* 22px in Figma */
+
   font-weight: 600;
   padding: 14px 32px;
   min-height: 56px;
@@ -3041,7 +3059,7 @@
   color: #146ef5;
   cursor: pointer;
   white-space: nowrap;
-  /* Figma Inspect: 0.3s cubic-bezier(0.45, 1.45, 0.8, 1) spring overshoot easing */
+  /* Spring overshoot easing */
   transition: transform 300ms cubic-bezier(0.45, 1.45, 0.8, 1),
     background 300ms cubic-bezier(0.45, 1.45, 0.8, 1),
     color 300ms cubic-bezier(0.45, 1.45, 0.8, 1),
@@ -3167,7 +3185,7 @@
   color: #004ab3;
   font-family: var(--ref-font-inter);
   font-size: 1.125rem;
-  /* 18px in Figma */
+
   font-weight: 600;
   line-height: 1;
   width: fit-content;
@@ -3185,7 +3203,7 @@
 .plan-panel__title {
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.6rem + 1.5vw, 3rem);
-  /* 48px in Figma */
+
   font-weight: 600;
   line-height: 1.21;
   color: #111828;
@@ -3199,7 +3217,7 @@
 .plan-panel__desc {
   font-family: var(--ref-font-inter);
   font-size: clamp(1rem, 0.92rem + 0.2vw, 1.1875rem);
-  /* 19px in Figma */
+
   font-weight: 400;
   color: #666666;
   line-height: 1.4;
@@ -3220,7 +3238,7 @@
   border-radius: 10px;
   font-family: var(--ref-font-inter);
   font-size: 1.125rem;
-  /* 18px in Figma */
+
   font-weight: 600;
   line-height: 1.22;
   display: inline-flex;
@@ -3330,7 +3348,7 @@
 .plan-feature-tile__title {
   font-family: var(--ref-font-inter);
   font-size: 1.25rem;
-  /* 20px in Figma */
+
   font-weight: 700;
   color: #111827;
   line-height: 1.25;
@@ -3340,21 +3358,21 @@
 .plan-feature-tile__desc {
   font-family: var(--ref-font-inter);
   font-size: 0.9375rem;
-  /* 15px in Figma */
+
   font-weight: 400;
   color: #6d7a8c;
   line-height: 1.35;
   margin: 0;
 }
 
-/* ---------- Premium / Upgrade Plan dark variant (Figma node 161:1304) ---------- */
+/* ---------- Premium / Upgrade Plan dark variant ---------- */
 .plan-panel--premium {
   background: #111827;
   border-color: #132f58;
   box-shadow: 2px 14px 44.3px rgba(0, 0, 0, 0.02);
 }
 
-/* Larger blue glow per Figma: 481×481, top:-123px */
+/* Radial glow */
 .plan-panel--premium::before {
   width: 481px;
   height: 481px;
@@ -3369,7 +3387,7 @@
   display: none;
 }
 
-/* PREMIUM badge — white pill, blue text (Figma 161:1355) */
+/* PREMIUM badge — white pill, blue text */
 .plan-panel--premium .plan-panel__pill {
   background: #ffffff;
   border-color: rgba(28, 115, 246, 0.2);
@@ -3380,7 +3398,7 @@
   background: #1c73f6;
 }
 
-/* Heading — white with green highlight line (Figma 161:1359) */
+/* Heading — white with green highlight line */
 .plan-panel--premium .plan-panel__title {
   color: #ffffff;
 }
@@ -3389,12 +3407,12 @@
   color: #34d399;
 }
 
-/* Description — muted gray (Figma 161:1361: #A5AFBE, 24px, 29px lh) */
+/* Description — muted gray */
 .plan-panel--premium .plan-panel__desc {
   color: #a5afbe;
 }
 
-/* Feature cards — transparent bg, blue border (Figma 161:1308+) */
+/* Feature cards — transparent bg, blue border */
 .plan-panel--premium .plan-feature-tile {
   background: transparent;
   border-color: rgba(20, 110, 245, 0.3);
@@ -3406,18 +3424,18 @@
   box-shadow: none;
 }
 
-/* Icon container — subtle blue bg + blue border ring (Figma 161:1318) */
+/* Icon container */
 .plan-panel--premium .plan-feature-tile__icon {
   background: rgba(20, 110, 245, 0.05);
   border: 1px solid rgba(20, 110, 245, 0.6);
 }
 
-/* Card title — pure white (Figma: #FFFFFF) */
+/* Card title */
 .plan-panel--premium .plan-feature-tile__title {
   color: #ffffff;
 }
 
-/* Card description — muted gray (Figma: #A5AFBE) */
+/* Card description */
 .plan-panel--premium .plan-feature-tile__desc {
   color: #a5afbe;
 }
@@ -3584,8 +3602,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   7. INTEGRATIONS SECTION (Figma 1:3452 / 1:3458 / Frame 2147233310)
-   Rebuilt from scratch — Dynamic SVG connector overlay with responsive grid.
+   7. INTEGRATIONS SECTION 
    -------------------------------------------------------------------------- */
 
 /* === Section Container === */
@@ -3657,18 +3674,6 @@
   margin: 0 auto;
 }
 
-/* === Dynamic SVG Connector Canvases (Desktop Overlay) ===
-   Two separate SVG layers:
-   - connector-canvas--lines: z-index 2 (behind cards, behind dashboard)
-   - connector-canvas--dots:  z-index 8 (ABOVE cards, above everything)
-   This ensures endpoint circles sit on top of the white card edges.
-
-   Stacking order (low → high):
-     0  – rings-wrap (decorative background)
-     1  – integrations-hub (dashboard image)
-     2  – connector-canvas--lines
-     4  – integrations-grid / cards / bottom card
-     8  – connector-canvas--dots (endpoint circles) */
 .integrations-connector-canvas {
   position: absolute;
   top: 0;
@@ -3777,8 +3782,7 @@
 
 .integrations-hub:hover .integrations-hub__img {
   transform: translateY(-3px);
-  filter: drop-shadow(0 20px 48px rgba(0, 0, 0, 0.42))
-    drop-shadow(0 0 28px rgba(20, 110, 245, 0.3));
+  filter: drop-shadow(0 20px 48px rgba(0, 0, 0, 0.42)) drop-shadow(0 0 28px rgba(20, 110, 245, 0.3));
 }
 
 /* Concentric Rings behind Dashboard */
@@ -4295,7 +4299,7 @@
 
 
 /* --------------------------------------------------------------------------
-   8. WHY QUICK OMS SECTION (Figma 1:3555 / Frame 2147232779)
+   8. WHY QUICK OMS SECTION
    -------------------------------------------------------------------------- */
 .why-choose-section {
   background: #ffffff;
@@ -4332,7 +4336,7 @@
   color: #f53614;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.4vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -4344,7 +4348,7 @@
   color: #111827;
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.5rem + 2.8vw, 4.0625rem);
-  /* 65px in Figma */
+
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -4355,7 +4359,7 @@
   color: #667085;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.35vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 400;
   line-height: 1.4;
   margin: 0;
@@ -4390,7 +4394,7 @@
   color: #ffffff;
 }
 
-/* Right Blue Panel (Figma 1:3568 / 731px x 628px) */
+/* Right Blue Panel */
 .why-choose__panel {
   flex: 0 0 731px;
   width: 731px;
@@ -4416,7 +4420,7 @@
   z-index: 1;
 }
 
-/* Three White Feature Cards (Figma 1:3569, 1:3577, 1:3588 / 576px x 149px) */
+/* Three Feature Cards */
 .why-choose__card {
   width: 576px;
   height: 149px;
@@ -4628,7 +4632,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   9. PRICING SECTION (Figma 1:2986 / Frame Section 1920x998)
+   9. PRICING SECTION 
    -------------------------------------------------------------------------- */
 .pricing-section {
   background: #ffffff;
@@ -4660,7 +4664,7 @@
   color: #f53614;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 0.95rem + 0.5vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 600;
   line-height: 1.21;
   letter-spacing: normal;
@@ -4672,7 +4676,7 @@
   color: #000000;
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.35rem + 2.8vw, 4.0625rem);
-  /* 65px in Figma */
+
   font-weight: 700;
   line-height: 1.215;
   letter-spacing: -0.02em;
@@ -4683,7 +4687,7 @@
   color: #6d7a8c;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 0.95rem + 0.45vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 400;
   line-height: 1.21;
   max-width: 1280px;
@@ -4700,7 +4704,7 @@
   align-items: stretch;
 }
 
-/* Individual Plan Card (Figma 1:2993, 1:3028, 1:3063 / 510px x 765px) */
+/* Individual Plan Card */
 .plan-card {
   background: #ffffff;
   border: 1px solid var(--color-border-default, #e3e7ec);
@@ -4727,7 +4731,7 @@
   box-shadow: 0 0 0 3px rgba(20, 110, 245, 0.25), 0 20px 44px rgba(0, 0, 0, 0.1);
 }
 
-/* Premium Card (Figma 1:3028) */
+/* Premium Card */
 .plan-card--emphasis {
   border: 1px solid var(--color-border-default, #e3e7ec);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
@@ -4747,7 +4751,7 @@
   filter: invert(36%) sepia(91%) saturate(2256%) hue-rotate(206deg) brightness(98%) contrast(97%);
 }
 
-/* Plan Card Header (Height: 405px in Figma) */
+/* Plan Card Header */
 .plan-card__head {
   padding: 60px 40px 40px 40px;
   background: #111827;
@@ -4874,7 +4878,7 @@
   outline-offset: 3px;
 }
 
-/* Plan Card Body Feature List (Height: 455px / Padding 40px 30px in Figma) */
+/* Plan Card Body Feature List */
 .plan-card__body {
   padding: 40px 30px;
   background: #ffffff;
@@ -5200,7 +5204,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   10. FAQ SECTION (Figma 1:3097)
+   10. FAQ SECTION
    -------------------------------------------------------------------------- */
 .faq-section {
   background: var(--color-bg-canvas);
@@ -5453,7 +5457,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   11. CTA BAND (Figma 1:3247 / Frame 1600x497)
+   11. CTA BAND 
    -------------------------------------------------------------------------- */
 .cta-band-section {
   padding: 0;
@@ -5527,10 +5531,10 @@
 .cta-band__title {
   font-family: var(--ref-font-manrope, "Manrope", sans-serif);
   font-size: clamp(2.25rem, 1.6rem + 2.8vw, 4.25rem);
-  /* 68px in Figma */
+
   font-weight: 700;
   line-height: 1.03;
-  /* 70px in Figma */
+
   letter-spacing: -0.02em;
   color: #ffffff;
   text-align: center;
@@ -5541,10 +5545,10 @@
 .cta-band__desc {
   font-family: var(--ref-font-inter, "Inter", sans-serif);
   font-size: clamp(1rem, 0.92rem + 0.35vw, 1.25rem);
-  /* 20px in Figma */
+
   font-weight: 400;
   line-height: 1.3;
-  /* 26px in Figma */
+
   color: #ffffff;
   text-align: center;
   max-width: 942px;
@@ -5635,7 +5639,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   12. FOOTER (Figma Node 1:3149 / Frame 1920x897)
+   12. FOOTER 
    -------------------------------------------------------------------------- */
 .site-footer {
   background: linear-gradient(168deg, #111828 0%, #172a4e 100%);
@@ -5689,7 +5693,7 @@
   width: 100%;
 }
 
-/* Column 1: Brand & Contact List (Figma 1:3154) */
+/* Column 1: Brand & Contact List */
 .site-footer__brand-col {
   display: flex;
   flex-direction: column;
@@ -5765,7 +5769,7 @@
   flex-shrink: 0;
 }
 
-/* Nav Groups (Columns 2, 3, 4, 5 / Figma 1:3191, 1:3205, 1:3219, 1:3231) */
+/* Nav Groups (Columns 2, 3, 4, 5) */
 .footer-nav-group {
   display: flex;
   flex-direction: column;
@@ -5817,7 +5821,7 @@
   color: #ffffff;
 }
 
-/* Oversized Decorative Brand Wordmark (Figma 1:3246 / Manrope 286px) */
+/* Oversized Decorative Brand Wordmark */
 .site-footer__watermark {
   width: 100%;
   max-width: 100%;
@@ -5843,7 +5847,7 @@
   overflow: hidden;
 }
 
-/* Horizontal Border Divider (Figma 1:3241) */
+/* Horizontal Border Divider */
 .site-footer__divider {
   position: relative;
   z-index: 2;
@@ -5852,7 +5856,7 @@
   margin-bottom: 24px;
 }
 
-/* Bottom Legal Bar (Figma 1:3242, 1:3244) */
+/* Bottom Legal Bar */
 .site-footer__legal {
   position: relative;
   z-index: 2;
@@ -6332,23 +6336,17 @@
 }
 
 /* ==========================================================================
-   PRICING PAGE (Figma 1:3863) — sections with no Home-page equivalent.
-   Main Plans / FAQ / CTA band / footer reuse existing classes verbatim and
-   need nothing here; see pricing.html. Reusable across future secondary
-   pages (Compare/FAQ/Contact) per DESIGN.md §22: .page-hero, .rate-card.
+   PRICING PAGE SECTIONS
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   13. PAGE HERO (Figma 1:4460) — shorter secondary-page hero: badge pill,
-   title, subtitle, no CTA row, no dashboard preview. Reuses .badge--glass,
-   .hero__copy, .hero__title, .hero__subtitle unmodified (defined above,
-   none of them scoped under .hero so they work standing alone here).
+   13. PAGE HERO
    -------------------------------------------------------------------------- */
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding-top: calc(80px + 72px);
-  padding-bottom: 80px;
+  padding-top: calc(80px + 48px);
+  padding-bottom: 56px;
   background-color: #111827;
   background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
@@ -6368,37 +6366,38 @@
 
 @media (min-width: 1600px) {
   .page-hero {
-    padding-top: calc(95px + 72px);
+    padding-top: calc(95px + 48px);
+    padding-bottom: 56px;
     background-position: center 95px, center 95px, 0 0;
   }
 }
 
 @media (max-width: 1179px) {
   .page-hero {
-    padding-top: calc(80px + 64px);
-    padding-bottom: 60px;
+    padding-top: calc(80px + 40px);
+    padding-bottom: 48px;
     background-position: center 80px, center 80px, 0 0;
   }
 }
 
 @media (max-width: 768px) {
   .page-hero {
-    padding-top: calc(80px + 52px);
-    padding-bottom: 40px;
+    padding-top: calc(80px + 32px);
+    padding-bottom: 36px;
     background-position: center 80px, center 80px, 0 0;
   }
 }
 
 @media (max-width: 480px) {
   .page-hero {
-    padding-top: calc(60px + 40px);
-    padding-bottom: 32px;
+    padding-top: calc(60px + 28px);
+    padding-bottom: 28px;
     background-position: center 60px, center 60px, 0 0;
   }
 }
 
 /* --------------------------------------------------------------------------
-   14. PLAN COMPARISON MATRIX (Figma 1:4616)
+   14. PLAN COMPARISON MATRIX
    -------------------------------------------------------------------------- */
 .compare-heading {
   display: flex;
@@ -6414,7 +6413,7 @@
   color: #f53614;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.4vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -6425,7 +6424,7 @@
   color: #000000;
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.5rem + 2.8vw, 4.0625rem);
-  /* 65px in Figma */
+
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -6461,7 +6460,7 @@
   border-color: var(--ref-color-gray-600);
   color: #ffffff;
   font-size: clamp(1.125rem, 1rem + 0.3vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 700;
 }
 
@@ -6487,7 +6486,7 @@
   text-align: center;
   font-weight: 500;
   font-size: clamp(1rem, 0.95rem + 0.2vw, 1.375rem);
-  /* 22px in Figma */
+
   color: var(--color-text-primary);
 }
 
@@ -6525,9 +6524,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   15. RATE CARDS (Figma 1:4319 Extra-User Pricing, 1:4407 Optional Add-ons)
-   Shared card used by both sections — Optional Add-ons sits on a dark
-   section background but the card itself stays white in both.
+   15. RATE CARDS (Extra-User Pricing & Optional Add-ons)
    -------------------------------------------------------------------------- */
 .rate-heading {
   display: flex;
@@ -6543,7 +6540,7 @@
   color: #f53614;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.4vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -6554,7 +6551,7 @@
   color: #000000;
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.5rem + 2.8vw, 4.0625rem);
-  /* 65px in Figma */
+
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -6569,7 +6566,7 @@
   color: #6d7a8c;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 1rem + 0.35vw, 1.5rem);
-  /* 24px in Figma */
+
   font-weight: 400;
   line-height: 1.35;
   max-width: 1200px;
@@ -6697,21 +6694,18 @@
 }
 
 /* --------------------------------------------------------------------------
-   16. OPTIONAL ADD-ONS dark section fix (Figma literal p-[160px] is a
-   desktop screenshot value, not a real spacing token — AGENTS §2). Use the
-   shared .section block padding instead; nothing else needed here, the
-   card grid is .rate-grid--five reused from §15.
+   16. OPTIONAL ADD-ONS
    -------------------------------------------------------------------------- */
 
 /* --------------------------------------------------------------------------
-   17. PRICING INTEGRITY & TERMS (Figma 1:4370)
+   17. PRICING INTEGRITY & TERMS
    -------------------------------------------------------------------------- */
 .terms-title {
   text-align: center;
   color: #000000;
   font-family: var(--ref-font-inter);
   font-size: clamp(2rem, 1.5rem + 2.8vw, 4.0625rem);
-  /* 65px in Figma */
+
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -6767,19 +6761,11 @@
 }
 
 /* ==========================================================================
-   COMPARE PAGE (Figma 1:4776) — sections with no existing equivalent. Hero
-   reuses .page-hero verbatim; CTA band/footer reuse existing classes with
-   new copy; heading blocks reuse .compare-heading (already generic, built
-   for pricing.html). See pricing.html/DESIGN.md §22 for those.
+   COMPARE PAGE SECTIONS
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   18. VENDOR COMPARISON MATRIX (Figma 1:5297) — Odoo/Shopify/Unleashed vs.
-   Quick OMS. Distinct from .compare-matrix (pricing.html): one emphasized
-   trailing column (not three tiered ones), left-aligned body text, and
-   Quick OMS cells pair a checkmark with explanatory copy rather than a bare
-   check. Shares .compare-matrix__scroll for the horizontal-scroll-on-mobile
-   wrapper mechanism (already generic).
+   18. VENDOR COMPARISON MATRIX
    -------------------------------------------------------------------------- */
 .vendor-matrix {
   width: 100%;
@@ -6790,7 +6776,7 @@
 .vendor-matrix th,
 .vendor-matrix td {
   position: relative;
-  /* contains .sr-only, see DESIGN.md §22 gotcha */
+
   border: 1px solid var(--ref-color-gray-250);
   padding: var(--ref-space-6) var(--ref-space-6);
   /* 24px 24px */
@@ -6867,13 +6853,13 @@
 }
 
 /* --------------------------------------------------------------------------
-   19. WORKFLOW FIT GRID (Figma 1:5188)
+   19. WORKFLOW FIT GRID
    -------------------------------------------------------------------------- */
 .fit-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--ref-space-8);
-  /* 30px in Figma, nearest token */
+
   width: 100%;
 }
 
@@ -6926,20 +6912,128 @@
   line-height: 1.3;
 }
 
-/* ==========================================================================
-   FAQ PAGE (Figma 1:5400) — Hero reuses .page-hero verbatim; CTA band and
-   footer reuse existing classes verbatim (identical copy to compare.html).
-   Category tabs reuse .core-tabs-nav/.core-tab-btn verbatim (Home, Core
-   Features) — same 4-col/border-bottom #cbcbcb/black-underline treatment,
-   just widened to this frame's 1600px container via .faq-tabs. See
-   DESIGN.md §24 for the node IDs and provisional-content sourcing.
-   ========================================================================== */
-
 /* --------------------------------------------------------------------------
-   20. CATEGORY NAVIGATION + FAQ LIST (Figma instance 1:5858)
+   20. CATEGORY NAVIGATION + FAQ LIST
    -------------------------------------------------------------------------- */
-.faq-tabs {
+
+/* Full-width tab wrapper owning the edge-to-edge stationary horizontal divider */
+.faq-tabs-wrapper {
+  width: 100%;
+  border-bottom: 2px solid #cbcbcb;
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 64px;
+  background: transparent;
+}
+
+.faq-tabs-container {
+  position: relative;
+}
+
+/* Inner centered tablist navigation */
+.core-tabs-nav.faq-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: none;
+  /* Full-width wrapper owns the divider */
+  box-sizing: border-box;
+}
+
+.core-tabs-nav.faq-tabs .core-tab-btn {
+  padding: 36px 16px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.core-tabs-nav.faq-tabs .core-tabs-indicator {
+  bottom: -2px;
+  height: 2px;
+  background: #000000;
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .faq-tabs-wrapper {
+    margin-bottom: 48px;
+  }
+
+  .core-tabs-nav.faq-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow-x: visible;
+    padding-bottom: 0;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  .core-tabs-nav.faq-tabs .core-tab-btn {
+    padding: 24px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-tabs-wrapper {
+    margin-bottom: 40px;
+  }
+
+  .core-tabs-nav.faq-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow-x: visible;
+    margin: 0 auto;
+    gap: 0;
+    padding-bottom: 0;
+  }
+
+  .core-tabs-nav.faq-tabs .core-tab-btn {
+    padding: 18px 6px;
+    font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.125rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .faq-tabs-wrapper {
+    margin-bottom: 32px;
+  }
+
+  .core-tabs-nav.faq-tabs {
+    display: flex;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 12px;
+    padding-bottom: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .core-tabs-nav.faq-tabs::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .core-tabs-nav.faq-tabs .core-tab-btn {
+    flex-shrink: 0;
+    padding: 14px 12px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 .faq-list {
@@ -6981,6 +7075,9 @@
   font-weight: 600;
   color: var(--color-text-primary);
   line-height: 1.3;
+  display: flex;
+  align-items: center;
+  margin: 0;
 }
 
 .faq-list__icon {
@@ -6988,6 +7085,9 @@
   height: 36px;
   flex-shrink: 0;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
   transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: center center;
 }
@@ -7085,18 +7185,11 @@
 }
 
 /* ==========================================================================
-   CONTACT / BOOK DEMO PAGE (Figma 1:5859) — Hero reuses .page-hero verbatim
-   (badge "Book Demo"); CTA band/footer reuse existing classes verbatim,
-   byte-identical copy to compare.html/faq.html. See DESIGN.md §25 for node
-   IDs, the Location-label content correction, and provisional dropdown
-   option sourcing.
+   CONTACT / BOOK DEMO PAGE
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   21. CONTACT LAYOUT (Figma 1:6317) — two columns: enquiry form (left) +
-   "What Happens Next?" / "Contact Details" panels (right). Ratio approximates
-   Figma's 1015:561 columns; collapses to one column (form first in source
-   order) at 1200px, the closest-ratio existing precedent (.plan-panel).
+   21. CONTACT LAYOUT
    -------------------------------------------------------------------------- */
 .contact-layout {
   display: grid;
@@ -7129,13 +7222,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   22. ENQUIRY FORM — "About Your Business" (Figma 1:6318). No form CSS
-   existed anywhere in the codebase before this page (confirmed by grep) —
-   every rule below is new. Single-line inputs and true selects share the
-   same .form-input/.form-select box treatment because Figma renders both
-   identically (including the same decorative chevron on plain-text fields
-   like Full Name/Email); the underlying element/type/attributes still match
-   the real data per field (AGENTS §12).
+   22. ENQUIRY FORM — "About Your Business"
    -------------------------------------------------------------------------- */
 .contact-form-card {
   background: var(--color-bg-surface);
@@ -7146,18 +7233,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--ref-space-6);
-  /* 24px — the card's own 30px auto-layout gap
-    wraps a single child in Figma (node 1:6318) and never renders; the
-    gap that actually separates title/rows/message/submit lives one level
-    in on that child (node 1:6319) at 24px, an exact token match */
+
 }
 
 .contact-form-card__title {
   font-family: var(--ref-font-inter);
   font-size: 2rem;
-  /* 32px — Figma value was literal black, normalized to
-    --color-text-primary for cross-page heading consistency (AGENTS §23,
-    same precedent as the Home eyebrow-color normalization, DESIGN.md §18) */
+
   font-weight: 700;
   color: var(--color-text-primary);
   margin: 0;
@@ -7208,15 +7290,7 @@
   display: none;
 }
 
-/* Decorative dropdown chevron — real <select> fields only (Business Type,
-   Current Process, Interested Plan, Need API Integration). Plain text/email/
-   tel/number fields have no options to open, so they carry no chevron. A
-   real <img> rather than a masked ::after: this project's file://-based
-   preview/verification (no dev server, per DESIGN.md) does not reliably
-   paint CSS mask-image/background-image url() references to local files in
-   headless Chrome (verified directly — even the existing .icon-arrow mask
-   does not paint under that setup), while <img> loading is unaffected.
-   Purely decorative, aria-hidden. */
+/* Decorative dropdown chevron */
 .form-field__chevron {
   position: absolute;
   top: 50%;
@@ -7338,19 +7412,14 @@
   font-weight: 600;
 }
 
-/* Selection is already conveyed by the blue background/text above; the
-   default checkmark glyph isn't part of this design system anywhere else. */
+
 .form-select option::checkmark {
   display: none;
 }
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  /* Figma mixes a semibold-dark "filled example" look on most fields with a
-     genuinely muted placeholder only on Message. Shipping a form that looks
-     pre-filled with someone else's data ("Jane Smith") would be wrong
-     (AGENTS §12: placeholders are not labels) — every field uses one real
-     placeholder treatment matching Message's already-correct muted style. */
+
   color: var(--ref-color-gray-600);
   font-weight: 500;
   opacity: 1;
@@ -7428,10 +7497,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   23. PROCESS PANEL — "What Happens Next?" (Figma 1:6433/6434). New
-   solid-circle/white-glyph badge, distinct from .workflow-step-card__badge's
-   light-tint-with-colored-text treatment — same distinction DESIGN.md §23
-   already draws between .fit-card__icon and .terms-item__icon.
+   23. PROCESS PANEL — "What Happens Next?"
    -------------------------------------------------------------------------- */
 .process-panel {
   background: var(--color-bg-inverse);
@@ -7442,14 +7508,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--ref-space-8);
-  /* 30px in Figma, nearest token */
+
 }
 
 .process-panel__title {
   font-family: var(--ref-font-inter);
   font-size: 2rem;
-  /* 32px, normalized from Figma's literal black — see
-    .contact-form-card__title above */
+
   font-weight: 700;
   color: var(--color-text-inverse);
   margin: 0;
@@ -7462,7 +7527,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--ref-space-8);
-  /* 30px in Figma, nearest token */
+
 }
 
 .process-step {
@@ -7499,11 +7564,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   24. CONTACT DETAILS PANEL (Figma 1:6470) — third item's Figma label reads
-   "Website URL" (a copy-paste leftover from the row above); shipped as
-   "Location" instead, matching the location-01 icon and address value. Same
-   correction class as the Compare page's mismatched eyebrow/title copy,
-   DESIGN.md §23.
+   24. CONTACT DETAILS PANEL
    -------------------------------------------------------------------------- */
 .contact-details-panel {
   background: var(--color-bg-surface);
@@ -7520,8 +7581,7 @@
 .contact-details-panel__title {
   font-family: var(--ref-font-inter);
   font-size: 2rem;
-  /* 32px, normalized from Figma's literal black — see
-    .contact-form-card__title above */
+
   font-weight: 700;
   color: var(--color-text-primary);
   margin: 0;
@@ -7556,7 +7616,7 @@
   align-items: center;
   justify-content: center;
   color: #000;
-  /* Figma: literal black stroke on these icons */
+
 }
 
 .contact-details-item__icon img {

@@ -1,5 +1,4 @@
-/* Layout components: site header (+ mobile nav) and footer.
-   Shared across every page (.ai/AGENTS.md §10 / §17). */
+/* Layout components: site header (+ mobile nav) and footer. */
 
 /* ------------------------------------------------------------------ */
 /* Header                                                               */
@@ -25,7 +24,7 @@
   will-change: transform;
 }
 
-/* Scrolled state matching Figma 1:3605 (clean light header with dark text) */
+/* Scrolled state (clean light header with dark text) */
 .site-header[data-scrolled="true"] {
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
@@ -202,7 +201,7 @@
     opacity: 1;
   }
 
-  /* Scrolled nav item colors per Figma 1:3605 */
+  /* Scrolled nav item colors */
   .site-header[data-scrolled="true"] .site-nav a {
     color: #111827;
     opacity: 1;
@@ -331,7 +330,7 @@
   }
 }
 
-/* Extra Large Desktop (>= 1600px) — Full Figma 1:3640 proportions */
+/* Extra Large Desktop (>= 1600px) */
 @media (min-width: 1600px) {
   .site-header {
     height: 95px;
@@ -352,21 +351,21 @@
   }
 
   .site-header__wordmark {
-    font-size: 2.375rem; /* Figma 1:3640: 38px */
+    font-size: 2.375rem;
   }
 
   .site-nav {
-    gap: 40px; /* Figma 1:3640: 40px */
+    gap: 40px;
   }
 
   .site-nav a {
-    font-size: 1.25rem; /* Figma 1:3640: 20px */
+    font-size: 1.25rem;
   }
 
   .site-header__cta {
-    min-height: 65px; /* Figma 1:3640: 65px */
-    padding: 19px 42px; /* Figma 1:3640: 19px 42px */
-    font-size: 1.375rem; /* Figma 1:3640: 22px */
+    min-height: 65px;
+    padding: 19px 42px;
+    font-size: 1.375rem;
   }
 
   .site-header__cta .icon {

@@ -1,15 +1,7 @@
 /*
   Design tokens — Quick OMS website.
-  Five layers per .ai/DESIGN.md §3: reference -> semantic -> component ->
-  layout -> page. Reference tokens are raw values pulled from the Figma
-  file's variables (get_variable_defs) plus values observed consistently
-  across the approved screens. Everything else in the codebase should
-  consume the semantic/component/layout custom properties below, never the
-  --ref-* values directly.
-
-  Breakpoints are documented here for reference but CSS custom properties
-  cannot be used inside @media conditions, so the literal pixel values are
-  repeated at each usage site: 375 / 480 / 768 / 1024 / 1440.
+  Reference, semantic, and component custom properties.
+  Breakpoints: 375 / 480 / 768 / 1024 / 1440.
 */
 
 :root {
@@ -38,29 +30,16 @@
   --ref-color-amber-600: #eb9f1f;
   --ref-gradient-brand: linear-gradient(135deg, #0057d2 0%, #5d9eff 55%, #0058d4 110%);
   --ref-gradient-hero: linear-gradient(to top, #ffffff 0%, #146ef5 45%, #111827 89%);
-  /* Distinct from --ref-gradient-hero: confirmed via get_design_context on
-     the Pricing page's shorter, two-stop hero (Figma 1:4461) — no white
-     stop, since this hero has no tall white base showing beneath it like
-     the Home hero's does. Do not merge with --ref-gradient-hero (AGENTS §3:
-     treat each confirmed Figma value as authoritative, don't force-fit a
-     token defined against a different frame). */
   --ref-gradient-hero-compact: linear-gradient(to top, #146ef5 0%, #111827 89.42%);
 
-  /* Pricing page (Figma 1:3863) — new grays observed on rate cards / table
-     cells, not previously present in the palette. Ordered by lightness
-     alongside the existing gray-100..500/900 scale. */
+  /* Neutrals & secondary scale */
   --ref-color-gray-150: #eeeeee;
-  /* Contact page (Figma 1:5859) — Contact Details item divider ("Light Gray
-     Shade/Light Gray 02" in Figma styles). Distinct from --ref-color-gray-200
-     (#e3e7ec), not a duplicate. */
   --ref-color-gray-180: #e5e5e5;
   --ref-color-gray-250: #cecece;
   --ref-color-gray-400: #999999;
   --ref-color-gray-600: #777777;
   --ref-color-gray-700: #555555;
   --ref-color-gray-800: #333333;
-  /* Comparison-matrix tier header colors — Lite/Enterprise have no existing
-     equivalent in the palette; Premium reuses --ref-color-blue-500. */
   --ref-color-purple-500: #9a74dd;
   --ref-color-green-500: #29966e;
 
@@ -78,9 +57,6 @@
   --ref-space-24: 96px;
   --ref-space-30: 120px;
 
-  /* Contact page (Figma 1:5859) — the enquiry form's Message textarea uses a
-     smaller radius than every other input (10px); confirmed distinct value,
-     not a rounding of --ref-radius-sm. */
   --ref-radius-xs: 6px;
   --ref-radius-sm: 10px;
   --ref-radius-md: 18px;
@@ -141,27 +117,20 @@
   --color-compare-positive-accent: #3b82f6;
   --color-compare-positive-text: #1f2937;
 
-  /* Component tokens — Core Features panel card (Everything You Need to Run
-     Daily Orders): white card, blue top-accent border, muted media backdrop. */
+  /* Component tokens — Core Features card */
   --card-accent-border: var(--ref-color-blue-700);
   --capability-media-bg: var(--ref-color-gray-100);
 
-  /* Component tokens — Pricing page comparison matrix (Figma 1:4616). */
+  /* Component tokens — Plan comparison matrix */
   --color-compare-tier-lite: var(--ref-color-purple-500);
   --color-compare-tier-premium: var(--ref-color-blue-500);
   --color-compare-tier-enterprise: var(--ref-color-green-500);
 
-  /* Component tokens — Pricing page "Pricing Integrity & Terms" item tint.
-     Distinct rgba pair from --color-status-info-bg (different blue/alpha in
-     Figma); the check-circle icon reuses --color-compare-positive-accent
-     (#3b82f6), an exact match already defined above. */
+  /* Component tokens — Terms card */
   --color-terms-item-bg: rgba(20, 110, 245, 0.1);
   --color-terms-item-border: rgba(20, 110, 245, 0.18);
 
-  /* Component token — Compare page vendor-matrix competitor header tint
-     (Figma 1:5307/5309/5311, node 1:5297). Same blue as the tokens above at
-     a lighter 5% alpha — distinct value, kept as its own token rather than
-     reused, since it is a different confirmed Figma alpha. */
+  /* Component token — Vendor comparison table */
   --color-vendor-header-bg: rgba(20, 110, 245, 0.05);
 
   /* Typography */
@@ -214,8 +183,7 @@
   --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Responsive space.page-inline — one shared container gutter used by every
-   section (AGENTS §6.4 / DESIGN §6.2). */
+/* Responsive page-inline container gutters */
 :root {
   --space-page-inline: 14px;
 }

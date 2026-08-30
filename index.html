@@ -119,13 +119,65 @@
               <div class="preview-window__body">
                 <div class="preview-window__sidebar">
                   <span class="preview-window__sidebar-label">Workspace</span>
-                  <span class="preview-window__nav-item preview-window__nav-item--active">Dashboard</span>
-                  <span class="preview-window__nav-item">Orders</span>
-                  <span class="preview-window__nav-item">Products</span>
-                  <span class="preview-window__nav-item">Customers</span>
-                  <span class="preview-window__nav-item">Inventory</span>
-                  <span class="preview-window__nav-item">Invoices</span>
-                  <span class="preview-window__nav-item">Reports</span>
+                  <span class="preview-window__nav-item preview-window__nav-item--active" data-tooltip="Dashboard">
+                    <svg class="preview-window__nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                      <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                      <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                      <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                    </svg>
+                    <span class="preview-window__nav-text">Dashboard</span>
+                  </span>
+                  <span class="preview-window__nav-item" data-tooltip="Orders">
+                    <svg class="preview-window__nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path>
+                      <rect x="9" y="3" width="6" height="4" rx="1"></rect>
+                      <path d="m9 14 2 2 4-4"></path>
+                    </svg>
+                    <span class="preview-window__nav-text">Orders</span>
+                  </span>
+                  <span class="preview-window__nav-item" data-tooltip="Products">
+                    <svg class="preview-window__nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span class="preview-window__nav-text">Products</span>
+                  </span>
+                  <span class="preview-window__nav-item" data-tooltip="Customers">
+                    <svg class="preview-window__nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span class="preview-window__nav-text">Customers</span>
+                  </span>
+                  <span class="preview-window__nav-item" data-tooltip="Inventory">
+                    <svg class="preview-window__nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <span class="preview-window__nav-text">Inventory</span>
+                  </span>
+                  <span class="preview-window__nav-item" data-tooltip="Invoices">
+                    <svg class="preview-window__nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                      <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span class="preview-window__nav-text">Invoices</span>
+                  </span>
+                  <span class="preview-window__nav-item" data-tooltip="Reports">
+                    <svg class="preview-window__nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="18" y1="20" x2="18" y2="10"></line>
+                      <line x1="12" y1="20" x2="12" y2="4"></line>
+                      <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span class="preview-window__nav-text">Reports</span>
+                  </span>
                 </div>
                 <div class="preview-window__main">
                   <div class="preview-stats">
@@ -644,7 +696,7 @@
       </div>
     </section>
 
-    <!-- ============================== 5. CORE FEATURES (TABBED PER FIGMA 1:3311) ============================== -->
+    <!-- ============================== 5. CORE FEATURES ============================== -->
     <section class="section core-features-section surface-canvas" id="core-features">
       <div class="container">
         <div class="core-features-heading">
@@ -667,7 +719,7 @@
           <span class="core-tabs-indicator" aria-hidden="true"></span>
         </div>
 
-        <!-- Tab Panels Container (Grid-stacked for seamless Figma Smart Animate transitions) -->
+        <!-- Tab Panels Container -->
         <div class="core-features-panels">
           <!-- Panel 1: Order Management -->
           <div id="core-panel-orders" class="core-tabpanel is-active" role="tabpanel" aria-labelledby="core-tab-orders">
@@ -858,7 +910,7 @@
         </div>
       </div>
     </section>
-    <!-- ============================== 6. FLEXIBLE PLANS (PLAN HIGHLIGHT PER FIGMA 1:3290) ============================== -->
+    <!-- ============================== 6. FLEXIBLE PLANS ============================== -->
     <section class="section flexible-plans-section surface-canvas" id="plans">
       <div class="container">
         <div class="plans-header-split">
@@ -1014,7 +1066,7 @@
             </div>
           </div>
 
-          <!-- Tab Panel 2: Upgrade Plan (Dark Premium — Figma node 161:1304) -->
+          <!-- Tab Panel 2: Upgrade Plan -->
           <div id="panel-upgrade-plan" class="tabpanel" role="tabpanel" aria-labelledby="tab-upgrade-plan" hidden>
             <div class="plan-panel plan-panel--premium">
               <div class="plan-panel__left">
@@ -1280,7 +1332,7 @@
           </div>
 
           <div class="why-choose__panel">
-            <!-- Circuit Diagram (Figma 1:3598, 1:3599, 1:3600, 1:3601, 1:3602, 1:3603, 1:3604) -->
+            <!-- Circuit Diagram -->
             <svg class="why-choose__circuit" viewBox="0 0 731 628" fill="none" xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true">
               <line x1="52" y1="134" x2="52" y2="491" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3.5 3.5" />
@@ -1292,7 +1344,7 @@
               <circle cx="52" cy="491" r="8" fill="#FFFFFF" stroke="#146EF5" stroke-width="3" />
             </svg>
 
-            <!-- Card 1: ERP Complexity (Figma 1:3569) -->
+            <!-- Card 1: ERP Complexity -->
             <div class="why-choose__card">
               <div class="why-choose__icon">
                 <img src="assets/img/figma/why-erp.svg" alt="" width="87" height="87" />
@@ -1304,7 +1356,7 @@
               </div>
             </div>
 
-            <!-- Card 2: Ecommerce-only (Figma 1:3577) -->
+            <!-- Card 2: Ecommerce-only -->
             <div class="why-choose__card">
               <div class="why-choose__icon">
                 <img src="assets/img/figma/why-ecommerce.svg" alt="" width="87" height="87" />
@@ -1315,7 +1367,7 @@
               </div>
             </div>
 
-            <!-- Card 3: Advanced inventory tools (Figma 1:3588) -->
+            <!-- Card 3: Advanced inventory tools -->
             <div class="why-choose__card">
               <div class="why-choose__icon">
                 <img src="assets/img/figma/why-inventory.svg" alt="" width="87" height="87" />
@@ -1342,7 +1394,7 @@
         </div>
 
         <div class="pricing-grid">
-          <!-- Card 1: Quick OMS Lite (Figma 1:2993) -->
+          <!-- Card 1: Quick OMS Lite -->
           <article class="plan-card">
             <div class="plan-card__head">
               <div class="plan-card__info">
@@ -1393,7 +1445,7 @@
             </div>
           </article>
 
-          <!-- Card 2: Quick OMS Premium (Figma 1:3028 - Emphasized) -->
+          <!-- Card 2: Quick OMS Premium -->
           <article class="plan-card plan-card--emphasis">
             <div class="plan-card__head">
               <div class="plan-card__info">
@@ -1444,7 +1496,7 @@
             </div>
           </article>
 
-          <!-- Card 3: Quick OMS Enterprise (Figma 1:3063) -->
+          <!-- Card 3: Quick OMS Enterprise -->
           <article class="plan-card">
             <div class="plan-card__head">
               <div class="plan-card__info">
@@ -1587,7 +1639,7 @@
       </div>
     </section>
 
-    <!-- ============================== 11. CTA BAND (Figma 1:3247) ============================== -->
+    <!-- ============================== 11. CTA BAND ============================== -->
     <section class="cta-band-section" id="cta-band">
       <div class="cta-band-wrapper">
         <div class="cta-band">
@@ -1624,7 +1676,7 @@
     </section>
   </main>
 
-  <!-- ============================== 12. FOOTER (Figma 1:3148 / 1:3149) ============================== -->
+  <!-- ============================== 12. FOOTER ============================== -->
   <footer class="site-footer">
     <div class="site-footer__glow site-footer__glow--left" aria-hidden="true"></div>
     <div class="site-footer__glow site-footer__glow--right" aria-hidden="true"></div>
@@ -1699,7 +1751,7 @@
         </nav>
       </div>
 
-      <!-- Oversized Decorative Brand Wordmark (Figma 1:3246) -->
+      <!-- Oversized Decorative Brand Wordmark -->
       <div class="site-footer__watermark" aria-hidden="true">QUICKOMS</div>
 
       <div class="site-footer__divider"></div>

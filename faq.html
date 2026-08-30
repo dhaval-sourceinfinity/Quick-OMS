@@ -78,7 +78,7 @@
 
   <main id="main-content">
 
-    <!-- ============================== 1. PAGE HERO (Figma 1:5848) ============================== -->
+    <!-- ============================== 1. PAGE HERO ============================== -->
     <section class="page-hero">
       <div class="container">
         <div class="hero__copy">
@@ -89,19 +89,23 @@
       </div>
     </section>
 
-    <!-- ============================== 2. CATEGORY NAVIGATION + FAQ LIST (Figma instance 1:5858) ============================== -->
+    <!-- ============================== 2. CATEGORY NAVIGATION + FAQ LIST ============================== -->
     <section class="section faq-section surface-canvas">
-      <div class="container">
-
-        <div class="core-tabs-nav faq-tabs" role="tablist" aria-label="FAQ Category" data-tab-group>
-          <button type="button" class="core-tab-btn" role="tab" id="faq-tab-product" aria-controls="faq-panel-product" aria-selected="true" tabindex="0">Product</button>
-          <button type="button" class="core-tab-btn" role="tab" id="faq-tab-plans" aria-controls="faq-panel-plans" aria-selected="false" tabindex="-1">Plans &amp; Pricing</button>
-          <button type="button" class="core-tab-btn" role="tab" id="faq-tab-integrations" aria-controls="faq-panel-integrations" aria-selected="false" tabindex="-1">Integrations &amp; Data</button>
-          <button type="button" class="core-tab-btn" role="tab" id="faq-tab-support" aria-controls="faq-panel-support" aria-selected="false" tabindex="-1">Support</button>
-          <span class="core-tabs-indicator" aria-hidden="true"></span>
+      <div class="faq-tabs-wrapper">
+        <div class="container faq-tabs-container">
+          <div class="core-tabs-nav faq-tabs" role="tablist" aria-label="FAQ Category" data-tab-group>
+            <button type="button" class="core-tab-btn" role="tab" id="faq-tab-product" aria-controls="faq-panel-product" aria-selected="true" tabindex="0">Product</button>
+            <button type="button" class="core-tab-btn" role="tab" id="faq-tab-plans" aria-controls="faq-panel-plans" aria-selected="false" tabindex="-1">Plans &amp; Pricing</button>
+            <button type="button" class="core-tab-btn" role="tab" id="faq-tab-integrations" aria-controls="faq-panel-integrations" aria-selected="false" tabindex="-1">Integrations &amp; Data</button>
+            <button type="button" class="core-tab-btn" role="tab" id="faq-tab-support" aria-controls="faq-panel-support" aria-selected="false" tabindex="-1">Support</button>
+            <span class="core-tabs-indicator" aria-hidden="true"></span>
+          </div>
         </div>
+      </div>
 
-        <!-- Panel 1: Product (Figma questions; answers composed from copy already approved elsewhere on the site — provisional, see DESIGN.md §24) -->
+      <div class="container faq-content-container">
+
+        <!-- Panel 1: Product -->
         <ul id="faq-panel-product" class="faq-list tabpanel" role="tabpanel" aria-labelledby="faq-tab-product">
           <li class="faq-list__item">
             <button type="button" class="faq-list__trigger accordion-trigger" aria-expanded="false" aria-controls="faq-ans-product-1">
@@ -141,7 +145,7 @@
           </li>
         </ul>
 
-        <!-- Panel 2: Plans & Pricing (reused verbatim from pricing.html's already-approved Common Questions — see DESIGN.md §22/§24) -->
+        <!-- Panel 2: Plans & Pricing -->
         <ul id="faq-panel-plans" class="faq-list tabpanel" role="tabpanel" aria-labelledby="faq-tab-plans" hidden>
           <li class="faq-list__item">
             <button type="button" class="faq-list__trigger accordion-trigger" aria-expanded="false" aria-controls="faq-ans-plans-1">
@@ -190,7 +194,7 @@
           </li>
         </ul>
 
-        <!-- Panel 3: Integrations & Data (composed from index.html Integrations section + pricing.html comparison matrix — provisional, see DESIGN.md §24) -->
+        <!-- Panel 3: Integrations & Data -->
         <ul id="faq-panel-integrations" class="faq-list tabpanel" role="tabpanel" aria-labelledby="faq-tab-integrations" hidden>
           <li class="faq-list__item">
             <button type="button" class="faq-list__trigger accordion-trigger" aria-expanded="false" aria-controls="faq-ans-integrations-1">
@@ -230,7 +234,7 @@
           </li>
         </ul>
 
-        <!-- Panel 4: Support (composed from pricing.html comparison matrix + footer contact details — provisional, see DESIGN.md §24) -->
+        <!-- Panel 4: Support -->
         <ul id="faq-panel-support" class="faq-list tabpanel" role="tabpanel" aria-labelledby="faq-tab-support" hidden>
           <li class="faq-list__item">
             <button type="button" class="faq-list__trigger accordion-trigger" aria-expanded="false" aria-controls="faq-ans-support-1">
@@ -273,7 +277,7 @@
       </div>
     </section>
 
-    <!-- ============================== 3. CTA BAND (Figma 1:5769) ============================== -->
+    <!-- ============================== 3. CTA BAND ============================== -->
     <section class="cta-band-section" id="cta-band">
       <div class="cta-band-wrapper">
         <div class="cta-band">
