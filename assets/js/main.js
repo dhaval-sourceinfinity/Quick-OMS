@@ -873,7 +873,7 @@
       document.fonts.ready.then(scheduleRender);
     }
 
-    // Hover interactions — apply to both SVG layers
+    // Hover interactions — individual card hover highlights its connector
     stage.addEventListener("mouseover", function (e) {
       var card = e.target.closest(".integration-node");
       if (!card) return;

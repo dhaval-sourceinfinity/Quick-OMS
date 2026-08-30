@@ -3758,6 +3758,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
+  cursor: pointer;
 }
 
 .integrations-hub__card {
@@ -3770,6 +3771,14 @@
   height: auto;
   display: block;
   filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.35));
+  transition: transform var(--motion-fast) var(--easing-standard),
+    filter var(--motion-fast) var(--easing-standard);
+}
+
+.integrations-hub:hover .integrations-hub__img {
+  transform: translateY(-3px);
+  filter: drop-shadow(0 20px 48px rgba(0, 0, 0, 0.42))
+    drop-shadow(0 0 28px rgba(20, 110, 245, 0.3));
 }
 
 /* Concentric Rings behind Dashboard */
