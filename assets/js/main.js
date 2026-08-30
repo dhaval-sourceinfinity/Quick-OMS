@@ -709,31 +709,20 @@
         s.setAttribute("viewBox", "0 0 " + width + " " + height);
       });
 
-      /* ──────────────────────────────────────────────────────────────
-         HUB CONNECTOR DOT POSITIONS — adjust each independently
-         The integrations-hub.png has a built-in bubble/glass border.
-         Increase the multiplier → dot moves MORE onto the card.
-         Decrease the multiplier → dot moves AWAY from the card.
-         ────────────────────────────────────────────────────────────── */
-
-      // LEFT dot inset:  increase to push dot further RIGHT (onto card)
+      // Hub connector dot insets (per side)
       var hubInsetLeft = hubRect.width * 0.045;
-      // RIGHT dot inset: increase to push dot further LEFT (onto card)
       var hubInsetRight = hubRect.width * 0.075;
-      // BOTTOM dot inset: increase to push dot further UP (onto card)
       var hubInsetBottom = hubRect.height * 0.060;
 
-      // LEFT hub anchor — where left-side connector lines meet the dashboard
+      // Hub anchor coordinates
       var hubLeft = {
         x: hubRect.left - stageRect.left + hubInsetLeft,
         y: (hubRect.top + hubRect.bottom) / 2 - stageRect.top
       };
-      // RIGHT hub anchor — where right-side connector lines meet the dashboard
       var hubRight = {
         x: hubRect.right - stageRect.left - hubInsetRight,
         y: (hubRect.top + hubRect.bottom) / 2 - stageRect.top
       };
-      // BOTTOM hub anchor — where bottom connector line meets the dashboard
       var hubBottom = {
         x: (hubRect.left + hubRect.right) / 2 - stageRect.left,
         y: hubRect.bottom - stageRect.top - hubInsetBottom

@@ -3753,10 +3753,7 @@
   z-index: auto;
 }
 
-/* Central Dashboard Card (Figma 1:3535 / 161:1478)
-   NOTE: The integrations-hub.png already contains a built-in bubble/glass
-   border effect baked into the PNG. Do NOT apply border-radius or
-   box-shadow on the img — it clips the native bubble border. */
+/* Central Dashboard Card */
 .integrations-hub {
   position: relative;
   z-index: 1;
@@ -3772,22 +3769,15 @@
   width: 100%;
   height: auto;
   display: block;
-  /* No border-radius or box-shadow — the PNG has its own bubble border */
   filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.35));
 }
 
-/* Glowing Concentric Rings behind Dashboard (Figma 1:3532, 1:3533, 1:3534)
-   THREE distinct layers from largest to smallest:
-   1. Outer  — largest, subtle dark border + very faint fill
-   2. Middle — medium, slightly stronger border + subtle blue tint
-   3. Inner  — smallest, strongest border + noticeable blue glow
-   Dashboard image sits above all three. */
+/* Concentric Rings behind Dashboard */
 .integrations-rings-wrap {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  /* Outer ellipse is 566px for a 536px dashboard → 105.6% of hub width */
   width: 105.6%;
   aspect-ratio: 1 / 1;
   pointer-events: none;
@@ -3802,31 +3792,25 @@
   transform: translate(-50%, -50%);
 }
 
-/* Ring 1 — Outer (Figma: Ellipse 8205, 566×566)
-   Figma values: bg #146EF5, opacity 0.04, border rgba(20,110,245,0.10)
-   Converted: opacity 1, bg alpha = fill opacity, border alpha = stroke alpha */
+/* Ring 1 — Outer */
 .integrations-ring--outer {
-  width: 100%;      /* 566/566 = full wrap size */
+  width: 100%;
   aspect-ratio: 1 / 1;
   border: 1.116px solid rgba(20, 110, 245, 0.10);
   background: rgba(20, 110, 245, 0.04);
 }
 
-/* Ring 2 — Middle (Figma: Ellipse 8204, 497×497)
-   Figma values: bg #146EF5, opacity 0.15, border rgba(20,110,245,0.15)
-   497/566 ≈ 87.8% of outer */
+/* Ring 2 — Middle */
 .integrations-ring--middle {
-  width: 87.8%;     /* 497/566 */
+  width: 87.8%;
   aspect-ratio: 1 / 1;
   border: 1.116px solid rgba(20, 110, 245, 0.15);
   background: rgba(20, 110, 245, 0.15);
 }
 
-/* Ring 3 — Inner (Figma: Ellipse 8203, 421×421)
-   Figma values: bg #146EF5, opacity 0.20, border rgba(20,110,245,0.20)
-   421/566 ≈ 74.4% of outer */
+/* Ring 3 — Inner */
 .integrations-ring--inner {
-  width: 74.4%;     /* 421/566 */
+  width: 74.4%;
   aspect-ratio: 1 / 1;
   border: 1.116px solid rgba(20, 110, 245, 0.20);
   background: rgba(20, 110, 245, 0.42);
