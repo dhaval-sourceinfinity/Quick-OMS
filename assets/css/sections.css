@@ -5961,8 +5961,7 @@
   width: 100%;
   max-width: 100%;
   font-family: var(--ref-font-manrope, "Manrope", sans-serif);
-  font-size: clamp(48px, 16.5vw, 286px);
-  font-size: clamp(48px, 17.4cqi, 286px);
+  font-size: clamp(48px, 18.8cqi, 286px);
   /* expands across full container width matching divider edges */
   font-weight: 800;
   text-transform: uppercase;
@@ -5989,7 +5988,6 @@
   z-index: 2;
   height: 1px;
   background: rgba(165, 175, 190, 0.2);
-  margin-top: 10px;
   margin-bottom: 24px;
 }
 
@@ -6034,7 +6032,6 @@
     margin: 0;
     margin-top: 32px;
     margin-bottom: 0;
-    font-size: clamp(40px, 16vw, 220px);
   }
 }
 
@@ -6137,12 +6134,10 @@
     margin: 0;
     margin-top: 32px;
     margin-bottom: 0;
-    font-size: clamp(36px, 13vw, 120px);
     overflow: hidden;
   }
 
   .site-footer__divider {
-    margin-top: 12px;
     margin-bottom: 24px;
   }
 
@@ -6259,7 +6254,6 @@
     margin: 0;
     margin-top: 24px;
     margin-bottom: 0;
-    font-size: clamp(28px, 12vw, 80px);
     overflow: hidden;
   }
 
@@ -6386,12 +6380,10 @@
     margin: 0;
     margin-top: 20px;
     margin-bottom: 0;
-    font-size: clamp(24px, 12.5vw, 60px);
     overflow: hidden;
   }
 
   .site-footer__divider {
-    margin-top: 8px;
     margin-bottom: 16px;
   }
 
@@ -6512,6 +6504,13 @@
   position: relative;
   z-index: 1;
   max-width: 1235px;
+}
+
+@media (min-width: 1600px) {
+  .page-hero {
+    padding-top: calc(95px + 72px);
+    background-position: center 95px, center 95px, 0 0;
+  }
 }
 
 @media (max-width: 1179px) {
@@ -7891,6 +7890,13 @@
   transform: translateY(-1px);
 }
 
+@media (min-width: 1600px) {
+  .not-found-section {
+    padding-top: calc(95px + 60px);
+    background-position: center 95px, center 95px, 0 0;
+  }
+}
+
 @media (max-width: 1179px) {
   .not-found-section {
     padding-top: calc(80px + 48px);
@@ -7937,4 +7943,4 @@
     padding: 7px 14px;
     font-size: 0.875rem;
   }
-}
+}

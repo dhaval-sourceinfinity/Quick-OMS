@@ -147,35 +147,42 @@
   color: #111828;
 }
 
-@media (min-width: 1180px) {
+/* --------------------------------------------------------------------------
+   Desktop Navigation (>= 1024px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
   .site-header__bar {
-    min-height: 80px;
-    padding: 12px var(--space-page-inline);
+    padding: 0 clamp(14px, 1.8vw, 32px);
+  }
+
+  .site-header__brand {
+    gap: clamp(10px, 1vw, 14px);
   }
 
   .site-header__brand img,
   .site-header__logo {
-    width: 44px;
-    height: 44px;
+    width: clamp(38px, 3.2vw, 44px);
+    height: clamp(38px, 3.2vw, 44px);
   }
 
   .site-header__wordmark {
-    font-size: 1.85rem;
+    font-size: clamp(1.4rem, 1.2rem + 0.35vw, 1.85rem);
   }
 
   .site-nav {
     display: flex;
     align-items: center;
-    gap: clamp(14px, 1.8vw, 32px);
+    gap: clamp(8px, 1.1vw, 24px);
   }
 
   .site-nav a {
     color: #ffffff;
     font-family: var(--font-family-primary);
-    font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.15rem);
+    font-size: clamp(0.875rem, 0.8rem + 0.18vw, 1.0625rem);
     font-weight: 500;
     line-height: 1.2;
     text-decoration: none;
+    white-space: nowrap;
     transition: color var(--motion-fast) var(--easing-standard),
       opacity var(--motion-fast) var(--easing-standard);
   }
@@ -219,24 +226,24 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    min-height: 50px;
-    padding: 12px 24px;
+    gap: clamp(6px, 0.6vw, 8px);
+    min-height: 44px;
+    padding: 8px clamp(12px, 1.3vw, 24px);
     border-radius: 10px;
     background: linear-gradient(157deg, #0057d2 0%, #5d9eff 50%, #0058d4 100%);
     color: #ffffff !important;
     font-family: var(--font-family-primary);
-    font-size: 1.05rem;
+    font-size: clamp(0.875rem, 0.82rem + 0.15vw, 1.0625rem);
     font-weight: 600;
     line-height: 1.23;
-    border: 1.5px solid transparent;
+    border: none;
     box-shadow: 0 4px 16px rgba(0, 87, 210, 0.3);
     text-decoration: none;
     white-space: nowrap;
+    flex-shrink: 0;
     transition: transform 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
       box-shadow 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
       background 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
-      border-color 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
       color 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998);
   }
 
@@ -245,7 +252,7 @@
     color: #ffffff !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 87, 210, 0.45);
-    border-color: transparent;
+    border: none;
   }
 
   .site-header__cta:active {
@@ -259,24 +266,24 @@
   }
 
   .site-header__cta .icon {
-    width: 20px;
-    height: 20px;
+    width: clamp(16px, 1.4vw, 20px);
+    height: clamp(16px, 1.4vw, 20px);
   }
 
   /* Scrolled CTA */
   .site-header[data-scrolled="true"] .site-header__cta {
     background: linear-gradient(157deg, #0057d2 0%, #5d9eff 50%, #0058d4 100%);
     color: #ffffff !important;
-    border: 1.5px solid transparent;
+    border: none;
     box-shadow: 0 4px 16px rgba(0, 87, 210, 0.3);
   }
 
   .site-header[data-scrolled="true"] .site-header__cta:hover {
-    background: #ffffff;
-    color: #0057d2 !important;
-    border-color: #0057d2;
+    background: linear-gradient(157deg, #0048ad 0%, #4a8bee 50%, #0048ad 100%);
+    color: #ffffff !important;
+    border: none;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 87, 210, 0.25);
+    box-shadow: 0 8px 24px rgba(0, 87, 210, 0.45);
   }
 
   .nav-toggle {
@@ -284,12 +291,58 @@
   }
 }
 
-/* Large Desktop (>= 1380px) — Full Figma 1:3640 proportions */
-@media (min-width: 1380px) {
+/* Medium & Large Desktop (>= 1200px) */
+@media (min-width: 1200px) {
   .site-header__bar {
-    min-height: 95px;
+    padding: 0 clamp(20px, 2.5vw, 40px);
+  }
+
+  .site-header__brand {
+    gap: 14px;
+  }
+
+  .site-header__brand img,
+  .site-header__logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .site-header__wordmark {
+    font-size: clamp(1.65rem, 1.4rem + 0.35vw, 1.85rem);
+  }
+
+  .site-nav {
+    gap: clamp(14px, 1.4vw, 28px);
+  }
+
+  .site-nav a {
+    font-size: clamp(0.95rem, 0.88rem + 0.2vw, 1.1rem);
+  }
+
+  .site-header__cta {
+    min-height: 48px;
+    padding: 10px clamp(16px, 1.5vw, 28px);
+    font-size: clamp(0.95rem, 0.9rem + 0.15vw, 1.05rem);
+  }
+
+  .site-header__cta .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Extra Large Desktop (>= 1600px) — Full Figma 1:3640 proportions */
+@media (min-width: 1600px) {
+  .site-header {
     height: 95px;
-    padding: 15px var(--space-page-inline);
+  }
+
+  .site-header__bar {
+    padding: 0 var(--space-page-inline, 60px);
+  }
+
+  .site-header__brand {
+    gap: 16px;
   }
 
   .site-header__brand img,
@@ -393,7 +446,7 @@
   pointer-events: auto;
 }
 
-@media (min-width: 1180px) {
+@media (min-width: 1024px) {
   .mobile-nav {
     display: none;
   }
