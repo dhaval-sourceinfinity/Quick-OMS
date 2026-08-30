@@ -3787,7 +3787,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: min(650px, 135%);
+  /* Outer ellipse is 566px for a 536px dashboard → 105.6% of hub width */
+  width: 105.6%;
   aspect-ratio: 1 / 1;
   pointer-events: none;
   z-index: 0;
@@ -3796,45 +3797,39 @@
 .integrations-ring {
   position: absolute;
   border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* Ring 1 — Outer: largest, subtle dark navy
-   Figma: outermost circle, very large, clearly visible circular border */
+/* Ring 1 — Outer (Figma: Ellipse 8205, 566×566)
+   Figma values: bg #146EF5, opacity 0.04, border rgba(20,110,245,0.10)
+   Converted: opacity 1, bg alpha = fill opacity, border alpha = stroke alpha */
 .integrations-ring--outer {
-  inset: 0;
-  border: 1.5px solid rgba(30, 120, 255, 0.22);
-  background: radial-gradient(
-    circle,
-    rgba(15, 45, 100, 0.18) 0%,
-    rgba(15, 45, 100, 0.08) 50%,
-    transparent 75%
-  );
+  width: 100%;      /* 566/566 = full wrap size */
+  aspect-ratio: 1 / 1;
+  border: 1.116px solid rgba(20, 110, 245, 0.10);
+  background: rgba(20, 110, 245, 0.04);
 }
 
-/* Ring 2 — Middle: darker-blue, clearly visible between outer and inner
-   Figma: intermediate circle, noticeably stronger than outer */
+/* Ring 2 — Middle (Figma: Ellipse 8204, 497×497)
+   Figma values: bg #146EF5, opacity 0.15, border rgba(20,110,245,0.15)
+   497/566 ≈ 87.8% of outer */
 .integrations-ring--middle {
-  inset: 15%;
-  border: 1.5px solid rgba(30, 120, 255, 0.35);
-  background: radial-gradient(
-    circle,
-    rgba(15, 55, 140, 0.22) 0%,
-    rgba(15, 55, 140, 0.10) 45%,
-    transparent 72%
-  );
+  width: 87.8%;     /* 497/566 */
+  aspect-ratio: 1 / 1;
+  border: 1.116px solid rgba(20, 110, 245, 0.15);
+  background: rgba(20, 110, 245, 0.15);
 }
 
-/* Ring 3 — Inner: smallest, strongest blue glow closest to dashboard
-   Figma: inner circle, most prominent border + strongest fill */
+/* Ring 3 — Inner (Figma: Ellipse 8203, 421×421)
+   Figma values: bg #146EF5, opacity 0.20, border rgba(20,110,245,0.20)
+   421/566 ≈ 74.4% of outer */
 .integrations-ring--inner {
-  inset: 30%;
-  border: 1.8px solid rgba(30, 120, 255, 0.50);
-  background: radial-gradient(
-    circle,
-    rgba(20, 80, 220, 0.28) 0%,
-    rgba(20, 80, 220, 0.12) 40%,
-    transparent 68%
-  );
+  width: 74.4%;     /* 421/566 */
+  aspect-ratio: 1 / 1;
+  border: 1.116px solid rgba(20, 110, 245, 0.20);
+  background: rgba(20, 110, 245, 0.42);
 }
 
 /* Bottom Container (Custom Business Software Card) */
@@ -3990,7 +3985,7 @@
   }
 
   .integrations-rings-wrap {
-    width: min(680px, 120%);
+    width: 105.6%;
   }
 }
 
