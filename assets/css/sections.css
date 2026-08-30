@@ -3585,10 +3585,13 @@
 
 /* --------------------------------------------------------------------------
    7. INTEGRATIONS SECTION (Figma 1:3452 / 1:3458 / Frame 2147233310)
+   Rebuilt from scratch — Dynamic SVG connector overlay with responsive grid.
    -------------------------------------------------------------------------- */
+
+/* === Section Container === */
 .integrations-section {
   background: #111827;
-  padding-block: clamp(70px, 7vw, 140px);
+  padding-block: clamp(70px, 7vw, 130px);
   position: relative;
   overflow: hidden;
   color: #ffffff;
@@ -3605,6 +3608,7 @@
   box-sizing: border-box;
 }
 
+/* === Heading === */
 .integrations-heading {
   display: flex;
   flex-direction: column;
@@ -3619,7 +3623,6 @@
   color: #f53614;
   font-family: var(--ref-font-inter);
   font-size: clamp(1rem, 0.9rem + 0.35vw, 1.5rem);
-  /* 24px in Figma */
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -3630,7 +3633,6 @@
   color: #ffffff;
   font-family: var(--ref-font-inter);
   font-size: clamp(1.85rem, 1.3rem + 2.5vw, 4.0625rem);
-  /* 65px in Figma */
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -3641,97 +3643,154 @@
   color: #6d7a8c;
   font-family: var(--ref-font-inter);
   font-size: clamp(1rem, 0.9rem + 0.35vw, 1.5rem);
-  /* 24px in Figma */
   font-weight: 400;
   line-height: 1.4;
   max-width: 1280px;
   margin: 0 auto;
 }
 
-/* ==========================================================================
-   MODE 1 — DESKTOP (>= 1200px)
-   5-Column Architecture:
-   [Left Cards] [Left Connector Lane] [Center Hub Col] [Right Connector Lane] [Right Cards]
-   ========================================================================== */
+/* === Stage Container === */
 .integrations-stage {
   position: relative;
   width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(240px, 356px) minmax(28px, 1fr) minmax(360px, 536px) minmax(28px, 1fr) minmax(240px, 356px);
-  align-items: start;
-  justify-content: space-between;
-  --card-h: 134px;
 }
 
-/* Left & Right Card Columns */
-.integrations-col--left {
-  grid-column: 1;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(20px, 2.5vw, 40px);
-  z-index: 3;
+/* === Dynamic SVG Connector Canvases (Desktop Overlay) ===
+   Two separate SVG layers:
+   - connector-canvas--lines: z-index 2 (behind cards, behind dashboard)
+   - connector-canvas--dots:  z-index 8 (ABOVE cards, above everything)
+   This ensures endpoint circles sit on top of the white card edges.
+
+   Stacking order (low → high):
+     0  – rings-wrap (decorative background)
+     1  – integrations-hub (dashboard image)
+     2  – connector-canvas--lines
+     4  – integrations-grid / cards / bottom card
+     8  – connector-canvas--dots (endpoint circles) */
+.integrations-connector-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  display: block;
 }
 
-.integrations-col--right {
-  grid-column: 5;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(20px, 2.5vw, 40px);
-  z-index: 3;
-  width: 100%;
-}
-
-/* Central Hub Column */
-.integrations-center-col {
-  grid-column: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-self: center;
-  width: 100%;
-  max-width: 536px;
-  position: relative;
+.integrations-connector-canvas--lines {
   z-index: 2;
 }
 
-/* Central Hub Dashboard (Figma 1:3535 / 161:1478) */
-.integrations-hub {
+.integrations-connector-canvas--dots {
+  z-index: 8;
+}
+
+.connector-path {
+  transition: stroke 0.2s ease, stroke-width 0.2s ease;
+}
+
+.connector-path.is-active {
+  stroke: #5d9eff;
+  stroke-width: 3.5px;
+}
+
+.connector-dot {
+  transition: r 0.2s ease, stroke 0.2s ease;
+}
+
+.connector-dot.is-active {
+  r: 9.5px;
+  stroke: #5d9eff;
+}
+
+/* ==========================================================================
+   DESKTOP COMPOSITION (>= 1200px)
+   3-Column Grid: [3 Left Cards] [Central Dashboard Hub] [3 Right Cards]
+   Followed by centered [Custom Business Software] card below
+   ========================================================================== */
+.integrations-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 350px) minmax(360px, 536px) minmax(260px, 350px);
+  column-gap: clamp(32px, 4.5vw, 80px);
+  align-items: center;
+  justify-content: center;
   position: relative;
-  z-index: 3;
+  z-index: 4;
   width: 100%;
-  margin-top: 24px;
+}
+
+/* Left & Right Card Columns */
+.integrations-col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.5vw, 36px);
+  width: 100%;
+  position: relative;
+  z-index: auto;
+}
+
+.integrations-col--left {
+  grid-column: 1;
+}
+
+.integrations-col--right {
+  grid-column: 3;
+}
+
+/* Central Hub Wrapper */
+.integrations-hub-wrap {
+  grid-column: 2;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 536px;
+  margin: 0 auto;
+  z-index: auto;
+}
+
+/* Central Dashboard Card (Figma 1:3535 / 161:1478)
+   NOTE: The integrations-hub.png already contains a built-in bubble/glass
+   border effect baked into the PNG. Do NOT apply border-radius or
+   box-shadow on the img — it clips the native bubble border. */
+.integrations-hub {
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 .integrations-hub__card {
   position: relative;
   width: 100%;
-  border-radius: 16px;
 }
 
 .integrations-hub__img {
   width: 100%;
   height: auto;
-  border-radius: 16px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
-  object-fit: cover;
   display: block;
+  /* No border-radius or box-shadow — the PNG has its own bubble border */
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.35));
 }
 
-/* Central Rings (Figma 1:3532, 1:3533, 1:3534) */
+/* Glowing Concentric Rings behind Dashboard (Figma 1:3532, 1:3533, 1:3534)
+   THREE distinct layers from largest to smallest:
+   1. Outer  — largest, subtle dark border + very faint fill
+   2. Middle — medium, slightly stronger border + subtle blue tint
+   3. Inner  — smallest, strongest border + noticeable blue glow
+   Dashboard image sits above all three. */
 .integrations-rings-wrap {
   position: absolute;
   left: 50%;
-  top: 237px;
+  top: 50%;
   transform: translate(-50%, -50%);
-  width: min(566px, 110%);
+  width: min(650px, 135%);
   aspect-ratio: 1 / 1;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 
 .integrations-ring {
@@ -3739,56 +3798,91 @@
   border-radius: 50%;
 }
 
+/* Ring 1 — Outer: largest, subtle dark navy
+   Figma: outermost circle, very large, clearly visible circular border */
 .integrations-ring--outer {
   inset: 0;
-  border: 1.12px solid rgba(20, 110, 245, 0.2);
-  background: radial-gradient(circle, rgba(20, 110, 245, 0.35) 0%, rgba(20, 110, 245, 0.08) 50%, transparent 70%);
+  border: 1.5px solid rgba(30, 120, 255, 0.22);
+  background: radial-gradient(
+    circle,
+    rgba(15, 45, 100, 0.18) 0%,
+    rgba(15, 45, 100, 0.08) 50%,
+    transparent 75%
+  );
 }
 
+/* Ring 2 — Middle: darker-blue, clearly visible between outer and inner
+   Figma: intermediate circle, noticeably stronger than outer */
 .integrations-ring--middle {
-  inset: 6%;
-  border: 1.12px solid rgba(20, 110, 245, 0.25);
+  inset: 15%;
+  border: 1.5px solid rgba(30, 120, 255, 0.35);
+  background: radial-gradient(
+    circle,
+    rgba(15, 55, 140, 0.22) 0%,
+    rgba(15, 55, 140, 0.10) 45%,
+    transparent 72%
+  );
 }
 
+/* Ring 3 — Inner: smallest, strongest blue glow closest to dashboard
+   Figma: inner circle, most prominent border + strongest fill */
 .integrations-ring--inner {
-  inset: 13%;
-  border: 1.12px solid rgba(20, 110, 245, 0.3);
+  inset: 30%;
+  border: 1.8px solid rgba(30, 120, 255, 0.50);
+  background: radial-gradient(
+    circle,
+    rgba(20, 80, 220, 0.28) 0%,
+    rgba(20, 80, 220, 0.12) 40%,
+    transparent 68%
+  );
 }
 
-/* Integration Node Card */
+/* Bottom Container (Custom Business Software Card) */
+.integrations-bottom {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: clamp(40px, 5vw, 64px);
+  position: relative;
+  z-index: 4;
+}
+
+/* === Integration Node Card === */
 .integration-node {
   width: 100%;
-  min-height: var(--card-h);
+  min-height: 120px;
   background: #ffffff;
   border: 1.12px solid #bbbbbb;
-  border-radius: 11px;
-  box-shadow: 12px 11px 45px 0px rgba(0, 0, 0, 0.05);
-  padding: 23px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 18px 22px;
   display: flex;
-  gap: 20px;
+  gap: 18px;
   align-items: center;
   position: relative;
   box-sizing: border-box;
-  transition: transform var(--motion-fast) var(--easing-standard), box-shadow var(--motion-fast) var(--easing-standard), border-color var(--motion-fast) var(--easing-standard);
+  transition: transform var(--motion-fast) var(--easing-standard),
+    box-shadow var(--motion-fast) var(--easing-standard),
+    border-color var(--motion-fast) var(--easing-standard);
 }
 
 .integration-node:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
   border-color: #146ef5;
 }
 
-/* Bottom Centered Custom Software Card */
+/* Custom Software card — bottom centered */
 .integration-node--custom {
   width: 100%;
   max-width: 497px;
-  z-index: 3;
-  position: relative;
+  z-index: auto;
 }
 
+/* === Icon Container === */
 .integration-node__icon {
-  width: 87px;
-  height: 87px;
+  width: 72px;
+  height: 72px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -3796,40 +3890,21 @@
   flex-shrink: 0;
 }
 
-.integration-node__icon--xero {
-  background: rgba(20, 110, 245, 0.1);
-}
-
-.integration-node__icon--shopify {
-  background: rgba(149, 191, 71, 0.12);
-}
-
-.integration-node__icon--woocommerce {
-  background: rgba(150, 88, 138, 0.12);
-}
-
-.integration-node__icon--courier {
-  background: rgba(20, 110, 245, 0.1);
-}
-
-.integration-node__icon--payments {
-  background: rgba(99, 100, 252, 0.12);
-}
-
-.integration-node__icon--sheets {
-  background: rgba(16, 185, 129, 0.12);
-}
-
-.integration-node__icon--custom {
-  background: rgba(20, 110, 245, 0.1);
-}
+.integration-node__icon--xero { background: rgba(20, 110, 245, 0.1); }
+.integration-node__icon--shopify { background: rgba(149, 191, 71, 0.15); }
+.integration-node__icon--woocommerce { background: rgba(150, 88, 138, 0.15); }
+.integration-node__icon--courier { background: rgba(20, 110, 245, 0.1); }
+.integration-node__icon--payments { background: rgba(99, 100, 252, 0.15); }
+.integration-node__icon--sheets { background: rgba(16, 185, 129, 0.15); }
+.integration-node__icon--custom { background: rgba(20, 110, 245, 0.1); }
 
 .integration-node__icon img {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 44px;
+  max-height: 44px;
   object-fit: contain;
 }
 
+/* === Card Typography === */
 .integration-node__body {
   display: flex;
   flex-direction: column;
@@ -3838,18 +3913,18 @@
 
 .integration-node__title {
   font-family: var(--ref-font-inter);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   color: #111827;
   line-height: 1.25;
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
   overflow-wrap: break-word;
   word-break: break-word;
 }
 
 .integration-node__desc {
   font-family: var(--ref-font-inter);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
   color: #667085;
   line-height: 1.35;
@@ -3859,216 +3934,12 @@
 }
 
 /* ==========================================================================
-   CONNECTION ANCHORS & PINS (HTML + CSS)
-   ========================================================================== */
-.connection-anchor {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 3.35px solid #146ef5;
-  box-sizing: border-box;
-  z-index: 5;
-  pointer-events: none;
-  box-shadow: 0 0 6px rgba(20, 110, 245, 0.4);
-}
-
-.connection-anchor--right {
-  right: -9px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.connection-anchor--left {
-  left: -9px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.connection-anchor--top {
-  top: -9px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.connection-anchor--bottom {
-  bottom: -9px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* ==========================================================================
-   RESPONSIVE CONNECTOR LANES (HTML + CSS)
-   ========================================================================== */
-.integrations-connector-lane {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.integrations-connector-lane--left {
-  grid-column: 2;
-}
-
-.integrations-connector-lane--right {
-  grid-column: 4;
-}
-
-/* Left Connector Branches */
-.integrations-connector-lane--left .connector-branch--mid {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 0;
-  border-top: 2px dashed #146ef5;
-  transform: translateY(-50%);
-}
-
-.integrations-connector-lane--left .connector-branch--top-corner {
-  position: absolute;
-  left: 0;
-  width: 50%;
-  top: calc(var(--card-h) / 2);
-  height: calc(50% - var(--card-h) / 2 - 20px);
-  border-top: 2px dashed #146ef5;
-  border-right: 2px dashed #146ef5;
-  border-top-right-radius: 24px;
-  box-sizing: border-box;
-}
-
-.integrations-connector-lane--left .connector-branch--top-turn {
-  position: absolute;
-  left: calc(50% - 2px);
-  width: 50%;
-  top: calc(50% - 20px);
-  height: 20px;
-  border-bottom: 2px dashed #146ef5;
-  border-left: 2px dashed #146ef5;
-  border-bottom-left-radius: 20px;
-  box-sizing: border-box;
-}
-
-.integrations-connector-lane--left .connector-branch--bot-corner {
-  position: absolute;
-  left: 0;
-  width: 50%;
-  bottom: calc(var(--card-h) / 2);
-  height: calc(50% - var(--card-h) / 2 - 20px);
-  border-bottom: 2px dashed #146ef5;
-  border-right: 2px dashed #146ef5;
-  border-bottom-right-radius: 24px;
-  box-sizing: border-box;
-}
-
-.integrations-connector-lane--left .connector-branch--bot-turn {
-  position: absolute;
-  left: calc(50% - 2px);
-  width: 50%;
-  top: 50%;
-  height: 20px;
-  border-top: 2px dashed #146ef5;
-  border-left: 2px dashed #146ef5;
-  border-top-left-radius: 20px;
-  box-sizing: border-box;
-}
-
-/* Right Connector Branches */
-.integrations-connector-lane--right .connector-branch--mid {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 0;
-  border-top: 2px dashed #146ef5;
-  transform: translateY(-50%);
-}
-
-.integrations-connector-lane--right .connector-branch--top-corner {
-  position: absolute;
-  right: 0;
-  width: 50%;
-  top: calc(var(--card-h) / 2);
-  height: calc(50% - var(--card-h) / 2 - 20px);
-  border-top: 2px dashed #146ef5;
-  border-left: 2px dashed #146ef5;
-  border-top-left-radius: 24px;
-  box-sizing: border-box;
-}
-
-.integrations-connector-lane--right .connector-branch--top-turn {
-  position: absolute;
-  right: calc(50% - 2px);
-  width: 50%;
-  top: calc(50% - 20px);
-  height: 20px;
-  border-bottom: 2px dashed #146ef5;
-  border-right: 2px dashed #146ef5;
-  border-bottom-right-radius: 20px;
-  box-sizing: border-box;
-}
-
-.integrations-connector-lane--right .connector-branch--bot-corner {
-  position: absolute;
-  right: 0;
-  width: 50%;
-  bottom: calc(var(--card-h) / 2);
-  height: calc(50% - var(--card-h) / 2 - 20px);
-  border-bottom: 2px dashed #146ef5;
-  border-left: 2px dashed #146ef5;
-  border-bottom-left-radius: 24px;
-  box-sizing: border-box;
-}
-
-.integrations-connector-lane--right .connector-branch--bot-turn {
-  position: absolute;
-  right: calc(50% - 2px);
-  width: 50%;
-  top: 50%;
-  height: 20px;
-  border-top: 2px dashed #146ef5;
-  border-right: 2px dashed #146ef5;
-  border-top-left-radius: 20px;
-  box-sizing: border-box;
-}
-
-/* Vertical Connector Lanes */
-.integrations-connector-lane--vertical {
-  width: 2px;
-  height: clamp(32px, 4vw, 56px);
-  margin: 0 auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.connector-branch--vertical-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  border-left: 2px dashed #146ef5;
-}
-
-/* On Desktop: Hide second vertical connector lane (only hub-to-cards is shown between hub & custom) */
-@media (min-width: 1200px) {
-  .integrations-connector-lane--cards-to-custom {
-    display: none;
-  }
-}
-
-/* ==========================================================================
-   LARGE DESKTOP / 2560px ENHANCEMENT (>= 1800px)
-   Expands gracefully to avoid empty void on ultra-wide screens
+   ULTRA-WIDE DESKTOP (>= 1800px)
+   Graceful expansion for large monitors
    ========================================================================== */
 @media (min-width: 1800px) {
   .integrations-wrapper {
-    max-width: min(2100px, 90vw);
+    max-width: min(2000px, 92vw);
   }
 
   .integrations-heading {
@@ -4085,51 +3956,86 @@
     max-width: 1400px;
   }
 
-  .integrations-stage {
-    grid-template-columns: minmax(356px, 420px) minmax(36px, 1fr) minmax(536px, 680px) minmax(36px, 1fr) minmax(356px, 420px);
-    --card-h: 150px;
-    gap: 0;
+  .integrations-grid {
+    grid-template-columns: minmax(320px, 400px) minmax(500px, 640px) minmax(320px, 400px);
+    column-gap: 80px;
   }
 
   .integration-node {
-    padding: 28px 30px;
+    padding: 22px 26px;
     border-radius: 14px;
+    min-height: 136px;
   }
 
   .integration-node__icon {
-    width: 96px;
-    height: 96px;
+    width: 82px;
+    height: 82px;
+  }
+
+  .integration-node__icon img {
+    max-width: 50px;
+    max-height: 50px;
   }
 
   .integration-node__title {
-    font-size: 26px;
+    font-size: 22px;
   }
 
   .integration-node__desc {
-    font-size: 20px;
-  }
-
-  .integrations-center-col {
-    max-width: 680px;
+    font-size: 17px;
   }
 
   .integration-node--custom {
-    max-width: 620px;
+    max-width: 580px;
   }
 
   .integrations-rings-wrap {
-    top: 280px;
-    width: min(680px, 110%);
+    width: min(680px, 120%);
   }
 }
 
 /* ==========================================================================
-   MODE 2 — TABLET (768px – 1199px)
-   Intentional 2-Column Card Grid with Center Dashboard on Top
+   SMALL DESKTOP / LAPTOP (1200px – 1439px)
+   Same composition, tighter gaps
+   ========================================================================== */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .integrations-grid {
+    grid-template-columns: minmax(230px, 300px) minmax(340px, 460px) minmax(230px, 300px);
+    column-gap: clamp(20px, 2.8vw, 44px);
+  }
+
+  .integration-node {
+    padding: 16px 18px;
+    min-height: 110px;
+    gap: 14px;
+  }
+
+  .integration-node__icon {
+    width: 62px;
+    height: 62px;
+  }
+
+  .integration-node__icon img {
+    max-width: 36px;
+    max-height: 36px;
+  }
+
+  .integration-node__title {
+    font-size: 18px;
+  }
+
+  .integration-node__desc {
+    font-size: 14px;
+  }
+}
+
+/* ==========================================================================
+   TABLET (768px – 1199px)
+   Dashboard on top, 2-column card grid below, custom card at bottom
    ========================================================================== */
 @media (min-width: 768px) and (max-width: 1199px) {
   .integrations-section {
-    padding-block: clamp(60px, 7vw, 90px);
+    padding-block: clamp(56px, 7vw, 84px);
   }
 
   .integrations-wrapper {
@@ -4154,72 +4060,7 @@
     max-width: 720px;
   }
 
-  .integrations-stage {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(14px, 2vw, 20px);
-    max-width: 840px;
-    margin: 0 auto;
-    --card-h: auto;
-  }
-
-  .integrations-center-col {
-    display: contents;
-  }
-
-  .integrations-hub {
-    grid-column: 1 / -1;
-    order: 1;
-    width: 100%;
-    max-width: clamp(340px, 46vw, 460px);
-    margin: 0 auto;
-    justify-self: center;
-  }
-
-  .integrations-connector-lane--hub-to-cards {
-    grid-column: 1 / -1;
-    order: 2;
-    height: 28px;
-    margin: 4px auto;
-    display: flex;
-  }
-
-  .integrations-col--left {
-    grid-column: 1;
-    order: 3;
-    display: flex;
-    flex-direction: column;
-    gap: clamp(12px, 1.8vw, 18px);
-    width: 100%;
-  }
-
-  .integrations-col--right {
-    grid-column: 2;
-    order: 4;
-    display: flex;
-    flex-direction: column;
-    gap: clamp(12px, 1.8vw, 18px);
-    width: 100%;
-  }
-
-  .integrations-connector-lane--cards-to-custom {
-    grid-column: 1 / -1;
-    order: 5;
-    height: 28px;
-    margin: 4px auto;
-    display: flex;
-  }
-
-  .integration-node--custom {
-    grid-column: 1 / -1;
-    order: 6;
-    width: 100%;
-    max-width: 100%;
-    margin-top: 0;
-  }
-
-  .integrations-connector-lane--left,
-  .integrations-connector-lane--right {
+  .integrations-connector-canvas {
     display: none;
   }
 
@@ -4227,51 +4068,81 @@
     display: none;
   }
 
-  .connection-anchor--left,
-  .connection-anchor--right {
-    display: none;
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 16px;
+    max-width: 840px;
+    margin: 0 auto;
   }
 
-  .connection-anchor--top,
-  .connection-anchor--bottom {
-    display: block;
+  .integrations-hub-wrap {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    order: 1;
+    max-width: clamp(340px, 50vw, 460px);
+    margin: 0 auto 12px;
+  }
+
+  .integrations-col--left {
+    grid-column: 1;
+    grid-row: 2;
+    order: 2;
+    gap: 16px;
+  }
+
+  .integrations-col--right {
+    grid-column: 2;
+    grid-row: 2;
+    order: 3;
+    gap: 16px;
+  }
+
+  .integrations-bottom {
+    max-width: 840px;
+    margin: 16px auto 0;
+  }
+
+  .integration-node--custom {
+    max-width: 100%;
+    width: 100%;
   }
 
   .integration-node {
     width: 100%;
-    max-width: 100%;
-    min-height: 104px;
-    padding: clamp(14px, 1.8vw, 20px);
+    min-height: 100px;
+    padding: 16px 18px;
     gap: 14px;
   }
 
   .integration-node__icon {
-    width: 60px;
-    height: 60px;
+    width: 58px;
+    height: 58px;
   }
 
   .integration-node__icon img {
-    max-width: 34px;
-    max-height: 34px;
+    max-width: 32px;
+    max-height: 32px;
   }
 
   .integration-node__title {
-    font-size: 1.125rem;
-    margin-bottom: 3px;
+    font-size: 18px;
+    margin-bottom: 2px;
   }
 
   .integration-node__desc {
-    font-size: 0.875rem;
+    font-size: 14px;
   }
 }
 
 /* ==========================================================================
-   MODE 3 — MOBILE (<= 767px)
-   Clean Vertical Flow: Heading -> Dashboard -> 6 Cards -> Custom Card
+   MOBILE (<= 767px)
+   Single column stack: Heading -> Dashboard -> 7 Cards
    ========================================================================== */
 @media (max-width: 767px) {
   .integrations-section {
-    padding-block: clamp(48px, 8vw, 70px);
+    padding-block: clamp(44px, 8vw, 64px);
     scroll-margin-top: 90px;
   }
 
@@ -4292,68 +4163,7 @@
     font-size: clamp(0.875rem, 0.825rem + 0.3vw, 1.05rem);
   }
 
-  .integrations-stage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    --card-h: auto;
-  }
-
-  .integrations-center-col {
-    display: contents;
-  }
-
-  .integrations-hub {
-    order: 1;
-    width: 100%;
-    max-width: clamp(280px, 88vw, 380px);
-    margin: 0 auto 4px;
-    justify-self: center;
-  }
-
-  .integrations-connector-lane--hub-to-cards {
-    order: 2;
-    height: 20px;
-    margin: 0 auto;
-    display: flex;
-  }
-
-  .integrations-col--left {
-    order: 3;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .integrations-col--right {
-    order: 4;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .integrations-connector-lane--cards-to-custom {
-    order: 5;
-    height: 20px;
-    margin: 0 auto;
-    display: flex;
-  }
-
-  .integration-node--custom {
-    order: 6;
-    width: 100%;
-    max-width: 100%;
-    margin-top: 0;
-  }
-
-  .integrations-connector-lane--left,
-  .integrations-connector-lane--right {
+  .integrations-connector-canvas {
     display: none;
   }
 
@@ -4361,77 +4171,120 @@
     display: none;
   }
 
-  .connection-anchor--left,
-  .connection-anchor--right {
-    display: none;
+  .integrations-stage {
+    max-width: 480px;
+    margin: 0 auto;
   }
 
-  .connection-anchor--top,
-  .connection-anchor--bottom {
-    display: block;
+  .integrations-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .integrations-hub-wrap {
+    order: 1;
+    width: 100%;
+    max-width: clamp(280px, 88vw, 380px);
+    margin: 0 auto 6px;
+  }
+
+  .integrations-col--left {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .integrations-col--right {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .integrations-bottom {
+    margin-top: 12px;
+    width: 100%;
+  }
+
+  .integration-node--custom {
+    max-width: 100%;
+    width: 100%;
   }
 
   .integration-node {
     width: 100%;
-    max-width: 100%;
     min-height: auto;
-    padding: 14px 14px;
-    gap: 12px;
+    padding: 14px 16px;
+    gap: 14px;
     border-radius: 10px;
   }
 
   .integration-node__icon {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
     border-radius: 8px;
   }
 
   .integration-node__icon img {
-    max-width: 26px;
-    max-height: 26px;
+    max-width: 28px;
+    max-height: 28px;
   }
 
   .integration-node__title {
-    font-size: 1.05rem;
+    font-size: 17px;
     line-height: 1.25;
     margin-bottom: 2px;
   }
 
   .integration-node__desc {
-    font-size: 0.8125rem;
+    font-size: 13.5px;
     line-height: 1.35;
   }
 }
 
-/* Very Small Mobile (<= 375px) */
+/* === Very Small Mobile (<= 375px) === */
 @media (max-width: 375px) {
   .integrations-wrapper {
     padding-inline: 12px;
   }
 
   .integration-node {
-    padding: 12px 10px;
-    gap: 10px;
+    padding: 12px 12px;
+    gap: 12px;
   }
 
   .integration-node__icon {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
 
   .integration-node__icon img {
-    max-width: 22px;
-    max-height: 22px;
+    max-width: 24px;
+    max-height: 24px;
   }
 
   .integration-node__title {
-    font-size: 0.9375rem;
+    font-size: 16px;
   }
 
   .integration-node__desc {
-    font-size: 0.75rem;
+    font-size: 12.5px;
   }
 }
+
+/* === Hover: Reduced motion === */
+@media (prefers-reduced-motion: reduce) {
+  .integration-node:hover {
+    transform: none;
+  }
+}
+
 
 /* --------------------------------------------------------------------------
    8. WHY QUICK OMS SECTION (Figma 1:3555 / Frame 2147232779)

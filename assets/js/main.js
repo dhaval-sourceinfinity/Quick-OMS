@@ -677,6 +677,239 @@
     });
   }
 
+  /* ------------------------------------------------------------------ */
+  /* Integrations connector lines (dynamic SVG overlay for desktop)      */
+  /* ------------------------------------------------------------------ */
+
+  function initIntegrationsConnectors() {
+    var stage = document.querySelector("[data-integrations-stage]");
+    var svgLines = document.querySelector("[data-integrations-svg-lines]");
+    var svgDots = document.querySelector("[data-integrations-svg-dots]");
+    var hub = document.querySelector("[data-integrations-hub]");
+    if (!stage || !svgLines || !svgDots || !hub) return;
+
+    function renderConnectors() {
+      if (window.innerWidth < 1200) {
+        svgLines.innerHTML = "";
+        svgDots.innerHTML = "";
+        return;
+      }
+
+      var stageRect = stage.getBoundingClientRect();
+      var hubRect = hub.getBoundingClientRect();
+
+      var width = stageRect.width;
+      var height = stageRect.height;
+      if (width <= 0 || height <= 0) return;
+
+      // Configure both SVG canvases with same coordinate space
+      [svgLines, svgDots].forEach(function (s) {
+        s.setAttribute("width", width);
+        s.setAttribute("height", height);
+        s.setAttribute("viewBox", "0 0 " + width + " " + height);
+      });
+
+      /* ──────────────────────────────────────────────────────────────
+         HUB CONNECTOR DOT POSITIONS — adjust each independently
+         The integrations-hub.png has a built-in bubble/glass border.
+         Increase the multiplier → dot moves MORE onto the card.
+         Decrease the multiplier → dot moves AWAY from the card.
+         ────────────────────────────────────────────────────────────── */
+
+      // LEFT dot inset:  increase to push dot further RIGHT (onto card)
+      var hubInsetLeft = hubRect.width * 0.045;
+      // RIGHT dot inset: increase to push dot further LEFT (onto card)
+      var hubInsetRight = hubRect.width * 0.075;
+      // BOTTOM dot inset: increase to push dot further UP (onto card)
+      var hubInsetBottom = hubRect.height * 0.060;
+
+      // LEFT hub anchor — where left-side connector lines meet the dashboard
+      var hubLeft = {
+        x: hubRect.left - stageRect.left + hubInsetLeft,
+        y: (hubRect.top + hubRect.bottom) / 2 - stageRect.top
+      };
+      // RIGHT hub anchor — where right-side connector lines meet the dashboard
+      var hubRight = {
+        x: hubRect.right - stageRect.left - hubInsetRight,
+        y: (hubRect.top + hubRect.bottom) / 2 - stageRect.top
+      };
+      // BOTTOM hub anchor — where bottom connector line meets the dashboard
+      var hubBottom = {
+        x: (hubRect.left + hubRect.right) / 2 - stageRect.left,
+        y: hubRect.bottom - stageRect.top - hubInsetBottom
+      };
+
+      var leftCards = stage.querySelectorAll(".integrations-col--left .integration-node");
+      var rightCards = stage.querySelectorAll(".integrations-col--right .integration-node");
+      var customCard = stage.querySelector(".integration-node--custom");
+
+      var strokeColor = "#146ef5";
+      var strokeWidth = "2.5";
+      var dashArray = "4 4";
+      var dotRadius = 7.5;
+      var dotStroke = 3;
+
+      var paths = [];
+      var dots = [];
+
+      function addDot(x, y, name, isEnd) {
+        var cls = "connector-dot" + (isEnd ? " connector-dot--end" : " connector-dot--start");
+        var attr = name ? ' data-connector="' + name + '"' : "";
+        dots.push(
+          '<circle class="' + cls + '"' + attr + ' cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + dotRadius + '" fill="#ffffff" stroke="' + strokeColor + '" stroke-width="' + dotStroke + '" />'
+        );
+      }
+
+      // Left cards — dot centered on the RIGHT edge of each card
+      for (var i = 0; i < leftCards.length; i++) {
+        var card = leftCards[i];
+        var name = card.getAttribute("data-node") || ("left-" + i);
+        var cRect = card.getBoundingClientRect();
+        // Position dot exactly on the right edge of the card
+        var sx = cRect.right - stageRect.left;
+        var sy = (cRect.top + cRect.bottom) / 2 - stageRect.top;
+        var ex = hubLeft.x;
+        var ey = hubLeft.y;
+
+        addDot(sx, sy, name, false);
+
+        if (Math.abs(sy - ey) < 6) {
+          paths.push(
+            '<path class="connector-path" data-connector="' + name + '" d="M ' + sx.toFixed(1) + ' ' + sy.toFixed(1) + ' L ' + ex.toFixed(1) + ' ' + ey.toFixed(1) + '" stroke="' + strokeColor + '" stroke-width="' + strokeWidth + '" stroke-dasharray="' + dashArray + '" fill="none" />'
+          );
+        } else if (sy < ey) {
+          var midX = (sx + ex) / 2;
+          var r = Math.min(22, Math.abs(midX - sx) * 0.8, Math.abs(ey - sy) * 0.4);
+          var d = 'M ' + sx.toFixed(1) + ' ' + sy.toFixed(1) +
+            ' L ' + (midX - r).toFixed(1) + ' ' + sy.toFixed(1) +
+            ' Q ' + midX.toFixed(1) + ' ' + sy.toFixed(1) + ' ' + midX.toFixed(1) + ' ' + (sy + r).toFixed(1) +
+            ' L ' + midX.toFixed(1) + ' ' + (ey - r).toFixed(1) +
+            ' Q ' + midX.toFixed(1) + ' ' + ey.toFixed(1) + ' ' + (midX + r).toFixed(1) + ' ' + ey.toFixed(1) +
+            ' L ' + ex.toFixed(1) + ' ' + ey.toFixed(1);
+          paths.push('<path class="connector-path" data-connector="' + name + '" d="' + d + '" stroke="' + strokeColor + '" stroke-width="' + strokeWidth + '" stroke-dasharray="' + dashArray + '" fill="none" />');
+        } else {
+          var midX = (sx + ex) / 2;
+          var r = Math.min(22, Math.abs(midX - sx) * 0.8, Math.abs(sy - ey) * 0.4);
+          var d = 'M ' + sx.toFixed(1) + ' ' + sy.toFixed(1) +
+            ' L ' + (midX - r).toFixed(1) + ' ' + sy.toFixed(1) +
+            ' Q ' + midX.toFixed(1) + ' ' + sy.toFixed(1) + ' ' + midX.toFixed(1) + ' ' + (sy - r).toFixed(1) +
+            ' L ' + midX.toFixed(1) + ' ' + (ey + r).toFixed(1) +
+            ' Q ' + midX.toFixed(1) + ' ' + ey.toFixed(1) + ' ' + (midX + r).toFixed(1) + ' ' + ey.toFixed(1) +
+            ' L ' + ex.toFixed(1) + ' ' + ey.toFixed(1);
+          paths.push('<path class="connector-path" data-connector="' + name + '" d="' + d + '" stroke="' + strokeColor + '" stroke-width="' + strokeWidth + '" stroke-dasharray="' + dashArray + '" fill="none" />');
+        }
+      }
+
+      addDot(hubLeft.x, hubLeft.y, "hub-left", true);
+
+      // Right cards — dot centered on the LEFT edge of each card
+      for (var j = 0; j < rightCards.length; j++) {
+        var card = rightCards[j];
+        var name = card.getAttribute("data-node") || ("right-" + j);
+        var cRect = card.getBoundingClientRect();
+        // Position dot exactly on the left edge of the card
+        var sx = cRect.left - stageRect.left;
+        var sy = (cRect.top + cRect.bottom) / 2 - stageRect.top;
+        var ex = hubRight.x;
+        var ey = hubRight.y;
+
+        addDot(sx, sy, name, false);
+
+        if (Math.abs(sy - ey) < 6) {
+          paths.push(
+            '<path class="connector-path" data-connector="' + name + '" d="M ' + sx.toFixed(1) + ' ' + sy.toFixed(1) + ' L ' + ex.toFixed(1) + ' ' + ey.toFixed(1) + '" stroke="' + strokeColor + '" stroke-width="' + strokeWidth + '" stroke-dasharray="' + dashArray + '" fill="none" />'
+          );
+        } else if (sy < ey) {
+          var midX = (sx + ex) / 2;
+          var r = Math.min(22, Math.abs(sx - midX) * 0.8, Math.abs(ey - sy) * 0.4);
+          var d = 'M ' + sx.toFixed(1) + ' ' + sy.toFixed(1) +
+            ' L ' + (midX + r).toFixed(1) + ' ' + sy.toFixed(1) +
+            ' Q ' + midX.toFixed(1) + ' ' + sy.toFixed(1) + ' ' + midX.toFixed(1) + ' ' + (sy + r).toFixed(1) +
+            ' L ' + midX.toFixed(1) + ' ' + (ey - r).toFixed(1) +
+            ' Q ' + midX.toFixed(1) + ' ' + ey.toFixed(1) + ' ' + (midX - r).toFixed(1) + ' ' + ey.toFixed(1) +
+            ' L ' + ex.toFixed(1) + ' ' + ey.toFixed(1);
+          paths.push('<path class="connector-path" data-connector="' + name + '" d="' + d + '" stroke="' + strokeColor + '" stroke-width="' + strokeWidth + '" stroke-dasharray="' + dashArray + '" fill="none" />');
+        } else {
+          var midX = (sx + ex) / 2;
+          var r = Math.min(22, Math.abs(sx - midX) * 0.8, Math.abs(ey - sy) * 0.4);
+          var d = 'M ' + sx.toFixed(1) + ' ' + sy.toFixed(1) +
+            ' L ' + (midX + r).toFixed(1) + ' ' + sy.toFixed(1) +
+            ' Q ' + midX.toFixed(1) + ' ' + sy.toFixed(1) + ' ' + midX.toFixed(1) + ' ' + (sy - r).toFixed(1) +
+            ' L ' + midX.toFixed(1) + ' ' + (ey + r).toFixed(1) +
+            ' Q ' + midX.toFixed(1) + ' ' + ey.toFixed(1) + ' ' + (midX - r).toFixed(1) + ' ' + ey.toFixed(1) +
+            ' L ' + ex.toFixed(1) + ' ' + ey.toFixed(1);
+          paths.push('<path class="connector-path" data-connector="' + name + '" d="' + d + '" stroke="' + strokeColor + '" stroke-width="' + strokeWidth + '" stroke-dasharray="' + dashArray + '" fill="none" />');
+        }
+      }
+
+      addDot(hubRight.x, hubRight.y, "hub-right", true);
+
+      // Custom card — dot centered on the TOP edge, vertical alignment
+      if (customCard) {
+        var customRect = customCard.getBoundingClientRect();
+        // Use hubBottom.x for both endpoints to ensure perfect vertical connector
+        var bottomDotX = hubBottom.x;
+        var cy = customRect.top - stageRect.top;
+
+        addDot(bottomDotX, hubBottom.y, "custom", true);
+        addDot(bottomDotX, cy, "custom", false);
+
+        paths.push(
+          '<path class="connector-path" data-connector="custom" d="M ' + bottomDotX.toFixed(1) + ' ' + hubBottom.y.toFixed(1) + ' L ' + bottomDotX.toFixed(1) + ' ' + cy.toFixed(1) + '" stroke="' + strokeColor + '" stroke-width="' + strokeWidth + '" stroke-dasharray="' + dashArray + '" fill="none" />'
+        );
+      }
+
+      // Render paths into lines layer, dots into dots layer
+      svgLines.innerHTML = paths.join("");
+      svgDots.innerHTML = dots.join("");
+    }
+
+    var rafId;
+    function scheduleRender() {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(renderConnectors);
+    }
+
+    window.addEventListener("resize", scheduleRender, { passive: true });
+    window.addEventListener("orientationchange", scheduleRender, { passive: true });
+
+    if (window.ResizeObserver) {
+      var observer = new ResizeObserver(scheduleRender);
+      observer.observe(stage);
+      observer.observe(hub);
+    }
+
+    window.addEventListener("load", scheduleRender);
+    if (document.fonts) {
+      document.fonts.ready.then(scheduleRender);
+    }
+
+    // Hover interactions — apply to both SVG layers
+    stage.addEventListener("mouseover", function (e) {
+      var card = e.target.closest(".integration-node");
+      if (!card) return;
+      var nodeName = card.getAttribute("data-node");
+      if (!nodeName) return;
+      var conns = stage.querySelectorAll('[data-connector="' + nodeName + '"]');
+      for (var k = 0; k < conns.length; k++) {
+        conns[k].classList.add("is-active");
+      }
+    });
+
+    stage.addEventListener("mouseout", function (e) {
+      var card = e.target.closest(".integration-node");
+      if (!card) return;
+      var nodeName = card.getAttribute("data-node");
+      if (!nodeName) return;
+      var conns = stage.querySelectorAll('[data-connector="' + nodeName + '"]');
+      for (var k = 0; k < conns.length; k++) {
+        conns[k].classList.remove("is-active");
+      }
+    });
+
+    scheduleRender();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initMobileNav();
     initTabs();
@@ -686,6 +919,7 @@
     initHorizontalCarousels();
     initNotFoundActions();
     initMissingRouteInterceptor();
+    initIntegrationsConnectors();
   });
 })();
 

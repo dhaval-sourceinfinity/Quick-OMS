@@ -1152,144 +1152,106 @@
             ecommerce, courier, payment and other business systems through optional API integrations.</p>
         </div>
 
-        <div class="integrations-stage">
-          <!-- Left Column Nodes -->
-          <div class="integrations-col integrations-col--left">
-            <!-- Node 1: Xero -->
-            <div class="integration-node" data-node="xero">
-              <span class="connection-anchor connection-anchor--right" aria-hidden="true"></span>
-              <div class="integration-node__icon integration-node__icon--xero">
-                <img src="assets/img/icons/logo-xero.svg" alt="Xero" width="50" height="50" />
+        <div class="integrations-stage" data-integrations-stage>
+          <!-- Dynamic SVG Connector Canvases (Desktop Overlay) -->
+          <!-- Lines layer: behind cards (z-index: 1) -->
+          <svg class="integrations-connector-canvas integrations-connector-canvas--lines" data-integrations-svg-lines aria-hidden="true"></svg>
+          <!-- Dots layer: ABOVE cards (z-index: 10) -->
+          <svg class="integrations-connector-canvas integrations-connector-canvas--dots" data-integrations-svg-dots aria-hidden="true"></svg>
+
+          <div class="integrations-grid">
+            <!-- Left Column: 3 integration cards -->
+            <div class="integrations-col integrations-col--left">
+              <div class="integration-node" data-node="xero">
+                <div class="integration-node__icon integration-node__icon--xero">
+                  <img src="assets/img/icons/logo-xero.svg" alt="Xero" width="50" height="50" loading="lazy" />
+                </div>
+                <div class="integration-node__body">
+                  <h3 class="integration-node__title">Xero</h3>
+                  <p class="integration-node__desc">Accounting sync</p>
+                </div>
               </div>
-              <div class="integration-node__body">
-                <h3 class="integration-node__title">Xero</h3>
-                <p class="integration-node__desc">Accounting sync</p>
+
+              <div class="integration-node" data-node="shopify">
+                <div class="integration-node__icon integration-node__icon--shopify">
+                  <img src="assets/img/icons/logo-shopify.svg" alt="Shopify" width="50" height="50" loading="lazy" />
+                </div>
+                <div class="integration-node__body">
+                  <h3 class="integration-node__title">Shopify</h3>
+                  <p class="integration-node__desc">Ecommerce orders</p>
+                </div>
+              </div>
+
+              <div class="integration-node" data-node="woocommerce">
+                <div class="integration-node__icon integration-node__icon--woocommerce">
+                  <img src="assets/img/icons/logo-woocommerce.svg" alt="WooCommerce" width="50" height="35" loading="lazy" />
+                </div>
+                <div class="integration-node__body">
+                  <h3 class="integration-node__title">WooCommerce</h3>
+                  <p class="integration-node__desc">Store orders</p>
+                </div>
               </div>
             </div>
 
-            <!-- Node 2: Shopify -->
-            <div class="integration-node" data-node="shopify">
-              <span class="connection-anchor connection-anchor--right" aria-hidden="true"></span>
-              <div class="integration-node__icon integration-node__icon--shopify">
-                <img src="assets/img/icons/logo-shopify.svg" alt="Shopify" width="50" height="50" />
+            <!-- Central Hub (Dashboard + Glowing Concentric Rings) -->
+            <div class="integrations-hub-wrap">
+              <div class="integrations-rings-wrap" aria-hidden="true">
+                <div class="integrations-ring integrations-ring--outer"></div>
+                <div class="integrations-ring integrations-ring--middle"></div>
+                <div class="integrations-ring integrations-ring--inner"></div>
               </div>
-              <div class="integration-node__body">
-                <h3 class="integration-node__title">Shopify</h3>
-                <p class="integration-node__desc">Ecommerce orders</p>
+
+              <div class="integrations-hub" data-integrations-hub>
+                <div class="integrations-hub__card">
+                  <img class="integrations-hub__img" src="assets/img/figma/integrations-hub.png"
+                    alt="Quick OMS Central Hub Dashboard" loading="lazy" width="536" height="426" />
+                </div>
               </div>
             </div>
 
-            <!-- Node 3: WooCommerce -->
-            <div class="integration-node" data-node="woocommerce">
-              <span class="connection-anchor connection-anchor--right" aria-hidden="true"></span>
-              <div class="integration-node__icon integration-node__icon--woocommerce">
-                <img src="assets/img/icons/logo-woocommerce.svg" alt="WooCommerce" width="50" height="35" />
+            <!-- Right Column: 3 integration cards -->
+            <div class="integrations-col integrations-col--right">
+              <div class="integration-node" data-node="courier">
+                <div class="integration-node__icon integration-node__icon--courier">
+                  <img src="assets/img/icons/int-truck.svg" alt="Courier Platforms" width="50" height="50" loading="lazy" />
+                </div>
+                <div class="integration-node__body">
+                  <h3 class="integration-node__title">Courier Platforms</h3>
+                  <p class="integration-node__desc">Labels &amp; tracking</p>
+                </div>
               </div>
-              <div class="integration-node__body">
-                <h3 class="integration-node__title">WooCommerce</h3>
-                <p class="integration-node__desc">Store orders</p>
+
+              <div class="integration-node" data-node="payments">
+                <div class="integration-node__icon integration-node__icon--payments">
+                  <img src="assets/img/icons/int-payment.svg" alt="Payment Gateways" width="50" height="50" loading="lazy" />
+                </div>
+                <div class="integration-node__body">
+                  <h3 class="integration-node__title">Payment Gateways</h3>
+                  <p class="integration-node__desc">Payment status</p>
+                </div>
+              </div>
+
+              <div class="integration-node" data-node="sheets">
+                <div class="integration-node__icon integration-node__icon--sheets">
+                  <img src="assets/img/icons/logo-google-sheets.svg" alt="Google Sheets / CSV" width="50" height="50" loading="lazy" />
+                </div>
+                <div class="integration-node__body">
+                  <h3 class="integration-node__title">Google Sheets / CSV</h3>
+                  <p class="integration-node__desc">Import &amp; export</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Left Responsive Connector Lane (HTML + CSS) -->
-          <div class="integrations-connector-lane integrations-connector-lane--left" aria-hidden="true">
-            <div class="connector-branch connector-branch--top-corner"></div>
-            <div class="connector-branch connector-branch--top-turn"></div>
-            <div class="connector-branch connector-branch--mid"></div>
-            <div class="connector-branch connector-branch--bot-corner"></div>
-            <div class="connector-branch connector-branch--bot-turn"></div>
-          </div>
-
-          <!-- Central Column (Rings + Dashboard Hub + Vertical Connector + Custom Card) -->
-          <div class="integrations-center-col">
-            <div class="integrations-rings-wrap" aria-hidden="true">
-              <div class="integrations-ring integrations-ring--outer"></div>
-              <div class="integrations-ring integrations-ring--middle"></div>
-              <div class="integrations-ring integrations-ring--inner"></div>
-            </div>
-
-            <div class="integrations-hub">
-              <span class="connection-anchor connection-anchor--left" aria-hidden="true"></span>
-              <span class="connection-anchor connection-anchor--right" aria-hidden="true"></span>
-              <span class="connection-anchor connection-anchor--bottom" aria-hidden="true"></span>
-              <div class="integrations-hub__card">
-                <img class="integrations-hub__img" src="assets/img/figma/integrations-hub.png"
-                  alt="Quick OMS Central Hub Dashboard" loading="lazy" width="536" height="426" />
-              </div>
-            </div>
-
-            <!-- Vertical Connector Lane (Dashboard to Cards on Tablet/Mobile, Dashboard to Custom on Desktop) -->
-            <div
-              class="integrations-connector-lane integrations-connector-lane--vertical integrations-connector-lane--hub-to-cards"
-              aria-hidden="true">
-              <div class="connector-branch connector-branch--vertical-line"></div>
-            </div>
-
-            <!-- Second Vertical Connector Lane (Cards to Custom Card on Tablet/Mobile) -->
-            <div
-              class="integrations-connector-lane integrations-connector-lane--vertical integrations-connector-lane--cards-to-custom"
-              aria-hidden="true">
-              <div class="connector-branch connector-branch--vertical-line"></div>
-            </div>
-
-            <!-- Node 7: Bottom Centered Custom Software -->
-            <div class="integration-node integration-node--custom">
-              <span class="connection-anchor connection-anchor--top" aria-hidden="true"></span>
+          <!-- Bottom: Custom Business Software Card -->
+          <div class="integrations-bottom">
+            <div class="integration-node integration-node--custom" data-node="custom">
               <div class="integration-node__icon integration-node__icon--custom">
-                <img src="assets/img/icons/int-code.svg" alt="Custom API" width="50" height="50" />
+                <img src="assets/img/icons/int-code.svg" alt="Custom API" width="50" height="50" loading="lazy" />
               </div>
               <div class="integration-node__body">
                 <h3 class="integration-node__title">Custom Business Software</h3>
                 <p class="integration-node__desc">use our API connect any system built for your business.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Responsive Connector Lane (HTML + CSS) -->
-          <div class="integrations-connector-lane integrations-connector-lane--right" aria-hidden="true">
-            <div class="connector-branch connector-branch--top-corner"></div>
-            <div class="connector-branch connector-branch--top-turn"></div>
-            <div class="connector-branch connector-branch--mid"></div>
-            <div class="connector-branch connector-branch--bot-corner"></div>
-            <div class="connector-branch connector-branch--bot-turn"></div>
-          </div>
-
-          <!-- Right Column Nodes -->
-          <div class="integrations-col integrations-col--right">
-            <!-- Node 4: Courier Platforms -->
-            <div class="integration-node" data-node="courier">
-              <span class="connection-anchor connection-anchor--left" aria-hidden="true"></span>
-              <div class="integration-node__icon integration-node__icon--courier">
-                <img src="assets/img/icons/int-truck.svg" alt="Courier Platforms" width="50" height="50" />
-              </div>
-              <div class="integration-node__body">
-                <h3 class="integration-node__title">Courier Platforms</h3>
-                <p class="integration-node__desc">Labels &amp; tracking</p>
-              </div>
-            </div>
-
-            <!-- Node 5: Payment Gateways -->
-            <div class="integration-node" data-node="payments">
-              <span class="connection-anchor connection-anchor--left" aria-hidden="true"></span>
-              <div class="integration-node__icon integration-node__icon--payments">
-                <img src="assets/img/icons/int-payment.svg" alt="Payment Gateways" width="50" height="50" />
-              </div>
-              <div class="integration-node__body">
-                <h3 class="integration-node__title">Payment Gateways</h3>
-                <p class="integration-node__desc">Payment status</p>
-              </div>
-            </div>
-
-            <!-- Node 6: Google Sheets / CSV -->
-            <div class="integration-node" data-node="sheets">
-              <span class="connection-anchor connection-anchor--left" aria-hidden="true"></span>
-              <div class="integration-node__icon integration-node__icon--sheets">
-                <img src="assets/img/icons/logo-google-sheets.svg" alt="Google Sheets / CSV" width="50" height="50" />
-              </div>
-              <div class="integration-node__body">
-                <h3 class="integration-node__title">Google Sheets / CSV</h3>
-                <p class="integration-node__desc">Import &amp; export</p>
               </div>
             </div>
           </div>
