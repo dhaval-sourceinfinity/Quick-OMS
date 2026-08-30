@@ -56,14 +56,6 @@
   }
 }
 
-@media (min-width: 1180px) {
-  .site-header__bar {
-    min-height: 95px;
-    height: 95px;
-    padding: 15px var(--space-page-inline);
-  }
-}
-
 .site-header__brand {
   display: flex;
   align-items: center;
@@ -108,14 +100,6 @@
   }
 }
 
-@media (min-width: 1180px) {
-  .site-header__brand img,
-  .site-header__logo {
-    width: 56px;
-    height: 56px;
-  }
-}
-
 .site-header__wordmark {
   font-family: var(--font-family-brand);
   font-weight: 800;
@@ -126,48 +110,77 @@
   transition: color var(--motion-fast) var(--easing-standard);
 }
 
-@media (min-width: 1180px) {
-  .site-header__wordmark {
-    font-size: 2.375rem; /* Figma 1:3640: 38px Manrope 800 */
-  }
-}
-
 .site-header__wordmark span {
   color: inherit;
 }
 
 .site-header[data-scrolled="true"] .site-header__wordmark {
-  color: #111828; /* Figma 1:3605: #111828 */
+  color: #111828;
 }
 
 .site-header[data-scrolled="true"] .site-header__wordmark span {
-  color: #146ef5; /* Figma play mode snapshot: 'OMS' is brand blue on white header */
+  color: #146ef5;
 }
 
 .site-nav {
   display: none;
 }
 
+.site-header__cta {
+  display: none;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-touch-min);
+  height: var(--size-touch-min);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-inverse);
+  flex-shrink: 0;
+  transition: color var(--motion-fast) var(--easing-standard);
+}
+
+.site-header[data-scrolled="true"] .nav-toggle {
+  color: #111828;
+}
+
 @media (min-width: 1180px) {
+  .site-header__bar {
+    min-height: 80px;
+    padding: 12px var(--space-page-inline);
+  }
+
+  .site-header__brand img,
+  .site-header__logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .site-header__wordmark {
+    font-size: 1.85rem;
+  }
+
   .site-nav {
     display: flex;
     align-items: center;
-    gap: 40px; /* Figma 1:3640: 40px */
+    gap: clamp(14px, 1.8vw, 32px);
   }
 
   .site-nav a {
     color: #ffffff;
     font-family: var(--font-family-primary);
-    font-size: 1.25rem; /* Figma 1:3640: 20px */
+    font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.15rem);
     font-weight: 500;
-    line-height: 1.2; /* 24px */
+    line-height: 1.2;
     text-decoration: none;
     transition: color var(--motion-fast) var(--easing-standard),
       opacity var(--motion-fast) var(--easing-standard);
   }
 
   .site-nav a[aria-current="page"] {
-    color: #f53614; /* Figma 1:3640 active accent */
+    color: #f53614;
     font-weight: 500;
   }
 
@@ -183,7 +196,7 @@
 
   /* Scrolled nav item colors per Figma 1:3605 */
   .site-header[data-scrolled="true"] .site-nav a {
-    color: #111827; /* Figma 1:3605: #111827 */
+    color: #111827;
     opacity: 1;
   }
 
@@ -200,32 +213,25 @@
     color: #f53614;
     opacity: 1;
   }
-}
 
-.site-header__cta {
-  display: none;
-}
-
-@media (min-width: 1180px) {
   .site-header__cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    min-height: 65px; /* Figma 1:3640: 65px */
-    padding: 19px 42px; /* Figma 1:3640: 19px 42px */
+    gap: 8px;
+    min-height: 50px;
+    padding: 12px 24px;
     border-radius: 10px;
     background: linear-gradient(157deg, #0057d2 0%, #5d9eff 50%, #0058d4 100%);
     color: #ffffff !important;
     font-family: var(--font-family-primary);
-    font-size: 1.375rem; /* Figma 1:3640: 22px */
+    font-size: 1.05rem;
     font-weight: 600;
-    line-height: 1.23; /* 27px */
+    line-height: 1.23;
     border: 1.5px solid transparent;
     box-shadow: 0 4px 16px rgba(0, 87, 210, 0.3);
     text-decoration: none;
     white-space: nowrap;
-    /* Gentle spring easing matching Industry cards (1.25s) */
     transition: transform 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
       box-shadow 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
       background 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
@@ -252,11 +258,11 @@
   }
 
   .site-header__cta .icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 
-  /* Scrolled CTA — Default: blue gradient (matching main CTA). Hover: turns white with blue border */
+  /* Scrolled CTA */
   .site-header[data-scrolled="true"] .site-header__cta {
     background: linear-gradient(157deg, #0057d2 0%, #5d9eff 50%, #0058d4 100%);
     color: #ffffff !important;
@@ -271,27 +277,47 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 87, 210, 0.25);
   }
-}
 
-.nav-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--size-touch-min);
-  height: var(--size-touch-min);
-  border-radius: var(--radius-sm);
-  color: var(--color-text-inverse);
-  flex-shrink: 0;
-  transition: color var(--motion-fast) var(--easing-standard);
-}
-
-.site-header[data-scrolled="true"] .nav-toggle {
-  color: #111828;
-}
-
-@media (min-width: 1180px) {
   .nav-toggle {
     display: none;
+  }
+}
+
+/* Large Desktop (>= 1380px) — Full Figma 1:3640 proportions */
+@media (min-width: 1380px) {
+  .site-header__bar {
+    min-height: 95px;
+    height: 95px;
+    padding: 15px var(--space-page-inline);
+  }
+
+  .site-header__brand img,
+  .site-header__logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .site-header__wordmark {
+    font-size: 2.375rem; /* Figma 1:3640: 38px */
+  }
+
+  .site-nav {
+    gap: 40px; /* Figma 1:3640: 40px */
+  }
+
+  .site-nav a {
+    font-size: 1.25rem; /* Figma 1:3640: 20px */
+  }
+
+  .site-header__cta {
+    min-height: 65px; /* Figma 1:3640: 65px */
+    padding: 19px 42px; /* Figma 1:3640: 19px 42px */
+    font-size: 1.375rem; /* Figma 1:3640: 22px */
+  }
+
+  .site-header__cta .icon {
+    width: 24px;
+    height: 24px;
   }
 }
 
