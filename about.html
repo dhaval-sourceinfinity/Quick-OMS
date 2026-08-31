@@ -2,13 +2,519 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=404.html?from=about.html" />
-  <title>Page Not Found — Quick OMS</title>
-  <script>
-    window.location.replace("404.html?from=about.html" + (window.location.hash || ""));
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Quick OMS</title>
+  <meta name="description" content="Quick OMS was created by Source Infinity to help small and growing businesses replace manual order tracking with a clear, organised and scalable order management system." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/logos/quickoms-mark.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/primitives.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/sections.css" />
 </head>
 <body>
-  <p>Redirecting to <a href="404.html?from=about.html">Quick OMS Fallback Page</a>...</p>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img class="site-header__logo site-header__logo--light" src="assets/img/logos/quickoms-mark.svg" alt="" width="56" height="56" />
+        <img class="site-header__logo site-header__logo--dark" src="assets/img/logos/quickoms-mark-blue.svg" alt="" width="56" height="56" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="lite.html">Lite</a>
+        <a href="features.html">Features</a>
+        <a href="industries.html">Industries</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="compare.html">Compare</a>
+      </nav>
+
+      <a class="btn btn--primary site-header__cta" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="nav-toggle__icon"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-nav" class="mobile-nav" data-nav-panel data-open="false">
+    <div class="mobile-nav__header">
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img class="site-header__logo" src="assets/img/logos/quickoms-mark.svg" alt="" width="44" height="44" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
+      <button type="button" class="mobile-nav__close" data-nav-close aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="mobile-nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="lite.html">Lite</a>
+      <a href="features.html">Features</a>
+      <a href="industries.html">Industries</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="compare.html">Compare</a>
+    </nav>
+    <div class="mobile-nav__cta">
+      <a class="btn btn--primary" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ============================== 1. PAGE HERO ============================== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="hero__copy">
+          <span class="badge badge--glass">About Quick OMS</span>
+          <h1 class="hero__title">Built to Make Order Management Simple</h1>
+          <p class="hero__subtitle">Quick OMS was created to help small and growing businesses replace manual order tracking with a clear, organised and scalable system.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 2. OUR MISSION ============================== -->
+    <section class="section mission-section surface-canvas" id="our-mission">
+      <div class="mission-wrapper">
+        <div class="mission-split">
+          <div class="mission-copy">
+            <span class="mission-copy__eyebrow">Our mission</span>
+            <h2 class="mission-copy__title">Helping Businesses Move Beyond Manual Operations</h2>
+            <p class="mission-copy__desc">Many businesses still manage daily orders through spreadsheets, WhatsApp, email and disconnected tools. Quick OMS is designed to make this easier by bringing orders, inventory, customers, invoices and dispatch into one simple platform.</p>
+            <a class="btn why-choose__btn" href="features.html">
+              <span>Explore Features</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="mission-panel">
+            <h3 class="mission-panel__title">Why We Built Quick OMS</h3>
+            <ul class="mission-list">
+              <li class="mission-item">
+                <span class="mission-item__icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.6693 8L12.0026 22.6667L5.33594 16" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="mission-item__text">Small businesses need affordable order management without full ERP complexity.</span>
+              </li>
+              <li class="mission-item">
+                <span class="mission-item__icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.6693 8L12.0026 22.6667L5.33594 16" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="mission-item__text">Growing businesses need better visibility over orders, stock and invoices.</span>
+              </li>
+              <li class="mission-item">
+                <span class="mission-item__icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.6693 8L12.0026 22.6667L5.33594 16" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="mission-item__text">Sales, admin and warehouse teams need one shared workflow.</span>
+              </li>
+              <li class="mission-item">
+                <span class="mission-item__icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.6693 8L12.0026 22.6667L5.33594 16" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="mission-item__text">Business owners need clear reports and fewer manual mistakes.</span>
+              </li>
+              <li class="mission-item">
+                <span class="mission-item__icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.6693 8L12.0026 22.6667L5.33594 16" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="mission-item__text">Companies need a system that can start simple and scale into Premium or Enterprise.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 3. WHY QUICK OMS ============================== -->
+    <section class="section why-choose-section surface-canvas" id="why-quick-oms">
+      <div class="why-choose-wrapper">
+        <div class="why-choose">
+          <div class="why-choose__copy">
+            <span class="why-choose__eyebrow">WHY QUICK OMS</span>
+            <h2 class="why-choose__title">More Structure Than Excel. Less Complexity Than a Full ERP.</h2>
+            <p class="why-choose__desc">Quick OMS is designed for businesses that need a focused order management system
+              without heavy ERP complexity or ecommerce-only limitations.</p>
+            <a class="btn why-choose__btn" href="compare.html">
+              <span>See Full Comparison</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="why-choose__panel">
+            <!-- Circuit Diagram -->
+            <svg class="why-choose__circuit" viewBox="0 0 731 628" fill="none" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <line x1="52" y1="134" x2="52" y2="491" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3.5 3.5" />
+              <line x1="52" y1="129" x2="95" y2="129" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3.5 3.5" />
+              <line x1="52" y1="315" x2="95" y2="315" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3.5 3.5" />
+              <line x1="52" y1="491" x2="95" y2="491" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3.5 3.5" />
+              <circle cx="52" cy="129" r="8" fill="#FFFFFF" stroke="#146EF5" stroke-width="3" />
+              <circle cx="52" cy="315" r="8" fill="#FFFFFF" stroke="#146EF5" stroke-width="3" />
+              <circle cx="52" cy="491" r="8" fill="#FFFFFF" stroke="#146EF5" stroke-width="3" />
+            </svg>
+
+            <!-- Card 1: ERP Complexity -->
+            <div class="why-choose__card">
+              <div class="why-choose__icon">
+                <img src="assets/img/figma/why-erp.svg" alt="" width="87" height="87" />
+              </div>
+              <div class="why-choose__card-body">
+                <h3 class="why-choose__item-title">Against ERP complexity</h3>
+                <p class="why-choose__item-desc">Automate daily tasks and streamline workflows to save valuable time.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 2: Ecommerce-only -->
+            <div class="why-choose__card">
+              <div class="why-choose__icon">
+                <img src="assets/img/figma/why-ecommerce.svg" alt="" width="87" height="87" />
+              </div>
+              <div class="why-choose__card-body">
+                <h3 class="why-choose__item-title">Against ecommerce-only systems</h3>
+                <p class="why-choose__item-desc">Optimize processes and manage operations faster with fewer efforts.</p>
+              </div>
+            </div>
+
+            <!-- Card 3: Advanced inventory tools -->
+            <div class="why-choose__card">
+              <div class="why-choose__icon">
+                <img src="assets/img/figma/why-inventory.svg" alt="" width="87" height="87" />
+              </div>
+              <div class="why-choose__card-body">
+                <h3 class="why-choose__item-title">Against advanced inventory tools</h3>
+                <p class="why-choose__item-desc">Start with simple order-first workflows and add integrations or
+                  advanced features as you grow.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 4. PRICING ============================== -->
+    <section class="section pricing-section surface-canvas" id="pricing">
+      <div class="pricing-wrapper">
+        <div class="pricing-heading">
+          <span class="pricing-heading__eyebrow">Pricing</span>
+          <h2 class="pricing-heading__title">Simple Pricing for growing businesses</h2>
+          <p class="pricing-heading__desc">Start with Lite, grow into Premium or request Enterprise for custom
+            workflows.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Card 1: Quick OMS Lite -->
+          <article class="plan-card">
+            <div class="plan-card__head">
+              <div class="plan-card__info">
+                <h3 class="plan-card__name">Quick OMS Lite</h3>
+                <p class="plan-card__summary">Small businesses starting with digital order management</p>
+              </div>
+              <div class="plan-card__action-block">
+                <div class="plan-card__price-row">
+                  <span class="plan-card__price">$99</span>
+                  <span class="plan-card__period">/month</span>
+                </div>
+                <a class="btn plan-card__btn" href="lite.html">
+                  <span>Start Lite Plan</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="plan-card__body">
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Up to 3 users</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Simple order management</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Product catalogue</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Basic inventory tracking</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Customer management</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Invoice / order PDF</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Quick OMS Premium -->
+          <article class="plan-card plan-card--emphasis">
+            <div class="plan-card__head">
+              <div class="plan-card__info">
+                <h3 class="plan-card__name">Quick OMS Premium</h3>
+                <p class="plan-card__summary">Small businesses starting with digital order management</p>
+              </div>
+              <div class="plan-card__action-block">
+                <div class="plan-card__price-row">
+                  <span class="plan-card__price">$399</span>
+                  <span class="plan-card__period">/month</span>
+                </div>
+                <a class="btn plan-card__btn" href="contact.html">
+                  <span>Choose Premium Plan</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="plan-card__body">
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Up to 10 users</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Up to 3,000 invoices/month</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Full order management</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Inventory tracking</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Customer management</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Sales user access</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Quick OMS Enterprise -->
+          <article class="plan-card">
+            <div class="plan-card__head">
+              <div class="plan-card__info">
+                <h3 class="plan-card__name">Quick OMS Enterprise</h3>
+                <p class="plan-card__summary">Companies requiring custom workflow, integrations and higher usage</p>
+              </div>
+              <div class="plan-card__action-block">
+                <div class="plan-card__price-row">
+                  <span class="plan-card__price">Custom</span>
+                </div>
+                <a class="btn plan-card__btn" href="contact.html">
+                  <span>Contact Sales</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="plan-card__body">
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Custom users</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Custom invoice volume</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Custom workflows</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Multi-branch operations</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>API integrations (quoted separately)</span>
+              </div>
+              <div class="plan-card__feature">
+                <img class="plan-card__check" src="assets/img/figma/pricing-check.svg" alt="" width="16" height="16" />
+                <span>Tailored onboarding</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 5. CTA SECTION ============================== -->
+    <section class="cta-band-section" id="cta-band">
+      <div class="cta-band-wrapper">
+        <div class="cta-band">
+          <div class="cta-band__glow cta-band__glow--top" aria-hidden="true"></div>
+          <div class="cta-band__glow cta-band__glow--bottom" aria-hidden="true"></div>
+
+          <div class="cta-band__content">
+            <h2 class="cta-band__title">Need Quick OMS Connected to Your Systems?</h2>
+            <p class="cta-band__desc">Tell us which platforms you use and we will scope the integration, timeline and cost.</p>
+            <div class="cta-band__actions">
+              <a class="btn cta-band__btn cta-band__btn--solid" href="contact.html">
+                <span>Book a Demo</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                </svg>
+              </a>
+              <a class="btn cta-band__btn cta-band__btn--outline" href="pricing.html">
+                <span>View Plan &amp; Pricing</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="site-footer__glow site-footer__glow--left" aria-hidden="true"></div>
+    <div class="site-footer__glow site-footer__glow--right" aria-hidden="true"></div>
+
+    <div class="site-footer__wrapper">
+      <div class="site-footer__grid">
+        <!-- Column 1: Brand & Contact Info -->
+        <div class="site-footer__brand-col">
+          <a href="index.html" class="site-footer__logo" aria-label="Quick OMS Home">
+            <img src="assets/img/figma/footer-logo-icon.svg" alt="" width="55" height="55" />
+            <span class="site-footer__logo-text">QuickOMS</span>
+          </a>
+          <div class="site-footer__contact-list">
+            <a href="mailto:info@sourceinfinity.co.nz" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-email.svg" alt="" width="24" height="24" />
+              <span>info@sourceinfinity.co.nz</span>
+            </a>
+            <a href="https://sourceinfinity.co.nz" target="_blank" rel="noopener" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-globe.svg" alt="" width="24" height="24" />
+              <span>sourceinfinity.co.nz</span>
+            </a>
+            <div class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-location.svg" alt="" width="24" height="24" />
+              <span>Auckland, New Zealand</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Product -->
+        <nav class="footer-nav-group" aria-label="Product">
+          <h3 class="footer-nav-group__title">Product</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="lite.html">Quick OMS Lite</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="contact.html">Book Demo</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 3: Solutions -->
+        <nav class="footer-nav-group" aria-label="Solutions">
+          <h3 class="footer-nav-group__title">Solutions</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="industries.html#wholesalers">Wholesalers</a></li>
+            <li><a href="industries.html#distributors">Distributors</a></li>
+            <li><a href="industries.html#fmcg-suppliers">FMCG Suppliers</a></li>
+            <li><a href="industries.html#importers">Importers</a></li>
+            <li><a href="industries.html#retailers">Retailers</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 4: Compare -->
+        <nav class="footer-nav-group" aria-label="Compare">
+          <h3 class="footer-nav-group__title">Compare</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="compare.html#odoo">Odoo Alternative</a></li>
+            <li><a href="compare.html#shopify">Shopify Order Management</a></li>
+            <li><a href="compare.html#unleashed">Unleashed Comparison</a></li>
+            <li><a href="compare.html#excel">Excel Alternative</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 5: Company -->
+        <nav class="footer-nav-group" aria-label="Company">
+          <h3 class="footer-nav-group__title">Company</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="about.html" aria-current="page">About Source Infinity</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Oversized Decorative Brand Wordmark -->
+      <div class="site-footer__watermark" aria-hidden="true">QUICKOMS</div>
+
+      <div class="site-footer__divider"></div>
+
+      <div class="site-footer__legal">
+        <span class="site-footer__copyright">© 2026 Quick OMS by Source Infinity. All rights reserved.</span>
+        <span class="site-footer__tagline">Order Management Simplified.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
