@@ -235,15 +235,16 @@
     font-size: clamp(0.875rem, 0.82rem + 0.15vw, 1.0625rem);
     font-weight: 600;
     line-height: 1.23;
-    border: none;
+    border: 1px solid transparent;
     box-shadow: 0 4px 16px rgba(0, 87, 210, 0.3);
     text-decoration: none;
     white-space: nowrap;
     flex-shrink: 0;
-    transition: transform 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
-      box-shadow 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
-      background 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
-      color 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998);
+    transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1),
+      box-shadow 0.75s cubic-bezier(0.25, 1, 0.5, 1),
+      background 0.75s cubic-bezier(0.25, 1, 0.5, 1),
+      border-color 0.75s cubic-bezier(0.25, 1, 0.5, 1),
+      color 0.75s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   .site-header__cta:hover {
@@ -251,7 +252,7 @@
     color: #ffffff !important;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 87, 210, 0.45);
-    border: none;
+    border-color: transparent;
   }
 
   .site-header__cta:active {
@@ -267,22 +268,33 @@
   .site-header__cta .icon {
     width: clamp(16px, 1.4vw, 20px);
     height: clamp(16px, 1.4vw, 20px);
+    transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
-  /* Scrolled CTA */
+  .site-header__cta:hover .icon {
+    transform: translateX(2px);
+  }
+
+  /* Scrolled CTA (White Header) - Smoothly transitions to outline style matching Figma */
   .site-header[data-scrolled="true"] .site-header__cta {
     background: linear-gradient(157deg, #0057d2 0%, #5d9eff 50%, #0058d4 100%);
     color: #ffffff !important;
-    border: none;
+    border: 1px solid transparent;
     box-shadow: 0 4px 16px rgba(0, 87, 210, 0.3);
   }
 
   .site-header[data-scrolled="true"] .site-header__cta:hover {
-    background: linear-gradient(157deg, #0048ad 0%, #4a8bee 50%, #0048ad 100%);
-    color: #ffffff !important;
-    border: none;
+    background: #ffffff !important;
+    color: #0057d2 !important;
+    border: 1px solid #0057d2;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 87, 210, 0.45);
+    box-shadow: 0 8px 24px rgba(0, 87, 210, 0.18);
+  }
+
+  .site-header[data-scrolled="true"] .site-header__cta:active {
+    background: #f4f8fd !important;
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(0, 87, 210, 0.12);
   }
 
   .nav-toggle {
