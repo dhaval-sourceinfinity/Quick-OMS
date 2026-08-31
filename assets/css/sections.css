@@ -2738,7 +2738,21 @@
 }
 
 .core-feature-visual--invoices {
+  /* Fallback fill visible only while the image loads; object-fit: cover
+     below keeps the artwork covering the panel at every breakpoint so
+     this color never has to seam-match the artwork's own gradient. */
   background: #f47863;
+}
+
+/* This artwork's own aspect ratio (1318x1120) is narrower than the shared
+   panel at tablet/mobile breakpoints. "contain" would letterbox it and
+   expose the flat panel background next to the artwork's own gradient,
+   producing a visible seam. "cover" keeps the artwork filling the panel;
+   the invoice card itself sits well within the artwork's margins (~22%
+   top/bottom) so this never crops the visible UI, only the decorative
+   coral padding around it. */
+.core-feature-visual--invoices .core-feature-visual__img {
+  object-fit: cover;
 }
 
 .core-feature-visual__img {
@@ -6263,6 +6277,10 @@
   letter-spacing: -0.02em;
 }
 
+.site-footer__logo-text span {
+  color: var(--ref-color-blue-500, #146ef5);
+}
+
 .site-footer__contact-list {
   display: flex;
   flex-direction: column;
@@ -9495,6 +9513,11 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  transition: transform 250ms ease-out;
+}
+
+.feature-detail-card__visual:hover .feature-detail-card__visual-img {
+  transform: scale(1.02);
 }
 
 /* Optional Add-ons / Reports & Data — 4-tile icon grid, shared by both
@@ -9527,6 +9550,15 @@
   border-radius: 11px;
   padding: 30px;
   box-shadow: 11px 11px 21.7px rgba(0, 0, 0, 0.1);
+  transition: transform var(--motion-normal) var(--easing-standard),
+    box-shadow var(--motion-normal) var(--easing-standard),
+    border-color var(--motion-normal) var(--easing-standard);
+}
+
+.features-tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--ref-color-blue-500);
+  box-shadow: var(--shadow-floating);
 }
 
 .features-tile__icon {
@@ -9572,5 +9604,13 @@
   .features-tile__icon img {
     width: 48px;
     height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-detail-card__visual-img,
+  .features-tile {
+    transition: none !important;
+    transform: none !important;
   }
 }

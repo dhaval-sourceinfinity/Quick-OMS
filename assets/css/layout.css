@@ -59,7 +59,7 @@
 .site-header__brand {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--ref-space-3, 12px);
   flex-shrink: 0;
   text-decoration: none;
 }
@@ -72,8 +72,8 @@
 
 .site-header__brand img,
 .site-header__logo {
-  width: 44px;
-  height: 44px;
+  width: 50px;
+  height: 50px;
 }
 
 .site-header__brand .site-header__logo--light {
@@ -95,8 +95,8 @@
 @media (max-width: 480px) {
   .site-header__brand img,
   .site-header__logo {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -111,15 +111,11 @@
 }
 
 .site-header__wordmark span {
-  color: inherit;
+  color: var(--ref-color-blue-500, #146ef5);
 }
 
 .site-header[data-scrolled="true"] .site-header__wordmark {
   color: #111828;
-}
-
-.site-header[data-scrolled="true"] .site-header__wordmark span {
-  color: #146ef5;
 }
 
 .site-nav {
@@ -155,13 +151,13 @@
   }
 
   .site-header__brand {
-    gap: clamp(10px, 1vw, 14px);
+    gap: clamp(10px, 1vw, 12px);
   }
 
   .site-header__brand img,
   .site-header__logo {
-    width: clamp(38px, 3.2vw, 44px);
-    height: clamp(38px, 3.2vw, 44px);
+    width: clamp(43px, 3.6vw, 50px);
+    height: clamp(43px, 3.6vw, 50px);
   }
 
   .site-header__wordmark {
@@ -309,13 +305,13 @@
   }
 
   .site-header__brand {
-    gap: 14px;
+    gap: var(--ref-space-3, 12px);
   }
 
   .site-header__brand img,
   .site-header__logo {
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
   }
 
   .site-header__wordmark {
@@ -353,13 +349,13 @@
   }
 
   .site-header__brand {
-    gap: 16px;
+    gap: var(--ref-space-3, 12px);
   }
 
   .site-header__brand img,
   .site-header__logo {
-    width: 56px;
-    height: 56px;
+    width: 63px;
+    height: 63px;
   }
 
   .site-header__wordmark {
