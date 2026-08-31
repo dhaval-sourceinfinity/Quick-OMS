@@ -641,7 +641,6 @@
     var missingRoutes = [
       "lite.html",
       "features.html",
-      "integrations.html",
       "about.html"
     ];
 
@@ -897,6 +896,52 @@
     scheduleRender();
   }
 
+  /* ------------------------------------------------------------------ */
+  /* Integrations page — category filter (button-group filter, NOT ARIA */
+  /* tabs: toggles visibility of cards in one shared grid via            */
+  /* data-category matching; see integrations.html)                      */
+  /* ------------------------------------------------------------------ */
+
+  function initIntegrationFilter() {
+    var bar = document.querySelector("[data-integration-filter]");
+    var grid = document.querySelector("[data-integration-grid]");
+    if (!bar || !grid) return;
+
+    var buttons = Array.prototype.slice.call(
+      bar.querySelectorAll(".integration-filter-btn")
+    );
+    var cards = Array.prototype.slice.call(
+      grid.querySelectorAll(".integration-card")
+    );
+    var status = document.querySelector("[data-integration-filter-status]");
+    if (!buttons.length || !cards.length) return;
+
+    function applyFilter(category) {
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var matches = category === "all" || card.getAttribute("data-category") === category;
+        card.hidden = !matches;
+        if (matches) visibleCount++;
+      });
+      if (status) {
+        status.textContent = "Showing " + visibleCount + " of " + cards.length + " integrations.";
+      }
+    }
+
+    function selectButton(button) {
+      buttons.forEach(function (btn) {
+        btn.setAttribute("aria-pressed", btn === button ? "true" : "false");
+      });
+      applyFilter(button.getAttribute("data-filter") || "all");
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        selectButton(button);
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initMobileNav();
     initTabs();
@@ -907,6 +952,7 @@
     initNotFoundActions();
     initMissingRouteInterceptor();
     initIntegrationsConnectors();
+    initIntegrationFilter();
   });
 })();
 

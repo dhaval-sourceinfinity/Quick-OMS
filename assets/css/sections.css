@@ -8691,3 +8691,301 @@
     transform: none !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   25. INTEGRATIONS PAGE — CATALOG SECTION, FILTER BAR & CARDS
+   -------------------------------------------------------------------------- */
+
+/* === Category filter bar ===
+   Not an ARIA tabs pattern: role="group" of toggle buttons (aria-pressed)
+   that filter the single shared card grid below via data-category matching
+   (see main.js initIntegrationFilter). Visual language mirrors
+   .core-tabs-nav / .core-tab-btn but stays scoped here since this bar wraps
+   to multiple rows at narrow widths (7 filters) and uses aria-pressed
+   rather than aria-selected. */
+.integration-filter-wrap {
+  width: 100%;
+  border-bottom: 2px solid var(--ref-color-gray-250);
+  margin: 0 auto clamp(36px, 4.5vw, 56px);
+}
+
+.integration-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 8px;
+  column-gap: clamp(20px, 4vw, 70px);
+  width: 100%;
+  padding-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.integration-filter-btn {
+  font-family: var(--ref-font-inter);
+  font-size: clamp(1.125rem, 0.95rem + 0.5vw, 1.625rem);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 16px 4px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--motion-normal) var(--easing-standard),
+    border-color var(--motion-normal) var(--easing-standard);
+}
+
+.integration-filter-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.integration-filter-btn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.integration-filter-btn[aria-pressed="true"] {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  border-bottom-color: var(--ref-color-blue-500);
+}
+
+/* === Card grid ===
+   1 col mobile -> 2 col at 640px -> 3 col at 1024px+, preserved through
+   1440+ per AGENTS.md 3B (no accidental tablet collapse at the 1024
+   desktop threshold). */
+.integration-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-card-gap);
+}
+
+@media (min-width: 640px) {
+  .integration-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .integration-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(24px, 2vw, 32px);
+  }
+}
+
+/* === Card component ===
+   Named .integration-card (not .integration-node*, which this file already
+   owns for the home page's connected diagram) to avoid collision. Border/
+   radius/shadow/icon-tint language matches .integration-node for the same
+   visual family, using --ref-color-gray-400 (#999999, exact Figma match). */
+.integration-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--ref-color-gray-400);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-card-padding);
+  transition: transform var(--motion-fast) var(--easing-standard),
+    box-shadow var(--motion-fast) var(--easing-standard),
+    border-color var(--motion-fast) var(--easing-standard);
+}
+
+.integration-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-floating);
+  border-color: var(--ref-color-blue-500);
+}
+
+.integration-card__icon {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-sm);
+  background: var(--color-terms-item-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--ref-space-5);
+  flex-shrink: 0;
+}
+
+.integration-card__icon img {
+  max-width: 64px;
+  max-height: 64px;
+  object-fit: contain;
+}
+
+.integration-card__title {
+  font-family: var(--ref-font-inter);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 2rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.25;
+  margin: 0 0 4px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.integration-card__category {
+  font-family: var(--ref-font-inter);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--ref-color-gray-400);
+  margin: 0 0 var(--ref-space-4);
+}
+
+.integration-card__desc {
+  font-family: var(--ref-font-inter);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--ref-color-gray-700);
+  line-height: 1.4;
+  margin: 0 0 var(--ref-space-5);
+}
+
+.integration-card__divider {
+  width: 100%;
+  border-top: 1px solid var(--ref-color-gray-400);
+  margin: 0 0 var(--ref-space-4);
+}
+
+.integration-card__data {
+  font-family: var(--ref-font-inter);
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.integration-card__data-label {
+  color: var(--ref-color-blue-500);
+  font-weight: 600;
+}
+
+.integration-card__data-value {
+  color: var(--ref-color-gray-800);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .integration-card,
+  .integration-filter-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   26. INTEGRATIONS PAGE — ADD-ON PRICING TABLE & CALLOUT
+   -------------------------------------------------------------------------- */
+
+/* Real <table>, horizontal-scroll wrapper — matches the established
+   .compare-matrix__scroll pattern per AGENTS.md 14 (no page-level overflow
+   on narrow widths). */
+.addon-pricing-table__scroll {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--ref-color-gray-250);
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.addon-pricing-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+}
+
+.addon-pricing-table th,
+.addon-pricing-table td {
+  padding: 26px 20px;
+  border-bottom: 1px solid var(--ref-color-gray-250);
+  font-family: var(--ref-font-inter);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.addon-pricing-table tbody tr:last-child th,
+.addon-pricing-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.addon-pricing-table thead th {
+  background: var(--ref-color-blue-50);
+  color: var(--color-text-primary);
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  font-weight: 700;
+}
+
+.addon-pricing-table tbody th[scope="row"] {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 1.0625rem;
+}
+
+.addon-pricing-table tbody td {
+  color: var(--ref-color-gray-600);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Figma literal #0447a5 has no exact token match; --ref-color-blue-700
+   (#0057d2) is the nearest existing token — documented provisional
+   deviation per AGENTS.md 3 rather than introducing a new raw hex. */
+.addon-pricing-table__setup {
+  color: var(--ref-color-blue-700);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .addon-pricing-table th,
+  .addon-pricing-table td {
+    padding: 16px 14px;
+  }
+}
+
+/* === Info callout ===
+   No existing .callout/.note/.alert component exists elsewhere in the
+   codebase — genuinely new. Scoped here rather than promoted to
+   components.css since only this page uses it today. */
+.integration-callout {
+  display: flex;
+  align-items: center;
+  gap: var(--ref-space-6);
+  background: var(--ref-color-blue-50);
+  border: 1px solid var(--ref-color-blue-500);
+  border-radius: var(--radius-sm);
+  padding: clamp(20px, 2.5vw, 41px);
+}
+
+.integration-callout__icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-terms-item-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.integration-callout__text {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--ref-font-inter);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .integration-callout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ref-space-4);
+    padding: var(--ref-space-6);
+  }
+}

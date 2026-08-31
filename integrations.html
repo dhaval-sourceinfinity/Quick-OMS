@@ -2,13 +2,442 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=404.html?from=integrations.html" />
-  <title>Page Not Found — Quick OMS</title>
-  <script>
-    window.location.replace("404.html?from=integrations.html" + (window.location.hash || ""));
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Integrations — Quick OMS</title>
+  <meta name="description" content="Connect Quick OMS with your accounting, ecommerce, courier, payment and business systems. Start with CSV import/export or scope an optional API integration." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/logos/quickoms-mark.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/primitives.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/sections.css" />
 </head>
 <body>
-  <p>Redirecting to <a href="404.html?from=integrations.html">Quick OMS Fallback Page</a>...</p>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img class="site-header__logo site-header__logo--light" src="assets/img/logos/quickoms-mark.svg" alt="" width="56" height="56" />
+        <img class="site-header__logo site-header__logo--dark" src="assets/img/logos/quickoms-mark-blue.svg" alt="" width="56" height="56" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="lite.html">Lite</a>
+        <a href="features.html">Features</a>
+        <a href="industries.html">Industries</a>
+        <a href="integrations.html" aria-current="page">Integrations</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="compare.html">Compare</a>
+      </nav>
+
+      <a class="btn btn--primary site-header__cta" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="nav-toggle__icon"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-nav" class="mobile-nav" data-nav-panel data-open="false">
+    <div class="mobile-nav__header">
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img class="site-header__logo" src="assets/img/logos/quickoms-mark.svg" alt="" width="44" height="44" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
+      <button type="button" class="mobile-nav__close" data-nav-close aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="mobile-nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="lite.html">Lite</a>
+      <a href="features.html">Features</a>
+      <a href="industries.html">Industries</a>
+      <a href="integrations.html" aria-current="page">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="compare.html">Compare</a>
+    </nav>
+    <div class="mobile-nav__cta">
+      <a class="btn btn--primary" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ============================== 1. PAGE HERO ============================== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="hero__copy">
+          <span class="badge badge--glass">Integrations</span>
+          <h1 class="hero__title">Connect Quick OMS with Your Business Tools</h1>
+          <p class="hero__subtitle">Start with CSV import/export, or connect Quick OMS with accounting, ecommerce, courier, payment and custom business systems through optional API integrations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 2. INTEGRATION CATALOG ============================== -->
+    <section class="section integration-catalog-section surface-canvas" id="integration-catalog">
+      <div class="container">
+
+        <div class="eyebrow-heading eyebrow-heading--center">
+          <span class="text-eyebrow">Categories</span>
+          <h2 class="text-section-title">Integration Options Available on Request</h2>
+          <p class="text-body">Every integration is scoped and quoted around your systems, data flow and support needs.</p>
+        </div>
+
+        <div class="integration-filter-wrap">
+          <div class="integration-filter-bar" role="group" aria-label="Filter integrations by category" data-integration-filter>
+            <button type="button" class="integration-filter-btn" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="integration-filter-btn" data-filter="accounting" aria-pressed="false">Accounting</button>
+            <button type="button" class="integration-filter-btn" data-filter="ecommerce" aria-pressed="false">Ecommerce</button>
+            <button type="button" class="integration-filter-btn" data-filter="courier" aria-pressed="false">Courier / Logistics</button>
+            <button type="button" class="integration-filter-btn" data-filter="payment" aria-pressed="false">Payment</button>
+            <button type="button" class="integration-filter-btn" data-filter="data" aria-pressed="false">Data</button>
+            <button type="button" class="integration-filter-btn" data-filter="custom" aria-pressed="false">Custom System</button>
+          </div>
+        </div>
+
+        <p class="sr-only" role="status" aria-live="polite" data-integration-filter-status></p>
+
+        <div class="integration-card-grid" data-integration-grid>
+
+          <article class="integration-card" data-category="accounting">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/logo-xero.svg" alt="Xero" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">Xero</h3>
+            <p class="integration-card__category">Accounting</p>
+            <p class="integration-card__desc">Sync invoice, customer or payment data with your accounting system through optional integration.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Invoices, Tax Lines, Customer Ledger</span></p>
+          </article>
+
+          <article class="integration-card" data-category="ecommerce">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/logo-shopify.svg" alt="Shopify" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">Shopify</h3>
+            <p class="integration-card__category">Ecommerce</p>
+            <p class="integration-card__desc">Bring ecommerce orders into Quick OMS and manage fulfilment and stock workflows.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Web Orders, Item Details, Shipping Addresses</span></p>
+          </article>
+
+          <article class="integration-card" data-category="ecommerce">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/logo-woocommerce.svg" alt="WooCommerce" width="50" height="35" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">WooCommerce</h3>
+            <p class="integration-card__category">Ecommerce</p>
+            <p class="integration-card__desc">Pull WordPress storefront orders directly into Quick OMS for packing, dispatch and stock synchronization.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Store Orders, Customer Profiles, SKUs</span></p>
+          </article>
+
+          <article class="integration-card" data-category="courier">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/int-delivery.svg" alt="Courier API" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">Courier API</h3>
+            <p class="integration-card__category">Courier / Logistics</p>
+            <p class="integration-card__desc">Update dispatch, tracking and delivery status from courier or logistics systems.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Tracking Numbers, Dispatch Status, Consignments</span></p>
+          </article>
+
+          <article class="integration-card" data-category="courier">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/int-truck.svg" alt="Delivery Tracking" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">Delivery Tracking</h3>
+            <p class="integration-card__category">Courier / Logistics</p>
+            <p class="integration-card__desc">Push delivery updates directly to customers when orders are marked as dispatched in Quick OMS.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Live POD Status, Route Confirmation</span></p>
+          </article>
+
+          <article class="integration-card" data-category="payment">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/int-payment.svg" alt="Stripe" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">Stripe</h3>
+            <p class="integration-card__category">Payments</p>
+            <p class="integration-card__desc">Track payment status or payment references where supported by integration requirements.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Transaction ID, Paid Confirmation, Receipts</span></p>
+          </article>
+
+          <article class="integration-card" data-category="payment">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/int-money.svg" alt="PayPal" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">PayPal</h3>
+            <p class="integration-card__category">Payments</p>
+            <p class="integration-card__desc">Record incoming PayPal order settlements alongside customer order records.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Payment References, Settlement Status</span></p>
+          </article>
+
+          <article class="integration-card" data-category="data">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/int-file.svg" alt="CSV / Excel Import" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">CSV / Excel Import</h3>
+            <p class="integration-card__category">Data</p>
+            <p class="integration-card__desc">Import and export products, customers, inventory and reports easily without recurring API charges.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Bulk Product Uploads, Customer Rosters</span></p>
+          </article>
+
+          <article class="integration-card" data-category="data">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/logo-google-sheets.svg" alt="Google Sheets" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">Google Sheets</h3>
+            <p class="integration-card__category">Data</p>
+            <p class="integration-card__desc">Use structured spreadsheet data as part of import/export workflows.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Batch Stock Adjustments, Export Summaries</span></p>
+          </article>
+
+          <article class="integration-card" data-category="custom">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/int-custom.svg" alt="Existing Business Software" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">Existing Business Software</h3>
+            <p class="integration-card__category">Custom Systems</p>
+            <p class="integration-card__desc">Connect Quick OMS with your existing business workflow using custom API development.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Custom REST Endpoints, Webhooks, Proprietary DBs</span></p>
+          </article>
+
+          <article class="integration-card" data-category="data">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/logo-xero.svg" alt="" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">CSV / Excel Import</h3>
+            <p class="integration-card__category">Data</p>
+            <p class="integration-card__desc">Import and export products, customers, inventory and reports easily without recurring API charges.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Bulk Product Uploads, Customer Rosters</span></p>
+          </article>
+
+          <article class="integration-card" data-category="data">
+            <div class="integration-card__icon">
+              <img src="assets/img/icons/logo-xero.svg" alt="" width="50" height="50" loading="lazy" />
+            </div>
+            <h3 class="integration-card__title">Google Sheets</h3>
+            <p class="integration-card__category">Data</p>
+            <p class="integration-card__desc">Use structured spreadsheet data as part of import/export workflows.</p>
+            <div class="integration-card__divider"></div>
+            <p class="integration-card__data"><span class="integration-card__data-label">Data Object:</span> <span class="integration-card__data-value">Batch Stock Adjustments, Export Summaries</span></p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 3. ADD-ON PRICING ============================== -->
+    <section class="section addon-pricing-section surface-canvas" id="addon-pricing">
+      <div class="container">
+
+        <div class="eyebrow-heading eyebrow-heading--center">
+          <span class="text-eyebrow">Add-on Pricing</span>
+          <h2 class="text-section-title">API Integrations Are Optional Add-ons</h2>
+          <p class="text-body">Integration cost depends on complexity, data flow, third-party system requirements, testing and ongoing support.</p>
+        </div>
+
+        <div class="addon-pricing-table__scroll">
+          <table class="addon-pricing-table">
+            <caption class="sr-only">Add-on integration pricing by setup change, monthly support and best-fit scenario</caption>
+            <thead>
+              <tr>
+                <th scope="col">API Add-On</th>
+                <th scope="col">Setup Change</th>
+                <th scope="col">Monthly Support</th>
+                <th scope="col">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">CSV / Excel Setup</th>
+                <td class="addon-pricing-table__setup">$199–$499</td>
+                <td>No monthly</td>
+                <td>Lite customers needing onboarding help</td>
+              </tr>
+              <tr>
+                <th scope="row">Basic One-Way API</th>
+                <td class="addon-pricing-table__setup">$499–$999</td>
+                <td>$49/month</td>
+                <td>Simple product, order or customer push/pull</td>
+              </tr>
+              <tr>
+                <th scope="row">Standard API Integration</th>
+                <td class="addon-pricing-table__setup">$1,500–$3,500</td>
+                <td>$99/month</td>
+                <td>Xero, Shopify, WooCommerce or courier basic sync</td>
+              </tr>
+              <tr>
+                <th scope="row">Advanced API Integration</th>
+                <td class="addon-pricing-table__setup">$3,500–$7,500+</td>
+                <td>$199/month</td>
+                <td>Two-way sync, inventory sync, webhooks or complex mapping</td>
+              </tr>
+              <tr>
+                <th scope="row">Enterprise Integration</th>
+                <td class="addon-pricing-table__setup">Custom</td>
+                <td>Custom</td>
+                <td>Complex workflows and multiple systems</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="integration-callout">
+          <div class="integration-callout__icon" aria-hidden="true">
+            <img src="assets/img/icons/int-info.svg" alt="" width="32" height="32" />
+          </div>
+          <p class="integration-callout__text">API integrations are not included inside Lite or Premium subscriptions by default. Basic API integrations start from $499 setup. Advanced integrations are quoted based on system complexity, data flow, testing and ongoing support.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================== 4. CTA SECTION ============================== -->
+    <section class="cta-band-section" id="cta-band">
+      <div class="cta-band-wrapper">
+        <div class="cta-band">
+          <div class="cta-band__glow cta-band__glow--top" aria-hidden="true"></div>
+          <div class="cta-band__glow cta-band__glow--bottom" aria-hidden="true"></div>
+
+          <div class="cta-band__content">
+            <h2 class="cta-band__title">Need Quick OMS Connected to Your Systems?</h2>
+            <p class="cta-band__desc">Tell us which platforms you use and we will scope the integration, timeline and cost.</p>
+            <div class="cta-band__actions">
+              <a class="btn cta-band__btn cta-band__btn--solid" href="contact.html">
+                <span>Book a Demo</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                </svg>
+              </a>
+              <a class="btn cta-band__btn cta-band__btn--outline" href="pricing.html">
+                <span>View Plan &amp; Pricing</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="site-footer__glow site-footer__glow--left" aria-hidden="true"></div>
+    <div class="site-footer__glow site-footer__glow--right" aria-hidden="true"></div>
+
+    <div class="site-footer__wrapper">
+      <div class="site-footer__grid">
+        <!-- Column 1: Brand & Contact Info -->
+        <div class="site-footer__brand-col">
+          <a href="index.html" class="site-footer__logo" aria-label="Quick OMS Home">
+            <img src="assets/img/figma/footer-logo-icon.svg" alt="" width="55" height="55" />
+            <span class="site-footer__logo-text">QuickOMS</span>
+          </a>
+          <div class="site-footer__contact-list">
+            <a href="mailto:info@sourceinfinity.co.nz" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-email.svg" alt="" width="24" height="24" />
+              <span>info@sourceinfinity.co.nz</span>
+            </a>
+            <a href="https://sourceinfinity.co.nz" target="_blank" rel="noopener" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-globe.svg" alt="" width="24" height="24" />
+              <span>sourceinfinity.co.nz</span>
+            </a>
+            <div class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-location.svg" alt="" width="24" height="24" />
+              <span>Auckland, New Zealand</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Product -->
+        <nav class="footer-nav-group" aria-label="Product">
+          <h3 class="footer-nav-group__title">Product</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="lite.html">Quick OMS Lite</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="contact.html">Book Demo</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 3: Solutions -->
+        <nav class="footer-nav-group" aria-label="Solutions">
+          <h3 class="footer-nav-group__title">Solutions</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="industries.html#wholesalers">Wholesalers</a></li>
+            <li><a href="industries.html#distributors">Distributors</a></li>
+            <li><a href="industries.html#fmcg-suppliers">FMCG Suppliers</a></li>
+            <li><a href="industries.html#importers">Importers</a></li>
+            <li><a href="industries.html#retailers">Retailers</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 4: Compare -->
+        <nav class="footer-nav-group" aria-label="Compare">
+          <h3 class="footer-nav-group__title">Compare</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="compare.html#odoo">Odoo Alternative</a></li>
+            <li><a href="compare.html#shopify">Shopify Order Management</a></li>
+            <li><a href="compare.html#unleashed">Unleashed Comparison</a></li>
+            <li><a href="compare.html#excel">Excel Alternative</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 5: Company -->
+        <nav class="footer-nav-group" aria-label="Company">
+          <h3 class="footer-nav-group__title">Company</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="about.html">About Source Infinity</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Oversized Decorative Brand Wordmark -->
+      <div class="site-footer__watermark" aria-hidden="true">QUICKOMS</div>
+
+      <div class="site-footer__divider"></div>
+
+      <div class="site-footer__legal">
+        <span class="site-footer__copyright">© 2026 Quick OMS by Source Infinity. All rights reserved.</span>
+        <span class="site-footer__tagline">Order Management Simplified.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
