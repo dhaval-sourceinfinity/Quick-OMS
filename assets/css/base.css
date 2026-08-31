@@ -129,8 +129,8 @@ select:focus-visible,
 .text-display {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-extrabold);
-  font-size: clamp(1.75rem, 1.25rem + 3.2vw, 6.25rem);
-  line-height: 1.12;
+  font-size: var(--font-size-hero, clamp(2.25rem, 1.5rem + 2.5vw, 4.25rem));
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--color-text-inverse);
   overflow-wrap: break-word;
@@ -139,10 +139,10 @@ select:focus-visible,
 
 .text-section-title {
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-extrabold);
-  font-size: clamp(1.375rem, 1.15rem + 1.2vw, 4rem);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-section, clamp(1.85rem, 1.25rem + 1.8vw, 3rem));
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--color-text-primary);
   overflow-wrap: break-word;
   word-break: break-word;
@@ -174,31 +174,31 @@ select:focus-visible,
 .text-card-title {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-semibold);
-  font-size: 1.25rem;
-  line-height: 1.4;
+  font-size: var(--font-size-card-title, clamp(1.125rem, 1rem + 0.35vw, 1.375rem));
+  line-height: 1.35;
   color: var(--color-text-primary);
 }
 
 .text-body {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-size: var(--font-size-body-lg, clamp(1rem, 0.925rem + 0.25vw, 1.25rem));
+  line-height: 1.55;
   color: var(--color-text-secondary);
 }
 
 .text-body-small {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
-  font-size: 0.9375rem;
-  line-height: 1.55;
+  font-size: var(--font-size-body-sm, 0.875rem);
+  line-height: 1.5;
   color: var(--color-text-muted);
 }
 
 .text-label {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-semibold);
-  font-size: 0.8125rem;
+  font-size: var(--font-size-eyebrow, clamp(0.875rem, 0.8rem + 0.2vw, 1.0625rem));
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-text-muted);
@@ -207,7 +207,7 @@ select:focus-visible,
 .text-eyebrow {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-semibold);
-  font-size: 0.9375rem;
+  font-size: var(--font-size-eyebrow, clamp(0.875rem, 0.8rem + 0.2vw, 1.0625rem));
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text-accent);

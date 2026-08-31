@@ -142,6 +142,17 @@
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
 
+  /* Typography Scale (Global Hierarchy) */
+  --font-size-hero: clamp(2.25rem, 1.5rem + 2.5vw, 4.25rem);       /* Hero H1: Primary visual anchor (~60px-68px) */
+  --font-size-page-title: clamp(2rem, 1.4rem + 2vw, 3.5rem);        /* Page H1: Secondary hero titles (~50px-56px) */
+  --font-size-section: clamp(1.85rem, 1.25rem + 1.8vw, 3rem);        /* Section H2: Major section titles (~46px-48px) */
+  --font-size-subsection: clamp(1.375rem, 1.15rem + 0.8vw, 2.25rem); /* Section H3: Feature / tab heads (~30px-36px) */
+  --font-size-card-title: clamp(1.125rem, 1rem + 0.35vw, 1.375rem);   /* Card Headings: (~18px-22px) */
+  --font-size-eyebrow: clamp(0.875rem, 0.8rem + 0.2vw, 1.0625rem);   /* Eyebrows / Labels: (~14px-17px) */
+  --font-size-body-lg: clamp(1rem, 0.925rem + 0.25vw, 1.25rem);      /* Lead / Hero descriptions: (~16px-20px) */
+  --font-size-body: 1rem;                                            /* Standard body: 16px */
+  --font-size-body-sm: 0.875rem;                                     /* Supporting / Meta text: 14px */
+
   /* Spacing (semantic aliases) */
   --space-page-inline: var(--ref-space-5); /* responsive, redefined per breakpoint below */
   --space-section-block: var(--ref-space-20);
