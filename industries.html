@@ -2,13 +2,463 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=404.html?from=industries.html" />
-  <title>Page Not Found — Quick OMS</title>
-  <script>
-    window.location.replace("404.html?from=industries.html" + (window.location.hash || ""));
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Industries — Quick OMS</title>
+  <meta name="description" content="Quick OMS supports wholesalers, distributors, FMCG suppliers, importers, retailers and small product-based businesses that need better order, stock and invoice control." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/logos/quickoms-mark.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/primitives.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/sections.css" />
 </head>
 <body>
-  <p>Redirecting to <a href="404.html?from=industries.html">Quick OMS Fallback Page</a>...</p>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img class="site-header__logo site-header__logo--light" src="assets/img/logos/quickoms-mark.svg" alt="" width="56" height="56" />
+        <img class="site-header__logo site-header__logo--dark" src="assets/img/logos/quickoms-mark-blue.svg" alt="" width="56" height="56" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="lite.html">Lite</a>
+        <a href="features.html">Features</a>
+        <a href="industries.html" aria-current="page">Industries</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="compare.html">Compare</a>
+      </nav>
+
+      <a class="btn btn--primary site-header__cta" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="nav-toggle__icon"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-nav" class="mobile-nav" data-nav-panel data-open="false">
+    <div class="mobile-nav__header">
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img class="site-header__logo" src="assets/img/logos/quickoms-mark.svg" alt="" width="44" height="44" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
+      <button type="button" class="mobile-nav__close" data-nav-close aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="mobile-nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="lite.html">Lite</a>
+      <a href="features.html">Features</a>
+      <a href="industries.html" aria-current="page">Industries</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="compare.html">Compare</a>
+    </nav>
+    <div class="mobile-nav__cta">
+      <a class="btn btn--primary" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ============================== 1. PAGE HERO ============================== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="hero__copy">
+          <span class="badge badge--glass">Industries</span>
+          <h1 class="hero__title">Built for Businesses That Manage Daily Product Orders</h1>
+          <p class="hero__subtitle">Quick OMS supports wholesalers, distributors, FMCG suppliers, importers, retailers and small product-based businesses that need better order, stock and invoice control.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 2. INDUSTRIES CARDS ============================== -->
+    <section class="section industries-section surface-canvas" id="industries">
+      <div class="industries-wrapper">
+        <div class="industries-list">
+
+          <!-- Card 1: Wholesalers -->
+          <article class="industry-detail-card" id="wholesalers">
+            <div class="industry-detail-card__media">
+              <img
+                src="assets/img/photos/industry-wholesalers.jpg"
+                alt="Wholesale distribution warehouse with high shelving and forklift loading operations"
+                class="industry-detail-card__img"
+                width="670"
+                height="559"
+                loading="lazy"
+              />
+            </div>
+            <div class="industry-detail-card__content">
+              <div class="industry-detail-card__header">
+                <h2 class="industry-detail-card__title">Wholesalers</h2>
+                <p class="industry-detail-card__subtitle">Manage bulk orders and multiple customer accounts from one dashboard.</p>
+              </div>
+              <div class="industry-detail-card__boxes">
+                <div class="industry-detail-box industry-detail-box--challenge">
+                  <h3 class="industry-detail-box__title">The Challenge</h3>
+                  <p class="industry-detail-box__desc">Bulk orders, repeat customers, stock movement and invoice tracking can become difficult through manual systems.</p>
+                </div>
+                <div class="industry-detail-box industry-detail-box--solution">
+                  <h3 class="industry-detail-box__title">With Quick OMS</h3>
+                  <p class="industry-detail-box__desc">Manage customer orders, product availability, invoices and dispatch from one organised dashboard.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Distributors -->
+          <article class="industry-detail-card" id="distributors">
+            <div class="industry-detail-card__media">
+              <img
+                src="assets/img/photos/industry-distributors.jpg"
+                alt="Fleet of distribution trucks lined up at freight loading bays during evening operations"
+                class="industry-detail-card__img"
+                width="670"
+                height="559"
+                loading="lazy"
+              />
+            </div>
+            <div class="industry-detail-card__content">
+              <div class="industry-detail-card__header">
+                <h2 class="industry-detail-card__title">Distributors</h2>
+                <p class="industry-detail-card__subtitle">Track orders from dispatch to delivery across your network.</p>
+              </div>
+              <div class="industry-detail-card__boxes">
+                <div class="industry-detail-box industry-detail-box--challenge">
+                  <h3 class="industry-detail-box__title">The Challenge</h3>
+                  <p class="industry-detail-box__desc">Distributors need to coordinate orders, stock, customers, sales users and dispatch quickly.</p>
+                </div>
+                <div class="industry-detail-box industry-detail-box--solution">
+                  <h3 class="industry-detail-box__title">With Quick OMS</h3>
+                  <p class="industry-detail-box__desc">Quick OMS gives teams a shared workflow from order creation to dispatch and reporting.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: FMCG Suppliers -->
+          <article class="industry-detail-card" id="fmcg-suppliers">
+            <div class="industry-detail-card__media">
+              <img
+                src="assets/img/photos/industry-fmcg-suppliers.jpg"
+                alt="Fast-moving consumer goods warehouse with packed pallets, conveyor lines, and boxed inventory"
+                class="industry-detail-card__img"
+                width="670"
+                height="559"
+                loading="lazy"
+              />
+            </div>
+            <div class="industry-detail-card__content">
+              <div class="industry-detail-card__header">
+                <h2 class="industry-detail-card__title">FMCG Suppliers</h2>
+                <p class="industry-detail-card__subtitle">Handle high-frequency orders with automated invoicing and alerts.</p>
+              </div>
+              <div class="industry-detail-card__boxes">
+                <div class="industry-detail-box industry-detail-box--challenge">
+                  <h3 class="industry-detail-box__title">The Challenge</h3>
+                  <p class="industry-detail-box__desc">Fast-moving products require better stock visibility and fast order processing.</p>
+                </div>
+                <div class="industry-detail-box industry-detail-box--solution">
+                  <h3 class="industry-detail-box__title">With Quick OMS</h3>
+                  <p class="industry-detail-box__desc">Track products, low-stock alerts, customer orders and sales activity in one platform.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Importers -->
+          <article class="industry-detail-card" id="importers">
+            <div class="industry-detail-card__media">
+              <img
+                src="assets/img/photos/industry-importers.jpg"
+                alt="Shipping container terminal with cranes and an open shipping container revealing imported cargo"
+                class="industry-detail-card__img"
+                width="670"
+                height="559"
+                loading="lazy"
+              />
+            </div>
+            <div class="industry-detail-card__content">
+              <div class="industry-detail-card__header">
+                <h2 class="industry-detail-card__title">Importers</h2>
+                <p class="industry-detail-card__subtitle">Visibility over inbound stock, customer orders and fulfilment.</p>
+              </div>
+              <div class="industry-detail-card__boxes">
+                <div class="industry-detail-box industry-detail-box--challenge">
+                  <h3 class="industry-detail-box__title">The Challenge</h3>
+                  <p class="industry-detail-box__desc">Importers need to manage product availability, customer demand and order fulfilment.</p>
+                </div>
+                <div class="industry-detail-box industry-detail-box--solution">
+                  <h3 class="industry-detail-box__title">With Quick OMS</h3>
+                  <p class="industry-detail-box__desc">Keep product catalogue, customers, inventory and order history centralised.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Retailers -->
+          <article class="industry-detail-card" id="retailers">
+            <div class="industry-detail-card__media">
+              <img
+                src="assets/img/photos/industry-retailers.jpg"
+                alt="Boutique retail clothing store interior with modern shelving and packaged items on display tables"
+                class="industry-detail-card__img"
+                width="670"
+                height="559"
+                loading="lazy"
+              />
+            </div>
+            <div class="industry-detail-card__content">
+              <div class="industry-detail-card__header">
+                <h2 class="industry-detail-card__title">Retailers</h2>
+                <p class="industry-detail-card__subtitle">Manage customer orders, reorder points and supplier fulfilment.</p>
+              </div>
+              <div class="industry-detail-card__boxes">
+                <div class="industry-detail-box industry-detail-box--challenge">
+                  <h3 class="industry-detail-box__title">The Challenge</h3>
+                  <p class="industry-detail-box__desc">Keep product catalogue, customers, inventory and order history centralised.</p>
+                </div>
+                <div class="industry-detail-box industry-detail-box--solution">
+                  <h3 class="industry-detail-box__title">With Quick OMS</h3>
+                  <p class="industry-detail-box__desc">Create orders, track customers, generate PDFs and manage basic inventory.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Food Suppliers -->
+          <article class="industry-detail-card" id="food-suppliers">
+            <div class="industry-detail-card__media">
+              <img
+                src="assets/img/photos/industry-food-suppliers.jpg"
+                alt="Commercial cold storage produce facility with fresh fruits, vegetables, and temperature-controlled storage"
+                class="industry-detail-card__img"
+                width="670"
+                height="559"
+                loading="lazy"
+              />
+            </div>
+            <div class="industry-detail-card__content">
+              <div class="industry-detail-card__header">
+                <h2 class="industry-detail-card__title">Food Suppliers</h2>
+                <p class="industry-detail-card__subtitle">Keep perishable products and weekly order cycles under control.</p>
+              </div>
+              <div class="industry-detail-card__boxes">
+                <div class="industry-detail-box industry-detail-box--challenge">
+                  <h3 class="industry-detail-box__title">The Challenge</h3>
+                  <p class="industry-detail-box__desc">Food suppliers often manage regular orders, repeat customers and delivery schedules.</p>
+                </div>
+                <div class="industry-detail-box industry-detail-box--solution">
+                  <h3 class="industry-detail-box__title">With Quick OMS</h3>
+                  <p class="industry-detail-box__desc">Organise daily orders, product availability and dispatch status clearly.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7: Trade Suppliers -->
+          <article class="industry-detail-card" id="trade-suppliers">
+            <div class="industry-detail-card__media">
+              <img
+                src="assets/img/photos/industry-trade-suppliers.jpg"
+                alt="Organized hardware and industrial trade parts storage aisles with blue bins and metal shelving"
+                class="industry-detail-card__img"
+                width="670"
+                height="559"
+                loading="lazy"
+              />
+            </div>
+            <div class="industry-detail-card__content">
+              <div class="industry-detail-card__header">
+                <h2 class="industry-detail-card__title">Trade Suppliers</h2>
+                <p class="industry-detail-card__subtitle">Organise trade accounts, pricing and order histories with ease.</p>
+              </div>
+              <div class="industry-detail-card__boxes">
+                <div class="industry-detail-box industry-detail-box--challenge">
+                  <h3 class="industry-detail-box__title">The Challenge</h3>
+                  <p class="industry-detail-box__desc">Trade suppliers require product visibility, customer accounts and order workflow.</p>
+                </div>
+                <div class="industry-detail-box industry-detail-box--solution">
+                  <h3 class="industry-detail-box__title">With Quick OMS</h3>
+                  <p class="industry-detail-box__desc">Give sales and admin users a simple order management system with reporting.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 8: Small Product Businesses -->
+          <article class="industry-detail-card" id="small-product-businesses">
+            <div class="industry-detail-card__media">
+              <img
+                src="assets/img/photos/industry-small-product-businesses.jpg"
+                alt="Small ecommerce workshop and packing station with cardboard boxes and craft supplies"
+                class="industry-detail-card__img"
+                width="670"
+                height="559"
+                loading="lazy"
+              />
+            </div>
+            <div class="industry-detail-card__content">
+              <div class="industry-detail-card__header">
+                <h2 class="industry-detail-card__title">Small Product Businesses</h2>
+                <p class="industry-detail-card__subtitle">Replace spreadsheets and WhatsApp with a real OMS from day one.</p>
+              </div>
+              <div class="industry-detail-card__boxes">
+                <div class="industry-detail-box industry-detail-box--challenge">
+                  <h3 class="industry-detail-box__title">The Challenge</h3>
+                  <p class="industry-detail-box__desc">Bulk orders, repeat customers, stock movement and invoice tracking can become difficult through manual systems.</p>
+                </div>
+                <div class="industry-detail-box industry-detail-box--solution">
+                  <h3 class="industry-detail-box__title">With Quick OMS</h3>
+                  <p class="industry-detail-box__desc">Manage customer orders, product availability, invoices and dispatch from one organised dashboard.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 3. CTA SECTION ============================== -->
+    <section class="cta-band-section" id="cta-band">
+      <div class="cta-band-wrapper">
+        <div class="cta-band">
+          <div class="cta-band__glow cta-band__glow--top" aria-hidden="true"></div>
+          <div class="cta-band__glow cta-band__glow--bottom" aria-hidden="true"></div>
+
+          <div class="cta-band__content">
+            <h2 class="cta-band__title">Not Sure Which Tool Fits Your Business</h2>
+            <p class="cta-band__desc">Book a quick demo and we will show how Quick OMS compares with your current process.</p>
+            <div class="cta-band__actions">
+              <a class="btn cta-band__btn cta-band__btn--solid" href="contact.html">
+                <span>Book a Demo</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                </svg>
+              </a>
+              <a class="btn cta-band__btn cta-band__btn--outline" href="pricing.html">
+                <span>View Plan &amp; Pricing</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="site-footer__glow site-footer__glow--left" aria-hidden="true"></div>
+    <div class="site-footer__glow site-footer__glow--right" aria-hidden="true"></div>
+
+    <div class="site-footer__wrapper">
+      <div class="site-footer__grid">
+        <!-- Column 1: Brand & Contact Info -->
+        <div class="site-footer__brand-col">
+          <a href="index.html" class="site-footer__logo" aria-label="Quick OMS Home">
+            <img src="assets/img/figma/footer-logo-icon.svg" alt="" width="55" height="55" />
+            <span class="site-footer__logo-text">QuickOMS</span>
+          </a>
+          <div class="site-footer__contact-list">
+            <a href="mailto:info@sourceinfinity.co.nz" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-email.svg" alt="" width="24" height="24" />
+              <span>info@sourceinfinity.co.nz</span>
+            </a>
+            <a href="https://sourceinfinity.co.nz" target="_blank" rel="noopener" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-globe.svg" alt="" width="24" height="24" />
+              <span>sourceinfinity.co.nz</span>
+            </a>
+            <div class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-location.svg" alt="" width="24" height="24" />
+              <span>Auckland, New Zealand</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Product -->
+        <nav class="footer-nav-group" aria-label="Product">
+          <h3 class="footer-nav-group__title">Product</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="lite.html">Quick OMS Lite</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="contact.html">Book Demo</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 3: Solutions -->
+        <nav class="footer-nav-group" aria-label="Solutions">
+          <h3 class="footer-nav-group__title">Solutions</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="industries.html#wholesalers">Wholesalers</a></li>
+            <li><a href="industries.html#distributors">Distributors</a></li>
+            <li><a href="industries.html#fmcg-suppliers">FMCG Suppliers</a></li>
+            <li><a href="industries.html#importers">Importers</a></li>
+            <li><a href="industries.html#retailers">Retailers</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 4: Compare -->
+        <nav class="footer-nav-group" aria-label="Compare">
+          <h3 class="footer-nav-group__title">Compare</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="compare.html#odoo">Odoo Alternative</a></li>
+            <li><a href="compare.html#shopify">Shopify Order Management</a></li>
+            <li><a href="compare.html#unleashed">Unleashed Comparison</a></li>
+            <li><a href="compare.html#excel">Excel Alternative</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 5: Company -->
+        <nav class="footer-nav-group" aria-label="Company">
+          <h3 class="footer-nav-group__title">Company</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="about.html">About Source Infinity</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Oversized Decorative Brand Wordmark -->
+      <div class="site-footer__watermark" aria-hidden="true">QUICKOMS</div>
+
+      <div class="site-footer__divider"></div>
+
+      <div class="site-footer__legal">
+        <span class="site-footer__copyright">© 2026 Quick OMS by Source Infinity. All rights reserved.</span>
+        <span class="site-footer__tagline">Order Management Simplified.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

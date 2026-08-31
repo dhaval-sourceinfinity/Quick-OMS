@@ -641,7 +641,6 @@
     var missingRoutes = [
       "lite.html",
       "features.html",
-      "industries.html",
       "integrations.html",
       "about.html"
     ];
