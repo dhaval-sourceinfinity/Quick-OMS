@@ -4258,34 +4258,183 @@
 }
 
 /* ==========================================================================
-   TABLET (768px – 1199px)
-   Dashboard on top, 2-column card grid below, custom card at bottom
+   COMPACT DESKTOP (1024px – 1199px)
+   Identical 3-Column Desktop Network Topology, scaled for laptop screens
    ========================================================================== */
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (min-width: 1024px) and (max-width: 1199px) {
   .integrations-section {
-    padding-block: clamp(56px, 7vw, 84px);
+    padding-block: clamp(60px, 6vw, 84px);
   }
 
   .integrations-wrapper {
-    max-width: 860px;
+    max-width: min(1180px, 100% - 48px);
+    width: 100%;
+    padding-inline: 24px;
   }
 
   .integrations-heading {
-    margin-bottom: clamp(28px, 4vw, 40px);
+    margin-bottom: clamp(32px, 3.5vw, 44px);
     gap: 12px;
   }
 
   .integrations-heading__eyebrow {
-    font-size: 1.125rem;
+    font-size: var(--font-size-eyebrow, 1rem);
   }
 
   .integrations-heading__title {
-    font-size: clamp(2rem, 1.6rem + 1.8vw, 2.75rem);
+    font-size: var(--font-size-section, clamp(1.85rem, 1.4rem + 1.4vw, 2.4rem));
+    max-width: 900px;
   }
 
   .integrations-heading__desc {
-    font-size: clamp(1rem, 0.925rem + 0.3vw, 1.15rem);
-    max-width: 720px;
+    font-size: var(--font-size-body-lg, 1rem);
+    max-width: 800px;
+  }
+
+  .integrations-connector-canvas {
+    display: block;
+  }
+
+  .integrations-rings-wrap {
+    display: block;
+  }
+
+  .integrations-stage {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: minmax(190px, 250px) minmax(260px, 360px) minmax(190px, 250px);
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .integrations-col {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, 1.8vw, 20px);
+    width: 100%;
+  }
+
+  .integrations-col--left {
+    grid-column: 1;
+    grid-row: auto;
+    order: unset;
+  }
+
+  .integrations-col--right {
+    grid-column: 3;
+    grid-row: auto;
+    order: unset;
+  }
+
+  .integrations-hub-wrap {
+    grid-column: 2;
+    grid-row: auto;
+    order: unset;
+    max-width: 360px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .integrations-hub__card {
+    width: 100%;
+  }
+
+  .integrations-hub__img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .integration-node {
+    padding: 12px 14px;
+    min-height: 94px;
+    gap: 12px;
+    border-radius: 10px;
+  }
+
+  .integration-node__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    flex: 0 0 48px;
+  }
+
+  .integration-node__icon img {
+    max-width: 30px;
+    max-height: 30px;
+  }
+
+  .integration-node__title {
+    font-size: 15.5px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    line-height: 1.2;
+  }
+
+  .integration-node__desc {
+    font-size: 12.5px;
+    line-height: 1.3;
+  }
+
+  .integrations-bottom {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: clamp(24px, 3vw, 36px);
+  }
+
+  .integration-node--custom {
+    max-width: 400px;
+    min-height: 94px;
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .integration-node__icon--custom {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    flex: 0 0 48px;
+  }
+}
+
+/* ==========================================================================
+   TABLET (768px – 1023px)
+   Dashboard on top, 2-column card grid below, custom card at bottom
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .integrations-section {
+    padding-block: clamp(52px, 6vw, 76px);
+  }
+
+  .integrations-wrapper {
+    max-width: 768px;
+    width: 100%;
+  }
+
+  .integrations-heading {
+    margin-bottom: 30px;
+    gap: 12px;
+  }
+
+  .integrations-heading__eyebrow {
+    font-size: var(--font-size-eyebrow, 1rem);
+  }
+
+  .integrations-heading__title {
+    font-size: var(--font-size-section, clamp(1.85rem, 1.4rem + 1.4vw, 2.35rem));
+  }
+
+  .integrations-heading__desc {
+    font-size: var(--font-size-body-lg, 1rem);
+    max-width: 680px;
   }
 
   .integrations-connector-canvas {
@@ -4296,12 +4445,18 @@
     display: none;
   }
 
+  .integrations-stage {
+    max-width: 720px;
+    width: 100%;
+  }
+
   .integrations-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 16px;
-    max-width: 840px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    row-gap: 14px;
+    max-width: 720px;
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -4309,44 +4464,45 @@
     grid-column: 1 / -1;
     grid-row: 1;
     order: 1;
-    max-width: clamp(340px, 50vw, 460px);
-    margin: 0 auto 12px;
+    max-width: clamp(300px, 46vw, 400px);
+    width: 100%;
+    margin: 0 auto 24px;
   }
 
   .integrations-col--left {
     grid-column: 1;
     grid-row: 2;
     order: 2;
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
   }
 
   .integrations-col--right {
     grid-column: 2;
     grid-row: 2;
     order: 3;
-    gap: 16px;
-  }
-
-  .integrations-bottom {
-    max-width: 840px;
-    margin: 16px auto 0;
-  }
-
-  .integration-node--custom {
-    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
     width: 100%;
   }
 
   .integration-node {
     width: 100%;
-    min-height: 100px;
-    padding: 16px 18px;
+    min-height: 98px;
+    padding: 14px 16px;
     gap: 14px;
+    border-radius: 10px;
+    box-sizing: border-box;
   }
 
   .integration-node__icon {
-    width: 58px;
-    height: 58px;
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+    flex: 0 0 54px;
   }
 
   .integration-node__icon img {
@@ -4355,12 +4511,38 @@
   }
 
   .integration-node__title {
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 2px;
+    line-height: 1.25;
   }
 
   .integration-node__desc {
-    font-size: 14px;
+    font-size: 13.5px;
+    line-height: 1.35;
+  }
+
+  .integrations-bottom {
+    max-width: 720px;
+    width: 100%;
+    margin: 14px auto 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .integration-node--custom {
+    max-width: 100%;
+    width: 100%;
+    min-height: 98px;
+    padding: 14px 16px;
+    gap: 14px;
+    border-radius: 10px;
+  }
+
+  .integration-node__icon--custom {
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+    flex: 0 0 54px;
   }
 }
 

@@ -688,7 +688,7 @@
     if (!stage || !svgLines || !svgDots || !hub) return;
 
     function renderConnectors() {
-      if (window.innerWidth < 1200) {
+      if (window.innerWidth < 1024) {
         svgLines.innerHTML = "";
         svgDots.innerHTML = "";
         return;
