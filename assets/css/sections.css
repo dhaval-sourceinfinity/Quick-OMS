@@ -8702,6 +8702,33 @@
    25. INTEGRATIONS PAGE — CATALOG SECTION, FILTER BAR & CARDS
    -------------------------------------------------------------------------- */
 
+/* === Heading block ===
+   Figma 274:7320 specifies a much larger eyebrow/title ceiling (24px /
+   68px) than the shared .text-eyebrow / .text-section-title roles default
+   to (base.css). Color/weight already match the shared roles exactly
+   (--color-text-accent / --color-text-primary), so only font-size is
+   overridden here, following the .section-heading / .faq-teaser__intro
+   scoped-override precedent elsewhere in this file. Curve reaches the
+   literal Figma ceiling around this site's own container cap (1600px,
+   --size-container-max) while keeping the sitewide mobile floor. */
+.integration-catalog-section .text-eyebrow,
+.addon-pricing-section .text-eyebrow {
+  font-size: clamp(0.875rem, 0.7rem + 0.8vw, 1.5rem);
+}
+
+.integration-catalog-section .text-section-title,
+.addon-pricing-section .text-section-title {
+  font-size: clamp(1.85rem, 1.2rem + 3vw, 4.25rem);
+}
+
+/* Figma specifies the same 60px gap from heading block to content (table
+   here, filter bar in the catalog section above) — made explicit here
+   since neither .eyebrow-heading nor .addon-pricing-table__scroll
+   otherwise declares one. */
+.addon-pricing-section .addon-pricing-table__scroll {
+  margin-top: clamp(32px, 5vw, 60px);
+}
+
 /* === Category filter bar ===
    Not an ARIA tabs pattern: role="group" of toggle buttons (aria-pressed)
    that filter the single shared card grid below via data-category matching
@@ -8731,19 +8758,18 @@
   font-family: var(--ref-font-inter);
   font-size: clamp(1.125rem, 0.95rem + 0.5vw, 1.625rem);
   font-weight: 500;
-  color: var(--color-text-muted);
+  color: var(--color-text-primary);
   background: transparent;
   border: none;
   border-bottom: 3px solid transparent;
   padding: 16px 4px 12px;
   cursor: pointer;
   white-space: nowrap;
-  transition: color var(--motion-normal) var(--easing-standard),
-    border-color var(--motion-normal) var(--easing-standard);
+  transition: border-color var(--motion-normal) var(--easing-standard);
 }
 
 .integration-filter-btn:hover {
-  color: var(--color-text-primary);
+  border-bottom-color: var(--ref-color-gray-400);
 }
 
 .integration-filter-btn:focus-visible {
@@ -8752,10 +8778,11 @@
   border-radius: 4px;
 }
 
+/* All 7 tabs share one color/weight per Figma's extracted node data — the
+   only active/inactive differentiator in the design is this underline,
+   not a text color/weight change. */
 .integration-filter-btn[aria-pressed="true"] {
-  color: var(--color-text-primary);
-  font-weight: 600;
-  border-bottom-color: var(--ref-color-blue-500);
+  border-bottom-color: var(--color-text-primary);
 }
 
 /* === Card grid ===
@@ -8801,10 +8828,38 @@
     border-color var(--motion-fast) var(--easing-standard);
 }
 
+/* Required for the JS filter (main.js initIntegrationFilter) to have any
+   visual effect: it toggles the native `hidden` attribute, but the
+   author-origin `display: flex` above always wins the cascade over the
+   user-agent stylesheet's `[hidden]{display:none}` regardless of
+   specificity. Same pattern as .tabpanel[hidden] / .faq-card__answer[hidden]
+   elsewhere in this codebase. */
+.integration-card[hidden] {
+  display: none;
+}
+
 .integration-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-floating);
   border-color: var(--ref-color-blue-500);
+}
+
+/* Icon + title/category sit side by side per Figma 274:7345: full-width
+   row, icon fixed/flex-shrink:0, text column flexes to fill remainder. */
+.integration-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--ref-space-5);
+  width: 100%;
+  margin-bottom: var(--ref-space-5);
+}
+
+.integration-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ref-space-2);
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .integration-card__icon {
@@ -8815,13 +8870,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--ref-space-5);
   flex-shrink: 0;
 }
 
 .integration-card__icon img {
-  max-width: 64px;
-  max-height: 64px;
+  max-width: 70px;
+  max-height: 70px;
   object-fit: contain;
 }
 
@@ -8831,7 +8885,6 @@
   font-weight: 700;
   color: var(--color-text-primary);
   line-height: 1.25;
-  margin: 0 0 4px;
   overflow-wrap: break-word;
   word-break: break-word;
 }
@@ -8841,7 +8894,6 @@
   font-size: 1.25rem;
   font-weight: 500;
   color: var(--ref-color-gray-400);
-  margin: 0 0 var(--ref-space-4);
 }
 
 .integration-card__desc {
@@ -8861,19 +8913,41 @@
 
 .integration-card__data {
   font-family: var(--ref-font-inter);
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.4;
   margin: 0;
 }
 
 .integration-card__data-label {
   color: var(--ref-color-blue-500);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .integration-card__data-value {
   color: var(--ref-color-gray-800);
   font-weight: 500;
+}
+
+/* 1180px reuses the header's own documented collapse threshold (see
+   AGENTS.md ~1180px navigation exception) rather than inventing a new
+   arbitrary breakpoint. Needed because the 3-col grid is narrowest right
+   at its own 1024px start — the fixed 120px icon otherwise leaves too
+   little width for the text column and forces mid-word breaks on longer
+   single-word titles (e.g. "WooCommerce"). */
+@media (max-width: 1180px) {
+  .integration-card__header {
+    gap: var(--ref-space-3);
+  }
+
+  .integration-card__icon {
+    width: 96px;
+    height: 96px;
+  }
+
+  .integration-card__icon img {
+    max-width: 56px;
+    max-height: 56px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -8896,22 +8970,32 @@
   overflow-x: auto;
   border-radius: var(--radius-sm);
   border: 1px solid var(--ref-color-gray-250);
-  margin-bottom: clamp(32px, 4vw, 48px);
+  margin-bottom: clamp(48px, 7vw, 100px);
 }
 
 .addon-pricing-table {
   width: 100%;
   min-width: 720px;
   border-collapse: collapse;
+  table-layout: fixed;
 }
+
+/* Column proportions from Figma's fixed 250/240/193/540 widths (274:7559-
+   7565), kept as relative shares (via <colgroup>) rather than literal px
+   so a real <table> can still size fluidly. */
+.addon-pricing-table col.col--name { width: 21%; }
+.addon-pricing-table col.col--setup { width: 20%; }
+.addon-pricing-table col.col--support { width: 16%; }
+.addon-pricing-table col.col--best-for { width: 43%; }
 
 .addon-pricing-table th,
 .addon-pricing-table td {
-  padding: 26px 20px;
+  padding: 25px 24px;
   border-bottom: 1px solid var(--ref-color-gray-250);
   font-family: var(--ref-font-inter);
   text-align: left;
   vertical-align: middle;
+  overflow-wrap: break-word;
 }
 
 .addon-pricing-table tbody tr:last-child th,
@@ -8922,34 +9006,44 @@
 .addon-pricing-table thead th {
   background: var(--ref-color-blue-50);
   color: var(--color-text-primary);
-  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
-  font-weight: 700;
+  font-size: clamp(0.9375rem, 0.85rem + 0.4vw, 1.25rem);
+  font-weight: 500;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .addon-pricing-table tbody th[scope="row"] {
   font-weight: 600;
   color: var(--color-text-primary);
-  font-size: 1.0625rem;
+  font-size: clamp(0.9375rem, 0.85rem + 0.4vw, 1.25rem);
 }
 
 .addon-pricing-table tbody td {
   color: var(--ref-color-gray-600);
   font-weight: 500;
-  font-size: 1rem;
+  font-size: clamp(0.9375rem, 0.85rem + 0.4vw, 1.25rem);
 }
 
-/* Figma literal #0447a5 has no exact token match; --ref-color-blue-700
-   (#0057d2) is the nearest existing token — documented provisional
-   deviation per AGENTS.md 3 rather than introducing a new raw hex. */
-.addon-pricing-table__setup {
-  color: var(--ref-color-blue-700);
-  font-weight: 600;
+/* Figma's named "Primary" style (#0447a5) — distinct from both
+   --ref-color-blue-500 and --ref-color-blue-700, so recorded as its own
+   component-scoped value per DESIGN.md 3.3 rather than reusing a
+   near-but-not-exact token. Specificity bumped to `tbody td.` — a bare
+   class here previously lost the cascade to the more specific
+   `.addon-pricing-table tbody td` rule above and never actually applied. */
+.addon-pricing-table tbody td.addon-pricing-table__setup {
+  color: #0447a5;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
   .addon-pricing-table th,
   .addon-pricing-table td {
-    padding: 16px 14px;
+    padding: 14px 16px;
+  }
+
+  .addon-pricing-table thead th {
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
 }
 
@@ -8960,11 +9054,11 @@
 .integration-callout {
   display: flex;
   align-items: center;
-  gap: var(--ref-space-6);
+  gap: var(--ref-space-5);
   background: var(--ref-color-blue-50);
   border: 1px solid var(--ref-color-blue-500);
   border-radius: var(--radius-sm);
-  padding: clamp(20px, 2.5vw, 41px);
+  padding: clamp(20px, 3vw, 41px) clamp(16px, 2vw, 25px);
 }
 
 .integration-callout__icon {
