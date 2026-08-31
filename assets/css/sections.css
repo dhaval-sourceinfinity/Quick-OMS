@@ -3359,15 +3359,21 @@
 }
 
 .plan-btn--primary {
-  background: linear-gradient(157deg, #0057d2 0%, #5d9eff 50%, #0058d4 100%);
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("../img/figma/plan-btn-texture.jpg") -4.31px -132px / 103.785% 506.154% no-repeat;
   color: #ffffff;
-  border: none;
-  box-shadow: 0 4px 16px rgba(0, 87, 210, 0.25);
+  border: 1.5px solid #0cb6ec;
+  box-shadow: inset -8px 5px 9.7px 0 rgba(0, 0, 0, 0.15),
+    inset 5px -6px 6.7px 0 rgba(0, 0, 0, 0.15),
+    0 4px 16px rgba(0, 87, 210, 0.25);
 }
 
 .plan-btn--primary:hover {
   filter: brightness(1.08);
-  box-shadow: 0 8px 24px rgba(0, 87, 210, 0.38);
+  box-shadow: inset -8px 5px 9.7px 0 rgba(0, 0, 0, 0.15),
+    inset 5px -6px 6.7px 0 rgba(0, 0, 0, 0.15),
+    0 8px 24px rgba(0, 87, 210, 0.38);
 }
 
 .plan-btn--secondary {
@@ -9265,5 +9271,212 @@
   .mission-item__text {
     font-size: 14.5px;
     line-height: 1.4;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   27. FEATURES PAGE — PLATFORM DETAIL CARDS, ADD-ONS & REPORTS TILES
+   -------------------------------------------------------------------------- */
+
+/* Shared 65px-class heading used for the Platform / Add-ons / Reports
+   section titles and the 4 feature-detail card titles on this page. Figma's
+   text style applies a Title Case transform to naturally-cased copy (the
+   Reports heading is authored fully upper-case already, so the transform is
+   a no-op there and the source string is left as designed). */
+.features-title {
+  font-family: var(--ref-font-inter);
+  font-weight: 700;
+  font-size: clamp(1.85rem, 1.1rem + 3vw, 4.0625rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  text-transform: capitalize;
+}
+
+.features-addons-section__title {
+  color: var(--color-text-inverse);
+}
+
+.features-addons-section__desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.feature-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3vw, 40px);
+  margin-top: clamp(32px, 5vw, 60px);
+}
+
+.feature-detail-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(24px, 3vw, 40px);
+  padding: clamp(20px, 2.5vw, 40px);
+  border: 1px solid var(--ref-color-gray-400);
+  border-radius: var(--radius-sm);
+}
+
+.feature-detail-card__content {
+  flex: 1 1 380px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.feature-detail-card__title {
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 4.0625rem);
+}
+
+.feature-detail-card__desc {
+  font-family: var(--ref-font-inter);
+  font-weight: 400;
+  font-size: clamp(1.125rem, 1rem + 0.55vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+.feature-detail-card__points {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-detail-point {
+  background: var(--color-terms-item-bg);
+  border: 1px solid var(--ref-color-blue-500);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+}
+
+.feature-detail-point__title {
+  font-family: var(--ref-font-inter);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--ref-color-blue-500);
+  margin: 0 0 6px;
+  line-height: 1.25;
+}
+
+.feature-detail-point__desc {
+  font-family: var(--ref-font-inter);
+  font-weight: 500;
+  font-size: 1.125rem;
+  color: #777777;
+  line-height: 1.4;
+}
+
+.feature-detail-card__visual {
+  flex: 1 1 320px;
+  max-width: 659px;
+  width: 100%;
+  aspect-ratio: 659 / 560;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-detail-card__visual--orders {
+  background: #9a6ee2;
+}
+
+.feature-detail-card__visual--inventory {
+  background: #29966c;
+}
+
+.feature-detail-card__visual--customers {
+  background: #4478ef;
+}
+
+.feature-detail-card__visual--invoices {
+  background: #f47863;
+}
+
+.feature-detail-card__visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Optional Add-ons / Reports & Data — 4-tile icon grid, shared by both
+   sections (one on a dark surface, one on light canvas; tiles stay white
+   in both, per Figma). */
+.features-tile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: clamp(32px, 4vw, 60px);
+}
+
+@media (min-width: 640px) {
+  .features-tile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .features-tile-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.features-tile {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid var(--ref-color-gray-400);
+  border-radius: 11px;
+  padding: 30px;
+  box-shadow: 11px 11px 21.7px rgba(0, 0, 0, 0.1);
+}
+
+.features-tile__icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 14px;
+  background: var(--ref-color-blue-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.features-tile__icon img {
+  width: 66px;
+  height: 66px;
+}
+
+.features-tile__title {
+  font-family: var(--ref-font-inter);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.05rem + 0.6vw, 2rem);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.features-tile__desc {
+  font-family: var(--ref-font-inter);
+  font-weight: 500;
+  font-size: clamp(1rem, 0.92rem + 0.3vw, 1.25rem);
+  color: var(--color-text-muted);
+  line-height: 1.35;
+}
+
+@media (max-width: 480px) {
+  .features-tile__icon {
+    width: 88px;
+    height: 88px;
+    margin-bottom: 18px;
+  }
+
+  .features-tile__icon img {
+    width: 48px;
+    height: 48px;
   }
 }

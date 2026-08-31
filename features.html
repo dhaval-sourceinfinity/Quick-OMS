@@ -2,13 +2,381 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=404.html?from=features.html" />
-  <title>Page Not Found — Quick OMS</title>
-  <script>
-    window.location.replace("404.html?from=features.html" + (window.location.hash || ""));
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Features — Quick OMS</title>
+  <meta name="description" content="Quick OMS gives your business the tools to manage orders, inventory, customers, invoices and team workflows from one central platform." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/logos/quickoms-mark.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/primitives.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/sections.css" />
 </head>
 <body>
-  <p>Redirecting to <a href="404.html?from=features.html">Quick OMS Fallback Page</a>...</p>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img class="site-header__logo site-header__logo--light" src="assets/img/logos/quickoms-mark.svg" alt="" width="56" height="56" />
+        <img class="site-header__logo site-header__logo--dark" src="assets/img/logos/quickoms-mark-blue.svg" alt="" width="56" height="56" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="lite.html">Lite</a>
+        <a href="features.html" aria-current="page">Features</a>
+        <a href="industries.html">Industries</a>
+        <a href="integrations.html">Integrations</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="compare.html">Compare</a>
+      </nav>
+
+      <a class="btn btn--primary site-header__cta" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span class="nav-toggle__icon"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-nav" class="mobile-nav" data-nav-panel data-open="false">
+    <div class="mobile-nav__header">
+      <a class="site-header__brand" href="index.html" aria-label="Quick OMS home">
+        <img class="site-header__logo" src="assets/img/logos/quickoms-mark.svg" alt="" width="44" height="44" />
+        <span class="site-header__wordmark">Quick<span>OMS</span></span>
+      </a>
+      <button type="button" class="mobile-nav__close" data-nav-close aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="mobile-nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="lite.html">Lite</a>
+      <a href="features.html" aria-current="page">Features</a>
+      <a href="industries.html">Industries</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="compare.html">Compare</a>
+    </nav>
+    <div class="mobile-nav__cta">
+      <a class="btn btn--primary" href="contact.html">
+        Book a Demo
+        <span class="icon icon-arrow" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ============================== 1. PAGE HERO ============================== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="hero__copy">
+          <span class="badge badge--glass">Features</span>
+          <h1 class="hero__title">Powerful Features to Manage Orders, Stock and Customers</h1>
+          <p class="hero__subtitle">Quick OMS gives your business the tools to manage orders, inventory, customers, invoices and team workflows from one central platform.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 2. PLATFORM — FEATURE DETAIL CARDS ============================== -->
+    <section class="section features-platform-section surface-canvas" id="platform">
+      <div class="container">
+
+        <div class="eyebrow-heading eyebrow-heading--center">
+          <span class="text-eyebrow">Platform</span>
+          <h2 class="features-title">One system, every part of your order workflow</h2>
+        </div>
+
+        <div class="feature-detail-list">
+
+          <!-- Orders Management -->
+          <article class="feature-detail-card">
+            <div class="feature-detail-card__content">
+              <span class="text-eyebrow">Orders Management</span>
+              <h3 class="features-title feature-detail-card__title">See every order and every status in one place</h3>
+              <p class="feature-detail-card__desc">Quick OMS eliminates scattered order taking by providing a central dashboard with fast order creation and full status tracking.</p>
+              <div class="feature-detail-card__points">
+                <div class="feature-detail-point">
+                  <h4 class="feature-detail-point__title">Order Dashboard</h4>
+                  <p class="feature-detail-point__desc">View all orders in one place with filters for status, customer, user, payment and dispatch progress.</p>
+                </div>
+                <div class="feature-detail-point">
+                  <h4 class="feature-detail-point__title">Create Orders Quickly</h4>
+                  <p class="feature-detail-point__desc">Create orders by selecting a customer, adding products, confirming quantities and adding internal notes.</p>
+                </div>
+                <div class="feature-detail-point">
+                  <h4 class="feature-detail-point__title">Order Status Tracking</h4>
+                  <p class="feature-detail-point__desc">Track orders through Draft, Confirmed, Packed, Dispatched, Completed and Cancelled statuses.</p>
+                </div>
+              </div>
+            </div>
+            <div class="feature-detail-card__visual feature-detail-card__visual--orders">
+              <img src="assets/img/figma/core-visual-orders.png" alt="Order management dashboard showing recent orders with statuses and weekly order trend" class="feature-detail-card__visual-img" width="659" height="560" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- Products & Stock -->
+          <article class="feature-detail-card">
+            <div class="feature-detail-card__content">
+              <span class="text-eyebrow">Products &amp; Stock</span>
+              <h3 class="features-title feature-detail-card__title">Know what you have before you promise it</h3>
+              <p class="feature-detail-card__desc">Maintain accurate stock levels, product descriptions, custom SKU pricing, and instant low-stock notifications.</p>
+              <div class="feature-detail-card__points">
+                <div class="feature-detail-point">
+                  <h4 class="feature-detail-point__title">Product Catalogue</h4>
+                  <p class="feature-detail-point__desc">Manage products, SKUs, categories, pricing, descriptions, images and availability.</p>
+                </div>
+                <div class="feature-detail-point">
+                  <h4 class="feature-detail-point__title">Inventory Tracking</h4>
+                  <p class="feature-detail-point__desc">Track stock levels, stock in/out, low-stock alerts, stock adjustments and availability.</p>
+                </div>
+              </div>
+            </div>
+            <div class="feature-detail-card__visual feature-detail-card__visual--inventory">
+              <img src="assets/img/figma/core-visual-inventory.png" alt="Stock overview dashboard showing product stock levels and low-stock alerts" class="feature-detail-card__visual-img" width="659" height="560" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- Customers & CRM -->
+          <article class="feature-detail-card">
+            <div class="feature-detail-card__content">
+              <span class="text-eyebrow">Customers &amp; CRM</span>
+              <h3 class="features-title feature-detail-card__title">Keep customer context with every order</h3>
+              <p class="feature-detail-card__desc">Store complete customer profiles, shipping destinations, payment notes, and historic order records in one central database.</p>
+              <div class="feature-detail-card__points">
+                <div class="feature-detail-point">
+                  <h4 class="feature-detail-point__title">Customer Management</h4>
+                  <p class="feature-detail-point__desc">Store customer profiles, contact details, billing/delivery addresses, notes and order history.</p>
+                </div>
+              </div>
+            </div>
+            <div class="feature-detail-card__visual feature-detail-card__visual--customers">
+              <img src="assets/img/figma/core-visual-customers.png" alt="Customer profile card showing contact details, notes and order history" class="feature-detail-card__visual-img" width="659" height="560" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- Invoices & Documents -->
+          <article class="feature-detail-card">
+            <div class="feature-detail-card__content">
+              <span class="text-eyebrow">Invoices &amp; Documents</span>
+              <h3 class="features-title feature-detail-card__title">Turn approved orders into professional PDFs</h3>
+              <p class="feature-detail-card__desc">Generate clean, branded order confirmations and GST tax invoice PDFs instantly for customers.</p>
+              <div class="feature-detail-card__points">
+                <div class="feature-detail-point">
+                  <h4 class="feature-detail-point__title">Invoice / Order PDF</h4>
+                  <p class="feature-detail-point__desc">Generate order confirmation and invoice PDFs with company details and GST/tax fields.</p>
+                </div>
+              </div>
+            </div>
+            <div class="feature-detail-card__visual feature-detail-card__visual--invoices">
+              <img src="assets/img/figma/core-visual-invoices.png" alt="Invoice document showing itemised charges, total and monthly revenue" class="feature-detail-card__visual-img" width="659" height="560" loading="lazy" />
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 3. OPTIONAL ADD-ONS ============================== -->
+    <section class="section features-addons-section surface-inverse" id="addons">
+      <div class="container">
+        <div class="eyebrow-heading eyebrow-heading--center">
+          <span class="text-eyebrow">Optional Add-ons</span>
+          <h2 class="features-title features-addons-section__title">Give each team the right view of the same order</h2>
+          <p class="text-body features-addons-section__desc">Role-based access ensures sales, admin, warehouse and accounts see only what they need.</p>
+        </div>
+
+        <div class="features-tile-grid">
+          <div class="features-tile">
+            <div class="features-tile__icon"><img src="assets/img/icons/tile-sales-access.svg" alt="" width="66" height="66" /></div>
+            <h3 class="features-tile__title">Sales User Access</h3>
+            <p class="features-tile__desc">Allow sales users to create orders, check availability and submit orders for processing.</p>
+          </div>
+          <div class="features-tile">
+            <div class="features-tile__icon"><img src="assets/img/icons/tile-admin-security.svg" alt="" width="66" height="66" /></div>
+            <h3 class="features-tile__title">Admin Workflow</h3>
+            <p class="features-tile__desc">Give admin users control over customers, products, orders, invoices, users and reports.</p>
+          </div>
+          <div class="features-tile">
+            <div class="features-tile__icon"><img src="assets/img/icons/tile-warehouse.svg" alt="" width="66" height="66" /></div>
+            <h3 class="features-tile__title">Warehouse / Packing</h3>
+            <p class="features-tile__desc">Help warehouse or packing users view confirmed orders, pack items and update dispatch status.</p>
+          </div>
+          <div class="features-tile">
+            <div class="features-tile__icon"><img src="assets/img/icons/tile-role-access.svg" alt="" width="66" height="66" /></div>
+            <h3 class="features-tile__title">Role-Based Access</h3>
+            <p class="features-tile__desc">Control what users can access based on their role such as Admin, Sales, Warehouse or Accounts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 4. REPORTS & DATA ============================== -->
+    <section class="section features-reports-section surface-canvas" id="reports-data">
+      <div class="container">
+        <div class="eyebrow-heading eyebrow-heading--center">
+          <span class="text-eyebrow">Reports &amp; Data</span>
+          <h2 class="features-title">MOVE FROM MANUAL UPDATES TO CLEAR VISIBILITY</h2>
+          <p class="text-body">API integrations are paid add-ons and quoted based on complexity.</p>
+        </div>
+
+        <div class="features-tile-grid">
+          <div class="features-tile">
+            <div class="features-tile__icon"><img src="assets/img/icons/tile-reports.svg" alt="" width="66" height="66" /></div>
+            <h3 class="features-tile__title">Reports &amp; Analytics</h3>
+            <p class="features-tile__desc">Track sales, orders, customers, products, inventory, low stock and pending order activity.</p>
+          </div>
+          <div class="features-tile">
+            <div class="features-tile__icon"><img src="assets/img/icons/tile-csv-export.svg" alt="" width="66" height="66" /></div>
+            <h3 class="features-tile__title">CSV Import / Export</h3>
+            <p class="features-tile__desc">Import products and customers from CSV/Excel and export orders, products, customers and reports.</p>
+          </div>
+          <div class="features-tile">
+            <div class="features-tile__icon"><img src="assets/img/icons/tile-sales-access.svg" alt="" width="66" height="66" /></div>
+            <h3 class="features-tile__title">Plan Limits</h3>
+            <p class="features-tile__desc">Apply plan-based user and invoice limits for Lite, Premium and Enterprise plans.</p>
+          </div>
+          <div class="features-tile">
+            <div class="features-tile__icon"><img src="assets/img/icons/tile-api-addons.svg" alt="" width="66" height="66" /></div>
+            <h3 class="features-tile__title">API Add-ons</h3>
+            <p class="features-tile__desc">Optional integrations with accounting, ecommerce, courier, payment or custom business systems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 5. CTA SECTION ============================== -->
+    <section class="cta-band-section" id="cta-band">
+      <div class="cta-band-wrapper">
+        <div class="cta-band">
+          <div class="cta-band__glow cta-band__glow--top" aria-hidden="true"></div>
+          <div class="cta-band__glow cta-band__glow--bottom" aria-hidden="true"></div>
+
+          <div class="cta-band__content">
+            <h2 class="cta-band__title">Not Sure Which Tool Fits Your Business</h2>
+            <p class="cta-band__desc">Book a quick demo and we will show how Quick OMS compares with your current process.</p>
+            <div class="cta-band__actions">
+              <a class="btn cta-band__btn cta-band__btn--solid" href="contact.html">
+                <span>Book a Demo</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                </svg>
+              </a>
+              <a class="btn cta-band__btn cta-band__btn--outline" href="pricing.html">
+                <span>View Plan &amp; Pricing</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7497 12.75H3.25V11.25H20.7497V12.75Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 11.25C16.4723 11.25 13.5898 14.3521 13.5898 17.66V18.41H15.0898V17.66C15.0898 15.1485 17.3324 12.75 19.9998 12.75H20.7494V11.25H19.9998Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 12.7499C16.4723 12.7499 13.5898 9.64775 13.5898 6.33984V5.58984H15.0898V6.33984C15.0898 8.85142 17.3324 11.2499 19.9998 11.2499H20.7494V12.7499H19.9998Z" fill="currentColor"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="site-footer__glow site-footer__glow--left" aria-hidden="true"></div>
+    <div class="site-footer__glow site-footer__glow--right" aria-hidden="true"></div>
+
+    <div class="site-footer__wrapper">
+      <div class="site-footer__grid">
+        <!-- Column 1: Brand & Contact Info -->
+        <div class="site-footer__brand-col">
+          <a href="index.html" class="site-footer__logo" aria-label="Quick OMS Home">
+            <img src="assets/img/figma/footer-logo-icon.svg" alt="" width="55" height="55" />
+            <span class="site-footer__logo-text">QuickOMS</span>
+          </a>
+          <div class="site-footer__contact-list">
+            <a href="mailto:info@sourceinfinity.co.nz" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-email.svg" alt="" width="24" height="24" />
+              <span>info@sourceinfinity.co.nz</span>
+            </a>
+            <a href="https://sourceinfinity.co.nz" target="_blank" rel="noopener" class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-globe.svg" alt="" width="24" height="24" />
+              <span>sourceinfinity.co.nz</span>
+            </a>
+            <div class="site-footer__contact-item">
+              <img src="assets/img/figma/footer-location.svg" alt="" width="24" height="24" />
+              <span>Auckland, New Zealand</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Product -->
+        <nav class="footer-nav-group" aria-label="Product">
+          <h3 class="footer-nav-group__title">Product</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="lite.html">Quick OMS Lite</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="contact.html">Book Demo</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 3: Solutions -->
+        <nav class="footer-nav-group" aria-label="Solutions">
+          <h3 class="footer-nav-group__title">Solutions</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="industries.html#wholesalers">Wholesalers</a></li>
+            <li><a href="industries.html#distributors">Distributors</a></li>
+            <li><a href="industries.html#fmcg-suppliers">FMCG Suppliers</a></li>
+            <li><a href="industries.html#importers">Importers</a></li>
+            <li><a href="industries.html#retailers">Retailers</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 4: Compare -->
+        <nav class="footer-nav-group" aria-label="Compare">
+          <h3 class="footer-nav-group__title">Compare</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="compare.html#odoo">Odoo Alternative</a></li>
+            <li><a href="compare.html#shopify">Shopify Order Management</a></li>
+            <li><a href="compare.html#unleashed">Unleashed Comparison</a></li>
+            <li><a href="compare.html#excel">Excel Alternative</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 5: Company -->
+        <nav class="footer-nav-group" aria-label="Company">
+          <h3 class="footer-nav-group__title">Company</h3>
+          <ul class="footer-nav-group__list">
+            <li><a href="about.html">About Source Infinity</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Oversized Decorative Brand Wordmark -->
+      <div class="site-footer__watermark" aria-hidden="true">QUICKOMS</div>
+
+      <div class="site-footer__divider"></div>
+
+      <div class="site-footer__legal">
+        <span class="site-footer__copyright">© 2026 Quick OMS by Source Infinity. All rights reserved.</span>
+        <span class="site-footer__tagline">Order Management Simplified.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -102,7 +102,9 @@
 }
 
 .eyebrow-heading > .text-section-title + .text-body,
-.eyebrow-heading > .text-section-title + p {
+.eyebrow-heading > .text-section-title + p,
+.eyebrow-heading > .features-title + .text-body,
+.eyebrow-heading > .features-title + p {
   margin-top: var(--ref-space-4);
   max-width: 640px;
 }
@@ -113,6 +115,7 @@
 }
 
 .eyebrow-heading--center > .text-section-title,
-.eyebrow-heading--center > .text-body {
+.eyebrow-heading--center > .text-body,
+.eyebrow-heading--center > .features-title {
   margin-inline: auto;
 }

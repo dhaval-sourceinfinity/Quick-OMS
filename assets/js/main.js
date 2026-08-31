@@ -640,7 +640,6 @@
   function initMissingRouteInterceptor() {
     var missingRoutes = [
       "lite.html",
-      "features.html",
       "about.html"
     ];
 
