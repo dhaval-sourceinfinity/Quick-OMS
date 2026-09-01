@@ -87,7 +87,7 @@
   right: 0;
   height: calc(100% - 200px);
   min-height: 520px;
-  background: #0057d2 url("../img/figma/hero-bg-texture.png") top center / cover no-repeat;
+  background: #0057d2 url("../img/figma/hero-bg-texture.webp") top center / cover no-repeat;
   -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
   z-index: 0;
@@ -3398,7 +3398,7 @@
 .plan-btn--primary {
   position: relative;
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url("../img/figma/plan-btn-texture.jpg") -4.31px -132px / 103.785% 506.154% no-repeat;
+    url("../img/figma/plan-btn-texture.webp") -4.31px -132px / 103.785% 506.154% no-repeat;
   color: #ffffff;
   border: 1.5px solid #0cb6ec;
   box-shadow: inset -8px 5px 9.7px 0 rgba(0, 0, 0, 0.15),
@@ -9776,4 +9776,23 @@
     transition: none !important;
     transform: none !important;
   }
+}
+
+/* --------------------------------------------------------------------------
+   PERFORMANCE: Rendering Optimization (content-visibility)
+   Skips layout & paint calculations for deep off-screen sections until near viewport
+   -------------------------------------------------------------------------- */
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 650px;
+}
+
+.faq-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 850px;
+}
+
+.compare-matrix-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 950px;
 }
