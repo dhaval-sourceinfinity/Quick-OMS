@@ -90,14 +90,39 @@
       closeBtn.addEventListener("click", closeNav);
     }
 
-    // Close mobile nav when any link inside the panel is clicked
+    // Close mobile nav when clicking in-page anchor or same-page links.
+    // For navigation to other pages, avoid triggering closing animations/scroll-restoration reflows
+    // simultaneously with page unload, eliminating navigation lag/jank.
     panel.addEventListener("click", function (e) {
-      if (e.target.closest("a")) {
+      var link = e.target.closest("a");
+      if (!link) return;
+
+      var href = link.getAttribute("href") || "";
+      var isAnchor = href.charAt(0) === "#" || (link.pathname === window.location.pathname && Boolean(link.hash));
+      var isCurrentPage = (link.pathname === window.location.pathname &&
+                           link.search === window.location.search &&
+                           !link.hash);
+
+      if (isAnchor || isCurrentPage) {
         closeNav();
       }
     });
 
-    // Handle bfcache restoration so menu is never stuck open
+    // Reset state instantly on pagehide/pageshow so returning via Back/Forward button is clean without lag
+    window.addEventListener("pagehide", function () {
+      if (panel.dataset.open === "true") {
+        panel.dataset.open = "false";
+        toggle.setAttribute("aria-expanded", "false");
+        document.documentElement.dataset.navOpen = "false";
+        document.body.dataset.navOpen = "false";
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+      }
+    });
+
     window.addEventListener("pageshow", function (event) {
       if (event.persisted) {
         closeNav();
@@ -217,6 +242,8 @@
    */
   function attachSwipeNavigation(target, onSwipeLeft, onSwipeRight) {
     if (!target || typeof target.addEventListener !== "function") return;
+    if (target._hasSwipeNav) return;
+    target._hasSwipeNav = true;
 
     var touchStartX = 0;
     var touchStartY = 0;
@@ -323,21 +350,18 @@
         t.tabIndex = selected ? 0 : -1;
         var panel = document.getElementById(t.getAttribute("aria-controls"));
         if (panel) {
-          // Remove any lingering animation class from previous switches
-          panel.classList.remove("is-animating");
           if (selected) {
             activePanel = panel;
             panel.hidden = false;
-            requestAnimationFrame(function () {
-              panel.classList.add("is-active");
-              // Trigger one-shot entry animation (400ms)
-              panel.classList.add("is-animating");
-              setTimeout(function () {
-                panel.classList.remove("is-animating");
-              }, 450); // slightly longer than 400ms to ensure animation completes
-            });
+            panel.classList.add("is-active");
+            // Gentle entry fade animation
+            panel.classList.add("is-animating");
+            setTimeout(function () {
+              panel.classList.remove("is-animating");
+            }, 300);
           } else {
             panel.classList.remove("is-active");
+            panel.classList.remove("is-animating");
             panel.hidden = true;
           }
         }
@@ -366,7 +390,7 @@
       if (moveFocus) tab.focus();
     }
 
-    // Swipe navigation helpers with boundary protection
+    // Swipe navigation helpers with boundary protection and double-fire debounce
     function getActiveTabIndex() {
       for (var i = 0; i < tabs.length; i++) {
         if (tabs[i].getAttribute("aria-selected") === "true") {
@@ -376,7 +400,12 @@
       return 0;
     }
 
+    var lastSwipeTime = 0;
+
     function handleSwipeLeft() {
+      var now = Date.now();
+      if (now - lastSwipeTime < 350) return; // Prevent double-triggering or tab skipping
+      lastSwipeTime = now;
       var currentIndex = getActiveTabIndex();
       // Swipe left -> activate next tab (never past last tab)
       if (currentIndex < tabs.length - 1) {
@@ -385,6 +414,9 @@
     }
 
     function handleSwipeRight() {
+      var now = Date.now();
+      if (now - lastSwipeTime < 350) return; // Prevent double-triggering or tab skipping
+      lastSwipeTime = now;
       var currentIndex = getActiveTabIndex();
       // Swipe right -> activate previous tab (never before first tab)
       if (currentIndex > 0) {
@@ -392,8 +424,7 @@
       }
     }
 
-    // Attach touch/swipe listeners EXCLUSIVELY to content panels / grids (NOT the tab header)
-    // This allows users to freely scroll and inspect tab names in the header without accidental tab switching.
+    // Find associated content panels
     var panels = [];
     tabs.forEach(function (t) {
       var pid = t.getAttribute("aria-controls");
@@ -401,19 +432,28 @@
         var panel = document.getElementById(pid);
         if (panel && panels.indexOf(panel) === -1) {
           panels.push(panel);
-          attachSwipeNavigation(panel, handleSwipeLeft, handleSwipeRight);
         }
       }
     });
 
-    // Also attach swipe to parent stack/container if common
+    // Determine unified swipe container:
+    // If panels share a common parent stack/container, attach to that single parent ONLY (never both parent & children)
+    var swipeContentTarget = null;
     if (panels.length > 0 && panels[0].parentElement) {
       var panelParent = panels[0].parentElement;
       if (panelParent.classList.contains("plans-panels-stack") ||
           panelParent.classList.contains("core-features-panels") ||
           panelParent.classList.contains("faq-content-container")) {
-        attachSwipeNavigation(panelParent, handleSwipeLeft, handleSwipeRight);
+        swipeContentTarget = panelParent;
       }
+    }
+
+    if (swipeContentTarget) {
+      attachSwipeNavigation(swipeContentTarget, handleSwipeLeft, handleSwipeRight);
+    } else {
+      panels.forEach(function (panel) {
+        attachSwipeNavigation(panel, handleSwipeLeft, handleSwipeRight);
+      });
     }
 
     // On category filter tab bars (e.g. integrations.html), attach swipe to the content card grid

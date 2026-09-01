@@ -274,7 +274,7 @@
 }
 
 .tabpanel[hidden] {
-  display: none;
+  display: none !important;
 }
 
 /* Pill-style tabs (used by the Plan Highlight tabbed panel). */
