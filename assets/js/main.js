@@ -265,15 +265,30 @@
     if (!tabs.length) return;
 
     var indicator = group.querySelector(".core-tabs-indicator");
+    var track = group.querySelector(".core-tabs-track");
+    if (!track && group.classList.contains("core-tabs-nav")) {
+      track = document.createElement("span");
+      track.className = "core-tabs-track";
+      track.setAttribute("aria-hidden", "true");
+      group.insertBefore(track, indicator || group.firstChild);
+    }
 
     function updateIndicator(activeTab) {
-      if (!indicator || !activeTab) return;
-      var tabRect = activeTab.getBoundingClientRect();
-      var groupRect = group.getBoundingClientRect();
-      var leftOffset = tabRect.left - groupRect.left + group.scrollLeft;
-      indicator.style.width = tabRect.width + "px";
-      indicator.style.transform = "translateX(" + leftOffset + "px)";
+      if (!activeTab) return;
+      if (track) {
+        track.style.width = Math.max(group.scrollWidth, group.offsetWidth) + "px";
+      }
+      if (indicator) {
+        indicator.style.width = activeTab.offsetWidth + "px";
+        indicator.style.transform = "translateX(" + activeTab.offsetLeft + "px)";
+      }
     }
+
+    group.addEventListener("scroll", function () {
+      if (track) {
+        track.style.width = Math.max(group.scrollWidth, group.offsetWidth) + "px";
+      }
+    }, { passive: true });
 
     // Per-tab accent colors
     var tabAccentColors = {
@@ -320,6 +335,11 @@
           path.style.transition = "fill 400ms ease-out";
           path.style.fill = accentColor;
         });
+      }
+
+      if (tab.hasAttribute("data-filter")) {
+        var filterEvent = new CustomEvent("tab-filter", { detail: { filter: tab.getAttribute("data-filter") } });
+        group.dispatchEvent(filterEvent);
       }
 
       updateIndicator(tab);
@@ -919,14 +939,14 @@
     var grid = document.querySelector("[data-integration-grid]");
     if (!bar || !grid) return;
 
-    var buttons = Array.prototype.slice.call(
-      bar.querySelectorAll(".integration-filter-btn")
+    var tabs = Array.prototype.slice.call(
+      bar.querySelectorAll(".integration-tab-btn, .integration-filter-btn, [role='tab']")
     );
     var cards = Array.prototype.slice.call(
       grid.querySelectorAll(".integration-card")
     );
     var status = document.querySelector("[data-integration-filter-status]");
-    if (!buttons.length || !cards.length) return;
+    if (!tabs.length || !cards.length) return;
 
     function applyFilter(category) {
       var visibleCount = 0;
@@ -940,17 +960,16 @@
       }
     }
 
-    function selectButton(button) {
-      buttons.forEach(function (btn) {
-        btn.setAttribute("aria-pressed", btn === button ? "true" : "false");
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        applyFilter(tab.getAttribute("data-filter") || "all");
       });
-      applyFilter(button.getAttribute("data-filter") || "all");
-    }
+    });
 
-    buttons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        selectButton(button);
-      });
+    bar.addEventListener("tab-filter", function (e) {
+      if (e.detail && e.detail.filter) {
+        applyFilter(e.detail.filter);
+      }
     });
   }
 

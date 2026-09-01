@@ -99,15 +99,17 @@
           <p class="text-body">Every integration is scoped and quoted around your systems, data flow and support needs.</p>
         </div>
 
-        <div class="integration-filter-wrap">
-          <div class="integration-filter-bar" role="group" aria-label="Filter integrations by category" data-integration-filter>
-            <button type="button" class="integration-filter-btn" data-filter="all" aria-pressed="true">All</button>
-            <button type="button" class="integration-filter-btn" data-filter="accounting" aria-pressed="false">Accounting</button>
-            <button type="button" class="integration-filter-btn" data-filter="ecommerce" aria-pressed="false">Ecommerce</button>
-            <button type="button" class="integration-filter-btn" data-filter="courier" aria-pressed="false">Courier / Logistics</button>
-            <button type="button" class="integration-filter-btn" data-filter="payment" aria-pressed="false">Payment</button>
-            <button type="button" class="integration-filter-btn" data-filter="data" aria-pressed="false">Data</button>
-            <button type="button" class="integration-filter-btn" data-filter="custom" aria-pressed="false">Custom System</button>
+        <div class="integration-tabs-wrapper">
+          <div class="core-tabs-nav integration-tabs" role="tablist" aria-label="Filter integrations by category" data-tab-group data-integration-filter>
+            <button type="button" class="core-tab-btn integration-tab-btn" data-filter="all" role="tab" aria-selected="true" tabindex="0">All</button>
+            <button type="button" class="core-tab-btn integration-tab-btn" data-filter="accounting" role="tab" aria-selected="false" tabindex="-1">Accounting</button>
+            <button type="button" class="core-tab-btn integration-tab-btn" data-filter="ecommerce" role="tab" aria-selected="false" tabindex="-1">Ecommerce</button>
+            <button type="button" class="core-tab-btn integration-tab-btn" data-filter="courier" role="tab" aria-selected="false" tabindex="-1">Courier / Logistics</button>
+            <button type="button" class="core-tab-btn integration-tab-btn" data-filter="payment" role="tab" aria-selected="false" tabindex="-1">Payment</button>
+            <button type="button" class="core-tab-btn integration-tab-btn" data-filter="data" role="tab" aria-selected="false" tabindex="-1">Data</button>
+            <button type="button" class="core-tab-btn integration-tab-btn" data-filter="custom" role="tab" aria-selected="false" tabindex="-1">Custom System</button>
+            <span class="core-tabs-track" aria-hidden="true"></span>
+            <span class="core-tabs-indicator" aria-hidden="true"></span>
           </div>
         </div>
 
@@ -349,7 +351,7 @@
           <div class="cta-band__glow cta-band__glow--bottom" aria-hidden="true"></div>
 
           <div class="cta-band__content">
-            <h2 class="cta-band__title">Need Quick OMS Connected to Your Systems?</h2>
+            <h2 class="cta-band__title">Need Quick OMS Connected to<br>Your Systems?</h2>
             <p class="cta-band__desc">Tell us which platforms you use and we will scope the integration, timeline and cost.</p>
             <div class="cta-band__actions">
               <a class="btn cta-band__btn cta-band__btn--solid" href="contact.html">
