@@ -437,3 +437,17 @@
   width: 0;
   height: 0;
 }
+
+@media (max-width: 1023px) {
+  [data-tab-group],
+  [role="tablist"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  [data-tab-group] [role="tab"],
+  [role="tablist"] [role="tab"] {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}

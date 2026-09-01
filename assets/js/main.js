@@ -118,30 +118,19 @@
   /* ------------------------------------------------------------------ */
 
   /**
-   * Smoothly scrolls a horizontally overflowing tab strip just enough to
-   * reveal the active tab with comfortable breathing room, and when space
-   * permits, preserves a small peek (~24-36px) of the next tab to indicate
-   * additional content.
-   *
-   * Priorities:
-   * 1. Active tab must be 100% visible (never sacrificed for next tab peek).
-   * 2. Maintain comfortable spacing around active tab.
-   * 3. Preserve next-tab peek (~24-36px) when viewport space permits.
-   * 4. Minimum scroll required — no unnecessary scrolling or force-centering.
+   * Smoothly scrolls a horizontally overflowing tab strip to center the active tab,
+   * providing comfortable breathing room and natural peeking of adjacent tabs.
+   * Clamped to [0, maxScroll] so edge tabs (first and last) align cleanly.
    *
    * @param {HTMLElement} tab - The tab element to reveal
    * @param {Object} [options] - Options
    * @param {HTMLElement} [options.container] - Explicit scroll container
-   * @param {number} [options.margin=16] - Breathing room in px from container edges
-   * @param {number} [options.peek=28] - Desired peek in px of next tab
    * @param {boolean} [options.smooth=true] - Smooth native scrolling
    */
   function smartRevealTab(tab, options) {
     if (!tab || typeof tab.getBoundingClientRect !== "function") return;
 
     options = options || {};
-    var margin = typeof options.margin === "number" ? options.margin : 16;
-    var peek = typeof options.peek === "number" ? options.peek : 28;
     var smooth = options.smooth !== false;
 
     // Find the scrollable container (either explicit or ancestor)
@@ -151,58 +140,20 @@
     // If container doesn't overflow horizontally, all tabs fit -> no scroll needed
     if (container.scrollWidth <= container.clientWidth) return;
 
-    var containerRect = container.getBoundingClientRect();
-    var tabRect = tab.getBoundingClientRect();
-
     var containerWidth = container.clientWidth;
-    var tabWidth = tabRect.width;
-
-    var tabLeftRelative = tabRect.left - containerRect.left;
-    var tabRightRelative = tabRect.right - containerRect.left;
+    var maxScroll = container.scrollWidth - containerWidth;
+    if (maxScroll <= 0) return;
 
     var currentScroll = container.scrollLeft;
-    var maxScroll = container.scrollWidth - containerWidth;
-    var targetScroll = currentScroll;
 
-    // Find next sibling tab (if any) to calculate peek boundary
-    var nextTab = getNextTabElement(tab, container);
-    var desiredRightBoundary = tabRightRelative + margin;
+    // Calculate center-aligned scroll position:
+    // Centers the active tab within the visible width of the scroll container
+    var tabCenter = tab.offsetLeft + tab.offsetWidth / 2;
+    var containerCenter = containerWidth / 2;
+    var targetScroll = Math.round(tabCenter - containerCenter);
 
-    if (nextTab && typeof nextTab.getBoundingClientRect === "function") {
-      var nextTabRect = nextTab.getBoundingClientRect();
-      var nextTabLeftRelative = nextTabRect.left - containerRect.left;
-      // Right boundary includes the gap to next tab + desired peek amount
-      desiredRightBoundary = nextTabLeftRelative + peek;
-    }
-
-    // 1. Check if tab is clipped on the LEFT (or scrolled past)
-    if (tabLeftRelative < margin) {
-      // Scroll right (decrease scrollLeft) just enough to put active tab at left margin
-      targetScroll = currentScroll + tabLeftRelative - margin;
-    }
-    // 2. Check if active tab or desired next-tab peek extends past RIGHT edge
-    else if (desiredRightBoundary > containerWidth) {
-      // Required scroll amount to bring desiredRightBoundary to right edge of viewport
-      var scrollDelta = desiredRightBoundary - containerWidth;
-
-      // PRIORITY 1 SAFEGUARD: Ensure scrolling does not push active tab's left edge past margin
-      var maxAllowedDelta = tabLeftRelative - margin;
-      if (scrollDelta > maxAllowedDelta) {
-        scrollDelta = Math.max(0, maxAllowedDelta);
-      }
-
-      // Only scroll if delta is meaningful (> 2px)
-      if (scrollDelta > 2) {
-        targetScroll = currentScroll + scrollDelta;
-      }
-    }
-    // 3. Tab is already comfortably visible
-    else {
-      return;
-    }
-
-    // Clamp target to valid range [0, maxScroll] (handles first & last tabs cleanly)
-    targetScroll = Math.max(0, Math.min(maxScroll, Math.round(targetScroll)));
+    // Clamp target to valid range [0, maxScroll]
+    targetScroll = Math.max(0, Math.min(maxScroll, targetScroll));
 
     // Avoid redundant micro-scroll operations
     if (Math.abs(targetScroll - currentScroll) < 1) return;
@@ -254,8 +205,77 @@
     return el.closest('[data-tab-group], [role="tablist"]') || el.parentElement;
   }
 
+  /**
+   * Attaches lightweight, native touch/swipe gesture listeners to an element.
+   * Only triggers for deliberate horizontal swipes.
+   * Vertical scrolling, diagonal gestures, small accidental movements,
+   * and normal taps are never intercepted or blocked.
+   *
+   * @param {HTMLElement} target - Target element to listen for touch gestures
+   * @param {Function} onSwipeLeft - Callback when swiped left (move to next tab)
+   * @param {Function} onSwipeRight - Callback when swiped right (move to prev tab)
+   */
+  function attachSwipeNavigation(target, onSwipeLeft, onSwipeRight) {
+    if (!target || typeof target.addEventListener !== "function") return;
+
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var touchStartTime = 0;
+    var isSwiping = false;
+
+    target.addEventListener("touchstart", function (e) {
+      if (e.touches.length !== 1) return;
+      var touch = e.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      touchStartTime = Date.now();
+      isSwiping = true;
+    }, { passive: true });
+
+    target.addEventListener("touchend", function (e) {
+      if (!isSwiping) return;
+      isSwiping = false;
+      if (e.changedTouches.length !== 1) return;
+
+      var touch = e.changedTouches[0];
+      var deltaX = touch.clientX - touchStartX;
+      var deltaY = touch.clientY - touchStartY;
+      var deltaTime = Date.now() - touchStartTime;
+
+      // Reject if gesture was held for too long (> 600ms)
+      if (deltaTime > 600) return;
+
+      var absX = Math.abs(deltaX);
+      var absY = Math.abs(deltaY);
+
+      // 1. Minimum distance threshold: 40px
+      if (absX < 40) return;
+
+      // 2. Horizontal dominance: horizontal motion must be at least 1.5x vertical motion
+      if (absX < absY * 1.5) return;
+
+      // 3. Reject if vertical displacement was substantial (> 80px)
+      if (absY > 80) return;
+
+      // Deliberate horizontal swipe confirmed
+      if (deltaX < 0) {
+        if (typeof onSwipeLeft === "function") {
+          onSwipeLeft();
+        }
+      } else {
+        if (typeof onSwipeRight === "function") {
+          onSwipeRight();
+        }
+      }
+    }, { passive: true });
+
+    target.addEventListener("touchcancel", function () {
+      isSwiping = false;
+    }, { passive: true });
+  }
+
   /* ------------------------------------------------------------------ */
-  /* Tabs (WAI-ARIA tabs pattern, horizontal, manual activation)         */
+  /* Tabs (WAI-ARIA tabs pattern, horizontal, swipe & manual activation)  */
   /* ------------------------------------------------------------------ */
 
   function initTabGroup(group) {
@@ -277,8 +297,8 @@
       if (!activeTab) return;
       if (track) {
         var lastTab = tabs[tabs.length - 1];
-        var contentWidth = lastTab ? (lastTab.offsetLeft + lastTab.offsetWidth) : group.offsetWidth;
-        track.style.width = Math.max(contentWidth, group.clientWidth) + "px";
+        var contentWidth = lastTab ? (lastTab.offsetLeft + lastTab.offsetWidth) : group.scrollWidth;
+        track.style.width = Math.max(contentWidth, group.scrollWidth, group.clientWidth) + "px";
       }
       if (indicator) {
         indicator.style.width = activeTab.offsetWidth + "px";
@@ -340,10 +360,68 @@
 
       updateIndicator(tab);
 
-      // Smart Reveal: smoothly scroll tab container just enough to make active tab fully visible + next tab peek
-      smartRevealTab(tab, { container: group, margin: 16, peek: 28 });
+      // Smart Reveal: smoothly scroll tab container to center the active tab
+      smartRevealTab(tab, { container: group, smooth: true });
 
       if (moveFocus) tab.focus();
+    }
+
+    // Swipe navigation helpers with boundary protection
+    function getActiveTabIndex() {
+      for (var i = 0; i < tabs.length; i++) {
+        if (tabs[i].getAttribute("aria-selected") === "true") {
+          return i;
+        }
+      }
+      return 0;
+    }
+
+    function handleSwipeLeft() {
+      var currentIndex = getActiveTabIndex();
+      // Swipe left -> activate next tab (never past last tab)
+      if (currentIndex < tabs.length - 1) {
+        selectTab(tabs[currentIndex + 1], false);
+      }
+    }
+
+    function handleSwipeRight() {
+      var currentIndex = getActiveTabIndex();
+      // Swipe right -> activate previous tab (never before first tab)
+      if (currentIndex > 0) {
+        selectTab(tabs[currentIndex - 1], false);
+      }
+    }
+
+    // Attach touch/swipe listeners EXCLUSIVELY to content panels / grids (NOT the tab header)
+    // This allows users to freely scroll and inspect tab names in the header without accidental tab switching.
+    var panels = [];
+    tabs.forEach(function (t) {
+      var pid = t.getAttribute("aria-controls");
+      if (pid) {
+        var panel = document.getElementById(pid);
+        if (panel && panels.indexOf(panel) === -1) {
+          panels.push(panel);
+          attachSwipeNavigation(panel, handleSwipeLeft, handleSwipeRight);
+        }
+      }
+    });
+
+    // Also attach swipe to parent stack/container if common
+    if (panels.length > 0 && panels[0].parentElement) {
+      var panelParent = panels[0].parentElement;
+      if (panelParent.classList.contains("plans-panels-stack") ||
+          panelParent.classList.contains("core-features-panels") ||
+          panelParent.classList.contains("faq-content-container")) {
+        attachSwipeNavigation(panelParent, handleSwipeLeft, handleSwipeRight);
+      }
+    }
+
+    // On category filter tab bars (e.g. integrations.html), attach swipe to the content card grid
+    if (group.hasAttribute("data-integration-filter")) {
+      var integrationGrid = document.querySelector("[data-integration-grid]");
+      if (integrationGrid) {
+        attachSwipeNavigation(integrationGrid, handleSwipeLeft, handleSwipeRight);
+      }
     }
 
     // Set initial indicator position
@@ -355,6 +433,7 @@
       var current = group.querySelector('[role="tab"][aria-selected="true"]');
       if (current) {
         updateIndicator(current);
+        smartRevealTab(current, { container: group, smooth: false });
       }
     }
     setTimeout(refreshCurrent, 50);
@@ -368,7 +447,7 @@
     // Initial check (non-smooth so page load is instantaneous)
     if (initialTab) {
       setTimeout(function () {
-        smartRevealTab(initialTab, { container: group, margin: 16, peek: 28, smooth: false });
+        smartRevealTab(initialTab, { container: group, smooth: false });
       }, 60);
     }
 
