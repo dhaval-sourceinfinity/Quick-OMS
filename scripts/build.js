@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const { execSync } = require('child_process');
 
 const rootDir = path.resolve(__dirname, '..');
@@ -19,7 +20,7 @@ function buildCss() {
       .map(f => fs.readFileSync(path.join(rootDir, 'assets/css', f), 'utf8'))
       .join('\n');
 
-    const tempConcatPath = path.join(rootDir, 'assets/css/temp-concat.css');
+    const tempConcatPath = path.join(os.tmpdir(), `quick-oms-concat-${Date.now()}.css`);
     fs.writeFileSync(tempConcatPath, combinedCss);
 
     const outCssPath = path.join(rootDir, 'assets/css/style.min.css');

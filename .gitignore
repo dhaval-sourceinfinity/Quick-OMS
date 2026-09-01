@@ -5,3 +5,7 @@ Thumbs.db
 
 # Local review artifacts (screenshots taken during QA passes)
 .tmp_shots/
+
+# Temporary build artifacts
+temp-*.css
+*.tmp
