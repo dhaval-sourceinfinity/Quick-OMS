@@ -276,19 +276,15 @@
     function updateIndicator(activeTab) {
       if (!activeTab) return;
       if (track) {
-        track.style.width = Math.max(group.scrollWidth, group.offsetWidth) + "px";
+        var lastTab = tabs[tabs.length - 1];
+        var contentWidth = lastTab ? (lastTab.offsetLeft + lastTab.offsetWidth) : group.offsetWidth;
+        track.style.width = Math.max(contentWidth, group.clientWidth) + "px";
       }
       if (indicator) {
         indicator.style.width = activeTab.offsetWidth + "px";
         indicator.style.transform = "translateX(" + activeTab.offsetLeft + "px)";
       }
     }
-
-    group.addEventListener("scroll", function () {
-      if (track) {
-        track.style.width = Math.max(group.scrollWidth, group.offsetWidth) + "px";
-      }
-    }, { passive: true });
 
     // Per-tab accent colors
     var tabAccentColors = {
@@ -353,6 +349,9 @@
     // Set initial indicator position
     var initialTab = group.querySelector('[role="tab"][aria-selected="true"]') || tabs[0];
     function refreshCurrent() {
+      if (track) {
+        track.style.width = "";
+      }
       var current = group.querySelector('[role="tab"][aria-selected="true"]');
       if (current) {
         updateIndicator(current);

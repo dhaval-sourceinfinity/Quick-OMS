@@ -2747,21 +2747,7 @@
 }
 
 .core-feature-visual--invoices {
-  /* Fallback fill visible only while the image loads; object-fit: cover
-     below keeps the artwork covering the panel at every breakpoint so
-     this color never has to seam-match the artwork's own gradient. */
   background: #f47863;
-}
-
-/* This artwork's own aspect ratio (1318x1120) is narrower than the shared
-   panel at tablet/mobile breakpoints. "contain" would letterbox it and
-   expose the flat panel background next to the artwork's own gradient,
-   producing a visible seam. "cover" keeps the artwork filling the panel;
-   the invoice card itself sits well within the artwork's margins (~22%
-   top/bottom) so this never crops the visible UI, only the decorative
-   coral padding around it. */
-.core-feature-visual--invoices .core-feature-visual__img {
-  object-fit: cover;
 }
 
 .core-feature-visual__img {
@@ -8403,7 +8389,7 @@
   padding-top: 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   width: 100%;
-  max-width: 580px;
+  max-width: 680px;
 }
 
 .not-found__nav-label {
@@ -8544,14 +8530,16 @@
   background-color: var(--ref-color-white, #ffffff);
   box-sizing: border-box;
   scroll-margin-top: 100px;
-  transition: border-color var(--motion-normal, 0.25s) var(--easing-standard, ease),
-              box-shadow var(--motion-normal, 0.25s) var(--easing-standard, ease);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
 }
 
-/* Card Hover: Subtle border and shadow change only — completely stable layout with NO movement */
+/* Card Hover: Consistent with integrations & features page cards — subtle neutral border, soft floating shadow, gentle lift */
 .industry-detail-card:hover {
-  border-color: rgba(20, 110, 245, 0.4);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05), 0 2px 10px rgba(20, 110, 245, 0.04);
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-floating);
 }
 
 /* Media Column (Image Frame) */
@@ -9660,7 +9648,7 @@
 
 .features-tile:hover {
   transform: translateY(-4px);
-  border-color: var(--ref-color-blue-500);
+  border-color: #cbd5e1;
   box-shadow: var(--shadow-floating);
 }
 
