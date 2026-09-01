@@ -1,0 +1,10 @@
+{
+  "name": "quick-oms",
+  "version": "1.0.0",
+  "description": "Quick OMS marketing website",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "watch": "node scripts/watch.js",
+    "dev": "node scripts/watch.js"
+  }
+}
