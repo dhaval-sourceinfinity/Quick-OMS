@@ -7379,6 +7379,13 @@
   color: var(--ref-color-gray-700);
 }
 
+#odoo,
+#shopify,
+#unleashed,
+#excel {
+  scroll-margin-top: calc(var(--size-header-height, 80px) + 24px);
+}
+
 .vendor-matrix thead th.vendor-matrix__competitor {
   background: var(--color-vendor-header-bg);
   color: var(--ref-color-gray-600);

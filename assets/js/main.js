@@ -90,6 +90,20 @@
       closeBtn.addEventListener("click", closeNav);
     }
 
+    // Close mobile nav when any link inside the panel is clicked
+    panel.addEventListener("click", function (e) {
+      if (e.target.closest("a")) {
+        closeNav();
+      }
+    });
+
+    // Handle bfcache restoration so menu is never stuck open
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted) {
+        closeNav();
+      }
+    });
+
     // Close automatically if the viewport grows past the mobile threshold.
     var mql = window.matchMedia("(min-width: 1180px)");
     mql.addEventListener("change", function (e) {
@@ -639,8 +653,7 @@
 
   function initMissingRouteInterceptor() {
     var missingRoutes = [
-      "lite.html",
-      "about.html"
+      "lite.html"
     ];
 
     document.addEventListener("click", function (e) {
