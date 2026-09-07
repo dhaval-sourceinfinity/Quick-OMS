@@ -7332,8 +7332,71 @@
 }
 
 /* --------------------------------------------------------------------------
-   16. OPTIONAL ADD-ONS
+   16. OPTIONAL ADD-ONS — five-card grid overrides (Figma match)
    -------------------------------------------------------------------------- */
+
+/* Compact card container */
+.rate-grid--five .rate-card {
+  min-height: 0;
+  padding: 24px 16px 20px;
+  gap: 0;
+  justify-content: flex-start;
+}
+
+/* Tighter head with smaller title */
+.rate-grid--five .rate-card__head {
+  padding-bottom: 14px;
+  gap: 0;
+}
+
+.rate-grid--five .rate-card__name {
+  font-size: 1rem;          /* 16px — Figma match */
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Body spacing */
+.rate-grid--five .rate-card__body {
+  gap: 4px;
+  padding-top: 12px;
+}
+
+/* "From" label */
+.rate-grid--five .rate-card__label {
+  font-size: 0.75rem;       /* 12px — small caps style */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ref-color-gray-600);
+}
+
+/* Price row — baseline alignment */
+.rate-grid--five .rate-card__price-row {
+  align-items: baseline;
+  gap: 2px;
+}
+
+/* Price amount */
+.rate-grid--five .rate-card__price--sm {
+  font-size: 1.125rem;      /* 18px — visually dominant but not oversized */
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Suffixes: /Mo, per user — smaller and baseline-aligned */
+.rate-grid--five .rate-card__period {
+  font-size: 0.6875rem;     /* 11px */
+  font-weight: 500;
+  color: var(--ref-color-gray-700);
+  line-height: 1;
+}
+
+/* "per user" suffix — same size, just inline */
+.rate-grid--five .rate-card__suffix {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
 
 /* --------------------------------------------------------------------------
    17. PRICING INTEGRITY & TERMS
