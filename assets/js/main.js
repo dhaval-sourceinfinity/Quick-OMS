@@ -306,6 +306,8 @@
   /* ------------------------------------------------------------------ */
 
   function initTabGroup(group) {
+    if (group.classList.contains("plans-tab-switcher")) return;
+
     var tabs = Array.prototype.slice.call(
       group.querySelectorAll('[role="tab"]')
     );
@@ -517,6 +519,149 @@
 
   function initTabs() {
     document.querySelectorAll("[data-tab-group], [role=\"tablist\"]").forEach(initTabGroup);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Plans Tabs (Lite Plan vs Upgrade / Premium Plan crossfade switch)  */
+  /* ------------------------------------------------------------------ */
+
+  function initPlansTabs() {
+    var switcher = document.querySelector(".plans-tab-switcher");
+    if (!switcher) return;
+
+    var tabs = Array.prototype.slice.call(switcher.querySelectorAll('[role="tab"]'));
+    if (!tabs.length) return;
+
+    var stack = document.querySelector(".plans-panels-stack");
+    var panels = tabs.map(function (tab) {
+      return document.getElementById(tab.getAttribute("aria-controls"));
+    }).filter(Boolean);
+
+    var isSwitching = false;
+    var transitionTimeout = null;
+
+    function switchPlan(targetTab, moveFocus) {
+      if (!targetTab) return;
+      var currentTab = switcher.querySelector('[role="tab"][aria-selected="true"]');
+      if (currentTab === targetTab && !isSwitching) return;
+
+      var targetPanelId = targetTab.getAttribute("aria-controls");
+      var targetPanel = document.getElementById(targetPanelId);
+      var outgoingPanel = currentTab ? document.getElementById(currentTab.getAttribute("aria-controls")) : null;
+
+      // Update ARIA & tabindex attributes
+      tabs.forEach(function (tab) {
+        var isSelected = tab === targetTab;
+        tab.setAttribute("aria-selected", isSelected ? "true" : "false");
+        tab.tabIndex = isSelected ? 0 : -1;
+      });
+
+      if (moveFocus) {
+        targetTab.focus();
+      }
+
+      if (!targetPanel) return;
+
+      if (transitionTimeout) {
+        clearTimeout(transitionTimeout);
+        transitionTimeout = null;
+      }
+
+      if (!outgoingPanel || outgoingPanel === targetPanel) {
+        panels.forEach(function (p) {
+          if (p === targetPanel) {
+            p.hidden = false;
+            p.classList.add("is-active");
+            p.classList.remove("is-exiting", "is-entering");
+          } else {
+            p.hidden = true;
+            p.classList.remove("is-active", "is-exiting", "is-entering");
+          }
+        });
+        return;
+      }
+
+      isSwitching = true;
+
+      // Prepare target panel for entrance
+      targetPanel.hidden = false;
+      targetPanel.classList.add("is-entering");
+      targetPanel.classList.remove("is-active", "is-exiting");
+
+      // Mark outgoing panel as exiting
+      outgoingPanel.classList.add("is-exiting");
+      outgoingPanel.classList.remove("is-active", "is-entering");
+
+      // Force reflow so entrance transition fires reliably
+      void targetPanel.offsetWidth;
+
+      // Trigger entrance transition
+      requestAnimationFrame(function () {
+        targetPanel.classList.remove("is-entering");
+        targetPanel.classList.add("is-active");
+      });
+
+      // Once crossfade duration completes, finalize states
+      transitionTimeout = setTimeout(function () {
+        outgoingPanel.hidden = true;
+        outgoingPanel.classList.remove("is-exiting", "is-active");
+        isSwitching = false;
+        transitionTimeout = null;
+      }, 230);
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener("click", function () {
+        switchPlan(tab, false);
+      });
+
+      tab.addEventListener("keydown", function (event) {
+        var newIndex = null;
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          newIndex = (index + 1) % tabs.length;
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          newIndex = (index - 1 + tabs.length) % tabs.length;
+        } else if (event.key === "Home") {
+          newIndex = 0;
+        } else if (event.key === "End") {
+          newIndex = tabs.length - 1;
+        }
+        if (newIndex !== null) {
+          event.preventDefault();
+          switchPlan(tabs[newIndex], true);
+        }
+      });
+    });
+
+    if (stack) {
+      attachSwipeNavigation(
+        stack,
+        function () {
+          var currentIndex = -1;
+          for (var i = 0; i < tabs.length; i++) {
+            if (tabs[i].getAttribute("aria-selected") === "true") {
+              currentIndex = i;
+              break;
+            }
+          }
+          if (currentIndex !== -1 && currentIndex < tabs.length - 1) {
+            switchPlan(tabs[currentIndex + 1], false);
+          }
+        },
+        function () {
+          var currentIndex = -1;
+          for (var i = 0; i < tabs.length; i++) {
+            if (tabs[i].getAttribute("aria-selected") === "true") {
+              currentIndex = i;
+              break;
+            }
+          }
+          if (currentIndex > 0) {
+            switchPlan(tabs[currentIndex - 1], false);
+          }
+        }
+      );
+    }
   }
 
   // Expose global smart tab reveal helper for project-wide programmatic usage
@@ -1215,6 +1360,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     initMobileNav();
     initTabs();
+    initPlansTabs();
     initAccordions();
     initHeaderScroll();
     initContactForm();
