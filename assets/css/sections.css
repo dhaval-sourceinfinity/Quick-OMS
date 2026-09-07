@@ -1863,34 +1863,34 @@
   box-sizing: border-box;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   cursor: default;
-  transition: transform 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998),
-    border-color 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998);
+  transition: border-color 0.35s ease-out;
   outline: none;
 }
 
 .industry-card::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -1px;
   background: linear-gradient(157deg, #0057d2 0%, #5d9eff 50%, #0058d4 100%);
   border-radius: inherit;
   opacity: 0;
   z-index: 0;
   pointer-events: none;
-  transition: opacity 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998);
+  transition: opacity 0.35s ease-out;
+  will-change: opacity;
 }
 
-.industry-card:hover::before,
-.industry-card:focus-visible::before {
+.industry-card.is-active::before,
+.industry-card:focus-visible::before,
+.industry-track-wrapper:not(.has-cursor-tracking) .industry-card:hover::before {
   opacity: 1;
 }
 
-/* Hover state: Card transitions to the exact brand gradient matching the Book a Demo button */
-.industry-card:hover,
-.industry-card:focus-visible {
+/* Active & Hover state */
+.industry-card.is-active,
+.industry-card:focus-visible,
+.industry-track-wrapper:not(.has-cursor-tracking) .industry-card:hover {
   border-color: transparent;
-  transform: translateY(-4px);
-  box-shadow: none;
 }
 
 .industry-card:focus-visible {
@@ -1908,17 +1908,17 @@
 .industry-card__title {
   font-family: var(--ref-font-inter);
   font-size: 2rem;
-
   font-weight: 700;
   color: #111827;
   line-height: 1.22;
   /* 39px */
   margin: 0;
-  transition: color 300ms ease-out;
+  transition: color 0.35s ease-out;
 }
 
-.industry-card:hover .industry-card__title,
-.industry-card:focus-visible .industry-card__title {
+.industry-card.is-active .industry-card__title,
+.industry-card:focus-visible .industry-card__title,
+.industry-track-wrapper:not(.has-cursor-tracking) .industry-card:hover .industry-card__title {
   color: #ffffff;
 }
 
@@ -1928,30 +1928,31 @@
   height: 1px;
   background: #bbbbbb;
   margin: 16px 0 14px;
-  transition: background 300ms ease-out;
+  transition: background-color 0.35s ease-out;
 }
 
 /* Horizontal line turns pure white on hover matching text color */
-.industry-card:hover .industry-card__divider,
-.industry-card:focus-visible .industry-card__divider {
-  background: #ffffff;
+.industry-card.is-active .industry-card__divider,
+.industry-card:focus-visible .industry-card__divider,
+.industry-track-wrapper:not(.has-cursor-tracking) .industry-card:hover .industry-card__divider {
+  background-color: #ffffff;
 }
 
 .industry-card__desc {
   font-family: "Manrope", var(--ref-font-inter);
   font-size: 1.125rem;
-
   font-weight: 400;
   color: #667085;
   line-height: 1.4;
   /* 25px */
   min-height: 50px;
   margin: 0;
-  transition: color 300ms ease-out;
+  transition: color 0.35s ease-out;
 }
 
-.industry-card:hover .industry-card__desc,
-.industry-card:focus-visible .industry-card__desc {
+.industry-card.is-active .industry-card__desc,
+.industry-card:focus-visible .industry-card__desc,
+.industry-track-wrapper:not(.has-cursor-tracking) .industry-card:hover .industry-card__desc {
   color: #ffffff;
 }
 
@@ -1972,12 +1973,6 @@
   object-fit: cover;
   display: block;
   border-radius: 20px;
-  transition: transform 1.25s linear(0, 0.0216, 0.0747, 0.1458, 0.2255, 0.3076, 0.3879, 0.4638, 0.5339, 0.5974, 0.6542, 0.7044, 0.7484, 0.7866, 0.8196, 0.8479, 0.8722, 0.8928, 0.9103, 0.9251, 0.9375, 0.948, 0.9568, 0.9642, 0.9703, 0.9754, 0.9797, 0.9832, 0.9862, 0.9886, 0.9906, 0.9923, 0.9936, 0.9948, 0.9957, 0.9965, 0.9971, 0.9976, 0.9981, 0.9984, 0.9987, 0.9989, 0.9991, 0.9993, 0.9994, 0.9995, 0.9996, 0.9997, 0.9997, 0.9998, 0.9998);
-}
-
-.industry-card:hover .industry-card__media img,
-.industry-card:focus-visible .industry-card__media img {
-  transform: scale(1.02);
 }
 
 .industry-section__cta {
@@ -2155,6 +2150,7 @@
 
   .industry-card:hover,
   .industry-card:focus-visible,
+  .industry-card.is-active,
   .industry-card:hover .industry-card__media img,
   .industry-section__cta .btn:hover {
     transform: none !important;
@@ -2700,6 +2696,7 @@
     opacity: 0;
     transform: translateY(6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -3060,7 +3057,7 @@
     gap: 10px;
   }
 
-    .core-feature-check {
+  .core-feature-check {
     width: 28px;
     height: 28px;
   }
@@ -7326,6 +7323,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .rate-card,
   .rate-card:hover {
     transform: none;
@@ -8566,8 +8564,8 @@
   box-sizing: border-box;
   scroll-margin-top: 100px;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease;
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
 }
 
 /* Card Hover: Consistent with integrations & features page cards — subtle neutral border, soft floating shadow, gentle lift */
@@ -8655,7 +8653,7 @@
   box-sizing: border-box;
   width: 100%;
   transition: border-color var(--motion-normal, 0.25s) var(--easing-standard, ease),
-              background-color var(--motion-normal, 0.25s) var(--easing-standard, ease);
+    background-color var(--motion-normal, 0.25s) var(--easing-standard, ease);
 }
 
 .industry-detail-box__title {
@@ -8783,6 +8781,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .industry-detail-card,
   .industry-detail-card__media,
   .industry-detail-card__img,
@@ -9132,6 +9131,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .integration-card,
   .integration-filter-btn {
     transition: none !important;
@@ -9164,10 +9164,21 @@
 /* Column proportions from Figma's fixed 250/240/193/540 widths (274:7559-
    7565), kept as relative shares (via <colgroup>) rather than literal px
    so a real <table> can still size fluidly. */
-.addon-pricing-table col.col--name { width: 21%; }
-.addon-pricing-table col.col--setup { width: 20%; }
-.addon-pricing-table col.col--support { width: 16%; }
-.addon-pricing-table col.col--best-for { width: 43%; }
+.addon-pricing-table col.col--name {
+  width: 21%;
+}
+
+.addon-pricing-table col.col--setup {
+  width: 20%;
+}
+
+.addon-pricing-table col.col--support {
+  width: 16%;
+}
+
+.addon-pricing-table col.col--best-for {
+  width: 43%;
+}
 
 .addon-pricing-table th,
 .addon-pricing-table td {
@@ -9217,6 +9228,7 @@
 }
 
 @media (max-width: 768px) {
+
   .addon-pricing-table th,
   .addon-pricing-table td {
     padding: 14px 16px;
@@ -9771,6 +9783,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .feature-detail-card__visual-img,
   .features-tile {
     transition: none !important;

@@ -100,8 +100,8 @@
       var href = link.getAttribute("href") || "";
       var isAnchor = href.charAt(0) === "#" || (link.pathname === window.location.pathname && Boolean(link.hash));
       var isCurrentPage = (link.pathname === window.location.pathname &&
-                           link.search === window.location.search &&
-                           !link.hash);
+        link.search === window.location.search &&
+        !link.hash);
 
       if (isAnchor || isCurrentPage) {
         closeNav();
@@ -442,8 +442,8 @@
     if (panels.length > 0 && panels[0].parentElement) {
       var panelParent = panels[0].parentElement;
       if (panelParent.classList.contains("plans-panels-stack") ||
-          panelParent.classList.contains("core-features-panels") ||
-          panelParent.classList.contains("faq-content-container")) {
+        panelParent.classList.contains("core-features-panels") ||
+        panelParent.classList.contains("faq-content-container")) {
         swipeContentTarget = panelParent;
       }
     }
@@ -757,6 +757,127 @@
           carousel.scrollBy({ left: -350, behavior: "smooth" });
         }
       });
+
+      /* ------------------------------------------------------------- */
+      /* Scroll-Aware Cursor Tracking & Hit-Testing                    */
+      /* Ensures hover state follows cards moving under stationary cursor */
+      /* ------------------------------------------------------------- */
+      var cards = carousel.querySelectorAll(".industry-card");
+      if (cards.length > 0) {
+        carousel.classList.add("has-cursor-tracking");
+
+        var activeCard = null;
+        var lastPointerX = null;
+        var lastPointerY = null;
+        var isPointerInside = false;
+        var hitTestRaf = null;
+
+        function updateActiveCard() {
+          hitTestRaf = null;
+          if (!isPointerInside || lastPointerX === null || lastPointerY === null) {
+            if (activeCard) {
+              activeCard.classList.remove("is-active");
+              activeCard = null;
+            }
+            return;
+          }
+
+          // Verify pointer is still within the visible carousel viewport
+          var carouselRect = carousel.getBoundingClientRect();
+          if (
+            lastPointerX < carouselRect.left ||
+            lastPointerX > carouselRect.right ||
+            lastPointerY < carouselRect.top ||
+            lastPointerY > carouselRect.bottom
+          ) {
+            if (activeCard) {
+              activeCard.classList.remove("is-active");
+              activeCard = null;
+            }
+            isPointerInside = false;
+            return;
+          }
+
+          // Read all card bounding rects in one pass
+          var rects = [];
+          for (var i = 0; i < cards.length; i++) {
+            rects.push(cards[i].getBoundingClientRect());
+          }
+
+          var newActiveCard = null;
+          for (var j = 0; j < cards.length; j++) {
+            var rect = rects[j];
+            // Vertical boundary: cursor must be within card's vertical height
+            if (lastPointerY < rect.top || lastPointerY > rect.bottom) {
+              continue;
+            }
+
+            // Horizontal boundary with midpoint handoff between adjacent cards
+            var leftBound = j === 0 ? rect.left : (rects[j - 1].right + rect.left) / 2;
+            var rightBound = j === cards.length - 1 ? rect.right : (rect.right + rects[j + 1].left) / 2;
+
+            if (lastPointerX >= leftBound && lastPointerX <= rightBound) {
+              newActiveCard = cards[j];
+              break;
+            }
+          }
+
+          if (newActiveCard !== activeCard) {
+            if (activeCard) {
+              activeCard.classList.remove("is-active");
+            }
+            if (newActiveCard) {
+              newActiveCard.classList.add("is-active");
+            }
+            activeCard = newActiveCard;
+          }
+        }
+
+        function scheduleHitTest() {
+          if (!hitTestRaf) {
+            hitTestRaf = requestAnimationFrame(updateActiveCard);
+          }
+        }
+
+        function handlePointerMove(e) {
+          if (e.pointerType === "touch") return;
+          isPointerInside = true;
+          lastPointerX = e.clientX;
+          lastPointerY = e.clientY;
+          scheduleHitTest();
+        }
+
+        function handlePointerLeave(e) {
+          if (e.relatedTarget && carousel.contains(e.relatedTarget)) return;
+          isPointerInside = false;
+          lastPointerX = null;
+          lastPointerY = null;
+          scheduleHitTest();
+        }
+
+        carousel.addEventListener("pointerenter", handlePointerMove, { passive: true });
+        carousel.addEventListener("pointermove", handlePointerMove, { passive: true });
+        carousel.addEventListener("mouseenter", handlePointerMove, { passive: true });
+        carousel.addEventListener("mousemove", handlePointerMove, { passive: true });
+
+        carousel.addEventListener("pointerleave", handlePointerLeave, { passive: true });
+        carousel.addEventListener("mouseleave", handlePointerLeave, { passive: true });
+
+        carousel.addEventListener("pointerup", function (e) {
+          if (e.pointerType === "touch") {
+            isPointerInside = false;
+            lastPointerX = null;
+            lastPointerY = null;
+            scheduleHitTest();
+          }
+        }, { passive: true });
+
+        // Listen to horizontal scrolling, mouse wheel, resize, and window scroll
+        carousel.addEventListener("scroll", scheduleHitTest, { passive: true });
+        carousel.addEventListener("wheel", scheduleHitTest, { passive: true });
+        window.addEventListener("scroll", scheduleHitTest, { passive: true });
+        window.addEventListener("resize", scheduleHitTest, { passive: true });
+      }
     });
   }
 
